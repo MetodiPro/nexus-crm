@@ -1,0 +1,133 @@
+<div class="card">
+    <div class="card-header bg-nexus-dark text-white flex justify-between items-center">
+      <h4 class="text-lg font-semibold"><i class="fas fa-chart-bar"></i> Statistiche Contratti</h4>
+      <a href="/contracts" class="bg-gray-600 text-white px-3 py-1 rounded text-sm hover:bg-gray-700 transition-colors">
+        <i class="fas fa-list"></i> Elenco Contratti
+      </a>
+    </div>
+    <div class="card-body">
+      <% if (stats && stats.length > 0) { %>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+          <!-- Grafico per tipo di energia -->
+          <div class="card h-full">
+            <div class="card-header bg-gray-100">
+              <h5 class="font-semibold">Contratti per Tipo di Energia</h5>
+            </div>
+            <div class="card-body">
+              <div class="h-64">
+                <canvas id="energyTypeChart"></canvas>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Totali -->
+          <div class="card h-full">
+            <div class="card-header bg-gray-100">
+              <h5 class="font-semibold">Riepilogo Contratti Accettati</h5>
+            </div>
+            <div class="card-body">
+              <div class="space-y-4">
+                <% 
+                  let totalValue = 0;
+                  let totalCount = 0;
+                  
+                  stats.forEach(stat => {
+                    totalValue += parseFloat(stat.total_value || 0);
+                    totalCount += parseInt(stat.count || 0);
+                  });
+                %>
+                
+                <div class="flex justify-between items-center p-4 bg-gray-50 rounded border border-gray-200">
+                  <div class="font-medium">Numero totale contratti:</div>
+                  <div class="text-lg font-bold"><%= totalCount %></div>
+                </div>
+                
+                <div class="flex justify-between items-center p-4 bg-gray-50 rounded border border-gray-200">
+                  <div class="font-medium">Valore totale:</div>
+                  <div class="text-xl font-bold text-nexus-red">€ <%= totalValue.toFixed(2) %></div>
+                </div>
+                
+                <% stats.forEach(stat => { %>
+                  <div class="p-4 bg-gray-50 rounded border border-gray-200">
+                    <div class="flex justify-between items-center mb-2">
+                      <div class="font-medium">
+                        <%= stat.energy_type === 'electricity' ? 'Energia Elettrica' : 
+                           stat.energy_type === 'gas' ? 'Gas Naturale' : 
+                           stat.energy_type === 'both' ? 'Dual Fuel' : stat.energy_type %>:
+                      </div>
+                      <div class="text-lg font-bold"><%= stat.count %> contratti</div>
+                    </div>
+                    <div class="flex justify-between items-center">
+                      <div class="text-sm text-gray-600">Valore:</div>
+                      <div class="font-semibold">€ <%= parseFloat(stat.total_value || 0).toFixed(2) %></div>
+                    </div>
+                  </div>
+                <% }) %>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Passaggio dati al JavaScript in un formato sicuro -->
+        <script>
+          // Dati per il grafico
+          var chartData = <%- JSON.stringify({
+            labels: stats.map(function(stat) {
+              return stat.energy_type === "electricity" ? "Energia Elettrica" : 
+                    stat.energy_type === "gas" ? "Gas Naturale" : 
+                    stat.energy_type === "both" ? "Dual Fuel" : stat.energy_type;
+            }),
+            counts: stats.map(function(stat) {
+              return stat.count;
+            })
+          }) %>;
+        </script>
+        
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script>
+          document.addEventListener('DOMContentLoaded', function() {
+            // Preparazione dati per il grafico
+            const ctx = document.getElementById('energyTypeChart').getContext('2d');
+            
+            const backgroundColors = [
+              'rgba(220, 38, 38, 0.7)',  // Rosso
+              'rgba(31, 41, 55, 0.7)',   // Nero/grigio scuro
+              'rgba(251, 191, 36, 0.7)'  // Giallo/ambra
+            ];
+            
+            // Creazione grafico
+            new Chart(ctx, {
+              type: 'pie',
+              data: {
+                labels: chartData.labels,
+                datasets: [{
+                  label: 'Numero di contratti',
+                  data: chartData.counts,
+                  backgroundColor: backgroundColors,
+                  borderWidth: 1
+                }]
+              },
+              options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                  legend: {
+                    position: 'bottom'
+                  }
+                }
+              }
+            });
+          });
+        </script>
+      <% } else { %>
+        <div class="text-center py-10 text-gray-500">
+          <i class="fas fa-chart-pie text-4xl mb-3"></i>
+          <p>Non ci sono dati sufficienti per generare statistiche.</p>
+          <p class="text-sm mt-2">Le statistiche sono disponibili solo per i contratti con stato "Accettato".</p>
+          <a href="/contracts/new" class="btn-outline-red mt-3 inline-block">
+            <i class="fas fa-plus"></i> Aggiungi un contratto
+          </a>
+        </div>
+      <% } %>
+    </div>
+  </div>

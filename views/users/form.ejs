@@ -1,0 +1,60 @@
+<div class="card max-w-4xl mx-auto">
+    <div class="card-header bg-nexus-dark text-white">
+      <h4 class="text-lg font-semibold">
+        <i class="fas fa-user-cog"></i> 
+        <%= user.id ? 'Modifica Utente' : 'Nuovo Utente' %>
+      </h4>
+    </div>
+    <div class="card-body">
+      <form action="<%= action %>" method="POST">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+          <div>
+            <label for="username" class="form-label">Username</label>
+            <input type="text" class="form-input" id="username" name="username" 
+                   value="<%= user.username || '' %>" required>
+          </div>
+          <div>
+            <label for="name" class="form-label">Nome e Cognome</label>
+            <input type="text" class="form-input" id="name" name="name" 
+                   value="<%= user.name || '' %>" required>
+          </div>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+          <div>
+            <label for="password" class="form-label">
+              Password <%= user.id ? '(lascia vuoto per non modificare)' : '' %>
+            </label>
+            <input type="password" class="form-input" id="password" name="password" 
+                   <%= user.id ? '' : 'required' %>>
+          </div>
+          <div>
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-input" id="email" name="email" 
+                   value="<%= user.email || '' %>">
+          </div>
+        </div>
+        
+        <div class="mb-6">
+          <label for="role" class="form-label">Ruolo</label>
+          <select class="form-select" id="role" name="role" required>
+            <option value="consultant" <%= (user.role === 'consultant') ? 'selected' : '' %>>
+              Consulente
+            </option>
+            <option value="administrator" <%= (user.role === 'administrator') ? 'selected' : '' %>>
+              Amministratore
+            </option>
+          </select>
+        </div>
+        
+        <div class="flex justify-between">
+          <a href="/users" class="btn-outline">
+            <i class="fas fa-arrow-left"></i> Annulla
+          </a>
+          <button type="submit" class="btn-primary">
+            <i class="fas fa-save"></i> Salva
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>

@@ -1,0 +1,36 @@
+{
+  "name": "nexus-crm",
+  "version": "1.0.0",
+  "description": "CRM per consulenti in materia di energia elettrica e gas naturale",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "concurrently \"npm run watch:css\" \"nodemon app.js\"",
+    "build:css": "npx tailwindcss@3.3.3 -i ./public/css/input.css -o ./public/css/styles.css",
+    "watch:css": "npx tailwindcss@3.3.3 -i ./public/css/input.css -o ./public/css/styles.css --watch"
+  },
+  "keywords": [
+    "crm",
+    "energia",
+    "gas",
+    "consulenza"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "body-parser": "^1.20.2",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "express-ejs-layouts": "^2.5.1",
+    "express-session": "^1.17.3",
+    "sqlite3": "^5.1.7"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.16",
+    "concurrently": "^8.2.2",
+    "nodemon": "^3.1.9",
+    "postcss": "^8.4.31",
+    "tailwindcss": "^3.3.3"
+  }
+}

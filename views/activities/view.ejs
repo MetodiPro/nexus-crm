@@ -1,0 +1,85 @@
+<div class="card max-w-4xl mx-auto">
+    <div class="card-header bg-nexus-dark text-white flex justify-between items-center">
+      <h4 class="text-lg font-semibold"><i class="fas fa-tasks"></i> Dettaglio Attività</h4>
+      <div class="space-x-2">
+        <a href="/activities" class="text-white bg-gray-600 hover:bg-gray-700 px-3 py-1 rounded text-sm">
+          <i class="fas fa-list"></i> Elenco
+        </a>
+        <a href="/activities/edit/<%= activity.id %>" class="text-white bg-blue-600 hover:bg-blue-700 px-3 py-1 rounded text-sm">
+          <i class="fas fa-edit"></i> Modifica
+        </a>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="mb-6">
+        <div class="flex justify-between items-start mb-4">
+          <h2 class="text-2xl font-bold"><%= activity.title %></h2>
+          <span class="px-3 py-1 text-sm font-semibold rounded-full
+            <% if(activity.status === 'completed') { %>
+              bg-green-100 text-green-800
+            <% } else if(activity.status === 'cancelled') { %>
+              bg-red-100 text-red-800
+            <% } else { %>
+              bg-yellow-100 text-yellow-800
+            <% } %>
+          ">
+            <%= activity.status === 'pending' ? 'In attesa' : 
+               activity.status === 'completed' ? 'Completata' : 
+               activity.status === 'cancelled' ? 'Annullata' : activity.status %>
+          </span>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+          <div>
+            <h6 class="text-sm font-semibold text-gray-600 uppercase mb-2">Cliente</h6>
+            <p class="mb-1">
+              <a href="/clients/view/<%= activity.client_id %>" class="text-nexus-red hover:underline font-medium">
+                <%= activity.client_name %> <%= activity.client_surname %>
+              </a>
+            </p>
+          </div>
+          
+          <div>
+            <h6 class="text-sm font-semibold text-gray-600 uppercase mb-2">Data e Ora</h6>
+            <p class="mb-1">
+              <i class="fas fa-calendar-alt text-gray-500 mr-2"></i>
+              <%= new Date(activity.activity_date).toLocaleDateString() %>
+            </p>
+            <p>
+              <i class="fas fa-clock text-gray-500 mr-2"></i>
+              <%= new Date(activity.activity_date).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}) %>
+            </p>
+          </div>
+        </div>
+        
+        <% if (activity.description) { %>
+          <div class="mb-6">
+            <h6 class="text-sm font-semibold text-gray-600 uppercase mb-2">Descrizione</h6>
+            <div class="bg-gray-50 p-4 rounded border border-gray-200">
+              <p class="whitespace-pre-line"><%= activity.description %></p>
+            </div>
+          </div>
+        <% } %>
+        
+        <div class="border-t border-gray-200 pt-4 text-xs text-gray-500">
+          <p>Creata da: <%= user.name %></p>
+          <p>Data creazione: <%= new Date(activity.created_at).toLocaleString() %></p>
+        </div>
+      </div>
+      
+      <div class="flex justify-between mt-6">
+        <a href="/activities" class="btn-outline">
+          <i class="fas fa-arrow-left"></i> Torna alla lista
+        </a>
+        <div class="space-x-2">
+          <a href="/activities/delete/<%= activity.id %>" class="btn-outline-red delete-btn" 
+             onclick="return confirm('Sei sicuro di voler eliminare questa attività?')">
+            <i class="fas fa-trash"></i> Elimina
+          </a>
+          <a href="/activities/edit/<%= activity.id %>" class="btn-primary">
+            <i class="fas fa-edit"></i> Modifica
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>

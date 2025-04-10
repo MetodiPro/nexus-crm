@@ -1,0 +1,92 @@
+const sqlite3 = require('sqlite3').verbose();
+const path = require('path');
+
+// Crea un'istanza del database
+const dbPath = path.resolve(__dirname, '../data/nexus.db');
+const db = new sqlite3.Database(dbPath, (err) => {
+  if (err) {
+    console.error('Errore nella connessione al database', err.message);
+  } else {
+    console.log('Connesso al database SQLite');
+    
+    // Crea le tabelle se non esistono
+    db.serialize(() => {
+      // Tabella utenti
+      db.run(`CREATE TABLE IF NOT EXISTS users (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        username TEXT UNIQUE NOT NULL,
+        password TEXT NOT NULL,
+        role TEXT NOT NULL,
+        name TEXT NOT NULL,
+        email TEXT,
+        created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+      )`);
+      
+      // Tabella clienti
+      db.run(`CREATE TABLE IF NOT EXISTS clients (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        name TEXT NOT NULL,
+        surname TEXT NOT NULL,
+        company TEXT,
+        vat_number TEXT,
+        address TEXT,
+        city TEXT,
+        postal_code TEXT,
+        phone TEXT,
+        email TEXT,
+        notes TEXT,
+        consultant_id INTEGER,
+        created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+        FOREIGN KEY (consultant_id) REFERENCES users (id)
+      )`);
+      
+      // Tabella attività/appuntamenti
+      db.run(`CREATE TABLE IF NOT EXISTS activities (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        client_id INTEGER NOT NULL,
+        title TEXT NOT NULL,
+        description TEXT,
+        activity_date DATETIME NOT NULL,
+        status TEXT DEFAULT 'pending',
+        consultant_id INTEGER NOT NULL,
+        created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+        FOREIGN KEY (client_id) REFERENCES clients (id),
+        FOREIGN KEY (consultant_id) REFERENCES users (id)
+      )`);
+      
+      // Tabella contratti/offerte
+      db.run(`CREATE TABLE IF NOT EXISTS contracts (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        client_id INTEGER NOT NULL,
+        contract_type TEXT NOT NULL,
+        energy_type TEXT NOT NULL,
+        supplier TEXT,
+        status TEXT DEFAULT 'pending',
+        value REAL,
+        start_date DATE,
+        end_date DATE,
+        notes TEXT,
+        consultant_id INTEGER NOT NULL,
+        created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+        FOREIGN KEY (client_id) REFERENCES clients (id),
+        FOREIGN KEY (consultant_id) REFERENCES users (id)
+      )`);
+      
+      // Inserisci un utente admin di default se non esiste
+      const bcrypt = require('bcrypt');
+      const salt = bcrypt.genSaltSync(10);
+      const hashedPassword = bcrypt.hashSync('admin123', salt);
+      
+      db.get("SELECT * FROM users WHERE username = 'admin'", (err, row) => {
+        if (!row) {
+          db.run(`INSERT INTO users (username, password, role, name, email) 
+                  VALUES ('admin', ?, 'administrator', 'Amministratore', 'admin@nexus.it')`, 
+                  [hashedPassword]);
+          console.log('Utente admin creato con password: admin123');
+        }
+      });
+    });
+  }
+});
+
+module.exports = db;

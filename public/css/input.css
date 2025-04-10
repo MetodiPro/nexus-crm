@@ -1,0 +1,82 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Stili personalizzati */
+@layer components {
+  .btn-primary {
+    @apply bg-nexus-red text-white px-4 py-2 rounded hover:bg-red-700 transition-colors;
+  }
+  
+  .btn-secondary {
+    @apply bg-nexus-dark text-white px-4 py-2 rounded hover:bg-gray-800 transition-colors;
+  }
+  
+  .btn-outline {
+    @apply border border-nexus-dark text-nexus-dark px-4 py-2 rounded hover:bg-nexus-dark hover:text-white transition-colors;
+  }
+  
+  .btn-outline-red {
+    @apply border border-nexus-red text-nexus-red px-4 py-2 rounded hover:bg-nexus-red hover:text-white transition-colors;
+  }
+  
+  .btn-sm {
+    @apply px-2 py-1 text-sm;
+  }
+  
+  .card {
+    @apply bg-white rounded-lg shadow-md overflow-hidden border border-gray-200 transition-all hover:shadow-lg;
+  }
+  
+  .card-header {
+    @apply p-4 border-b border-gray-200;
+  }
+  
+  .card-body {
+    @apply p-4;
+  }
+  
+  .form-input {
+    @apply w-full rounded border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-nexus-red focus:border-transparent;
+  }
+  
+  .form-select {
+    @apply w-full rounded border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-nexus-red focus:border-transparent;
+  }
+  
+  .form-label {
+    @apply block text-gray-700 font-medium mb-1;
+  }
+  
+  .table-container {
+    @apply overflow-x-auto;
+  }
+  
+  .table {
+    @apply min-w-full divide-y divide-gray-200;
+  }
+  
+  .table th {
+    @apply px-6 py-3 bg-nexus-dark text-left text-xs font-medium text-white uppercase tracking-wider;
+  }
+  
+  .table td {
+    @apply px-6 py-4 whitespace-nowrap;
+  }
+  
+  .table tr {
+    @apply hover:bg-gray-50;
+  }
+  
+  .badge {
+    @apply px-2 py-1 text-xs font-semibold rounded-full;
+  }
+  
+  .badge-red {
+    @apply bg-nexus-red text-white;
+  }
+  
+  .badge-gray {
+    @apply bg-gray-500 text-white;
+  }
+}

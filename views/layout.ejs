@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NEXUS CRM</title>
+  <!-- Tailwind CSS -->
+  <link rel="stylesheet" href="/css/styles.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+</head>
+<body class="bg-gray-50 min-h-screen flex flex-col">
+  <% if (user) { %>
+    <!-- Header e navigazione -->
+    <nav class="bg-nexus-dark">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16">
+          <div class="flex items-center">
+            <div class="flex-shrink-0">
+              <a href="/" class="text-nexus-red font-bold text-xl">NEXUS</a>
+            </div>
+            <div class="hidden md:block">
+              <div class="ml-10 flex items-baseline space-x-4">
+                <a href="/" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                  <i class="fas fa-tachometer-alt"></i> Dashboard
+                </a>
+                <a href="/clients" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                  <i class="fas fa-users"></i> Clienti
+                </a>
+                <a href="/activities" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                  <i class="fas fa-tasks"></i> Attività
+                </a>
+                <a href="/activities/calendar" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                  <i class="fas fa-calendar"></i> Calendario
+                </a>
+                <a href="/contracts" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                  <i class="fas fa-file-contract"></i> Contratti
+                </a>
+                <a href="/contracts/stats" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                  <i class="fas fa-chart-bar"></i> Statistiche
+                </a>
+                <% if (user.role === 'administrator') { %>
+                  <a href="/users" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                    <i class="fas fa-user-cog"></i> Utenti
+                  </a>
+                <% } %>
+              </div>
+            </div>
+          </div>
+          <div class="flex items-center">
+            <div class="flex-shrink-0 text-white mr-4">
+              <i class="fas fa-user mr-1"></i> <%= user.name %> 
+              <span class="<%= user.role === 'administrator' ? 'badge-red' : 'badge-gray' %> ml-2">
+                <%= user.role === 'administrator' ? 'Admin' : 'Consulente' %>
+              </span>
+            </div>
+            <a href="/logout" class="btn-outline-red btn-sm">
+              <i class="fas fa-sign-out-alt"></i> Logout
+            </a>
+          </div>
+          <div class="-mr-2 flex md:hidden">
+            <button type="button" class="mobile-menu-button bg-gray-800 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none">
+              <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Menu mobile -->
+      <div class="hidden mobile-menu md:hidden">
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+          <a href="/" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">
+            <i class="fas fa-tachometer-alt"></i> Dashboard
+          </a>
+          <a href="/clients" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">
+            <i class="fas fa-users"></i> Clienti
+          </a>
+          <a href="/activities" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">
+            <i class="fas fa-tasks"></i> Attività
+          </a>
+          <a href="/activities/calendar" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">
+            <i class="fas fa-calendar"></i> Calendario
+          </a>
+          <a href="/contracts" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">
+            <i class="fas fa-file-contract"></i> Contratti
+          </a>
+          <a href="/contracts/stats" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">
+            <i class="fas fa-chart-bar"></i> Statistiche
+          </a>
+          <% if (user.role === 'administrator') { %>
+            <a href="/users" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">
+              <i class="fas fa-user-cog"></i> Utenti
+            </a>
+          <% } %>
+        </div>
+      </div>
+    </nav>
+  <% } %>
+
+  <!-- Contenuto principale -->
+  <main class="container mx-auto px-4 py-8 flex-grow">
+    <%- body %>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-nexus-dark text-white text-center py-3">
+    <div class="container mx-auto">
+      <small>NEXUS CRM &copy; <%= new Date().getFullYear() %> - Sistema di gestione consulenza energetica</small>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

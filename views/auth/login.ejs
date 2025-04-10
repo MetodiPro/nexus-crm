@@ -1,0 +1,50 @@
+<div class="flex justify-center items-center min-h-[80vh]">
+    <div class="w-full max-w-md">
+      <div class="card border border-gray-300 shadow-lg">
+        <div class="bg-nexus-dark text-white text-center py-4">
+          <h2 class="text-nexus-red text-2xl font-bold mb-1">NEXUS</h2>
+          <p class="text-sm">Sistema CRM per consulenza energetica</p>
+        </div>
+        
+        <div class="card-body p-6">
+          <h4 class="text-xl font-bold text-center mb-6"><i class="fas fa-sign-in-alt"></i> Accesso al sistema</h4>
+          
+          <% if (error) { %>
+            <div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-4">
+              <i class="fas fa-exclamation-circle"></i> <%= error %>
+            </div>
+          <% } %>
+          
+          <form action="/login" method="POST">
+            <div class="mb-4">
+              <label for="username" class="form-label">Username</label>
+              <div class="relative">
+                <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-gray-500">
+                  <i class="fas fa-user"></i>
+                </div>
+                <input type="text" class="form-input pl-10" id="username" name="username" required autofocus>
+              </div>
+            </div>
+            
+            <div class="mb-6">
+              <label for="password" class="form-label">Password</label>
+              <div class="relative">
+                <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-gray-500">
+                  <i class="fas fa-lock"></i>
+                </div>
+                <input type="password" class="form-input pl-10" id="password" name="password" required>
+              </div>
+            </div>
+            
+            <button type="submit" class="btn-primary w-full">
+              <i class="fas fa-sign-in-alt"></i> Accedi
+            </button>
+          </form>
+        </div>
+        
+        <div class="border-t border-gray-200 py-3 text-center bg-gray-50 text-gray-500 text-sm">
+          NEXUS CRM &copy; <%= new Date().getFullYear() %>
+        </div>
+      </div>
+    </div>
+  </div>

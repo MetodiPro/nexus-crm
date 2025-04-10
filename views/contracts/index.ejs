@@ -1,0 +1,107 @@
+<div class="card">
+    <div class="card-header bg-nexus-dark text-white flex justify-between items-center">
+      <h4 class="text-lg font-semibold"><i class="fas fa-file-contract"></i> Gestione Contratti</h4>
+      <div class="space-x-2">
+        <a href="/contracts/stats" class="bg-gray-600 text-white px-3 py-1 rounded text-sm hover:bg-gray-700 transition-colors">
+          <i class="fas fa-chart-bar"></i> Statistiche
+        </a>
+        <a href="/contracts/new" class="bg-nexus-red text-white px-3 py-1 rounded text-sm hover:bg-red-700 transition-colors">
+          <i class="fas fa-plus"></i> Nuovo Contratto
+        </a>
+      </div>
+    </div>
+    <div class="card-body">
+      <!-- Filtri contratti -->
+      <div class="mb-6 flex flex-wrap gap-2">
+        <a href="/contracts" class="px-3 py-1 rounded text-sm border border-gray-300 hover:bg-gray-100">
+          Tutti
+        </a>
+        <a href="/contracts?status=pending" class="px-3 py-1 rounded text-sm border border-yellow-300 bg-yellow-50 text-yellow-800 hover:bg-yellow-100">
+          In attesa
+        </a>
+        <a href="/contracts?status=accepted" class="px-3 py-1 rounded text-sm border border-green-300 bg-green-50 text-green-800 hover:bg-green-100">
+          Accettati
+        </a>
+        <a href="/contracts?status=rejected" class="px-3 py-1 rounded text-sm border border-red-300 bg-red-50 text-red-800 hover:bg-red-100">
+          Rifiutati
+        </a>
+      </div>
+      
+      <div class="table-container">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Cliente</th>
+              <th>Tipo</th>
+              <th>Fornitore</th>
+              <th>Data</th>
+              <th>Valore</th>
+              <th>Stato</th>
+              <th>Azioni</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-200">
+            <% if (contracts && contracts.length > 0) { %>
+              <% contracts.forEach(contract => { %>
+                <tr>
+                  <td class="align-middle">
+                    <a href="/clients/view/<%= contract.client_id %>" class="font-medium text-nexus-red hover:underline">
+                      <%= contract.client_name %> <%= contract.client_surname %>
+                    </a>
+                  </td>
+                  <td class="align-middle">
+                    <div><%= contract.contract_type %></div>
+                    <div class="text-xs text-gray-500">
+                      <%= contract.energy_type === 'electricity' ? 'Energia Elettrica' : 
+                         contract.energy_type === 'gas' ? 'Gas Naturale' : 
+                         contract.energy_type === 'both' ? 'Dual Fuel' : contract.energy_type %>
+                    </div>
+                  </td>
+                  <td class="align-middle">
+                    <%= contract.supplier || '-' %>
+                  </td>
+                  <td class="align-middle whitespace-nowrap">
+                    <%= contract.start_date ? new Date(contract.start_date).toLocaleDateString() : '-' %>
+                  </td>
+                  <td class="align-middle whitespace-nowrap">
+                    <%= contract.value ? '€ ' + contract.value.toFixed(2) : '-' %>
+                  </td>
+                  <td class="align-middle">
+                    <span class="px-2 py-1 text-xs font-semibold rounded-full
+                      <% if(contract.status === 'accepted') { %>
+                        bg-green-100 text-green-800
+                      <% } else if(contract.status === 'rejected') { %>
+                        bg-red-100 text-red-800
+                      <% } else { %>
+                        bg-yellow-100 text-yellow-800
+                      <% } %>
+                    ">
+                      <%= contract.status === 'pending' ? 'In attesa' : 
+                         contract.status === 'accepted' ? 'Accettato' : 
+                         contract.status === 'rejected' ? 'Rifiutato' : contract.status %>
+                    </span>
+                  </td>
+                  <td class="align-middle space-x-1">
+                    <a href="/contracts/view/<%= contract.id %>" class="inline-block bg-blue-100 text-blue-700 p-1.5 rounded hover:bg-blue-200">
+                      <i class="fas fa-eye"></i>
+                    </a>
+                    <a href="/contracts/edit/<%= contract.id %>" class="inline-block bg-gray-200 text-gray-700 p-1.5 rounded hover:bg-gray-300">
+                      <i class="fas fa-edit"></i>
+                    </a>
+                    <a href="/contracts/delete/<%= contract.id %>" class="inline-block bg-red-100 text-red-700 p-1.5 rounded hover:bg-red-200 delete-btn" 
+                       onclick="return confirm('Sei sicuro di voler eliminare questo contratto?')">
+                      <i class="fas fa-trash"></i>
+                    </a>
+                  </td>
+                </tr>
+              <% }) %>
+            <% } else { %>
+              <tr>
+                <td colspan="7" class="text-center py-4 text-gray-500">Nessun contratto trovato</td>
+              </tr>
+            <% } %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>

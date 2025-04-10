@@ -1,0 +1,80 @@
+<div class="card">
+    <div class="card-header bg-nexus-dark text-white flex justify-between items-center">
+      <h4 class="text-lg font-semibold"><i class="fas fa-users"></i> Gestione Clienti</h4>
+      <a href="/clients/new" class="bg-nexus-red text-white px-3 py-1 rounded text-sm hover:bg-red-700 transition-colors">
+        <i class="fas fa-plus"></i> Nuovo Cliente
+      </a>
+    </div>
+    <div class="card-body">
+      <!-- Barra di ricerca -->
+      <div class="mb-6">
+        <form id="searchForm" action="/clients/search" method="GET" class="flex">
+          <input type="text" id="searchInput" name="term" placeholder="Cerca cliente..." 
+                 class="form-input rounded-r-none flex-1" value="<%= locals.searchTerm || '' %>">
+          <button type="submit" class="bg-nexus-dark text-white px-4 py-2 rounded-r hover:bg-gray-800">
+            <i class="fas fa-search"></i>
+          </button>
+        </form>
+      </div>
+  
+      <div class="table-container">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>Azienda</th>
+              <th>Contatti</th>
+              <th>Comune</th>
+              <th>Azioni</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-200">
+            <% if (clients && clients.length > 0) { %>
+              <% clients.forEach(client => { %>
+                <tr>
+                  <td class="align-middle">
+                    <div class="font-medium">
+                      <%= client.name %> <%= client.surname %>
+                    </div>
+                  </td>
+                  <td class="align-middle">
+                    <%= client.company || '-' %>
+                    <% if (client.vat_number) { %>
+                      <div class="text-xs text-gray-500">P.IVA: <%= client.vat_number %></div>
+                    <% } %>
+                  </td>
+                  <td class="align-middle">
+                    <div><i class="fas fa-phone text-xs text-gray-500 mr-1"></i> <%= client.phone || '-' %></div>
+                    <div><i class="fas fa-envelope text-xs text-gray-500 mr-1"></i> <%= client.email || '-' %></div>
+                  </td>
+                  <td class="align-middle"><%= client.city || '-' %></td>
+                  <td class="align-middle space-x-1">
+                    <a href="/clients/view/<%= client.id %>" class="inline-block bg-blue-100 text-blue-700 p-1.5 rounded hover:bg-blue-200">
+                      <i class="fas fa-eye"></i>
+                    </a>
+                    <a href="/clients/edit/<%= client.id %>" class="inline-block bg-gray-200 text-gray-700 p-1.5 rounded hover:bg-gray-300">
+                      <i class="fas fa-edit"></i>
+                    </a>
+                    <a href="/clients/delete/<%= client.id %>" class="inline-block bg-red-100 text-red-700 p-1.5 rounded hover:bg-red-200 delete-btn" 
+                      onclick="return confirm('Sei sicuro di voler eliminare questo cliente?')">
+                      <i class="fas fa-trash"></i>
+                    </a>
+                  </td>
+                </tr>
+              <% }) %>
+            <% } else { %>
+              <tr>
+                <td colspan="5" class="text-center py-4 text-gray-500">
+                  <% if (locals.searchTerm) { %>
+                    Nessun cliente trovato per "<%= searchTerm %>". <a href="/clients" class="text-nexus-red hover:underline">Mostra tutti</a>
+                  <% } else { %>
+                    Nessun cliente trovato
+                  <% } %>
+                </td>
+              </tr>
+            <% } %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>

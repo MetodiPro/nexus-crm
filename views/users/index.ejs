@@ -1,0 +1,54 @@
+<div class="card">
+    <div class="card-header bg-nexus-dark text-white flex justify-between items-center">
+      <h4 class="text-lg font-semibold"><i class="fas fa-user-cog"></i> Gestione Utenti</h4>
+      <a href="/users/new" class="bg-nexus-red text-white px-3 py-1 rounded text-sm hover:bg-red-700 transition-colors">
+        <i class="fas fa-plus"></i> Nuovo Utente
+      </a>
+    </div>
+    <div class="card-body">
+      <div class="table-container">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Username</th>
+              <th>Nome</th>
+              <th>Email</th>
+              <th>Ruolo</th>
+              <th>Data creazione</th>
+              <th>Azioni</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-200">
+            <% if (users && users.length > 0) { %>
+              <% users.forEach(user => { %>
+                <tr>
+                  <td class="align-middle"><%= user.username %></td>
+                  <td class="align-middle"><%= user.name %></td>
+                  <td class="align-middle"><%= user.email %></td>
+                  <td class="align-middle">
+                    <span class="<%= user.role === 'administrator' ? 'badge-red' : 'badge-gray' %>">
+                      <%= user.role === 'administrator' ? 'Amministratore' : 'Consulente' %>
+                    </span>
+                  </td>
+                  <td class="align-middle"><%= new Date(user.created_at).toLocaleDateString() %></td>
+                  <td class="align-middle space-x-1">
+                    <a href="/users/edit/<%= user.id %>" class="inline-block bg-gray-200 text-gray-700 p-1.5 rounded hover:bg-gray-300">
+                      <i class="fas fa-edit"></i>
+                    </a>
+                    <a href="/users/delete/<%= user.id %>" class="inline-block bg-red-100 text-red-700 p-1.5 rounded hover:bg-red-200 delete-btn" 
+                       onclick="return confirm('Sei sicuro di voler eliminare questo utente?')">
+                      <i class="fas fa-trash"></i>
+                    </a>
+                  </td>
+                </tr>
+              <% }) %>
+            <% } else { %>
+              <tr>
+                <td colspan="6" class="text-center py-4 text-gray-500">Nessun utente trovato</td>
+              </tr>
+            <% } %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>

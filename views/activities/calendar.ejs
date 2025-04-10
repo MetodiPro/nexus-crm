@@ -1,0 +1,82 @@
+<div class="card">
+    <div class="card-header bg-nexus-dark text-white flex justify-between items-center">
+      <h4 class="text-lg font-semibold"><i class="fas fa-calendar"></i> Calendario Attività</h4>
+      <div class="space-x-2">
+        <a href="/activities" class="bg-gray-600 text-white px-3 py-1 rounded text-sm hover:bg-gray-700 transition-colors">
+          <i class="fas fa-list"></i> Lista Attività
+        </a>
+        <a href="/activities/new" class="bg-nexus-red text-white px-3 py-1 rounded text-sm hover:bg-red-700 transition-colors">
+          <i class="fas fa-plus"></i> Nuova Attività
+        </a>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="flex items-center justify-between mb-6">
+        <a href="/activities/date/<%= prevDate %>" class="btn-outline btn-sm">
+          <i class="fas fa-chevron-left"></i> Giorno precedente
+        </a>
+        
+        <div class="text-center">
+          <h3 class="text-xl font-bold mb-1">
+            <%= new Date(date).toLocaleDateString('it-IT', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }) %>
+          </h3>
+        </div>
+        
+        <a href="/activities/date/<%= nextDate %>" class="btn-outline btn-sm">
+          Giorno successivo <i class="fas fa-chevron-right"></i>
+        </a>
+      </div>
+      
+      <% if (activities && activities.length > 0) { %>
+        <div class="space-y-4">
+          <% activities.forEach(activity => { %>
+            <div class="card border-l-4 
+              <% if(activity.status === 'completed') { %>
+                border-green-500
+              <% } else if(activity.status === 'cancelled') { %>
+                border-red-500
+              <% } else { %>
+                border-yellow-500
+              <% } %>
+            ">
+              <div class="card-body p-4">
+                <div class="flex flex-wrap justify-between items-start">
+                  <div>
+                    <h5 class="font-bold">
+                      <%= new Date(activity.activity_date).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}) %> - 
+                      <%= activity.title %>
+                    </h5>
+                    <p class="text-sm text-gray-600">
+                      Cliente: 
+                      <a href="/clients/view/<%= activity.client_id %>" class="text-nexus-red hover:underline">
+                        <%= activity.client_name %> <%= activity.client_surname %>
+                      </a>
+                    </p>
+                    <% if (activity.description) { %>
+                      <p class="mt-2 text-sm"><%= activity.description %></p>
+                    <% } %>
+                  </div>
+                  <div class="flex space-x-1 mt-2 md:mt-0">
+                    <a href="/activities/view/<%= activity.id %>" class="inline-block bg-blue-100 text-blue-700 p-1.5 rounded hover:bg-blue-200">
+                      <i class="fas fa-eye"></i>
+                    </a>
+                    <a href="/activities/edit/<%= activity.id %>" class="inline-block bg-gray-200 text-gray-700 p-1.5 rounded hover:bg-gray-300">
+                      <i class="fas fa-edit"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <% }) %>
+        </div>
+      <% } else { %>
+        <div class="text-center py-10 text-gray-500">
+          <i class="fas fa-calendar-times text-4xl mb-3"></i>
+          <p>Nessuna attività programmata per questa data</p>
+          <a href="/activities/new" class="btn-outline-red mt-3 inline-block">
+            <i class="fas fa-plus"></i> Aggiungi un'attività
+          </a>
+        </div>
+      <% } %>
+    </div>
+  </div>
