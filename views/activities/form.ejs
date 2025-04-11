@@ -1,114 +1,111 @@
 <div class="card max-w-4xl mx-auto">
-    <div class="card-header bg-nexus-dark text-white">
-      <h4 class="text-lg font-semibold">
-        <i class="fas fa-tasks"></i> 
-        <%= activity.id ? 'Modifica Attività' : 'Nuova Attività' %>
-      </h4>
-    </div>
-    <div class="card-body">
-      <form action="<%= action %>" method="POST" onsubmit="return validateForm('activityForm')" id="activityForm">
-        <% if (activity.client_id) { %>
-          <input type="hidden" name="redirect_to_client" value="true">
-        <% } %>
-        
-        <div class="mb-4">
-          <label for="client_id" class="form-label">Cliente *</label>
-          <select class="form-select" id="client_id" name="client_id" required>
-            <option value="">Seleziona cliente...</option>
-            <% clients.forEach(client => { %>
-              <option value="<%= client.id %>" <%= (activity.client_id == client.id) ? 'selected' : '' %>>
-                <%= client.name %> <%= client.surname %> 
-                <% if (client.company) { %>
-                  - <%= client.company %>
-                <% } %>
-              </option>
-            <% }) %>
-          </select>
-        </div>
-        
-        <div class="mb-4">
-          <label for="title" class="form-label">Titolo *</label>
-          <input type="text" class="form-input" id="title" name="title" 
-                 value="<%= activity.title || '' %>" required>
-        </div>
-        
-        <div class="mb-4">
-          <label for="description" class="form-label">Descrizione</label>
-          <textarea class="form-input h-24" id="description" name="description"><%= activity.description || '' %></textarea>
-        </div>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-          <div>
-            <label for="activity_date" class="form-label">Data *</label>
-            <input type="date" class="form-input" id="activity_date" name="activity_date" 
-                   value="<%= activity.activity_date ? activity.activity_date.split('T')[0] : '' %>" required>
-          </div>
-          <div>
-            <label for="activity_time" class="form-label">Ora</label>
-            <input type="time" class="form-input" id="activity_time" name="activity_time" 
-                   value="<%= activity.activity_date ? activity.activity_date.split('T')[1].substring(0, 5) : '' %>">
-          </div>
-        </div>
-        
-        <div class="mb-6">
-          <label for="status" class="form-label">Stato *</label>
-          <select class="form-select
-          <div class="mb-6">
-            <label for="status" class="form-label">Stato *</label>
-            <select class="form-select" id="status" name="status" required>
-              <option value="pending" <%= (activity.status === 'pending') ? 'selected' : '' %>>
-                In attesa
-              </option>
-              <option value="completed" <%= (activity.status === 'completed') ? 'selected' : '' %>>
-                Completata
-              </option>
-              <option value="cancelled" <%= (activity.status === 'cancelled') ? 'selected' : '' %>>
-                Annullata
-              </option>
-            </select>
-          </div>
-          
-          <div class="flex justify-between">
-            <a href="<%= activity.client_id ? '/clients/view/' + activity.client_id : '/activities' %>" class="btn-outline">
-              <i class="fas fa-arrow-left"></i> Annulla
-            </a>
-            <button type="submit" class="btn-primary">
-              <i class="fas fa-save"></i> Salva
-            </button>
-          </div>
-        </form>
+  <div class="card-header bg-nexus-dark text-white">
+    <h4 class="text-lg font-semibold">
+      <i class="fas fa-tasks"></i> 
+      <%= activity.id ? 'Modifica Attività' : 'Nuova Attività' %>
+    </h4>
+  </div>
+  <div class="card-body">
+    <form action="<%= action %>" method="POST" onsubmit="return validateForm('activityForm')" id="activityForm">
+      <% if (activity.client_id) { %>
+        <input type="hidden" name="redirect_to_client" value="true">
+      <% } %>
+      
+      <div class="mb-4">
+        <label for="client_id" class="form-label">Cliente *</label>
+        <select class="form-select" id="client_id" name="client_id" required>
+          <option value="">Seleziona cliente...</option>
+          <% clients.forEach(client => { %>
+            <option value="<%= client.id %>" <%= (activity.client_id == client.id) ? 'selected' : '' %>>
+              <%= client.name %> <%= client.surname %> 
+              <% if (client.company) { %>
+                - <%= client.company %>
+              <% } %>
+            </option>
+          <% }) %>
+        </select>
       </div>
-    </div>
+      
+      <div class="mb-4">
+        <label for="title" class="form-label">Titolo *</label>
+        <input type="text" class="form-input" id="title" name="title" 
+               value="<%= activity.title || '' %>" required>
+      </div>
+      
+      <div class="mb-4">
+        <label for="description" class="form-label">Descrizione</label>
+        <textarea class="form-input h-24" id="description" name="description"><%= activity.description || '' %></textarea>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+        <div>
+          <label for="activity_date" class="form-label">Data *</label>
+          <input type="date" class="form-input" id="activity_date" name="activity_date" 
+                 value="<%= activity.activity_date ? activity.activity_date.split('T')[0] : '' %>" required>
+        </div>
+        <div>
+          <label for="activity_time" class="form-label">Ora</label>
+          <input type="time" class="form-input" id="activity_time" name="activity_time" 
+                 value="<%= activity.activity_date && activity.activity_date.includes('T') ? activity.activity_date.split('T')[1].substring(0, 5) : '' %>">
+        </div>
+      </div>
+      
+      <div class="mb-6">
+        <label for="status" class="form-label">Stato *</label>
+        <select class="form-select" id="status" name="status" required>
+          <option value="pending" <%= (activity.status === 'pending') ? 'selected' : '' %>>
+            In attesa
+          </option>
+          <option value="completed" <%= (activity.status === 'completed') ? 'selected' : '' %>>
+            Completata
+          </option>
+          <option value="cancelled" <%= (activity.status === 'cancelled') ? 'selected' : '' %>>
+            Annullata
+          </option>
+        </select>
+      </div>
+        
+      <div class="flex justify-between">
+        <a href="<%= activity.client_id ? '/clients/view/' + activity.client_id : '/activities' %>" class="btn-outline">
+          <i class="fas fa-arrow-left"></i> Annulla
+        </a>
+        <button type="submit" class="btn-primary">
+          <i class="fas fa-save"></i> Salva
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+  
+<script>
+  // Script per combinare data e ora prima di inviare il form
+  document.getElementById('activityForm').addEventListener('submit', function(e) {
+    e.preventDefault();
     
-    <script>
-      // Script per combinare data e ora prima di inviare il form
-      document.getElementById('activityForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        // Ottieni i valori di data e ora
-        const dateInput = document.getElementById('activity_date');
-        const timeInput = document.getElementById('activity_time');
-        
-        // Se entrambi sono compilati, combina i valori
-        if (dateInput.value) {
-          // Se l'ora non è specificata, usa 00:00
-          const timeValue = timeInput.value || '00:00';
-          
-          // Crea un campo nascosto con il valore combinato
-          const hiddenInput = document.createElement('input');
-          hiddenInput.type = 'hidden';
-          hiddenInput.name = 'activity_date';
-          hiddenInput.value = dateInput.value + 'T' + timeValue;
-          
-          // Rimuovi i campi originali
-          dateInput.removeAttribute('name');
-          timeInput.removeAttribute('name');
-          
-          // Aggiungi il campo nascosto al form
-          this.appendChild(hiddenInput);
-        }
-        
-        // Invia il form
-        this.submit();
-      });
-    </script>
+    // Ottieni i valori di data e ora
+    const dateInput = document.getElementById('activity_date');
+    const timeInput = document.getElementById('activity_time');
+    
+    // Se entrambi sono compilati, combina i valori
+    if (dateInput.value) {
+      // Se l'ora non è specificata, usa 00:00
+      const timeValue = timeInput.value || '00:00';
+      
+      // Crea un campo nascosto con il valore combinato
+      const hiddenInput = document.createElement('input');
+      hiddenInput.type = 'hidden';
+      hiddenInput.name = 'activity_date';
+      hiddenInput.value = dateInput.value + 'T' + timeValue;
+      
+      // Rimuovi i campi originali
+      dateInput.removeAttribute('name');
+      timeInput.removeAttribute('name');
+      
+      // Aggiungi il campo nascosto al form
+      this.appendChild(hiddenInput);
+    }
+    
+    // Invia il form
+    this.submit();
+  });
+</script>

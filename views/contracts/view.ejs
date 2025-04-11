@@ -1,108 +1,133 @@
 <div class="card max-w-4xl mx-auto">
-    <div class="card-header bg-nexus-dark text-white flex justify-between items-center">
-      <h4 class="text-lg font-semibold"><i class="fas fa-file-contract"></i> Dettaglio Contratto</h4>
+  <div class="card-header bg-nexus-dark text-white flex justify-between items-center">
+    <h4 class="text-lg font-semibold"><i class="fas fa-file-contract"></i> Dettaglio Contratto</h4>
+    <div class="space-x-2">
+      <a href="/contracts" class="text-white bg-gray-600 hover:bg-gray-700 px-3 py-1 rounded text-sm">
+        <i class="fas fa-list"></i> Elenco
+      </a>
+      <a href="/contracts/edit/<%= contract.id %>" class="text-white bg-blue-600 hover:bg-blue-700 px-3 py-1 rounded text-sm">
+        <i class="fas fa-edit"></i> Modifica
+      </a>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="mb-6">
+      <div class="flex flex-wrap justify-between items-start mb-4">
+        <div>
+          <h2 class="text-2xl font-bold"><%= contract.contract_type %></h2>
+          <p class="text-lg">
+            <%= contract.energy_type === 'electricity' ? 'Energia Elettrica' : 
+               contract.energy_type === 'gas' ? 'Gas Naturale' : 
+               contract.energy_type === 'both' ? 'Dual Fuel (Elettricità + Gas)' : contract.energy_type %>
+            <% if (contract.supplier) { %>
+              - <%= contract.supplier %>
+            <% } %>
+          </p>
+        </div>
+        <span class="px-3 py-1 text-sm font-semibold rounded-full
+          <% if(contract.status === 'accepted') { %>
+            bg-green-100 text-green-800
+          <% } else if(contract.status === 'rejected') { %>
+            bg-red-100 text-red-800
+          <% } else { %>
+            bg-yellow-100 text-yellow-800
+          <% } %>
+        ">
+          <%= contract.status === 'pending' ? 'In attesa' : 
+             contract.status === 'accepted' ? 'Accettato' : 
+             contract.status === 'rejected' ? 'Rifiutato' : contract.status %>
+        </span>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <div>
+          <h6 class="text-sm font-semibold text-gray-600 uppercase mb-2">Cliente</h6>
+          <p class="mb-1">
+            <a href="/clients/view/<%= contract.client_id %>" class="text-nexus-red hover:underline font-medium">
+              <%= contract.client_name %> <%= contract.client_surname %>
+            </a>
+          </p>
+        </div>
+        
+        <div>
+          <h6 class="text-sm font-semibold text-gray-600 uppercase mb-2">Valore</h6>
+          <p class="mb-1 font-bold text-xl">
+            <%= contract.value ? '€ ' + contract.value.toFixed(2) : 'Non specificato' %>
+          </p>
+        </div>
+      </div>
+      
+      <% if (contract.product_name) { %>
+        <div class="mb-6 p-4 bg-gray-50 rounded-lg border border-gray-200">
+          <h6 class="text-sm font-semibold text-gray-600 uppercase mb-2">Prodotto/Servizio dal Listino</h6>
+          <div class="flex flex-wrap justify-between items-start">
+            <div>
+              <p class="font-medium text-lg"><%= contract.product_name %></p>
+              <% if (contract.product_supplier) { %>
+                <p class="text-sm text-gray-600">Fornitore: <%= contract.product_supplier %></p>
+              <% } %>
+              <% if (contract.product_base_price) { %>
+                <p class="text-sm text-gray-600">Prezzo base: € <%= contract.product_base_price.toFixed(2) %></p>
+              <% } %>
+            </div>
+            <a href="/products/view/<%= contract.product_id %>" class="bg-gray-200 text-gray-700 px-3 py-1 rounded text-sm hover:bg-gray-300 flex items-center">
+              <i class="fas fa-eye mr-1"></i> Vedi Prodotto
+            </a>
+          </div>
+          <% if (contract.product_description) { %>
+            <div class="mt-3 pt-3 border-t border-gray-200">
+              <p class="text-sm text-gray-600"><%= contract.product_description %></p>
+            </div>
+          <% } %>
+        </div>
+      <% } %>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <div>
+          <h6 class="text-sm font-semibold text-gray-600 uppercase mb-2">Data Inizio</h6>
+          <p class="mb-1">
+            <i class="fas fa-calendar-alt text-gray-500 mr-2"></i>
+            <%= contract.start_date ? new Date(contract.start_date).toLocaleDateString() : 'Non specificata' %>
+          </p>
+        </div>
+        
+        <div>
+          <h6 class="text-sm font-semibold text-gray-600 uppercase mb-2">Data Fine</h6>
+          <p class="mb-1">
+            <i class="fas fa-calendar-alt text-gray-500 mr-2"></i>
+            <%= contract.end_date ? new Date(contract.end_date).toLocaleDateString() : 'Non specificata' %>
+          </p>
+        </div>
+      </div>
+      
+      <% if (contract.notes) { %>
+        <div class="mb-6">
+          <h6 class="text-sm font-semibold text-gray-600 uppercase mb-2">Note</h6>
+          <div class="bg-gray-50 p-4 rounded border border-gray-200">
+            <p class="whitespace-pre-line"><%= contract.notes %></p>
+          </div>
+        </div>
+      <% } %>
+      
+      <div class="border-t border-gray-200 pt-4 text-xs text-gray-500">
+        <p>Creato da: <%= user.name %></p>
+        <p>Data creazione: <%= new Date(contract.created_at).toLocaleString() %></p>
+      </div>
+    </div>
+    
+    <div class="flex justify-between mt-6">
+      <a href="/contracts" class="btn-outline">
+        <i class="fas fa-arrow-left"></i> Torna alla lista
+      </a>
       <div class="space-x-2">
-        <a href="/contracts" class="text-white bg-gray-600 hover:bg-gray-700 px-3 py-1 rounded text-sm">
-          <i class="fas fa-list"></i> Elenco
+        <a href="/contracts/delete/<%= contract.id %>" class="btn-outline-red delete-btn" 
+           onclick="return confirm('Sei sicuro di voler eliminare questo contratto?')">
+          <i class="fas fa-trash"></i> Elimina
         </a>
-        <a href="/contracts/edit/<%= contract.id %>" class="text-white bg-blue-600 hover:bg-blue-700 px-3 py-1 rounded text-sm">
+        <a href="/contracts/edit/<%= contract.id %>" class="btn-primary">
           <i class="fas fa-edit"></i> Modifica
         </a>
       </div>
     </div>
-    <div class="card-body">
-      <div class="mb-6">
-        <div class="flex flex-wrap justify-between items-start mb-4">
-          <div>
-            <h2 class="text-2xl font-bold"><%= contract.contract_type %></h2>
-            <p class="text-lg">
-              <%= contract.energy_type === 'electricity' ? 'Energia Elettrica' : 
-                 contract.energy_type === 'gas' ? 'Gas Naturale' : 
-                 contract.energy_type === 'both' ? 'Dual Fuel (Elettricità + Gas)' : contract.energy_type %>
-              <% if (contract.supplier) { %>
-                - <%= contract.supplier %>
-              <% } %>
-            </p>
-          </div>
-          <span class="px-3 py-1 text-sm font-semibold rounded-full
-            <% if(contract.status === 'accepted') { %>
-              bg-green-100 text-green-800
-            <% } else if(contract.status === 'rejected') { %>
-              bg-red-100 text-red-800
-            <% } else { %>
-              bg-yellow-100 text-yellow-800
-            <% } %>
-          ">
-            <%= contract.status === 'pending' ? 'In attesa' : 
-               contract.status === 'accepted' ? 'Accettato' : 
-               contract.status === 'rejected' ? 'Rifiutato' : contract.status %>
-          </span>
-        </div>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-          <div>
-            <h6 class="text-sm font-semibold text-gray-600 uppercase mb-2">Cliente</h6>
-            <p class="mb-1">
-              <a href="/clients/view/<%= contract.client_id %>" class="text-nexus-red hover:underline font-medium">
-                <%= contract.client_name %> <%= contract.client_surname %>
-              </a>
-            </p>
-          </div>
-          
-          <div>
-            <h6 class="text-sm font-semibold text-gray-600 uppercase mb-2">Valore</h6>
-            <p class="mb-1 font-bold text-xl">
-              <%= contract.value ? '€ ' + contract.value.toFixed(2) : 'Non specificato' %>
-            </p>
-          </div>
-        </div>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-          <div>
-            <h6 class="text-sm font-semibold text-gray-600 uppercase mb-2">Data Inizio</h6>
-            <p class="mb-1">
-              <i class="fas fa-calendar-alt text-gray-500 mr-2"></i>
-              <%= contract.start_date ? new Date(contract.start_date).toLocaleDateString() : 'Non specificata' %>
-            </p>
-          </div>
-          
-          <div>
-            <h6 class="text-sm font-semibold text-gray-600 uppercase mb-2">Data Fine</h6>
-            <p class="mb-1">
-              <i class="fas fa-calendar-alt text-gray-500 mr-2"></i>
-              <%= contract.end_date ? new Date(contract.end_date).toLocaleDateString() : 'Non specificata' %>
-            </p>
-          </div>
-        </div>
-        
-        <% if (contract.notes) { %>
-          <div class="mb-6">
-            <h6 class="text-sm font-semibold text-gray-600 uppercase mb-2">Note</h6>
-            <div class="bg-gray-50 p-4 rounded border border-gray-200">
-              <p class="whitespace-pre-line"><%= contract.notes %></p>
-            </div>
-          </div>
-        <% } %>
-        
-        <div class="border-t border-gray-200 pt-4 text-xs text-gray-500">
-          <p>Creato da: <%= user.name %></p>
-          <p>Data creazione: <%= new Date(contract.created_at).toLocaleString() %></p>
-        </div>
-      </div>
-      
-      <div class="flex justify-between mt-6">
-        <a href="/contracts" class="btn-outline">
-          <i class="fas fa-arrow-left"></i> Torna alla lista
-        </a>
-        <div class="space-x-2">
-          <a href="/contracts/delete/<%= contract.id %>" class="btn-outline-red delete-btn" 
-             onclick="return confirm('Sei sicuro di voler eliminare questo contratto?')">
-            <i class="fas fa-trash"></i> Elimina
-          </a>
-          <a href="/contracts/edit/<%= contract.id %>" class="btn-primary">
-            <i class="fas fa-edit"></i> Modifica
-          </a>
-        </div>
-      </div>
-    </div>
   </div>
+</div>

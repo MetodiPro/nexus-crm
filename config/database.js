@@ -54,10 +54,25 @@ const db = new sqlite3.Database(dbPath, (err) => {
         FOREIGN KEY (consultant_id) REFERENCES users (id)
       )`);
       
+      // Tabella prodotti/servizi
+      db.run(`CREATE TABLE IF NOT EXISTS products (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        name TEXT NOT NULL,
+        description TEXT,
+        energy_type TEXT NOT NULL,
+        supplier TEXT,
+        base_price REAL,
+        is_active INTEGER DEFAULT 1,
+        created_by INTEGER,
+        created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+        FOREIGN KEY (created_by) REFERENCES users (id)
+      )`);
+      
       // Tabella contratti/offerte
       db.run(`CREATE TABLE IF NOT EXISTS contracts (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         client_id INTEGER NOT NULL,
+        product_id INTEGER,
         contract_type TEXT NOT NULL,
         energy_type TEXT NOT NULL,
         supplier TEXT,
@@ -69,6 +84,7 @@ const db = new sqlite3.Database(dbPath, (err) => {
         consultant_id INTEGER NOT NULL,
         created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
         FOREIGN KEY (client_id) REFERENCES clients (id),
+        FOREIGN KEY (product_id) REFERENCES products (id),
         FOREIGN KEY (consultant_id) REFERENCES users (id)
       )`);
       

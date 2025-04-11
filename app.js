@@ -68,6 +68,10 @@ app.use('/clients', authMiddleware, clientRoutes);
 const activityRoutes = require('./routes/activities');
 app.use('/activities', authMiddleware, activityRoutes);
 
+// Rotte per i prodotti (solo admin)
+const productRoutes = require('./routes/products');
+app.use('/products', authMiddleware, adminMiddleware, productRoutes);
+
 // Rotte per i contratti
 const contractRoutes = require('./routes/contracts');
 app.use('/contracts', authMiddleware, contractRoutes);

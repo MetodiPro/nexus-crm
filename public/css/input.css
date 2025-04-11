@@ -9,7 +9,7 @@
   }
   
   .btn-secondary {
-    @apply bg-nexus-dark text-white px-4 py-2 rounded hover:bg-gray-800 transition-colors;
+    @apply bg-nexus-dark text-white px-4 py-2 rounded hover:bg-gray-600 transition-colors;
   }
   
   .btn-outline {
@@ -78,5 +78,14 @@
   
   .badge-gray {
     @apply bg-gray-500 text-white;
+  }
+  
+  /* Nuovi stili per la sidebar */
+  .sidebar-link {
+    @apply flex items-center text-gray-300 py-2 px-3 rounded hover:bg-gray-700 hover:text-white transition-colors;
+  }
+  
+  .sidebar-link.active {
+    @apply bg-gray-700 text-white;
   }
 }
