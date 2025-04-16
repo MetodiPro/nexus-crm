@@ -9,10 +9,16 @@ router.get('/', (req, res) => {
   // Se l'utente è admin, mostra tutti i contratti, altrimenti filtra per consulente
   const consultantId = req.session.user.role === 'administrator' ? null : req.session.user.id;
   
+  // Gestione degli errori migliorata
   Contract.getAll(consultantId, (err, contracts) => {
     if (err) {
-      return res.status(500).render('error', { message: 'Errore del server' });
+      console.error('Errore nel recupero dei contratti:', err);
+      return res.status(500).render('error', { message: 'Errore del server durante il recupero dei contratti' });
     }
+    
+    // Assicurati che contracts sia sempre un array
+    contracts = contracts || [];
+    
     res.render('contracts/index', { contracts });
   });
 });
@@ -41,7 +47,7 @@ router.get('/new', (req, res) => {
           status: 'pending'
         }, 
         clients,
-        products,
+        products: products || [], // Assicura che sia sempre un array
         action: '/contracts/new' 
       });
     });
@@ -66,6 +72,7 @@ router.post('/new', (req, res) => {
   
   Contract.create(contractData, (err, contractId) => {
     if (err) {
+      console.error('Errore nella creazione del contratto:', err);
       return res.status(500).render('error', { message: 'Errore nella creazione del contratto' });
     }
     
@@ -81,9 +88,15 @@ router.post('/new', (req, res) => {
 // Visualizza dettagli contratto
 router.get('/view/:id', (req, res) => {
   Contract.getById(req.params.id, (err, contract) => {
-    if (err || !contract) {
+    if (err) {
+      console.error('Errore nel recupero del contratto:', err);
+      return res.status(500).render('error', { message: 'Errore nel recupero del contratto' });
+    }
+    
+    if (!contract) {
       return res.status(404).render('error', { message: 'Contratto non trovato' });
     }
+    
     res.render('contracts/view', { contract });
   });
 });
@@ -91,7 +104,12 @@ router.get('/view/:id', (req, res) => {
 // Form per modifica contratto
 router.get('/edit/:id', (req, res) => {
   Contract.getById(req.params.id, (err, contract) => {
-    if (err || !contract) {
+    if (err) {
+      console.error('Errore nel recupero del contratto:', err);
+      return res.status(500).render('error', { message: 'Errore nel recupero del contratto' });
+    }
+    
+    if (!contract) {
       return res.status(404).render('error', { message: 'Contratto non trovato' });
     }
     
@@ -110,8 +128,8 @@ router.get('/edit/:id', (req, res) => {
         
         res.render('contracts/form', { 
           contract, 
-          clients,
-          products,
+          clients: clients || [], // Assicura che sia sempre un array
+          products: products || [], // Assicura che sia sempre un array
           action: `/contracts/edit/${contract.id}` 
         });
       });
@@ -136,6 +154,7 @@ router.post('/edit/:id', (req, res) => {
   
   Contract.update(req.params.id, contractData, (err) => {
     if (err) {
+      console.error('Errore nell\'aggiornamento del contratto:', err);
       return res.status(500).render('error', { message: 'Errore nell\'aggiornamento del contratto' });
     }
     
@@ -151,7 +170,12 @@ router.post('/edit/:id', (req, res) => {
 // Elimina contratto
 router.get('/delete/:id', (req, res) => {
   Contract.getById(req.params.id, (err, contract) => {
-    if (err || !contract) {
+    if (err) {
+      console.error('Errore nel recupero del contratto:', err);
+      return res.status(500).render('error', { message: 'Errore nel recupero del contratto' });
+    }
+    
+    if (!contract) {
       return res.status(404).render('error', { message: 'Contratto non trovato' });
     }
     
@@ -159,6 +183,7 @@ router.get('/delete/:id', (req, res) => {
     
     Contract.delete(req.params.id, (err) => {
       if (err) {
+        console.error('Errore nell\'eliminazione del contratto:', err);
         return res.status(500).render('error', { message: 'Errore nell\'eliminazione del contratto' });
       }
       
@@ -178,19 +203,26 @@ router.get('/stats', (req, res) => {
   
   Contract.getStatsByEnergyType(consultantId, (err, stats) => {
     if (err) {
-      return res.status(500).render('error', { message: 'Errore del server' });
+      console.error('Errore nel recupero delle statistiche:', err);
+      return res.status(500).render('error', { message: 'Errore nel recupero delle statistiche' });
     }
     
-    res.render('contracts/stats', { stats });
+    res.render('contracts/stats', { stats: stats || [] });
   });
 });
 
 // API: Ottieni dettagli prodotto per autocompilazione
 router.get('/api/product/:id', (req, res) => {
   Product.getById(req.params.id, (err, product) => {
-    if (err || !product) {
+    if (err) {
+      console.error('Errore nel recupero del prodotto:', err);
       return res.status(404).json({ error: 'Prodotto non trovato' });
     }
+    
+    if (!product) {
+      return res.status(404).json({ error: 'Prodotto non trovato' });
+    }
+    
     res.json(product);
   });
 });

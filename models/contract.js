@@ -18,7 +18,15 @@ class Contract {
     }
     
     query += " ORDER BY co.created_at DESC";
-    db.all(query, params, callback);
+    
+    // Funzione di callback modificata per gestire meglio gli errori
+    db.all(query, params, (err, rows) => {
+      if (err) {
+        console.error('Errore nella query contracts getAll:', err);
+        return callback(err);
+      }
+      callback(null, rows || []);
+    });
   }
   
   // Ottieni contratto per ID
@@ -47,6 +55,12 @@ class Contract {
   
   // Crea un nuovo contratto
   static create(contractData, callback) {
+    // Gestione valori null o undefined
+    const productId = contractData.product_id || null;
+    const value = contractData.value || null;
+    const startDate = contractData.start_date || null;
+    const endDate = contractData.end_date || null;
+    
     db.run(
       `INSERT INTO contracts (
         client_id, product_id, contract_type, energy_type, supplier, status, 
@@ -54,14 +68,14 @@ class Contract {
       ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
       [
         contractData.client_id, 
-        contractData.product_id, 
+        productId, 
         contractData.contract_type, 
         contractData.energy_type, 
         contractData.supplier, 
         contractData.status, 
-        contractData.value, 
-        contractData.start_date, 
-        contractData.end_date, 
+        value, 
+        startDate, 
+        endDate, 
         contractData.notes, 
         contractData.consultant_id
       ],
@@ -73,6 +87,12 @@ class Contract {
   
   // Aggiorna un contratto
   static update(id, contractData, callback) {
+    // Gestione valori null o undefined
+    const productId = contractData.product_id || null;
+    const value = contractData.value || null;
+    const startDate = contractData.start_date || null;
+    const endDate = contractData.end_date || null;
+    
     db.run(
       `UPDATE contracts SET 
         client_id = ?, 
@@ -88,14 +108,14 @@ class Contract {
        WHERE id = ?`,
       [
         contractData.client_id,
-        contractData.product_id,
+        productId,
         contractData.contract_type, 
         contractData.energy_type, 
         contractData.supplier, 
         contractData.status, 
-        contractData.value, 
-        contractData.start_date, 
-        contractData.end_date, 
+        value, 
+        startDate, 
+        endDate, 
         contractData.notes, 
         id
       ],
