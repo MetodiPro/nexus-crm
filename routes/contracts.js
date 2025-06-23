@@ -48,7 +48,11 @@ router.get('/new', (req, res) => {
           start_date: new Date().toISOString().split('T')[0],
           status: 'pending'
         }, 
+<<<<<<< HEAD
         clients: clients || [], // Assicura che sia sempre un array
+=======
+        clients,
+>>>>>>> 9601f413e09575b3b02b3d441c1b792776daef62
         products: products || [], // Assicura che sia sempre un array
         action: '/contracts/new' 
       });
