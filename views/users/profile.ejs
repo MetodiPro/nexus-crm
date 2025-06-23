@@ -1,0 +1,162 @@
+<div class="max-w-4xl mx-auto">
+  <div class="card mb-6">
+    <div class="card-header bg-nexus-dark text-white">
+      <h4 class="text-lg font-semibold">
+        <i class="fas fa-user"></i> Il Mio Profilo
+      </h4>
+    </div>
+    <div class="card-body">
+      <% if (typeof success !== 'undefined' && success) { %>
+        <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4">
+          <i class="fas fa-check-circle mr-2"></i> <%= success %>
+        </div>
+      <% } %>
+      
+      <% if (typeof error !== 'undefined' && error) { %>
+        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+          <i class="fas fa-exclamation-circle mr-2"></i> <%= error %>
+        </div>
+      <% } %>
+
+      <form action="/users/profile" method="POST">
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- Informazioni Base -->
+          <div class="space-y-4">
+            <h5 class="text-lg font-semibold text-gray-800 border-b pb-2">
+              Informazioni Personali
+            </h5>
+            
+            <div class="form-group">
+              <label for="username" class="form-label">Username</label>
+              <input type="text" 
+                     id="username" 
+                     value="<%= user.username %>" 
+                     class="form-input bg-gray-100" 
+                     disabled>
+              <small class="text-gray-500">Lo username non può essere modificato dal profilo</small>
+            </div>
+
+            <div class="form-group">
+              <label for="name" class="form-label">Nome Completo *</label>
+              <input type="text" 
+                     id="name" 
+                     name="name" 
+                     value="<%= user.name %>" 
+                     class="form-input" 
+                     required>
+              <% if (typeof errors !== 'undefined' && errors.find(e => e.field === 'name')) { %>
+                <small class="text-red-500"><%= errors.find(e => e.field === 'name').message %></small>
+              <% } %>
+            </div>
+
+            <div class="form-group">
+              <label for="email" class="form-label">Email</label>
+              <input type="email" 
+                     id="email" 
+                     name="email" 
+                     value="<%= user.email || '' %>" 
+                     class="form-input">
+              <% if (typeof errors !== 'undefined' && errors.find(e => e.field === 'email')) { %>
+                <small class="text-red-500"><%= errors.find(e => e.field === 'email').message %></small>
+              <% } %>
+            </div>
+
+            <div class="form-group">
+              <label for="role" class="form-label">Ruolo</label>
+              <input type="text" 
+                     id="role" 
+                     value="<%= user.role === 'administrator' ? 'Amministratore' : 'Consulente' %>" 
+                     class="form-input bg-gray-100" 
+                     disabled>
+              <small class="text-gray-500">Il ruolo può essere modificato solo da un amministratore</small>
+            </div>
+          </div>
+
+          <!-- Informazioni Account -->
+          <div class="space-y-4">
+            <h5 class="text-lg font-semibold text-gray-800 border-b pb-2">
+              Informazioni Account
+            </h5>
+            
+            <div class="bg-gray-50 p-4 rounded-lg space-y-3">
+              <div class="flex justify-between">
+                <span class="font-medium">Account creato:</span>
+                <span class="text-gray-600">
+                  <%= new Date(user.created_at).toLocaleDateString('it-IT') %>
+                </span>
+              </div>
+              
+              <% if (user.last_login) { %>
+                <div class="flex justify-between">
+                  <span class="font-medium">Ultimo accesso:</span>
+                  <span class="text-gray-600">
+                    <%= new Date(user.last_login).toLocaleString('it-IT') %>
+                  </span>
+                </div>
+              <% } %>
+              
+              <div class="flex justify-between">
+                <span class="font-medium">Stato account:</span>
+                <span class="<%= user.account_locked ? 'text-red-600' : 'text-green-600' %>">
+                  <i class="fas fa-<%= user.account_locked ? 'lock' : 'unlock' %> mr-1"></i>
+                  <%= user.account_locked ? 'Bloccato' : 'Attivo' %>
+                </span>
+              </div>
+            </div>
+
+            <div class="bg-blue-50 p-4 rounded-lg">
+              <h6 class="font-semibold text-blue-800 mb-2">
+                <i class="fas fa-key mr-1"></i> Sicurezza
+              </h6>
+              <p class="text-blue-700 text-sm mb-3">
+                Per cambiare la tua password, usa il link dedicato per garantire la massima sicurezza.
+              </p>
+              <a href="/change-password" class="btn-outline-blue btn-sm">
+                <i class="fas fa-key mr-1"></i> Cambia Password
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sessioni Attive -->
+        <% if (sessions && sessions.length > 0) { %>
+          <div class="mt-8">
+            <h5 class="text-lg font-semibold text-gray-800 border-b pb-2 mb-4">
+              <i class="fas fa-desktop mr-1"></i> Sessioni Attive
+            </h5>
+            <div class="bg-gray-50 rounded-lg p-4">
+              <% sessions.forEach(session => { %>
+                <div class="flex justify-between items-center py-2 border-b border-gray-200 last:border-b-0">
+                  <div>
+                    <div class="font-medium text-gray-800">
+                      <%= session.ip_address %>
+                    </div>
+                    <div class="text-sm text-gray-600">
+                      <%= session.user_agent.substring(0, 80) %>...
+                    </div>
+                    <div class="text-xs text-gray-500">
+                      Login: <%= new Date(session.login_time).toLocaleString('it-IT') %>
+                    </div>
+                  </div>
+                  <span class="badge-green">Attiva</span>
+                </div>
+              <% }); %>
+            </div>
+          </div>
+        <% } %>
+
+        <!-- Bottoni Azione -->
+        <div class="flex justify-between items-center mt-8 pt-6 border-t">
+          <a href="/" class="btn-outline-gray">
+            <i class="fas fa-arrow-left mr-1"></i> Torna alla Dashboard
+          </a>
+          <button type="submit" class="btn-nexus">
+            <i class="fas fa-save mr-1"></i> Salva Modifiche
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

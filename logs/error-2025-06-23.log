@@ -1,0 +1,69 @@
+2025-06-23 13:47:49 [ERROR]: Uncaught Exception - Spegnimento applicazione
+TypeError: callback is not a function
+    at C:\progetti\nexus-crm\models\user.js:71:16
+{
+  "service": "nexus-crm",
+  "error": "callback is not a function"
+}
+2025-06-23 13:49:57 [ERROR]: Errore nel reset tentativi falliti
+Error: SQLITE_ERROR: no such column: failed_login_attempts
+{
+  "service": "nexus-crm",
+  "error": "SQLITE_ERROR: no such column: failed_login_attempts"
+}
+2025-06-23 13:49:57 [ERROR]: Errore nell'aggiornamento last_login
+Error: SQLITE_ERROR: no such column: last_login
+{
+  "service": "nexus-crm",
+  "error": "SQLITE_ERROR: no such column: last_login"
+}
+2025-06-23 13:49:57 [ERROR]: Uncaught Exception - Spegnimento applicazione
+TypeError: Cannot read properties of undefined (reading 'lastID')
+    at C:\progetti\nexus-crm\models\user.js:354:40
+    at args.<computed> (C:\progetti\nexus-crm\middleware\logging.js:111:9)
+{
+  "service": "nexus-crm",
+  "error": "Cannot read properties of undefined (reading 'lastID')"
+}
+2025-06-23 13:51:44 [ERROR]: Uncaught Exception - Spegnimento applicazione
+TypeError: Cannot read properties of undefined (reading 'lastID')
+    at C:\progetti\nexus-crm\models\user.js:355:43
+    at args.<computed> (C:\progetti\nexus-crm\middleware\logging.js:111:9)
+{
+  "service": "nexus-crm",
+  "error": "Cannot read properties of undefined (reading 'lastID')"
+}
+2025-06-23 13:54:02 [ERROR]: Uncaught Exception - Spegnimento applicazione
+TypeError: Cannot read properties of undefined (reading 'lastID')
+    at C:\progetti\nexus-crm\models\user.js:355:43
+    at args.<computed> (C:\progetti\nexus-crm\middleware\logging.js:111:9)
+{
+  "service": "nexus-crm",
+  "error": "Cannot read properties of undefined (reading 'lastID')"
+}
+2025-06-23 13:57:57 [ERROR]: Uncaught Exception - Spegnimento applicazione
+Error: listen EADDRINUSE: address already in use :::3000
+    at Server.setupListenHandle [as _listen2] (node:net:1937:16)
+    at listenInCluster (node:net:1994:12)
+    at Server.listen (node:net:2099:7)
+    at Function.listen (C:\progetti\nexus-crm\node_modules\express\lib\application.js:635:24)
+    at gracefulShutdown (C:\progetti\nexus-crm\app.js:192:22)
+    at process.<anonymous> (C:\progetti\nexus-crm\app.js:216:28)
+    at process.emit (node:events:536:35)
+{
+  "service": "nexus-crm",
+  "error": "listen EADDRINUSE: address already in use :::3000"
+}
+2025-06-23 14:00:15 [ERROR]: Uncaught Exception - Spegnimento applicazione
+Error: listen EADDRINUSE: address already in use :::3000
+    at Server.setupListenHandle [as _listen2] (node:net:1937:16)
+    at listenInCluster (node:net:1994:12)
+    at Server.listen (node:net:2099:7)
+    at Function.listen (C:\progetti\nexus-crm\node_modules\express\lib\application.js:635:24)
+    at gracefulShutdown (C:\progetti\nexus-crm\app.js:192:22)
+    at process.<anonymous> (C:\progetti\nexus-crm\app.js:216:28)
+    at process.emit (node:events:536:35)
+{
+  "service": "nexus-crm",
+  "error": "listen EADDRINUSE: address already in use :::3000"
+}

@@ -1,13 +1,15 @@
 const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
+const { loggers } = require('./logger');
+const { dbQueryLogger } = require('../middleware/logging');
 
 // Crea un'istanza del database
 const dbPath = path.resolve(__dirname, '../data/nexus.db');
 const db = new sqlite3.Database(dbPath, (err) => {
   if (err) {
-    console.error('Errore nella connessione al database', err.message);
+    loggers.error('Errore nella connessione al database', err, { dbPath });
   } else {
-    console.log('Connesso al database SQLite');
+    loggers.info('Connesso al database SQLite', { dbPath });
     
     // Crea le tabelle se non esistono
     db.serialize(() => {
@@ -19,8 +21,15 @@ const db = new sqlite3.Database(dbPath, (err) => {
         role TEXT NOT NULL,
         name TEXT NOT NULL,
         email TEXT,
-        created_at DATETIME DEFAULT CURRENT_TIMESTAMP
-      )`);
+        last_login DATETIME,
+        failed_login_attempts INTEGER DEFAULT 0,
+        account_locked BOOLEAN DEFAULT 0,
+        created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+        updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
+      )`, (err) => {
+        if (err) loggers.dbError('Errore creazione tabella users', err);
+        else loggers.info('Tabella users verificata/creata');
+      });
       
       // Tabella clienti
       db.run(`CREATE TABLE IF NOT EXISTS clients (
@@ -37,8 +46,12 @@ const db = new sqlite3.Database(dbPath, (err) => {
         notes TEXT,
         consultant_id INTEGER,
         created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+        updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
         FOREIGN KEY (consultant_id) REFERENCES users (id)
-      )`);
+      )`, (err) => {
+        if (err) loggers.dbError('Errore creazione tabella clients', err);
+        else loggers.info('Tabella clients verificata/creata');
+      });
       
       // Tabella attività/appuntamenti
       db.run(`CREATE TABLE IF NOT EXISTS activities (
@@ -50,9 +63,13 @@ const db = new sqlite3.Database(dbPath, (err) => {
         status TEXT DEFAULT 'pending',
         consultant_id INTEGER NOT NULL,
         created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+        updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
         FOREIGN KEY (client_id) REFERENCES clients (id),
         FOREIGN KEY (consultant_id) REFERENCES users (id)
-      )`);
+      )`, (err) => {
+        if (err) loggers.dbError('Errore creazione tabella activities', err);
+        else loggers.info('Tabella activities verificata/creata');
+      });
       
       // Tabella prodotti/servizi
       db.run(`CREATE TABLE IF NOT EXISTS products (
@@ -65,8 +82,12 @@ const db = new sqlite3.Database(dbPath, (err) => {
         is_active INTEGER DEFAULT 1,
         created_by INTEGER,
         created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+        updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
         FOREIGN KEY (created_by) REFERENCES users (id)
-      )`);
+      )`, (err) => {
+        if (err) loggers.dbError('Errore creazione tabella products', err);
+        else loggers.info('Tabella products verificata/creata');
+      });
       
       // Tabella contratti/offerte
       db.run(`CREATE TABLE IF NOT EXISTS contracts (
@@ -83,10 +104,30 @@ const db = new sqlite3.Database(dbPath, (err) => {
         notes TEXT,
         consultant_id INTEGER NOT NULL,
         created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+        updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
         FOREIGN KEY (client_id) REFERENCES clients (id),
         FOREIGN KEY (product_id) REFERENCES products (id),
         FOREIGN KEY (consultant_id) REFERENCES users (id)
-      )`);
+      )`, (err) => {
+        if (err) loggers.dbError('Errore creazione tabella contracts', err);
+        else loggers.info('Tabella contracts verificata/creata');
+      });
+      
+      // Tabella per logging delle sessioni utente
+      db.run(`CREATE TABLE IF NOT EXISTS user_sessions (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        user_id INTEGER NOT NULL,
+        session_id TEXT NOT NULL,
+        ip_address TEXT,
+        user_agent TEXT,
+        login_time DATETIME DEFAULT CURRENT_TIMESTAMP,
+        logout_time DATETIME,
+        is_active BOOLEAN DEFAULT 1,
+        FOREIGN KEY (user_id) REFERENCES users (id)
+      )`, (err) => {
+        if (err) loggers.dbError('Errore creazione tabella user_sessions', err);
+        else loggers.info('Tabella user_sessions creata');
+      });
       
       // Inserisci un utente admin di default se non esiste
       const bcrypt = require('bcrypt');
@@ -94,15 +135,46 @@ const db = new sqlite3.Database(dbPath, (err) => {
       const hashedPassword = bcrypt.hashSync('admin123', salt);
       
       db.get("SELECT * FROM users WHERE username = 'admin'", (err, row) => {
-        if (!row) {
+        if (err) {
+          loggers.dbError('Errore controllo utente admin', err);
+        } else if (!row) {
           db.run(`INSERT INTO users (username, password, role, name, email) 
                   VALUES ('admin', ?, 'administrator', 'Amministratore', 'admin@nexus.it')`, 
-                  [hashedPassword]);
-          console.log('Utente admin creato con password: admin123');
+                  [hashedPassword], (err) => {
+            if (err) {
+              loggers.dbError('Errore creazione utente admin', err);
+            } else {
+              loggers.info('Utente admin creato con password: admin123');
+            }
+          });
+        } else {
+          loggers.info('Utente admin già esistente');
         }
       });
     });
   }
+});
+
+// Intercetta le query del database per il logging
+const originalAll = db.all.bind(db);
+const originalGet = db.get.bind(db);
+const originalRun = db.run.bind(db);
+
+db.all = dbQueryLogger(originalAll, 'all');
+db.get = dbQueryLogger(originalGet, 'get');
+db.run = dbQueryLogger(originalRun, 'run');
+
+// Gestione graceful shutdown
+process.on('SIGINT', () => {
+  loggers.info('Ricevuto SIGINT, chiusura database...');
+  db.close((err) => {
+    if (err) {
+      loggers.error('Errore chiusura database', err);
+    } else {
+      loggers.info('Database chiuso correttamente');
+    }
+    process.exit(0);
+  });
 });
 
 module.exports = db;
