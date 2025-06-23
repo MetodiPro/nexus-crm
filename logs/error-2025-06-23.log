@@ -67,3 +67,16 @@ Error: listen EADDRINUSE: address already in use :::3000
   "service": "nexus-crm",
   "error": "listen EADDRINUSE: address already in use :::3000"
 }
+2025-06-23 14:22:15 [ERROR]: Uncaught Exception - Spegnimento applicazione
+Error: listen EADDRINUSE: address already in use :::3000
+    at Server.setupListenHandle [as _listen2] (node:net:1937:16)
+    at listenInCluster (node:net:1994:12)
+    at Server.listen (node:net:2099:7)
+    at Function.listen (C:\progetti\nexus-crm\node_modules\express\lib\application.js:635:24)
+    at gracefulShutdown (C:\progetti\nexus-crm\app.js:192:22)
+    at process.<anonymous> (C:\progetti\nexus-crm\app.js:216:28)
+    at process.emit (node:events:536:35)
+{
+  "service": "nexus-crm",
+  "error": "listen EADDRINUSE: address already in use :::3000"
+}

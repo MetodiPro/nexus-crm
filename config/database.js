@@ -89,7 +89,6 @@ const db = new sqlite3.Database(dbPath, (err) => {
         else loggers.info('Tabella products verificata/creata');
       });
       
-<<<<<<< HEAD
       // Tabella contratti/offerte
       db.run(`CREATE TABLE IF NOT EXISTS contracts (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -128,115 +127,6 @@ const db = new sqlite3.Database(dbPath, (err) => {
       )`, (err) => {
         if (err) loggers.dbError('Errore creazione tabella user_sessions', err);
         else loggers.info('Tabella user_sessions creata');
-=======
-      // Verifica se la tabella dei contratti esiste e se ha la colonna product_id
-      db.get("PRAGMA table_info(contracts)", (err, rows) => {
-        if (err) {
-          console.error('Errore nella verifica della tabella contracts:', err);
-          return;
-        }
-        
-        // Se non ci sono righe, la tabella non esiste ancora
-        if (!rows) {
-          console.log('Creazione della tabella contracts...');
-          // Crea la tabella contratti con product_id
-          db.run(`CREATE TABLE contracts (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            client_id INTEGER NOT NULL,
-            product_id INTEGER,
-            contract_type TEXT NOT NULL,
-            energy_type TEXT NOT NULL,
-            supplier TEXT,
-            status TEXT DEFAULT 'pending',
-            value REAL,
-            start_date DATE,
-            end_date DATE,
-            notes TEXT,
-            consultant_id INTEGER NOT NULL,
-            created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-            FOREIGN KEY (client_id) REFERENCES clients (id),
-            FOREIGN KEY (product_id) REFERENCES products (id),
-            FOREIGN KEY (consultant_id) REFERENCES users (id)
-          )`);
-        } else {
-          // La tabella esiste, verifichiamo se ha la colonna product_id
-          db.all("PRAGMA table_info(contracts)", (err, columns) => {
-            if (err) {
-              console.error('Errore nel recupero delle colonne della tabella contracts:', err);
-              return;
-            }
-            
-            // Controlla se esiste la colonna product_id
-            const hasProductId = columns.some(col => col.name === 'product_id');
-            
-            if (!hasProductId) {
-              console.log('Migrazione della tabella contracts per aggiungere product_id...');
-              
-              // SQLite non supporta direttamente l'aggiunta di una colonna con una chiave esterna
-              // Dobbiamo ricreare la tabella
-              
-              // 1. Rinomina la tabella esistente
-              db.run("ALTER TABLE contracts RENAME TO contracts_old", (err) => {
-                if (err) {
-                  console.error('Errore nel rinominare la tabella contracts:', err);
-                  return;
-                }
-                
-                // 2. Crea la nuova tabella con la struttura corretta
-                db.run(`CREATE TABLE contracts (
-                  id INTEGER PRIMARY KEY AUTOINCREMENT,
-                  client_id INTEGER NOT NULL,
-                  product_id INTEGER,
-                  contract_type TEXT NOT NULL,
-                  energy_type TEXT NOT NULL,
-                  supplier TEXT,
-                  status TEXT DEFAULT 'pending',
-                  value REAL,
-                  start_date DATE,
-                  end_date DATE,
-                  notes TEXT,
-                  consultant_id INTEGER NOT NULL,
-                  created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-                  FOREIGN KEY (client_id) REFERENCES clients (id),
-                  FOREIGN KEY (product_id) REFERENCES products (id),
-                  FOREIGN KEY (consultant_id) REFERENCES users (id)
-                )`, (err) => {
-                  if (err) {
-                    console.error('Errore nella creazione della nuova tabella contracts:', err);
-                    return;
-                  }
-                  
-                  // 3. Copia i dati dalla vecchia tabella alla nuova
-                  db.run(`INSERT INTO contracts (
-                    id, client_id, contract_type, energy_type, supplier, status, 
-                    value, start_date, end_date, notes, consultant_id, created_at
-                  ) SELECT 
-                    id, client_id, contract_type, energy_type, supplier, status, 
-                    value, start_date, end_date, notes, consultant_id, created_at 
-                  FROM contracts_old`, (err) => {
-                    if (err) {
-                      console.error('Errore nella copia dei dati nella nuova tabella contracts:', err);
-                      return;
-                    }
-                    
-                    // 4. Elimina la vecchia tabella
-                    db.run("DROP TABLE contracts_old", (err) => {
-                      if (err) {
-                        console.error('Errore nell\'eliminazione della vecchia tabella contracts_old:', err);
-                        return;
-                      }
-                      
-                      console.log('Migrazione della tabella contracts completata con successo.');
-                    });
-                  });
-                });
-              });
-            } else {
-              console.log('La tabella contracts ha già la colonna product_id. Nessuna migrazione necessaria.');
-            }
-          });
-        }
->>>>>>> 9601f413e09575b3b02b3d441c1b792776daef62
       });
       
       // Inserisci un utente admin di default se non esiste

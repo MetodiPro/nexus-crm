@@ -32,14 +32,12 @@ router.get('/new', (req, res) => {
   
   Client.getAll(consultantId, (err, clients) => {
     if (err) {
-      console.error('Errore nel recupero dei clienti:', err);
-      return res.status(500).render('error', { message: 'Errore del server nel recupero dei clienti' });
+      return res.status(500).render('error', { message: 'Errore del server' });
     }
     
     Product.getActive((err, products) => {
       if (err) {
-        console.error('Errore nel recupero dei prodotti:', err);
-        return res.status(500).render('error', { message: 'Errore del server nel recupero dei prodotti' });
+        return res.status(500).render('error', { message: 'Errore del server' });
       }
       
       res.render('contracts/form', { 
@@ -48,12 +46,8 @@ router.get('/new', (req, res) => {
           start_date: new Date().toISOString().split('T')[0],
           status: 'pending'
         }, 
-<<<<<<< HEAD
-        clients: clients || [], // Assicura che sia sempre un array
-=======
-        clients,
->>>>>>> 9601f413e09575b3b02b3d441c1b792776daef62
-        products: products || [], // Assicura che sia sempre un array
+        clients: clients || [],
+        products: products || [],
         action: '/contracts/new' 
       });
     });
@@ -124,20 +118,18 @@ router.get('/edit/:id', (req, res) => {
     
     Client.getAll(consultantId, (err, clients) => {
       if (err) {
-        console.error('Errore nel recupero dei clienti:', err);
-        return res.status(500).render('error', { message: 'Errore del server nel recupero dei clienti' });
+        return res.status(500).render('error', { message: 'Errore del server' });
       }
       
       Product.getAll((err, products) => {
         if (err) {
-          console.error('Errore nel recupero dei prodotti:', err);
-          return res.status(500).render('error', { message: 'Errore del server nel recupero dei prodotti' });
+          return res.status(500).render('error', { message: 'Errore del server' });
         }
         
         res.render('contracts/form', { 
           contract, 
-          clients: clients || [], // Assicura che sia sempre un array
-          products: products || [], // Assicura che sia sempre un array
+          clients: clients || [],
+          products: products || [],
           action: `/contracts/edit/${contract.id}` 
         });
       });
@@ -232,46 +224,6 @@ router.get('/api/product/:id', (req, res) => {
     }
     
     res.json(product);
-  });
-});
-
-// Ricerca contratti
-router.get('/search', (req, res) => {
-  const searchTerm = req.query.term;
-  const consultantId = req.session.user.role === 'administrator' ? null : req.session.user.id;
-  
-  if (!searchTerm) {
-    return res.redirect('/contracts');
-  }
-  
-  Contract.search(searchTerm, consultantId, (err, contracts) => {
-    if (err) {
-      console.error('Errore nella ricerca contratti:', err);
-      return res.status(500).render('error', { message: 'Errore nella ricerca' });
-    }
-    
-    res.render('contracts/index', { 
-      contracts: contracts || [],
-      searchTerm: searchTerm
-    });
-  });
-});
-
-// Filtra contratti per stato
-router.get('/filter/:status', (req, res) => {
-  const status = req.params.status;
-  const consultantId = req.session.user.role === 'administrator' ? null : req.session.user.id;
-  
-  Contract.getByStatus(status, consultantId, (err, contracts) => {
-    if (err) {
-      console.error('Errore nel filtro contratti:', err);
-      return res.status(500).render('error', { message: 'Errore nel filtro contratti' });
-    }
-    
-    res.render('contracts/index', { 
-      contracts: contracts || [],
-      filterStatus: status
-    });
   });
 });
 
