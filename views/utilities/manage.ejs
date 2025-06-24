@@ -1,4 +1,35 @@
 <div class="max-w-7xl mx-auto">
+  <!-- Breadcrumb -->
+  <div class="mb-6">
+    <nav class="flex" aria-label="Breadcrumb">
+      <ol class="inline-flex items-center space-x-1 md:space-x-3">
+        <li class="inline-flex items-center">
+          <a href="/" class="text-gray-700 hover:text-nexus-red">
+            <i class="fas fa-home"></i> Dashboard
+          </a>
+        </li>
+        <li>
+          <div class="flex items-center">
+            <i class="fas fa-chevron-right text-gray-400 mx-2"></i>
+            <a href="/clients" class="text-gray-700 hover:text-nexus-red">Clienti</a>
+          </div>
+        </li>
+        <li>
+          <div class="flex items-center">
+            <i class="fas fa-chevron-right text-gray-400 mx-2"></i>
+            <a href="/clients/view/<%= client.id %>" class="text-gray-700 hover:text-nexus-red"><%= client.name %> <%= client.surname %></a>
+          </div>
+        </li>
+        <li aria-current="page">
+          <div class="flex items-center">
+            <i class="fas fa-chevron-right text-gray-400 mx-2"></i>
+            <span class="text-gray-500">Gestione Utenze</span>
+          </div>
+        </li>
+      </ol>
+    </nav>
+  </div>
+
   <!-- Header -->
   <div class="mb-6 flex justify-between items-center">
     <div>
@@ -15,7 +46,7 @@
       </p>
     </div>
     <div class="space-x-2">
-      <a href="/clients/<%= client.id %>" class="btn-outline btn-sm">
+      <a href="/clients/view/<%= client.id %>" class="btn-outline btn-sm">
         <i class="fas fa-arrow-left"></i> Torna al Cliente
       </a>
       <a href="/clients/edit/<%= client.id %>" class="btn-outline btn-sm">
@@ -95,7 +126,7 @@
     </div>
   </div>
 
-  <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+  <div class="grid grid-cols-1 xl:grid-cols-2 gap-4">
     <!-- UTENZE ENERGIA ELETTRICA -->
     <div class="card">
       <div class="card-header bg-yellow-600 text-white flex justify-between items-center">
@@ -110,9 +141,9 @@
       </div>
       <div class="card-body">
         <% if (electricityUtilities.length > 0) { %>
-          <div class="space-y-4">
+          <div class="space-y-3">
             <% electricityUtilities.forEach(utility => { %>
-              <div class="border border-gray-200 rounded-lg p-4 hover:bg-gray-50 transition-colors">
+              <div class="border border-gray-200 rounded-lg p-3 hover:bg-gray-50 transition-colors bg-white shadow-sm">
                 <!-- Header Utenza -->
                 <div class="flex justify-between items-start mb-3">
                   <div>
@@ -149,7 +180,7 @@
                 </div>
 
                 <!-- Dettagli Tecnici -->
-                <div class="grid grid-cols-2 gap-4 text-sm">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
                   <div>
                     <% if (utility.power_kw) { %>
                       <p><strong>Potenza:</strong> <%= utility.power_kw %> kW</p>
@@ -177,17 +208,17 @@
 
                 <!-- Consumi -->
                 <% if (utility.annual_consumption_kwh) { %>
-                  <div class="mt-3 p-3 bg-yellow-50 rounded-lg">
+                  <div class="mt-3 p-2 bg-yellow-50 rounded border-l-4 border-yellow-400">
                     <div class="flex items-center justify-between">
                       <div>
                         <p class="text-sm font-semibold text-yellow-800">
                           Consumo Annuale <%= utility.annual_consumption_year || new Date().getFullYear() %>
                         </p>
-                        <p class="text-lg font-bold text-yellow-600">
+                        <p class="text-base font-bold text-yellow-600">
                           <%= utility.annual_consumption_kwh.toLocaleString() %> kWh
                         </p>
                       </div>
-                      <div class="text-yellow-500 text-2xl">
+                      <div class="text-yellow-500 text-xl">
                         <i class="fas fa-chart-area"></i>
                       </div>
                     </div>
@@ -242,9 +273,9 @@
       </div>
       <div class="card-body">
         <% if (gasUtilities.length > 0) { %>
-          <div class="space-y-4">
+          <div class="space-y-3">
             <% gasUtilities.forEach(utility => { %>
-              <div class="border border-gray-200 rounded-lg p-4 hover:bg-gray-50 transition-colors">
+              <div class="border border-gray-200 rounded-lg p-3 hover:bg-gray-50 transition-colors bg-white shadow-sm">
                 <!-- Header Utenza -->
                 <div class="flex justify-between items-start mb-3">
                   <div>
@@ -281,7 +312,7 @@
                 </div>
 
                 <!-- Dettagli Tecnici -->
-                <div class="grid grid-cols-2 gap-4 text-sm">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
                   <div>
                     <% if (utility.meter_type) { %>
                       <p><strong>Misuratore:</strong> <%= utility.meter_type %></p>
@@ -306,17 +337,17 @@
 
                 <!-- Consumi -->
                 <% if (utility.annual_consumption_smc) { %>
-                  <div class="mt-3 p-3 bg-orange-50 rounded-lg">
+                  <div class="mt-3 p-2 bg-orange-50 rounded border-l-4 border-orange-400">
                     <div class="flex items-center justify-between">
                       <div>
                         <p class="text-sm font-semibold text-orange-800">
                           Consumo Annuale <%= utility.annual_consumption_year || new Date().getFullYear() %>
                         </p>
-                        <p class="text-lg font-bold text-orange-600">
+                        <p class="text-base font-bold text-orange-600">
                           <%= utility.annual_consumption_smc.toLocaleString() %> Smc
                         </p>
                       </div>
-                      <div class="text-orange-500 text-2xl">
+                      <div class="text-orange-500 text-xl">
                         <i class="fas fa-chart-area"></i>
                       </div>
                     </div>

@@ -1,0 +1,280 @@
+<!-- Breadcrumb e Titolo -->
+<div class="mb-6">
+  <nav class="flex" aria-label="Breadcrumb">
+    <ol class="inline-flex items-center space-x-1 md:space-x-3">
+      <li class="inline-flex items-center">
+        <a href="/" class="text-gray-700 hover:text-nexus-red">
+          <i class="fas fa-home"></i> Dashboard
+        </a>
+      </li>
+      <li>
+        <div class="flex items-center">
+          <i class="fas fa-chevron-right text-gray-400 mx-2"></i>
+          <a href="/clients" class="text-gray-700 hover:text-nexus-red">Clienti</a>
+        </div>
+      </li>
+      <li aria-current="page">
+        <div class="flex items-center">
+          <i class="fas fa-chevron-right text-gray-400 mx-2"></i>
+          <span class="text-gray-500">Importa da Bolletta</span>
+        </div>
+      </li>
+    </ol>
+  </nav>
+  <h1 class="text-3xl font-bold text-nexus-dark mt-4">
+    <i class="fas fa-file-import mr-3 text-blue-600"></i>
+    Importa Cliente da Bolletta
+  </h1>
+  <p class="text-gray-600 mt-2">
+    Carica una bolletta PDF per estrarre automaticamente i dati del cliente
+  </p>
+</div>
+
+<div class="max-w-4xl mx-auto">
+  <!-- Card Informazioni -->
+  <div class="card mb-6 border-l-4 border-blue-500">
+    <div class="card-header bg-blue-600 text-white">
+      <h4 class="text-lg font-semibold">
+        <i class="fas fa-info-circle mr-2"></i>
+        Come Funziona
+      </h4>
+    </div>
+    <div class="card-body">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <h5 class="font-semibold text-blue-600 mb-3">📄 Dati Cliente Estratti</h5>
+          <ul class="text-sm space-y-1 text-gray-700">
+            <li>• <strong>Nome e Cognome</strong> dell'intestatario</li>
+            <li>• <strong>Codice Fiscale</strong> e Partita IVA</li>
+            <li>• <strong>Indirizzo di fornitura</strong> completo</li>
+            <li>• <strong>Città, CAP e Provincia</strong></li>
+          </ul>
+        </div>
+        <div>
+          <h5 class="font-semibold text-orange-600 mb-3">⚡ Dati Utenze Estratti</h5>
+          <ul class="text-sm space-y-1 text-gray-700">
+            <li>• <strong>Codice POD</strong> (energia elettrica)</li>
+            <li>• <strong>Codice PDR</strong> (gas naturale)</li>
+            <li>• <strong>Consumi annuali</strong> (kWh/Smc)</li>
+            <li>• <strong>Fornitore attuale</strong></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Form Upload -->
+  <div class="card">
+    <div class="card-header bg-nexus-dark text-white">
+      <h4 class="text-lg font-semibold">
+        <i class="fas fa-upload mr-2"></i>
+        Carica Bolletta PDF
+      </h4>
+    </div>
+    <div class="card-body">
+      
+      <!-- Area Drop Zone -->
+      <div id="dropZone" class="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-blue-400 transition-colors cursor-pointer">
+        <div id="dropContent">
+          <i class="fas fa-cloud-upload-alt text-4xl text-gray-400 mb-4"></i>
+          <h5 class="text-lg font-semibold text-gray-700 mb-2">Trascina qui la bolletta PDF</h5>
+          <p class="text-gray-500 mb-4">oppure clicca per selezionare il file</p>
+          <button type="button" class="btn-primary" onclick="document.getElementById('billFile').click()">
+            <i class="fas fa-folder-open mr-2"></i>
+            Seleziona File PDF
+          </button>
+          <input type="file" id="billFile" name="billFile" accept=".pdf" class="hidden">
+          <p class="text-xs text-gray-400 mt-2">Dimensione massima: 10MB | Solo file PDF</p>
+        </div>
+        
+        <!-- Loading State -->
+        <div id="loadingState" class="hidden">
+          <i class="fas fa-spinner fa-spin text-4xl text-blue-500 mb-4"></i>
+          <h5 class="text-lg font-semibold text-blue-600 mb-2">Elaborazione in corso...</h5>
+          <p class="text-gray-600">Stiamo estraendo i dati dalla bolletta</p>
+        </div>
+      </div>
+
+      <!-- Risultati -->
+      <div id="extractionResults" class="hidden mt-6">
+        <div class="bg-green-50 border border-green-200 rounded-lg p-4">
+          <div class="flex items-center mb-3">
+            <i class="fas fa-check-circle text-green-500 text-xl mr-3"></i>
+            <h5 class="font-semibold text-green-800">Estrazione Completata!</h5>
+          </div>
+          
+          <div id="extractionSummary" class="mb-4">
+            <!-- Popolato da JavaScript -->
+          </div>
+          
+          <div class="flex space-x-3">
+            <button type="button" id="createClientBtn" class="btn-primary">
+              <i class="fas fa-user-plus mr-2"></i>
+              Crea Cliente con Dati Estratti
+            </button>
+            <button type="button" id="uploadAnotherBtn" class="btn-outline">
+              <i class="fas fa-upload mr-2"></i>
+              Carica Altra Bolletta
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Errori -->
+      <div id="errorResults" class="hidden mt-6">
+        <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+          <div class="flex items-center mb-3">
+            <i class="fas fa-exclamation-triangle text-red-500 text-xl mr-3"></i>
+            <h5 class="font-semibold text-red-800">Errore nell'Elaborazione</h5>
+          </div>
+          <p id="errorMessage" class="text-red-700 mb-4"></p>
+          <button type="button" id="retryBtn" class="btn-outline">
+            <i class="fas fa-redo mr-2"></i>
+            Riprova
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+let extractedData = null;
+
+// Elementi DOM
+const dropZone = document.getElementById('dropZone');
+const billFile = document.getElementById('billFile');
+const dropContent = document.getElementById('dropContent');
+const loadingState = document.getElementById('loadingState');
+const extractionResults = document.getElementById('extractionResults');
+const extractionSummary = document.getElementById('extractionSummary');
+const errorResults = document.getElementById('errorResults');
+const errorMessage = document.getElementById('errorMessage');
+
+// Event Listeners
+dropZone.addEventListener('dragover', handleDragOver);
+dropZone.addEventListener('drop', handleDrop);
+billFile.addEventListener('change', handleFileSelect);
+
+document.getElementById('createClientBtn').addEventListener('click', createClientFromData);
+document.getElementById('uploadAnotherBtn').addEventListener('click', resetUpload);
+document.getElementById('retryBtn').addEventListener('click', resetUpload);
+
+// Drag & Drop
+function handleDragOver(e) {
+  e.preventDefault();
+  dropZone.classList.add('border-blue-400', 'bg-blue-50');
+}
+
+function handleDrop(e) {
+  e.preventDefault();
+  dropZone.classList.remove('border-blue-400', 'bg-blue-50');
+  
+  const files = e.dataTransfer.files;
+  if (files.length > 0) {
+    handleFile(files[0]);
+  }
+}
+
+function handleFileSelect(e) {
+  const file = e.target.files[0];
+  if (file) {
+    handleFile(file);
+  }
+}
+
+// Processing
+function handleFile(file) {
+  if (file.type !== 'application/pdf') {
+    showError('Solo file PDF sono supportati');
+    return;
+  }
+  
+  if (file.size > 10 * 1024 * 1024) {
+    showError('Il file è troppo grande. Dimensione massima: 10MB');
+    return;
+  }
+  
+  uploadAndProcess(file);
+}
+
+function uploadAndProcess(file) {
+  hideAllResults();
+  dropContent.classList.add('hidden');
+  loadingState.classList.remove('hidden');
+  
+  const formData = new FormData();
+  formData.append('billFile', file);
+  
+  fetch('/clients/import-bill', {
+    method: 'POST',
+    body: formData
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data.success) {
+      showSuccess(data);
+    } else {
+      showError(data.message || 'Errore sconosciuto');
+    }
+  })
+  .catch(error => {
+    console.error('Errore upload:', error);
+    showError('Errore di connessione');
+  });
+}
+
+function showSuccess(data) {
+  loadingState.classList.add('hidden');
+  extractedData = data;
+  
+  extractionSummary.innerHTML = `
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+      <div>
+        <span class="font-semibold text-green-700">Fornitore:</span>
+        <p class="text-gray-700">${data.provider || 'Non identificato'}</p>
+      </div>
+      <div>
+        <span class="font-semibold text-green-700">Confidenza:</span>
+        <p class="text-gray-700">${data.confidence || 0}%</p>
+      </div>
+      <div>
+        <span class="font-semibold text-green-700">Campi Estratti:</span>
+        <p class="text-gray-700">${Object.keys(data.data || {}).length} campi</p>
+      </div>
+    </div>
+  `;
+  
+  extractionResults.classList.remove('hidden');
+}
+
+function showError(message) {
+  loadingState.classList.add('hidden');
+  errorMessage.textContent = message;
+  errorResults.classList.remove('hidden');
+}
+
+function hideAllResults() {
+  extractionResults.classList.add('hidden');
+  errorResults.classList.add('hidden');
+}
+
+function resetUpload() {
+  billFile.value = '';
+  extractedData = null;
+  hideAllResults();
+  loadingState.classList.add('hidden');
+  dropContent.classList.remove('hidden');
+}
+
+function createClientFromData() {
+  if (!extractedData || !extractedData.data) {
+    alert('Nessun dato estratto disponibile');
+    return;
+  }
+  
+  const encodedData = encodeURIComponent(JSON.stringify(extractedData.data));
+  window.location.href = `/clients/new-from-bill?data=${encodedData}`;
+}
+</script>

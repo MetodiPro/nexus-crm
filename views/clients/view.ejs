@@ -223,7 +223,7 @@
         </div>
 
         <!-- Card Utenze Summary -->
-        <% if (electricity_utilities && electricity_utilities.length > 0) || (gas_utilities && gas_utilities.length > 0) { %>
+        <% if ((electricity_utilities && electricity_utilities.length > 0) || (gas_utilities && gas_utilities.length > 0)) { %>
         <div class="card border-l-4 border-yellow-500">
           <div class="card-header bg-yellow-600 text-white flex justify-between items-center">
             <h5 class="font-semibold"><i class="fas fa-plug"></i> Riepilogo Utenze</h5>

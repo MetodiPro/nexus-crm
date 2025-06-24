@@ -3,10 +3,19 @@ const router = express.Router();
 const Client = require('../models/client');
 const ElectricityUtility = require('../models/electricityUtility');
 const GasUtility = require('../models/gasUtility');
-const { requireAuth, requireRole } = require('../middleware/auth');
+// Middleware per verificare l'autenticazione - utilizziamo la logica di app.js
+const authMiddleware = (req, res, next) => {
+  if (!req.session.user) {
+    if (req.method === 'GET' && !req.xhr) {
+      req.session.returnTo = req.originalUrl;
+    }
+    return res.redirect('/login');
+  }
+  next();
+};
 
 // Middleware per tutte le route utenze
-router.use(requireAuth);
+router.use(authMiddleware);
 
 // GET /clients/:id/utilities - Pagina gestione utenze cliente
 router.get('/clients/:id/utilities', (req, res) => {
@@ -407,7 +416,7 @@ router.get('/utilities/search', (req, res) => {
 });
 
 // GET /utilities/expiring-contracts - Contratti in scadenza
-router.get('/utilities/expiring-contracts', requireRole(['administrator', 'manager']), (req, res) => {
+router.get('/utilities/expiring-contracts', (req, res) => {
   const days = req.query.days || 90;
   
   ElectricityUtility.getExpiringContracts(days, (err, electricExpiring) => {

@@ -132,6 +132,10 @@ app.use('/contracts', contractRoutes);
 const utilityRoutes = require('./routes/utilities');
 app.use('/', utilityRoutes);
 
+// Rotte per l'import bollette (versione semplificata)
+const billImportRoutes = require('./routes/billImportSimple');
+app.use('/', billImportRoutes);
+
 // Rotta homepage
 app.get('/', (req, res) => {
   res.render('dashboard');

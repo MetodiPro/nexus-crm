@@ -921,3 +921,738 @@
 {
   "service": "nexus-crm"
 }
+2025-06-24 15:08:03 [INFO]: Avvio NEXUS CRM
+{
+  "service": "nexus-crm",
+  "port": 3000
+}
+2025-06-24 15:08:03 [INFO]: Server avviato con successo
+{
+  "service": "nexus-crm",
+  "port": 3000,
+  "nodeEnv": "development",
+  "nodeVersion": "v22.13.1"
+}
+2025-06-24 15:08:03 [INFO]: Connesso al database SQLite
+{
+  "service": "nexus-crm",
+  "dbPath": "C:\\progetti\\nexus-crm\\data\\nexus.db"
+}
+2025-06-24 15:08:03 [INFO]: Tabella users verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-24 15:08:03 [INFO]: Tabella clients verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-24 15:08:03 [INFO]: Tabella activities verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-24 15:08:03 [INFO]: Tabella products verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-24 15:08:03 [INFO]: Tabella contracts verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-24 15:08:03 [INFO]: Tabella user_sessions creata
+{
+  "service": "nexus-crm"
+}
+2025-06-24 15:08:03 [INFO]: Utente admin già esistente
+{
+  "service": "nexus-crm"
+}
+2025-06-24 15:08:07 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/login",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "statusCode": 200,
+  "duration": "31ms",
+  "contentLength": 2847
+}
+2025-06-24 15:08:14 [INFO]: Login riuscito
+{
+  "service": "nexus-crm",
+  "userId": 1,
+  "username": "admin",
+  "role": "administrator",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36"
+}
+2025-06-24 15:08:14 [INFO]: Login completato con successo
+{
+  "service": "nexus-crm",
+  "userId": 1,
+  "username": "admin",
+  "role": "administrator",
+  "ip": "::1",
+  "sessionId": "hKB1FMDBPqzjEnBYMQJWMvVry_uDMIYo"
+}
+2025-06-24 15:08:14 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "9ms",
+  "contentLength": 7926
+}
+2025-06-24 15:08:14 [INFO]: Sessione utente loggata
+{
+  "service": "nexus-crm",
+  "userId": 1,
+  "sessionLogId": 11,
+  "ip": "::1"
+}
+2025-06-24 15:08:14 [DEBUG]: Session ID aggiornato
+{
+  "service": "nexus-crm",
+  "sessionLogId": 11,
+  "realSessionId": "hKB1FMDBPqzjEnBYMQJWMvVry_uDMIYo"
+}
+2025-06-24 15:08:40 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/contracts/stats",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "8ms",
+  "contentLength": 8812
+}
+2025-06-24 15:08:45 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/clients",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "5ms",
+  "contentLength": 7690
+}
+2025-06-24 15:08:47 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/clients/edit/1",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "7ms",
+  "contentLength": 21903
+}
+2025-06-24 15:08:50 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/clients/1/utilities",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "12ms",
+  "contentLength": 7141
+}
+2025-06-24 15:08:56 [ERROR]: Unhandled error
+SyntaxError: Unexpected token '||' in C:\progetti\nexus-crm\views\clients\view.ejs while compiling ejs
+
+If the above error is not helpful, you may want to try EJS-Lint:
+https://github.com/RyanZim/EJS-Lint
+Or, if you meant to create an async function, pass `async: true` as an option.
+    at new Function (<anonymous>)
+    at Template.compile (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:673:12)
+    at Object.compile (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:398:16)
+    at handleCache (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:235:18)
+    at tryHandleCache (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:274:16)
+    at exports.renderFile [as engine] (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:491:10)
+    at View.render (C:\progetti\nexus-crm\node_modules\express\lib\view.js:135:8)
+    at tryRender (C:\progetti\nexus-crm\node_modules\express\lib\application.js:657:10)
+    at Function.render (C:\progetti\nexus-crm\node_modules\express\lib\application.js:609:3)
+    at ServerResponse.render (C:\progetti\nexus-crm\node_modules\express\lib\response.js:1049:7)
+{
+  "service": "nexus-crm",
+  "error": "Unexpected token '||' in C:\\progetti\\nexus-crm\\views\\clients\\view.ejs while compiling ejs\n\nIf the above error is not helpful, you may want to try EJS-Lint:\nhttps://github.com/RyanZim/EJS-Lint\nOr, if you meant to create an async function, pass `async: true` as an option.",
+  "method": "GET",
+  "url": "/clients/view/1",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "body": {},
+  "query": {},
+  "params": {}
+}
+2025-06-24 15:08:56 [ERROR]: Errore non gestito nell'applicazione
+SyntaxError: Unexpected token '||' in C:\progetti\nexus-crm\views\clients\view.ejs while compiling ejs
+
+If the above error is not helpful, you may want to try EJS-Lint:
+https://github.com/RyanZim/EJS-Lint
+Or, if you meant to create an async function, pass `async: true` as an option.
+    at new Function (<anonymous>)
+    at Template.compile (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:673:12)
+    at Object.compile (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:398:16)
+    at handleCache (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:235:18)
+    at tryHandleCache (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:274:16)
+    at exports.renderFile [as engine] (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:491:10)
+    at View.render (C:\progetti\nexus-crm\node_modules\express\lib\view.js:135:8)
+    at tryRender (C:\progetti\nexus-crm\node_modules\express\lib\application.js:657:10)
+    at Function.render (C:\progetti\nexus-crm\node_modules\express\lib\application.js:609:3)
+    at ServerResponse.render (C:\progetti\nexus-crm\node_modules\express\lib\response.js:1049:7)
+{
+  "service": "nexus-crm",
+  "error": "Unexpected token '||' in C:\\progetti\\nexus-crm\\views\\clients\\view.ejs while compiling ejs\n\nIf the above error is not helpful, you may want to try EJS-Lint:\nhttps://github.com/RyanZim/EJS-Lint\nOr, if you meant to create an async function, pass `async: true` as an option.",
+  "url": "/clients/view/1",
+  "method": "GET",
+  "ip": "::1",
+  "userId": 1,
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36"
+}
+2025-06-24 15:08:56 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/clients/view/1",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 500,
+  "duration": "13ms",
+  "contentLength": 5341
+}
+2025-06-24 15:09:06 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/clients/1/utilities/electric/new",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "8ms",
+  "contentLength": 14299
+}
+2025-06-24 15:09:14 [ERROR]: Unhandled error
+SyntaxError: Unexpected token '||' in C:\progetti\nexus-crm\views\clients\view.ejs while compiling ejs
+
+If the above error is not helpful, you may want to try EJS-Lint:
+https://github.com/RyanZim/EJS-Lint
+Or, if you meant to create an async function, pass `async: true` as an option.
+    at new Function (<anonymous>)
+    at Template.compile (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:673:12)
+    at Object.compile (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:398:16)
+    at handleCache (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:235:18)
+    at tryHandleCache (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:274:16)
+    at exports.renderFile [as engine] (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:491:10)
+    at View.render (C:\progetti\nexus-crm\node_modules\express\lib\view.js:135:8)
+    at tryRender (C:\progetti\nexus-crm\node_modules\express\lib\application.js:657:10)
+    at Function.render (C:\progetti\nexus-crm\node_modules\express\lib\application.js:609:3)
+    at ServerResponse.render (C:\progetti\nexus-crm\node_modules\express\lib\response.js:1049:7)
+{
+  "service": "nexus-crm",
+  "error": "Unexpected token '||' in C:\\progetti\\nexus-crm\\views\\clients\\view.ejs while compiling ejs\n\nIf the above error is not helpful, you may want to try EJS-Lint:\nhttps://github.com/RyanZim/EJS-Lint\nOr, if you meant to create an async function, pass `async: true` as an option.",
+  "method": "GET",
+  "url": "/clients/view/1",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "body": {},
+  "query": {},
+  "params": {}
+}
+2025-06-24 15:09:14 [ERROR]: Errore non gestito nell'applicazione
+SyntaxError: Unexpected token '||' in C:\progetti\nexus-crm\views\clients\view.ejs while compiling ejs
+
+If the above error is not helpful, you may want to try EJS-Lint:
+https://github.com/RyanZim/EJS-Lint
+Or, if you meant to create an async function, pass `async: true` as an option.
+    at new Function (<anonymous>)
+    at Template.compile (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:673:12)
+    at Object.compile (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:398:16)
+    at handleCache (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:235:18)
+    at tryHandleCache (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:274:16)
+    at exports.renderFile [as engine] (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:491:10)
+    at View.render (C:\progetti\nexus-crm\node_modules\express\lib\view.js:135:8)
+    at tryRender (C:\progetti\nexus-crm\node_modules\express\lib\application.js:657:10)
+    at Function.render (C:\progetti\nexus-crm\node_modules\express\lib\application.js:609:3)
+    at ServerResponse.render (C:\progetti\nexus-crm\node_modules\express\lib\response.js:1049:7)
+{
+  "service": "nexus-crm",
+  "error": "Unexpected token '||' in C:\\progetti\\nexus-crm\\views\\clients\\view.ejs while compiling ejs\n\nIf the above error is not helpful, you may want to try EJS-Lint:\nhttps://github.com/RyanZim/EJS-Lint\nOr, if you meant to create an async function, pass `async: true` as an option.",
+  "url": "/clients/view/1",
+  "method": "GET",
+  "ip": "::1",
+  "userId": 1,
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36"
+}
+2025-06-24 15:09:14 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/clients/view/1",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 500,
+  "duration": "10ms",
+  "contentLength": 5341
+}
+2025-06-24 15:09:44 [ERROR]: Unhandled error
+SyntaxError: Unexpected token '||' in C:\progetti\nexus-crm\views\clients\view.ejs while compiling ejs
+
+If the above error is not helpful, you may want to try EJS-Lint:
+https://github.com/RyanZim/EJS-Lint
+Or, if you meant to create an async function, pass `async: true` as an option.
+    at new Function (<anonymous>)
+    at Template.compile (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:673:12)
+    at Object.compile (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:398:16)
+    at handleCache (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:235:18)
+    at tryHandleCache (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:274:16)
+    at exports.renderFile [as engine] (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:491:10)
+    at View.render (C:\progetti\nexus-crm\node_modules\express\lib\view.js:135:8)
+    at tryRender (C:\progetti\nexus-crm\node_modules\express\lib\application.js:657:10)
+    at Function.render (C:\progetti\nexus-crm\node_modules\express\lib\application.js:609:3)
+    at ServerResponse.render (C:\progetti\nexus-crm\node_modules\express\lib\response.js:1049:7)
+{
+  "service": "nexus-crm",
+  "error": "Unexpected token '||' in C:\\progetti\\nexus-crm\\views\\clients\\view.ejs while compiling ejs\n\nIf the above error is not helpful, you may want to try EJS-Lint:\nhttps://github.com/RyanZim/EJS-Lint\nOr, if you meant to create an async function, pass `async: true` as an option.",
+  "method": "GET",
+  "url": "/clients/view/1",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "body": {},
+  "query": {},
+  "params": {}
+}
+2025-06-24 15:09:44 [ERROR]: Errore non gestito nell'applicazione
+SyntaxError: Unexpected token '||' in C:\progetti\nexus-crm\views\clients\view.ejs while compiling ejs
+
+If the above error is not helpful, you may want to try EJS-Lint:
+https://github.com/RyanZim/EJS-Lint
+Or, if you meant to create an async function, pass `async: true` as an option.
+    at new Function (<anonymous>)
+    at Template.compile (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:673:12)
+    at Object.compile (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:398:16)
+    at handleCache (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:235:18)
+    at tryHandleCache (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:274:16)
+    at exports.renderFile [as engine] (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:491:10)
+    at View.render (C:\progetti\nexus-crm\node_modules\express\lib\view.js:135:8)
+    at tryRender (C:\progetti\nexus-crm\node_modules\express\lib\application.js:657:10)
+    at Function.render (C:\progetti\nexus-crm\node_modules\express\lib\application.js:609:3)
+    at ServerResponse.render (C:\progetti\nexus-crm\node_modules\express\lib\response.js:1049:7)
+{
+  "service": "nexus-crm",
+  "error": "Unexpected token '||' in C:\\progetti\\nexus-crm\\views\\clients\\view.ejs while compiling ejs\n\nIf the above error is not helpful, you may want to try EJS-Lint:\nhttps://github.com/RyanZim/EJS-Lint\nOr, if you meant to create an async function, pass `async: true` as an option.",
+  "url": "/clients/view/1",
+  "method": "GET",
+  "ip": "::1",
+  "userId": 1,
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36"
+}
+2025-06-24 15:09:44 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/clients/view/1",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 500,
+  "duration": "16ms",
+  "contentLength": 5341
+}
+2025-06-24 15:10:58 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/clients/view/1",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "62ms",
+  "contentLength": 15987
+}
+2025-06-24 15:14:56 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "4ms",
+  "contentLength": 7926
+}
+2025-06-24 16:02:59 [INFO]: Ricevuto SIGINT, chiusura database...
+{
+  "service": "nexus-crm"
+}
+2025-06-24 16:03:23 [INFO]: Avvio NEXUS CRM
+{
+  "service": "nexus-crm",
+  "port": 3000
+}
+2025-06-24 16:03:24 [INFO]: Server avviato con successo
+{
+  "service": "nexus-crm",
+  "port": 3000,
+  "nodeEnv": "development",
+  "nodeVersion": "v22.13.1"
+}
+2025-06-24 16:03:24 [INFO]: Connesso al database SQLite
+{
+  "service": "nexus-crm",
+  "dbPath": "C:\\progetti\\nexus-crm\\data\\nexus.db"
+}
+2025-06-24 16:03:24 [INFO]: Tabella users verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-24 16:03:24 [INFO]: Tabella clients verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-24 16:03:24 [INFO]: Tabella activities verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-24 16:03:24 [INFO]: Tabella products verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-24 16:03:24 [INFO]: Tabella contracts verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-24 16:03:24 [INFO]: Tabella user_sessions creata
+{
+  "service": "nexus-crm"
+}
+2025-06-24 16:03:24 [INFO]: Utente admin già esistente
+{
+  "service": "nexus-crm"
+}
+2025-06-24 16:03:28 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/login",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "statusCode": 200,
+  "duration": "15ms",
+  "contentLength": 2847
+}
+2025-06-24 16:03:35 [INFO]: Login riuscito
+{
+  "service": "nexus-crm",
+  "userId": 1,
+  "username": "admin",
+  "role": "administrator",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36"
+}
+2025-06-24 16:03:35 [INFO]: Login completato con successo
+{
+  "service": "nexus-crm",
+  "userId": 1,
+  "username": "admin",
+  "role": "administrator",
+  "ip": "::1",
+  "sessionId": "ugcUh9NdpgFazs3GZSoN7DgKr0dycvMJ"
+}
+2025-06-24 16:03:35 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "14ms",
+  "contentLength": 7926
+}
+2025-06-24 16:03:35 [INFO]: Sessione utente loggata
+{
+  "service": "nexus-crm",
+  "userId": 1,
+  "sessionLogId": 12,
+  "ip": "::1"
+}
+2025-06-24 16:03:35 [DEBUG]: Session ID aggiornato
+{
+  "service": "nexus-crm",
+  "sessionLogId": 12,
+  "realSessionId": "ugcUh9NdpgFazs3GZSoN7DgKr0dycvMJ"
+}
+2025-06-24 16:03:39 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/clients",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "7ms",
+  "contentLength": 7881
+}
+2025-06-24 16:03:41 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/clients/new",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "8ms",
+  "contentLength": 21566
+}
+2025-06-24 16:04:17 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/clients/new",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "8ms",
+  "contentLength": 21566
+}
+2025-06-24 16:04:19 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "4ms",
+  "contentLength": 7926
+}
+2025-06-24 16:06:12 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "25ms",
+  "contentLength": 7926
+}
+2025-06-24 16:06:13 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/clients",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "5ms",
+  "contentLength": 7881
+}
+2025-06-24 16:06:15 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/clients/import-bill",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "5ms",
+  "contentLength": 14093
+}
+2025-06-24 16:06:30 [WARN]: Token CSRF non valido
+{
+  "service": "nexus-crm",
+  "userId": 1,
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "path": "/clients/import-bill",
+  "method": "POST"
+}
+2025-06-24 16:06:30 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "POST",
+  "url": "/clients/import-bill",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 403,
+  "duration": "12ms",
+  "contentLength": 5123
+}
+2025-06-24 16:06:57 [WARN]: Pagina non trovata
+{
+  "service": "nexus-crm",
+  "url": "/.well-known/appspecific/com.chrome.devtools.json",
+  "method": "GET",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1
+}
+2025-06-24 16:06:57 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/.well-known/appspecific/com.chrome.devtools.json",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 404,
+  "duration": "7ms",
+  "contentLength": 5081
+}
+2025-06-24 16:07:12 [WARN]: Token CSRF non valido
+{
+  "service": "nexus-crm",
+  "userId": 1,
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "path": "/clients/import-bill",
+  "method": "POST"
+}
+2025-06-24 16:07:12 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "POST",
+  "url": "/clients/import-bill",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 403,
+  "duration": "8ms",
+  "contentLength": 5123
+}
+2025-06-24 16:07:20 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/clients",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "48ms",
+  "contentLength": 7881
+}
+2025-06-24 16:07:22 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/activities",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "103ms",
+  "contentLength": 8418
+}
+2025-06-24 16:07:25 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/activities/new",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "12ms",
+  "contentLength": 8350
+}
+2025-06-24 16:07:28 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/contracts",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "12ms",
+  "contentLength": 8566
+}
+2025-06-24 16:07:30 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/contracts/new",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "10ms",
+  "contentLength": 10457
+}
+2025-06-24 16:07:38 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/contracts/stats",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "10ms",
+  "contentLength": 8812
+}
+2025-06-24 16:13:58 [INFO]: Ricevuto SIGINT, chiusura database...
+{
+  "service": "nexus-crm"
+}
