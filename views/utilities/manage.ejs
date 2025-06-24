@@ -1,0 +1,390 @@
+<div class="max-w-7xl mx-auto">
+  <!-- Header -->
+  <div class="mb-6 flex justify-between items-center">
+    <div>
+      <h2 class="text-2xl font-bold flex items-center">
+        <i class="fas fa-plug mr-3 text-nexus-red"></i>
+        Gestione Utenze
+      </h2>
+      <p class="text-gray-600 mt-1">
+        <i class="fas fa-user mr-2"></i>
+        <%= client.name %> <%= client.surname %>
+        <% if (client.company) { %>
+          - <%= client.company %>
+        <% } %>
+      </p>
+    </div>
+    <div class="space-x-2">
+      <a href="/clients/<%= client.id %>" class="btn-outline btn-sm">
+        <i class="fas fa-arrow-left"></i> Torna al Cliente
+      </a>
+      <a href="/clients/edit/<%= client.id %>" class="btn-outline btn-sm">
+        <i class="fas fa-edit"></i> Modifica Cliente
+      </a>
+    </div>
+  </div>
+
+  <!-- Cards Statistiche -->
+  <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+    <!-- Utenze Elettriche -->
+    <div class="card border-l-4 border-yellow-500">
+      <div class="card-body text-center">
+        <div class="text-yellow-500 text-3xl mb-2">
+          <i class="fas fa-bolt"></i>
+        </div>
+        <h6 class="font-semibold text-gray-700">Utenze Elettriche</h6>
+        <p class="text-2xl font-bold text-yellow-600"><%= electricityUtilities.length %></p>
+        <% if (electricityStats.total_consumption) { %>
+          <p class="text-xs text-gray-500">
+            <%= electricityStats.total_consumption.toLocaleString() %> kWh/anno totali
+          </p>
+        <% } %>
+      </div>
+    </div>
+
+    <!-- Utenze Gas -->
+    <div class="card border-l-4 border-orange-500">
+      <div class="card-body text-center">
+        <div class="text-orange-500 text-3xl mb-2">
+          <i class="fas fa-fire"></i>
+        </div>
+        <h6 class="font-semibold text-gray-700">Utenze Gas</h6>
+        <p class="text-2xl font-bold text-orange-600"><%= gasUtilities.length %></p>
+        <% if (gasStats.total_consumption) { %>
+          <p class="text-xs text-gray-500">
+            <%= gasStats.total_consumption.toLocaleString() %> Smc/anno totali
+          </p>
+        <% } %>
+      </div>
+    </div>
+
+    <!-- Consumo Elettrico Medio -->
+    <div class="card border-l-4 border-blue-500">
+      <div class="card-body text-center">
+        <div class="text-blue-500 text-3xl mb-2">
+          <i class="fas fa-chart-line"></i>
+        </div>
+        <h6 class="font-semibold text-gray-700">Consumo Medio Elettrico</h6>
+        <% if (electricityStats.avg_consumption) { %>
+          <p class="text-xl font-bold text-blue-600">
+            <%= Math.round(electricityStats.avg_consumption).toLocaleString() %>
+          </p>
+          <p class="text-xs text-gray-500">kWh/anno per utenza</p>
+        <% } else { %>
+          <p class="text-lg text-gray-400">N/D</p>
+        <% } %>
+      </div>
+    </div>
+
+    <!-- Consumo Gas Medio -->
+    <div class="card border-l-4 border-green-500">
+      <div class="card-body text-center">
+        <div class="text-green-500 text-3xl mb-2">
+          <i class="fas fa-chart-bar"></i>
+        </div>
+        <h6 class="font-semibold text-gray-700">Consumo Medio Gas</h6>
+        <% if (gasStats.avg_consumption) { %>
+          <p class="text-xl font-bold text-green-600">
+            <%= Math.round(gasStats.avg_consumption).toLocaleString() %>
+          </p>
+          <p class="text-xs text-gray-500">Smc/anno per utenza</p>
+        <% } else { %>
+          <p class="text-lg text-gray-400">N/D</p>
+        <% } %>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+    <!-- UTENZE ENERGIA ELETTRICA -->
+    <div class="card">
+      <div class="card-header bg-yellow-600 text-white flex justify-between items-center">
+        <h5 class="font-semibold">
+          <i class="fas fa-bolt mr-2"></i>
+          Utenze Energia Elettrica
+        </h5>
+        <a href="/clients/<%= client.id %>/utilities/electric/new" 
+           class="bg-yellow-500 hover:bg-yellow-400 text-white px-3 py-1 rounded text-sm transition-colors">
+          <i class="fas fa-plus"></i> Nuova Utenza
+        </a>
+      </div>
+      <div class="card-body">
+        <% if (electricityUtilities.length > 0) { %>
+          <div class="space-y-4">
+            <% electricityUtilities.forEach(utility => { %>
+              <div class="border border-gray-200 rounded-lg p-4 hover:bg-gray-50 transition-colors">
+                <!-- Header Utenza -->
+                <div class="flex justify-between items-start mb-3">
+                  <div>
+                    <h6 class="font-semibold text-gray-800">
+                      <%= utility.utility_name || 'Utenza Elettrica' %>
+                      <% if (!utility.is_active) { %>
+                        <span class="ml-2 px-2 py-1 bg-red-100 text-red-800 text-xs rounded-full">
+                          Disattivata
+                        </span>
+                      <% } %>
+                    </h6>
+                    <p class="text-sm font-mono text-gray-600">
+                      POD: <%= utility.pod_code %>
+                    </p>
+                  </div>
+                  <div class="flex space-x-1">
+                    <a href="/utilities/electric/<%= utility.id %>/edit" 
+                       class="text-blue-600 hover:text-blue-800 p-1" title="Modifica">
+                      <i class="fas fa-edit"></i>
+                    </a>
+                    <% if (utility.is_active) { %>
+                      <form method="POST" action="/utilities/electric/<%= utility.id %>/deactivate" 
+                            class="inline" onsubmit="return confirm('Disattivare questa utenza?')">
+                        <button type="submit" class="text-orange-600 hover:text-orange-800 p-1" title="Disattiva">
+                          <i class="fas fa-pause"></i>
+                        </button>
+                      </form>
+                    <% } %>
+                    <button onclick="deleteUtility('electric', <%= utility.id %>)" 
+                            class="text-red-600 hover:text-red-800 p-1" title="Elimina">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Dettagli Tecnici -->
+                <div class="grid grid-cols-2 gap-4 text-sm">
+                  <div>
+                    <% if (utility.power_kw) { %>
+                      <p><strong>Potenza:</strong> <%= utility.power_kw %> kW</p>
+                    <% } %>
+                    <% if (utility.voltage) { %>
+                      <p><strong>Tensione:</strong> <%= utility.voltage %></p>
+                    <% } %>
+                    <% if (utility.meter_type) { %>
+                      <p><strong>Misuratore:</strong> <%= utility.meter_type %></p>
+                    <% } %>
+                  </div>
+                  <div>
+                    <% if (utility.supplier) { %>
+                      <p><strong>Fornitore:</strong> <%= utility.supplier %></p>
+                    <% } %>
+                    <% if (utility.contract_end_date) { %>
+                      <p><strong>Scadenza:</strong> 
+                        <span class="<%= new Date(utility.contract_end_date) < new Date(Date.now() + 90*24*60*60*1000) ? 'text-red-600 font-medium' : '' %>">
+                          <%= new Date(utility.contract_end_date).toLocaleDateString() %>
+                        </span>
+                      </p>
+                    <% } %>
+                  </div>
+                </div>
+
+                <!-- Consumi -->
+                <% if (utility.annual_consumption_kwh) { %>
+                  <div class="mt-3 p-3 bg-yellow-50 rounded-lg">
+                    <div class="flex items-center justify-between">
+                      <div>
+                        <p class="text-sm font-semibold text-yellow-800">
+                          Consumo Annuale <%= utility.annual_consumption_year || new Date().getFullYear() %>
+                        </p>
+                        <p class="text-lg font-bold text-yellow-600">
+                          <%= utility.annual_consumption_kwh.toLocaleString() %> kWh
+                        </p>
+                      </div>
+                      <div class="text-yellow-500 text-2xl">
+                        <i class="fas fa-chart-area"></i>
+                      </div>
+                    </div>
+                  </div>
+                <% } %>
+
+                <!-- Indirizzo Specifico -->
+                <% if (utility.utility_address) { %>
+                  <div class="mt-3 text-xs text-gray-600">
+                    <i class="fas fa-map-marker-alt mr-1"></i>
+                    <%= utility.utility_address %>, <%= utility.utility_postal_code %> <%= utility.utility_city %>
+                    <% if (utility.utility_province) { %>(<%= utility.utility_province %>)<% } %>
+                  </div>
+                <% } %>
+
+                <!-- Note -->
+                <% if (utility.notes) { %>
+                  <div class="mt-3 p-2 bg-gray-50 rounded text-sm text-gray-700">
+                    <i class="fas fa-sticky-note mr-1"></i>
+                    <%= utility.notes %>
+                  </div>
+                <% } %>
+              </div>
+            <% }) %>
+          </div>
+        <% } else { %>
+          <div class="text-center py-8 text-gray-500">
+            <div class="text-4xl mb-3">
+              <i class="fas fa-bolt"></i>
+            </div>
+            <p class="mb-4">Nessuna utenza elettrica registrata</p>
+            <a href="/clients/<%= client.id %>/utilities/electric/new" 
+               class="btn-primary">
+              <i class="fas fa-plus"></i> Aggiungi Prima Utenza Elettrica
+            </a>
+          </div>
+        <% } %>
+      </div>
+    </div>
+
+    <!-- UTENZE GAS -->
+    <div class="card">
+      <div class="card-header bg-orange-600 text-white flex justify-between items-center">
+        <h5 class="font-semibold">
+          <i class="fas fa-fire mr-2"></i>
+          Utenze Gas Naturale
+        </h5>
+        <a href="/clients/<%= client.id %>/utilities/gas/new" 
+           class="bg-orange-500 hover:bg-orange-400 text-white px-3 py-1 rounded text-sm transition-colors">
+          <i class="fas fa-plus"></i> Nuova Utenza
+        </a>
+      </div>
+      <div class="card-body">
+        <% if (gasUtilities.length > 0) { %>
+          <div class="space-y-4">
+            <% gasUtilities.forEach(utility => { %>
+              <div class="border border-gray-200 rounded-lg p-4 hover:bg-gray-50 transition-colors">
+                <!-- Header Utenza -->
+                <div class="flex justify-between items-start mb-3">
+                  <div>
+                    <h6 class="font-semibold text-gray-800">
+                      <%= utility.utility_name || 'Utenza Gas' %>
+                      <% if (!utility.is_active) { %>
+                        <span class="ml-2 px-2 py-1 bg-red-100 text-red-800 text-xs rounded-full">
+                          Disattivata
+                        </span>
+                      <% } %>
+                    </h6>
+                    <p class="text-sm font-mono text-gray-600">
+                      PDR: <%= utility.pdr_code %>
+                    </p>
+                  </div>
+                  <div class="flex space-x-1">
+                    <a href="/utilities/gas/<%= utility.id %>/edit" 
+                       class="text-blue-600 hover:text-blue-800 p-1" title="Modifica">
+                      <i class="fas fa-edit"></i>
+                    </a>
+                    <% if (utility.is_active) { %>
+                      <form method="POST" action="/utilities/gas/<%= utility.id %>/deactivate" 
+                            class="inline" onsubmit="return confirm('Disattivare questa utenza?')">
+                        <button type="submit" class="text-orange-600 hover:text-orange-800 p-1" title="Disattiva">
+                          <i class="fas fa-pause"></i>
+                        </button>
+                      </form>
+                    <% } %>
+                    <button onclick="deleteUtility('gas', <%= utility.id %>)" 
+                            class="text-red-600 hover:text-red-800 p-1" title="Elimina">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Dettagli Tecnici -->
+                <div class="grid grid-cols-2 gap-4 text-sm">
+                  <div>
+                    <% if (utility.meter_type) { %>
+                      <p><strong>Misuratore:</strong> <%= utility.meter_type %></p>
+                    <% } %>
+                    <% if (utility.remi_code) { %>
+                      <p><strong>REMI:</strong> <%= utility.remi_code %></p>
+                    <% } %>
+                  </div>
+                  <div>
+                    <% if (utility.supplier) { %>
+                      <p><strong>Fornitore:</strong> <%= utility.supplier %></p>
+                    <% } %>
+                    <% if (utility.contract_end_date) { %>
+                      <p><strong>Scadenza:</strong> 
+                        <span class="<%= new Date(utility.contract_end_date) < new Date(Date.now() + 90*24*60*60*1000) ? 'text-red-600 font-medium' : '' %>">
+                          <%= new Date(utility.contract_end_date).toLocaleDateString() %>
+                        </span>
+                      </p>
+                    <% } %>
+                  </div>
+                </div>
+
+                <!-- Consumi -->
+                <% if (utility.annual_consumption_smc) { %>
+                  <div class="mt-3 p-3 bg-orange-50 rounded-lg">
+                    <div class="flex items-center justify-between">
+                      <div>
+                        <p class="text-sm font-semibold text-orange-800">
+                          Consumo Annuale <%= utility.annual_consumption_year || new Date().getFullYear() %>
+                        </p>
+                        <p class="text-lg font-bold text-orange-600">
+                          <%= utility.annual_consumption_smc.toLocaleString() %> Smc
+                        </p>
+                      </div>
+                      <div class="text-orange-500 text-2xl">
+                        <i class="fas fa-chart-area"></i>
+                      </div>
+                    </div>
+                  </div>
+                <% } %>
+
+                <!-- Indirizzo Specifico -->
+                <% if (utility.utility_address) { %>
+                  <div class="mt-3 text-xs text-gray-600">
+                    <i class="fas fa-map-marker-alt mr-1"></i>
+                    <%= utility.utility_address %>, <%= utility.utility_postal_code %> <%= utility.utility_city %>
+                    <% if (utility.utility_province) { %>(<%= utility.utility_province %>)<% } %>
+                  </div>
+                <% } %>
+
+                <!-- Note -->
+                <% if (utility.notes) { %>
+                  <div class="mt-3 p-2 bg-gray-50 rounded text-sm text-gray-700">
+                    <i class="fas fa-sticky-note mr-1"></i>
+                    <%= utility.notes %>
+                  </div>
+                <% } %>
+              </div>
+            <% }) %>
+          </div>
+        <% } else { %>
+          <div class="text-center py-8 text-gray-500">
+            <div class="text-4xl mb-3">
+              <i class="fas fa-fire"></i>
+            </div>
+            <p class="mb-4">Nessuna utenza gas registrata</p>
+            <a href="/clients/<%= client.id %>/utilities/gas/new" 
+               class="btn-primary">
+              <i class="fas fa-plus"></i> Aggiungi Prima Utenza Gas
+            </a>
+          </div>
+        <% } %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Script per eliminazione utenze -->
+<script>
+async function deleteUtility(type, id) {
+  if (!confirm('Sei sicuro di voler eliminare definitivamente questa utenza?')) {
+    return;
+  }
+  
+  try {
+    const response = await fetch(`/utilities/${type}/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      }
+    });
+    
+    const result = await response.json();
+    
+    if (result.success) {
+      alert(result.message);
+      location.reload();
+    } else {
+      alert('Errore: ' + result.message);
+    }
+  } catch (error) {
+    console.error('Errore nell\'eliminazione:', error);
+    alert('Errore nell\'eliminazione dell\'utenza');
+  }
+}
+</script>

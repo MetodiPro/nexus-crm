@@ -1,0 +1,286 @@
+<div class="card max-w-4xl mx-auto">
+  <div class="card-header bg-yellow-600 text-white">
+    <h4 class="text-lg font-semibold">
+      <i class="fas fa-bolt mr-2"></i>
+      <%= utility.id ? 'Modifica Utenza Elettrica' : 'Nuova Utenza Elettrica' %>
+    </h4>
+    <p class="text-sm mt-1 opacity-90">
+      Cliente: <%= client.name %> <%= client.surname %>
+      <% if (client.company) { %> - <%= client.company %><% } %>
+    </p>
+  </div>
+  <div class="card-body">
+    <form action="<%= action %>" method="POST" onsubmit="return validateElectricForm()" id="electricForm">
+      
+      <!-- IDENTIFICAZIONE UTENZA -->
+      <div class="mb-6">
+        <h5 class="text-lg font-semibold mb-3 text-yellow-600 border-b border-gray-300 pb-2">
+          <i class="fas fa-id-badge"></i> Identificazione Utenza
+        </h5>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label for="pod_code" class="form-label">Codice POD *</label>
+            <input type="text" class="form-input" id="pod_code" name="pod_code" 
+                   value="<%= utility.pod_code || '' %>" required
+                   placeholder="IT001E10510063" maxlength="15"
+                   style="text-transform: uppercase">
+            <p class="text-xs text-gray-500 mt-1">Formato: IT + 3 cifre + lettera + 8 cifre</p>
+          </div>
+          <div>
+            <label for="utility_name" class="form-label">Nome Descrittivo</label>
+            <input type="text" class="form-input" id="utility_name" name="utility_name" 
+                   value="<%= utility.utility_name || '' %>"
+                   placeholder="es: Sede principale, Magazzino, Uffici">
+            <p class="text-xs text-gray-500 mt-1">Nome per identificare facilmente l'utenza</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- DATI TECNICI -->
+      <div class="mb-6">
+        <h5 class="text-lg font-semibold mb-3 text-yellow-600 border-b border-gray-300 pb-2">
+          <i class="fas fa-cogs"></i> Dati Tecnici
+        </h5>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div>
+            <label for="power_kw" class="form-label">Potenza Impegnata (kW)</label>
+            <input type="number" class="form-input" id="power_kw" name="power_kw" 
+                   value="<%= utility.power_kw || '' %>" step="0.1" min="0" max="1000">
+          </div>
+          <div>
+            <label for="voltage" class="form-label">Tensione</label>
+            <select class="form-input" id="voltage" name="voltage">
+              <option value="">Seleziona...</option>
+              <option value="BT" <%= utility.voltage === 'BT' ? 'selected' : '' %>>BT - Bassa Tensione</option>
+              <option value="MT" <%= utility.voltage === 'MT' ? 'selected' : '' %>>MT - Media Tensione</option>
+              <option value="AT" <%= utility.voltage === 'AT' ? 'selected' : '' %>>AT - Alta Tensione</option>
+            </select>
+          </div>
+          <div>
+            <label for="meter_type" class="form-label">Tipo Misuratore</label>
+            <select class="form-input" id="meter_type" name="meter_type">
+              <option value="">Seleziona...</option>
+              <option value="elettronico" <%= utility.meter_type === 'elettronico' ? 'selected' : '' %>>Elettronico</option>
+              <option value="smart" <%= utility.meter_type === 'smart' ? 'selected' : '' %>>Smart Meter</option>
+              <option value="tradizionale" <%= utility.meter_type === 'tradizionale' ? 'selected' : '' %>>Tradizionale</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- FORNITORE E CONTRATTO -->
+      <div class="mb-6">
+        <h5 class="text-lg font-semibold mb-3 text-yellow-600 border-b border-gray-300 pb-2">
+          <i class="fas fa-handshake"></i> Fornitore e Contratto
+        </h5>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label for="supplier" class="form-label">Fornitore Attuale</label>
+            <input type="text" class="form-input" id="supplier" name="supplier" 
+                   value="<%= utility.supplier || '' %>"
+                   placeholder="es: Enel Energia, Edison, A2A">
+          </div>
+          <div>
+            <label for="last_bill_date" class="form-label">Data Ultima Fattura</label>
+            <input type="date" class="form-input" id="last_bill_date" name="last_bill_date" 
+                   value="<%= utility.last_bill_date || '' %>">
+          </div>
+          <div>
+            <label for="contract_start_date" class="form-label">Inizio Contratto</label>
+            <input type="date" class="form-input" id="contract_start_date" name="contract_start_date" 
+                   value="<%= utility.contract_start_date || '' %>">
+          </div>
+          <div>
+            <label for="contract_end_date" class="form-label">Scadenza Contratto</label>
+            <input type="date" class="form-input" id="contract_end_date" name="contract_end_date" 
+                   value="<%= utility.contract_end_date || '' %>">
+          </div>
+        </div>
+      </div>
+
+      <!-- CONSUMI ANNUALI -->
+      <div class="mb-6">
+        <h5 class="text-lg font-semibold mb-3 text-yellow-600 border-b border-gray-300 pb-2">
+          <i class="fas fa-chart-area"></i> Consumi Annuali
+        </h5>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label for="annual_consumption_kwh" class="form-label">Consumo Annuale (kWh)</label>
+            <input type="number" class="form-input" id="annual_consumption_kwh" name="annual_consumption_kwh" 
+                   value="<%= utility.annual_consumption_kwh || '' %>" min="0" max="99999999"
+                   placeholder="es: 45000">
+            <p class="text-xs text-gray-500 mt-1">Consumo in kilowattora per anno</p>
+          </div>
+          <div>
+            <label for="annual_consumption_year" class="form-label">Anno di Riferimento</label>
+            <input type="number" class="form-input" id="annual_consumption_year" name="annual_consumption_year" 
+                   value="<%= utility.annual_consumption_year || new Date().getFullYear() %>" 
+                   min="2020" max="<%= new Date().getFullYear() + 1 %>">
+          </div>
+        </div>
+        <div class="mt-4 p-4 bg-yellow-50 rounded-lg">
+          <div class="flex items-start">
+            <div class="flex-shrink-0">
+              <i class="fas fa-lightbulb text-yellow-500 text-lg"></i>
+            </div>
+            <div class="ml-3">
+              <h6 class="text-yellow-800 font-semibold text-sm">Suggerimenti per i Consumi</h6>
+              <ul class="text-yellow-700 text-sm mt-1 space-y-1">
+                <li>• <strong>Abitazione:</strong> 2.000-4.000 kWh/anno</li>
+                <li>• <strong>Piccola Attività:</strong> 5.000-15.000 kWh/anno</li>
+                <li>• <strong>Media Azienda:</strong> 20.000-100.000 kWh/anno</li>
+                <li>• <strong>Grande Industria:</strong> 100.000+ kWh/anno</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- INDIRIZZO SPECIFICO UTENZA -->
+      <div class="mb-6">
+        <h5 class="text-lg font-semibold mb-3 text-yellow-600 border-b border-gray-300 pb-2 flex items-center justify-between">
+          <span><i class="fas fa-map-marker-alt"></i> Indirizzo Utenza</span>
+          <button type="button" class="btn-outline btn-sm text-xs" onclick="copyClientAddress()">
+            <i class="fas fa-copy"></i> Copia da cliente
+          </button>
+        </h5>
+        <p class="text-sm text-gray-600 mb-3">
+          Compila solo se l'utenza è in un indirizzo diverso da quello del cliente
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-6 gap-4">
+          <div class="md:col-span-3">
+            <label for="utility_address" class="form-label">Via/Piazza</label>
+            <input type="text" class="form-input" id="utility_address" name="utility_address" 
+                   value="<%= utility.utility_address || '' %>">
+          </div>
+          <div>
+            <label for="utility_postal_code" class="form-label">CAP</label>
+            <input type="text" class="form-input" id="utility_postal_code" name="utility_postal_code" 
+                   value="<%= utility.utility_postal_code || '' %>" maxlength="5">
+          </div>
+          <div>
+            <label for="utility_city" class="form-label">Comune</label>
+            <input type="text" class="form-input" id="utility_city" name="utility_city" 
+                   value="<%= utility.utility_city || '' %>">
+          </div>
+          <div>
+            <label for="utility_province" class="form-label">Provincia</label>
+            <input type="text" class="form-input" id="utility_province" name="utility_province" 
+                   value="<%= utility.utility_province || '' %>" maxlength="2"
+                   style="text-transform: uppercase">
+          </div>
+        </div>
+      </div>
+
+      <!-- NOTE E STATO -->
+      <div class="mb-6">
+        <h5 class="text-lg font-semibold mb-3 text-yellow-600 border-b border-gray-300 pb-2">
+          <i class="fas fa-sticky-note"></i> Note e Stato
+        </h5>
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+          <div class="md:col-span-3">
+            <label for="notes" class="form-label">Note Specifiche</label>
+            <textarea class="form-input h-24" id="notes" name="notes" 
+                      placeholder="Note specifiche per questa utenza elettrica..."><%= utility.notes || '' %></textarea>
+          </div>
+          <div>
+            <label for="is_active" class="form-label">Stato Utenza</label>
+            <select class="form-input" id="is_active" name="is_active">
+              <option value="1" <%= utility.is_active !== 0 ? 'selected' : '' %>>Attiva</option>
+              <option value="0" <%= utility.is_active === 0 ? 'selected' : '' %>>Disattivata</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      
+      <div class="flex justify-between">
+        <a href="/clients/<%= client.id %>/utilities" class="btn-outline">
+          <i class="fas fa-arrow-left"></i> Annulla
+        </a>
+        <button type="submit" class="bg-yellow-600 hover:bg-yellow-700 text-white px-6 py-2 rounded transition-colors">
+          <i class="fas fa-save"></i> Salva Utenza Elettrica
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Dati cliente per JavaScript -->
+<script>
+const clientData = {
+  address: '<%= client.address || "" %>',
+  city: '<%= client.city || "" %>',
+  postal_code: '<%= client.postal_code || "" %>',
+  province: '<%= client.province || "" %>'
+};
+
+// Copia indirizzo cliente
+function copyClientAddress() {
+  if (confirm('Copiare l\'indirizzo del cliente in questa utenza?')) {
+    document.getElementById('utility_address').value = clientData.address;
+    document.getElementById('utility_city').value = clientData.city;
+    document.getElementById('utility_postal_code').value = clientData.postal_code;
+    document.getElementById('utility_province').value = clientData.province;
+  }
+}
+
+// Validazione POD
+function validatePOD(input) {
+  const pod = input.value.toUpperCase();
+  const regex = /^IT[0-9]{3}[A-Z][0-9]{8}$/;
+  
+  if (pod && !regex.test(pod)) {
+    input.setCustomValidity('Formato POD non valido. Formato corretto: IT001E10510063');
+  } else {
+    input.setCustomValidity('');
+  }
+}
+
+// Validazione form
+function validateElectricForm() {
+  const podInput = document.getElementById('pod_code');
+  validatePOD(podInput);
+  
+  if (!podInput.checkValidity()) {
+    podInput.focus();
+    return false;
+  }
+  
+  // Controllo consumo vs potenza (opzionale)
+  const consumption = parseInt(document.getElementById('annual_consumption_kwh').value);
+  const power = parseFloat(document.getElementById('power_kw').value);
+  
+  if (consumption && power) {
+    const maxTheoretical = power * 8760; // kW * ore anno
+    if (consumption > maxTheoretical) {
+      if (!confirm(`Il consumo inserito (${consumption.toLocaleString()} kWh) sembra alto rispetto alla potenza (${power} kW). Continuare?`)) {
+        return false;
+      }
+    }
+  }
+  
+  return true;
+}
+
+// Event listeners
+document.getElementById('pod_code').addEventListener('blur', function() {
+  validatePOD(this);
+});
+
+// Auto-calcolo costi stimati (opzionale)
+document.getElementById('annual_consumption_kwh').addEventListener('input', function() {
+  const consumption = parseInt(this.value);
+  if (consumption) {
+    const estimatedCost = consumption * 0.25; // Stima €0.25/kWh
+    const hint = document.getElementById('consumption_hint');
+    if (!hint) {
+      const hintElement = document.createElement('p');
+      hintElement.id = 'consumption_hint';
+      hintElement.className = 'text-xs text-blue-600 mt-1';
+      this.parentNode.appendChild(hintElement);
+    }
+    document.getElementById('consumption_hint').textContent = 
+      `Costo stimato annuale: €${estimatedCost.toLocaleString()} (basato su €0.25/kWh)`;
+  }
+});
+</script>

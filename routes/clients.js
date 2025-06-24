@@ -27,13 +27,34 @@ router.post('/new', (req, res) => {
   const clientData = {
     name: req.body.name,
     surname: req.body.surname,
+    fiscal_code: req.body.fiscal_code,
+    birth_date: req.body.birth_date,
+    birth_place: req.body.birth_place,
+    gender: req.body.gender,
     company: req.body.company,
     vat_number: req.body.vat_number,
+    company_fiscal_code: req.body.company_fiscal_code,
+    company_legal_form: req.body.company_legal_form,
     address: req.body.address,
     city: req.body.city,
     postal_code: req.body.postal_code,
+    province: req.body.province,
+    legal_address: req.body.legal_address,
+    legal_city: req.body.legal_city,
+    legal_postal_code: req.body.legal_postal_code,
+    legal_province: req.body.legal_province,
+    billing_address: req.body.billing_address,
+    billing_city: req.body.billing_city,
+    billing_postal_code: req.body.billing_postal_code,
+    billing_province: req.body.billing_province,
     phone: req.body.phone,
     email: req.body.email,
+    pec_email: req.body.pec_email,
+    website: req.body.website,
+    reference_person: req.body.reference_person,
+    client_status: req.body.client_status || 'prospect',
+    acquisition_date: req.body.acquisition_date,
+    last_contact_date: req.body.last_contact_date,
     notes: req.body.notes,
     consultant_id: req.session.user.id
   };
@@ -56,7 +77,25 @@ router.get('/view/:id', (req, res) => {
     // Carica attività e contratti del cliente
     Activity.getByClientId(client.id, (err, activities) => {
       Contract.getByClientId(client.id, (err, contracts) => {
-        res.render('clients/view', { client, activities, contracts });
+        // Carica anche le utenze per il riepilogo
+        const ElectricityUtility = require('../models/electricityUtility');
+        const GasUtility = require('../models/gasUtility');
+        
+        ElectricityUtility.getByClientId(client.id, (err, electricityUtilities) => {
+          if (err) electricityUtilities = [];
+          
+          GasUtility.getByClientId(client.id, (err, gasUtilities) => {
+            if (err) gasUtilities = [];
+            
+            res.render('clients/view', { 
+              client, 
+              activities, 
+              contracts,
+              electricity_utilities: electricityUtilities,
+              gas_utilities: gasUtilities
+            });
+          });
+        });
       });
     });
   });
@@ -77,13 +116,34 @@ router.post('/edit/:id', (req, res) => {
   const clientData = {
     name: req.body.name,
     surname: req.body.surname,
+    fiscal_code: req.body.fiscal_code,
+    birth_date: req.body.birth_date,
+    birth_place: req.body.birth_place,
+    gender: req.body.gender,
     company: req.body.company,
     vat_number: req.body.vat_number,
+    company_fiscal_code: req.body.company_fiscal_code,
+    company_legal_form: req.body.company_legal_form,
     address: req.body.address,
     city: req.body.city,
     postal_code: req.body.postal_code,
+    province: req.body.province,
+    legal_address: req.body.legal_address,
+    legal_city: req.body.legal_city,
+    legal_postal_code: req.body.legal_postal_code,
+    legal_province: req.body.legal_province,
+    billing_address: req.body.billing_address,
+    billing_city: req.body.billing_city,
+    billing_postal_code: req.body.billing_postal_code,
+    billing_province: req.body.billing_province,
     phone: req.body.phone,
     email: req.body.email,
+    pec_email: req.body.pec_email,
+    website: req.body.website,
+    reference_person: req.body.reference_person,
+    client_status: req.body.client_status,
+    acquisition_date: req.body.acquisition_date,
+    last_contact_date: req.body.last_contact_date,
     notes: req.body.notes
   };
   

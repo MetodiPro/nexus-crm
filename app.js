@@ -128,6 +128,10 @@ app.use('/products', adminMiddleware, productRoutes);
 const contractRoutes = require('./routes/contracts');
 app.use('/contracts', contractRoutes);
 
+// Rotte per le utenze
+const utilityRoutes = require('./routes/utilities');
+app.use('/', utilityRoutes);
+
 // Rotta homepage
 app.get('/', (req, res) => {
   res.render('dashboard');

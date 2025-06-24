@@ -2,6 +2,9 @@
     <div class="mb-4 flex justify-between items-center">
       <h2 class="text-2xl font-bold">
         <i class="fas fa-user"></i> <%= client.name %> <%= client.surname %>
+        <% if (client.company) { %>
+          <span class="text-lg text-gray-600">- <%= client.company %></span>
+        <% } %>
       </h2>
       <div class="space-x-2">
         <a href="/clients" class="btn-outline btn-sm">
@@ -10,62 +13,291 @@
         <a href="/clients/edit/<%= client.id %>" class="btn-outline btn-sm">
           <i class="fas fa-edit"></i> Modifica
         </a>
+        <a href="/clients/<%= client.id %>/utilities" class="btn-primary btn-sm">
+          <i class="fas fa-plug"></i> Gestisci Utenze
+        </a>
       </div>
     </div>
     
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
       <!-- Colonna informazioni cliente -->
-      <div class="lg:col-span-1">
+      <div class="lg:col-span-1 space-y-6">
+        
+        <!-- Card Informazioni Base -->
         <div class="card border-l-4 border-nexus-red">
-          <div class="card-header bg-nexus-dark text-white flex justify-between items-center">
-            <h5 class="font-semibold"><i class="fas fa-info-circle"></i> Informazioni Cliente</h5>
+          <div class="card-header bg-nexus-dark text-white">
+            <h5 class="font-semibold"><i class="fas fa-id-card"></i> Informazioni Base</h5>
           </div>
           <div class="card-body">
-            <% if (client.company) { %>
-              <div class="mb-4">
-                <p class="text-lg font-semibold"><%= client.company %></p>
-                <% if (client.vat_number) { %>
-                  <p class="text-sm text-gray-600">P.IVA: <%= client.vat_number %></p>
-                <% } %>
+            <% if (client.fiscal_code) { %>
+              <div class="mb-3">
+                <span class="text-sm font-semibold text-gray-600">Codice Fiscale:</span>
+                <p class="font-mono"><%= client.fiscal_code %></p>
               </div>
             <% } %>
             
-            <div class="mb-4">
-              <h6 class="text-sm font-semibold text-gray-600 uppercase">Contatti</h6>
-              <div class="border-t border-gray-200 pt-2">
-                <p class="mb-1"><i class="fas fa-phone text-gray-500 mr-2"></i> <%= client.phone || 'Non specificato' %></p>
-                <p><i class="fas fa-envelope text-gray-500 mr-2"></i> <%= client.email || 'Non specificato' %></p>
-              </div>
-            </div>
-            
-            <div class="mb-4">
-              <h6 class="text-sm font-semibold text-gray-600 uppercase">Indirizzo</h6>
-              <div class="border-t border-gray-200 pt-2">
+            <% if (client.birth_date || client.birth_place) { %>
+              <div class="mb-3">
+                <span class="text-sm font-semibold text-gray-600">Nascita:</span>
                 <p>
-                  <%= client.address || 'Non specificato' %><br>
-                  <% if (client.postal_code || client.city) { %>
-                    <%= client.postal_code || '' %> <%= client.city || '' %>
-                  <% } else { %>
-                    Indirizzo non specificato
+                  <% if (client.birth_date) { %>
+                    <%= new Date(client.birth_date).toLocaleDateString() %>
+                  <% } %>
+                  <% if (client.birth_place) { %>
+                    <%= client.birth_date ? ' - ' : '' %><%= client.birth_place %>
                   <% } %>
                 </p>
               </div>
-            </div>
-            
-            <% if (client.notes) { %>
-              <div class="mb-4">
-                <h6 class="text-sm font-semibold text-gray-600 uppercase">Note</h6>
-                <div class="border-t border-gray-200 pt-2">
-                  <p class="whitespace-pre-line text-sm"><%= client.notes %></p>
-                </div>
+            <% } %>
+
+            <% if (client.gender) { %>
+              <div class="mb-3">
+                <span class="text-sm font-semibold text-gray-600">Genere:</span>
+                <p><%= client.gender === 'M' ? 'Maschio' : client.gender === 'F' ? 'Femmina' : client.gender %></p>
               </div>
             <% } %>
-            
-            <div class="mt-6 text-xs text-gray-500">
-              <p>Cliente inserito da: <%= user.name %></p>
-              <p>Data creazione: <%= new Date(client.created_at).toLocaleDateString() %></p>
-            </div>
+
+            <% if (client.client_status) { %>
+              <div class="mb-3">
+                <span class="text-sm font-semibold text-gray-600">Stato:</span>
+                <span class="inline-block px-2 py-1 text-xs font-semibold rounded-full ml-2
+                  <% if(client.client_status === 'active') { %>
+                    bg-green-100 text-green-800
+                  <% } else if(client.client_status === 'inactive') { %>
+                    bg-gray-100 text-gray-800
+                  <% } else if(client.client_status === 'prospect') { %>
+                    bg-blue-100 text-blue-800
+                  <% } else if(client.client_status === 'lost') { %>
+                    bg-red-100 text-red-800
+                  <% } %>
+                ">
+                  <%= client.client_status === 'active' ? 'Attivo' : 
+                     client.client_status === 'inactive' ? 'Inattivo' : 
+                     client.client_status === 'prospect' ? 'Prospect' : 
+                     client.client_status === 'lost' ? 'Perso' : client.client_status %>
+                </span>
+              </div>
+            <% } %>
+
+            <% if (client.acquisition_date) { %>
+              <div class="mb-3">
+                <span class="text-sm font-semibold text-gray-600">Data Acquisizione:</span>
+                <p><%= new Date(client.acquisition_date).toLocaleDateString() %></p>
+              </div>
+            <% } %>
+
+            <% if (client.last_contact_date) { %>
+              <div class="mb-3">
+                <span class="text-sm font-semibold text-gray-600">Ultimo Contatto:</span>
+                <p><%= new Date(client.last_contact_date).toLocaleDateString() %></p>
+              </div>
+            <% } %>
           </div>
+        </div>
+
+        <!-- Card Dati Aziendali -->
+        <% if (client.company || client.vat_number || client.company_fiscal_code) { %>
+        <div class="card border-l-4 border-blue-500">
+          <div class="card-header bg-blue-600 text-white">
+            <h5 class="font-semibold"><i class="fas fa-building"></i> Dati Aziendali</h5>
+          </div>
+          <div class="card-body">
+            <% if (client.company) { %>
+              <div class="mb-3">
+                <span class="text-sm font-semibold text-gray-600">Ragione Sociale:</span>
+                <p class="text-lg font-semibold"><%= client.company %></p>
+              </div>
+            <% } %>
+
+            <% if (client.company_legal_form) { %>
+              <div class="mb-3">
+                <span class="text-sm font-semibold text-gray-600">Forma Giuridica:</span>
+                <p><%= client.company_legal_form %></p>
+              </div>
+            <% } %>
+
+            <% if (client.vat_number) { %>
+              <div class="mb-3">
+                <span class="text-sm font-semibold text-gray-600">P.IVA:</span>
+                <p class="font-mono"><%= client.vat_number %></p>
+              </div>
+            <% } %>
+
+            <% if (client.company_fiscal_code) { %>
+              <div class="mb-3">
+                <span class="text-sm font-semibold text-gray-600">Codice Fiscale Azienda:</span>
+                <p class="font-mono"><%= client.company_fiscal_code %></p>
+              </div>
+            <% } %>
+
+            <% if (client.reference_person) { %>
+              <div class="mb-3">
+                <span class="text-sm font-semibold text-gray-600">Persona di Riferimento:</span>
+                <p><%= client.reference_person %></p>
+              </div>
+            <% } %>
+          </div>
+        </div>
+        <% } %>
+
+        <!-- Card Contatti (SENZA fax) -->
+        <div class="card border-l-4 border-green-500">
+          <div class="card-header bg-green-600 text-white">
+            <h5 class="font-semibold"><i class="fas fa-phone"></i> Contatti</h5>
+          </div>
+          <div class="card-body">
+            <% if (client.phone) { %>
+              <div class="mb-3">
+                <p><i class="fas fa-phone text-gray-500 mr-2"></i> 
+                  <a href="tel:<%= client.phone %>" class="text-nexus-red hover:underline"><%= client.phone %></a>
+                </p>
+              </div>
+            <% } %>
+
+            <% if (client.email) { %>
+              <div class="mb-3">
+                <p><i class="fas fa-envelope text-gray-500 mr-2"></i> 
+                  <a href="mailto:<%= client.email %>" class="text-nexus-red hover:underline"><%= client.email %></a>
+                </p>
+              </div>
+            <% } %>
+
+            <% if (client.pec_email) { %>
+              <div class="mb-3">
+                <p><i class="fas fa-certificate text-gray-500 mr-2"></i> 
+                  <span class="text-sm text-gray-600">PEC:</span>
+                  <a href="mailto:<%= client.pec_email %>" class="text-nexus-red hover:underline"><%= client.pec_email %></a>
+                </p>
+              </div>
+            <% } %>
+
+            <% if (client.website) { %>
+              <div class="mb-3">
+                <p><i class="fas fa-globe text-gray-500 mr-2"></i> 
+                  <a href="<%= client.website %>" target="_blank" class="text-nexus-red hover:underline"><%= client.website %></a>
+                </p>
+              </div>
+            <% } %>
+          </div>
+        </div>
+
+        <!-- Card Indirizzi -->
+        <div class="card border-l-4 border-purple-500">
+          <div class="card-header bg-purple-600 text-white">
+            <h5 class="font-semibold"><i class="fas fa-map-marker-alt"></i> Indirizzi</h5>
+          </div>
+          <div class="card-body">
+            <!-- Indirizzo Residenza -->
+            <% if (client.address || client.city) { %>
+              <div class="mb-4">
+                <h6 class="text-sm font-semibold text-gray-600 mb-1">Residenza/Sede Operativa</h6>
+                <p class="text-sm">
+                  <%= client.address || '' %><br>
+                  <%= client.postal_code || '' %> <%= client.city || '' %> (<%= client.province || '' %>)
+                </p>
+              </div>
+            <% } %>
+
+            <!-- Sede Legale -->
+            <% if (client.legal_address || client.legal_city) { %>
+              <div class="mb-4">
+                <h6 class="text-sm font-semibold text-gray-600 mb-1">Sede Legale</h6>
+                <p class="text-sm">
+                  <%= client.legal_address || '' %><br>
+                  <%= client.legal_postal_code || '' %> <%= client.legal_city || '' %> (<%= client.legal_province || '' %>)
+                </p>
+              </div>
+            <% } %>
+
+            <!-- Indirizzo Fatturazione -->
+            <% if (client.billing_address || client.billing_city) { %>
+              <div class="mb-4">
+                <h6 class="text-sm font-semibold text-gray-600 mb-1">Fatturazione</h6>
+                <p class="text-sm">
+                  <%= client.billing_address || '' %><br>
+                  <%= client.billing_postal_code || '' %> <%= client.billing_city || '' %> (<%= client.billing_province || '' %>)
+                </p>
+              </div>
+            <% } %>
+          </div>
+        </div>
+
+        <!-- Card Utenze Summary -->
+        <% if (electricity_utilities && electricity_utilities.length > 0) || (gas_utilities && gas_utilities.length > 0) { %>
+        <div class="card border-l-4 border-yellow-500">
+          <div class="card-header bg-yellow-600 text-white flex justify-between items-center">
+            <h5 class="font-semibold"><i class="fas fa-plug"></i> Riepilogo Utenze</h5>
+            <a href="/clients/<%= client.id %>/utilities" class="text-white hover:text-yellow-200 text-sm">
+              <i class="fas fa-cog"></i>
+            </a>
+          </div>
+          <div class="card-body">
+            <% if (electricity_utilities && electricity_utilities.length > 0) { %>
+              <div class="mb-3">
+                <h6 class="text-sm font-semibold text-gray-600 mb-1 flex items-center">
+                  <i class="fas fa-bolt mr-1 text-yellow-500"></i> Energia Elettrica
+                  <span class="ml-2 bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full text-xs">
+                    <%= electricity_utilities.length %>
+                  </span>
+                </h6>
+                <% electricity_utilities.slice(0, 2).forEach(utility => { %>
+                  <p class="text-xs text-gray-600">
+                    <%= utility.utility_name || 'Utenza' %> - <span class="font-mono"><%= utility.pod_code %></span>
+                    <% if (utility.annual_consumption_kwh) { %>
+                      (<%= utility.annual_consumption_kwh.toLocaleString() %> kWh/anno)
+                    <% } %>
+                  </p>
+                <% }) %>
+                <% if (electricity_utilities.length > 2) { %>
+                  <p class="text-xs text-gray-500">... e altre <%= electricity_utilities.length - 2 %> utenze</p>
+                <% } %>
+              </div>
+            <% } %>
+
+            <% if (gas_utilities && gas_utilities.length > 0) { %>
+              <div class="mb-3">
+                <h6 class="text-sm font-semibold text-gray-600 mb-1 flex items-center">
+                  <i class="fas fa-fire mr-1 text-orange-500"></i> Gas Naturale
+                  <span class="ml-2 bg-orange-100 text-orange-800 px-2 py-1 rounded-full text-xs">
+                    <%= gas_utilities.length %>
+                  </span>
+                </h6>
+                <% gas_utilities.slice(0, 2).forEach(utility => { %>
+                  <p class="text-xs text-gray-600">
+                    <%= utility.utility_name || 'Utenza' %> - <span class="font-mono"><%= utility.pdr_code %></span>
+                    <% if (utility.annual_consumption_smc) { %>
+                      (<%= utility.annual_consumption_smc.toLocaleString() %> Smc/anno)
+                    <% } %>
+                  </p>
+                <% }) %>
+                <% if (gas_utilities.length > 2) { %>
+                  <p class="text-xs text-gray-500">... e altre <%= gas_utilities.length - 2 %> utenze</p>
+                <% } %>
+              </div>
+            <% } %>
+          </div>
+        </div>
+        <% } %>
+
+        <!-- Card Note -->
+        <% if (client.notes) { %>
+        <div class="card border-l-4 border-gray-500">
+          <div class="card-header bg-gray-600 text-white">
+            <h5 class="font-semibold"><i class="fas fa-sticky-note"></i> Note</h5>
+          </div>
+          <div class="card-body">
+            <p class="whitespace-pre-line text-sm"><%= client.notes %></p>
+          </div>
+        </div>
+        <% } %>
+
+        <!-- Informazioni Sistema -->
+        <div class="text-xs text-gray-500 bg-gray-50 p-3 rounded">
+          <p>Cliente inserito da: <%= user.name %></p>
+          <p>Data creazione: <%= new Date(client.created_at).toLocaleDateString() %></p>
+          <% if (client.updated_at && client.updated_at !== client.created_at) { %>
+            <p>Ultimo aggiornamento: <%= new Date(client.updated_at).toLocaleDateString() %></p>
+          <% } %>
         </div>
       </div>
       
@@ -223,4 +455,4 @@
         </div>
       </div>
     </div>
-  </div>
+</div>

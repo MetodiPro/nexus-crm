@@ -1,4 +1,4 @@
-<div class="card max-w-4xl mx-auto">
+<div class="card max-w-6xl mx-auto">
     <div class="card-header bg-nexus-dark text-white">
       <h4 class="text-lg font-semibold">
         <i class="fas fa-user"></i> 
@@ -7,9 +7,13 @@
     </div>
     <div class="card-body">
       <form action="<%= action %>" method="POST" onsubmit="return validateForm('clientForm')" id="clientForm">
+        
+        <!-- DATI PERSONALI -->
         <div class="mb-6">
-          <h5 class="text-lg font-semibold mb-2">Informazioni Personali</h5>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <h5 class="text-lg font-semibold mb-3 text-nexus-red border-b border-gray-300 pb-2">
+            <i class="fas fa-user"></i> Dati Personali
+          </h5>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div>
               <label for="name" class="form-label">Nome *</label>
               <input type="text" class="form-input" id="name" name="name" 
@@ -21,20 +25,82 @@
                      value="<%= client.surname || '' %>" required>
             </div>
             <div>
-              <label for="company" class="form-label">Azienda</label>
+              <label for="fiscal_code" class="form-label">Codice Fiscale</label>
+              <input type="text" class="form-input" id="fiscal_code" name="fiscal_code" 
+                     value="<%= client.fiscal_code || '' %>" maxlength="16" 
+                     style="text-transform: uppercase">
+            </div>
+            <div>
+              <label for="birth_date" class="form-label">Data di Nascita</label>
+              <input type="date" class="form-input" id="birth_date" name="birth_date" 
+                     value="<%= client.birth_date || '' %>">
+            </div>
+            <div>
+              <label for="birth_place" class="form-label">Luogo di Nascita</label>
+              <input type="text" class="form-input" id="birth_place" name="birth_place" 
+                     value="<%= client.birth_place || '' %>">
+            </div>
+            <div>
+              <label for="gender" class="form-label">Genere</label>
+              <select class="form-input" id="gender" name="gender">
+                <option value="">Seleziona...</option>
+                <option value="M" <%= client.gender === 'M' ? 'selected' : '' %>>Maschio</option>
+                <option value="F" <%= client.gender === 'F' ? 'selected' : '' %>>Femmina</option>
+                <option value="Altro" <%= client.gender === 'Altro' ? 'selected' : '' %>>Altro</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- DATI AZIENDALI -->
+        <div class="mb-6">
+          <h5 class="text-lg font-semibold mb-3 text-nexus-red border-b border-gray-300 pb-2">
+            <i class="fas fa-building"></i> Dati Aziendali
+          </h5>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label for="company" class="form-label">Ragione Sociale</label>
               <input type="text" class="form-input" id="company" name="company" 
                      value="<%= client.company || '' %>">
             </div>
             <div>
+              <label for="company_legal_form" class="form-label">Forma Giuridica</label>
+              <select class="form-input" id="company_legal_form" name="company_legal_form">
+                <option value="">Seleziona...</option>
+                <option value="SRL" <%= client.company_legal_form === 'SRL' ? 'selected' : '' %>>SRL - Società a Responsabilità Limitata</option>
+                <option value="SPA" <%= client.company_legal_form === 'SPA' ? 'selected' : '' %>>SPA - Società per Azioni</option>
+                <option value="SRLS" <%= client.company_legal_form === 'SRLS' ? 'selected' : '' %>>SRLS - Società a Responsabilità Limitata Semplificata</option>
+                <option value="SNC" <%= client.company_legal_form === 'SNC' ? 'selected' : '' %>>SNC - Società in Nome Collettivo</option>
+                <option value="SAS" <%= client.company_legal_form === 'SAS' ? 'selected' : '' %>>SAS - Società in Accomandita Semplice</option>
+                <option value="SS" <%= client.company_legal_form === 'SS' ? 'selected' : '' %>>SS - Società Semplice</option>
+                <option value="Ditta Individuale" <%= client.company_legal_form === 'Ditta Individuale' ? 'selected' : '' %>>Ditta Individuale</option>
+                <option value="Altro" <%= client.company_legal_form === 'Altro' ? 'selected' : '' %>>Altro</option>
+              </select>
+            </div>
+            <div>
               <label for="vat_number" class="form-label">Partita IVA</label>
               <input type="text" class="form-input" id="vat_number" name="vat_number" 
-                     value="<%= client.vat_number || '' %>">
+                     value="<%= client.vat_number || '' %>" maxlength="11">
+            </div>
+            <div>
+              <label for="company_fiscal_code" class="form-label">Codice Fiscale Azienda</label>
+              <input type="text" class="form-input" id="company_fiscal_code" name="company_fiscal_code" 
+                     value="<%= client.company_fiscal_code || '' %>" maxlength="16"
+                     style="text-transform: uppercase">
+            </div>
+            <div>
+              <label for="reference_person" class="form-label">Persona di Riferimento</label>
+              <input type="text" class="form-input" id="reference_person" name="reference_person" 
+                     value="<%= client.reference_person || '' %>">
             </div>
           </div>
         </div>
-        
+
+        <!-- CONTATTI (SENZA fax) -->
         <div class="mb-6">
-          <h5 class="text-lg font-semibold mb-2">Contatti</h5>
+          <h5 class="text-lg font-semibold mb-3 text-nexus-red border-b border-gray-300 pb-2">
+            <i class="fas fa-phone"></i> Contatti
+          </h5>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
               <label for="phone" class="form-label">Telefono</label>
@@ -46,33 +112,202 @@
               <input type="email" class="form-input" id="email" name="email" 
                      value="<%= client.email || '' %>">
             </div>
-          </div>
-        </div>
-        
-        <div class="mb-6">
-          <h5 class="text-lg font-semibold mb-2">Indirizzo</h5>
-          <div class="grid grid-cols-1 md:grid-cols-6 gap-4">
-            <div class="md:col-span-4">
-              <label for="address" class="form-label">Via/Piazza</label>
-              <input type="text" class="form-input" id="address" name="address" 
-                     value="<%= client.address || '' %>">
+            <div>
+              <label for="pec_email" class="form-label">Email PEC</label>
+              <input type="email" class="form-input" id="pec_email" name="pec_email" 
+                     value="<%= client.pec_email || '' %>">
             </div>
-            <div class="md:col-span-2">
-              <label for="postal_code" class="form-label">CAP</label>
-              <input type="text" class="form-input" id="postal_code" name="postal_code" 
-                     value="<%= client.postal_code || '' %>">
-            </div>
-            <div class="md:col-span-6">
-              <label for="city" class="form-label">Comune</label>
-              <input type="text" class="form-input" id="city" name="city" 
-                     value="<%= client.city || '' %>">
+            <div>
+              <label for="website" class="form-label">Sito Web</label>
+              <input type="url" class="form-input" id="website" name="website" 
+                     value="<%= client.website || '' %>">
             </div>
           </div>
         </div>
-        
+
+        <!-- INDIRIZZI -->
         <div class="mb-6">
-          <label for="notes" class="form-label">Note</label>
-          <textarea class="form-input h-24" id="notes" name="notes"><%= client.notes || '' %></textarea>
+          <h5 class="text-lg font-semibold mb-3 text-nexus-red border-b border-gray-300 pb-2">
+            <i class="fas fa-map-marker-alt"></i> Indirizzi
+          </h5>
+          
+          <!-- Indirizzo di Residenza -->
+          <div class="mb-4">
+            <h6 class="font-semibold mb-2 text-gray-700 flex items-center justify-between">
+              Indirizzo di Residenza/Sede Operativa
+              <button type="button" class="btn-outline btn-sm text-xs" onclick="copyToLegal()">
+                <i class="fas fa-copy"></i> Copia su sede legale
+              </button>
+            </h6>
+            <div class="grid grid-cols-1 md:grid-cols-6 gap-4">
+              <div class="md:col-span-3">
+                <label for="address" class="form-label">Via/Piazza</label>
+                <input type="text" class="form-input" id="address" name="address" 
+                       value="<%= client.address || '' %>">
+              </div>
+              <div>
+                <label for="postal_code" class="form-label">CAP</label>
+                <input type="text" class="form-input" id="postal_code" name="postal_code" 
+                       value="<%= client.postal_code || '' %>" maxlength="5">
+              </div>
+              <div>
+                <label for="city" class="form-label">Comune</label>
+                <input type="text" class="form-input" id="city" name="city" 
+                       value="<%= client.city || '' %>">
+              </div>
+              <div>
+                <label for="province" class="form-label">Provincia</label>
+                <input type="text" class="form-input" id="province" name="province" 
+                       value="<%= client.province || '' %>" maxlength="2" 
+                       style="text-transform: uppercase">
+              </div>
+            </div>
+          </div>
+
+          <!-- Sede Legale -->
+          <div class="mb-4">
+            <h6 class="font-semibold mb-2 text-gray-700 flex items-center justify-between">
+              Sede Legale
+              <button type="button" class="btn-outline btn-sm text-xs" onclick="copyToBilling('legal')">
+                <i class="fas fa-copy"></i> Copia su fatturazione
+              </button>
+            </h6>
+            <div class="grid grid-cols-1 md:grid-cols-6 gap-4">
+              <div class="md:col-span-3">
+                <label for="legal_address" class="form-label">Via/Piazza</label>
+                <input type="text" class="form-input" id="legal_address" name="legal_address" 
+                       value="<%= client.legal_address || '' %>">
+              </div>
+              <div>
+                <label for="legal_postal_code" class="form-label">CAP</label>
+                <input type="text" class="form-input" id="legal_postal_code" name="legal_postal_code" 
+                       value="<%= client.legal_postal_code || '' %>" maxlength="5">
+              </div>
+              <div>
+                <label for="legal_city" class="form-label">Comune</label>
+                <input type="text" class="form-input" id="legal_city" name="legal_city" 
+                       value="<%= client.legal_city || '' %>">
+              </div>
+              <div>
+                <label for="legal_province" class="form-label">Provincia</label>
+                <input type="text" class="form-input" id="legal_province" name="legal_province" 
+                       value="<%= client.legal_province || '' %>" maxlength="2"
+                       style="text-transform: uppercase">
+              </div>
+            </div>
+          </div>
+
+          <!-- Indirizzo di Fatturazione -->
+          <div class="mb-4">
+            <h6 class="font-semibold mb-2 text-gray-700 flex items-center justify-between">
+              Indirizzo di Fatturazione
+              <button type="button" class="btn-outline btn-sm text-xs" onclick="copyToBilling('residence')">
+                <i class="fas fa-copy"></i> Copia da residenza
+              </button>
+            </h6>
+            <div class="grid grid-cols-1 md:grid-cols-6 gap-4">
+              <div class="md:col-span-3">
+                <label for="billing_address" class="form-label">Via/Piazza</label>
+                <input type="text" class="form-input" id="billing_address" name="billing_address" 
+                       value="<%= client.billing_address || '' %>">
+              </div>
+              <div>
+                <label for="billing_postal_code" class="form-label">CAP</label>
+                <input type="text" class="form-input" id="billing_postal_code" name="billing_postal_code" 
+                       value="<%= client.billing_postal_code || '' %>" maxlength="5">
+              </div>
+              <div>
+                <label for="billing_city" class="form-label">Comune</label>
+                <input type="text" class="form-input" id="billing_city" name="billing_city" 
+                       value="<%= client.billing_city || '' %>">
+              </div>
+              <div>
+                <label for="billing_province" class="form-label">Provincia</label>
+                <input type="text" class="form-input" id="billing_province" name="billing_province" 
+                       value="<%= client.billing_province || '' %>" maxlength="2"
+                       style="text-transform: uppercase">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- GESTIONE CLIENTE -->
+        <div class="mb-6">
+          <h5 class="text-lg font-semibold mb-3 text-nexus-red border-b border-gray-300 pb-2">
+            <i class="fas fa-cogs"></i> Gestione Cliente
+          </h5>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div>
+              <label for="client_status" class="form-label">Stato Cliente</label>
+              <select class="form-input" id="client_status" name="client_status">
+                <option value="prospect" <%= client.client_status === 'prospect' ? 'selected' : '' %>>Prospect</option>
+                <option value="active" <%= client.client_status === 'active' ? 'selected' : '' %>>Attivo</option>
+                <option value="inactive" <%= client.client_status === 'inactive' ? 'selected' : '' %>>Inattivo</option>
+                <option value="lost" <%= client.client_status === 'lost' ? 'selected' : '' %>>Perso</option>
+              </select>
+            </div>
+            <div>
+              <label for="acquisition_date" class="form-label">Data Acquisizione</label>
+              <input type="date" class="form-input" id="acquisition_date" name="acquisition_date" 
+                     value="<%= client.acquisition_date || '' %>">
+            </div>
+            <div>
+              <label for="last_contact_date" class="form-label">Ultimo Contatto</label>
+              <input type="date" class="form-input" id="last_contact_date" name="last_contact_date" 
+                     value="<%= client.last_contact_date || '' %>">
+            </div>
+          </div>
+        </div>
+
+        <!-- NOTE GENERALI -->
+        <div class="mb-6">
+          <h5 class="text-lg font-semibold mb-3 text-nexus-red border-b border-gray-300 pb-2">
+            <i class="fas fa-sticky-note"></i> Note Generali
+          </h5>
+          <div>
+            <label for="notes" class="form-label">Note</label>
+            <textarea class="form-input h-24" id="notes" name="notes" 
+                      placeholder="Note generali sul cliente..."><%= client.notes || '' %></textarea>
+          </div>
+        </div>
+
+        <!-- MESSAGGIO INFORMATIVO UTENZE -->
+        <div class="mb-6">
+          <div class="bg-gradient-to-r from-blue-50 to-green-50 border border-blue-200 rounded-lg p-4">
+            <div class="flex items-start">
+              <div class="flex-shrink-0">
+                <div class="flex space-x-1">
+                  <i class="fas fa-bolt text-yellow-500 text-lg"></i>
+                  <i class="fas fa-fire text-orange-500 text-lg"></i>
+                </div>
+              </div>
+              <div class="ml-3">
+                <h6 class="text-gray-800 font-semibold mb-1">Gestione Multiple Utenze</h6>
+                <p class="text-gray-700 text-sm mb-2">
+                  Dopo aver salvato il cliente potrai gestire <strong>multiple utenze elettriche e gas</strong>, ognuna con:
+                </p>
+                <ul class="text-gray-600 text-sm space-y-1 mb-3">
+                  <li>• <strong>Indirizzo specifico</strong> (anche diverso dalla sede del cliente)</li>
+                  <li>• <strong>Consumi annuali</strong> (kWh per elettrico, Smc per gas)</li>
+                  <li>• <strong>Dati tecnici completi</strong> (POD/PDR, potenza, fornitori)</li>
+                  <li>• <strong>Scadenze contratti</strong> e monitoraggio automatico</li>
+                </ul>
+                <% if (client.id) { %>
+                  <div class="mt-3">
+                    <a href="/clients/<%= client.id %>/utilities" 
+                       class="inline-flex items-center bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded text-sm font-medium transition-colors">
+                      <i class="fas fa-plug mr-2"></i> 
+                      Gestisci Utenze Cliente
+                    </a>
+                  </div>
+                <% } else { %>
+                  <div class="text-xs text-gray-500 italic">
+                    💡 Salva il cliente per accedere alla gestione utenze
+                  </div>
+                <% } %>
+              </div>
+            </div>
+          </div>
         </div>
         
         <div class="flex justify-between">
@@ -85,4 +320,65 @@
         </div>
       </form>
     </div>
-  </div>
+</div>
+
+<script>
+// Copia automatica indirizzi
+function copyToLegal() {
+  document.getElementById('legal_address').value = document.getElementById('address').value;
+  document.getElementById('legal_city').value = document.getElementById('city').value;
+  document.getElementById('legal_postal_code').value = document.getElementById('postal_code').value;
+  document.getElementById('legal_province').value = document.getElementById('province').value;
+}
+
+function copyToBilling(source) {
+  if (source === 'legal') {
+    document.getElementById('billing_address').value = document.getElementById('legal_address').value;
+    document.getElementById('billing_city').value = document.getElementById('legal_city').value;
+    document.getElementById('billing_postal_code').value = document.getElementById('legal_postal_code').value;
+    document.getElementById('billing_province').value = document.getElementById('legal_province').value;
+  } else {
+    document.getElementById('billing_address').value = document.getElementById('address').value;
+    document.getElementById('billing_city').value = document.getElementById('city').value;
+    document.getElementById('billing_postal_code').value = document.getElementById('postal_code').value;
+    document.getElementById('billing_province').value = document.getElementById('province').value;
+  }
+}
+
+// Validazione codice fiscale base
+function validateFiscalCode(input) {
+  const fiscalCode = input.value.toUpperCase();
+  const regex = /^[A-Z]{6}[0-9]{2}[A-Z][0-9]{2}[A-Z][0-9]{3}[A-Z]$/;
+  
+  if (fiscalCode && !regex.test(fiscalCode)) {
+    input.setCustomValidity('Formato codice fiscale non valido');
+  } else {
+    input.setCustomValidity('');
+  }
+}
+
+// Validazione partita IVA
+function validateVAT(input) {
+  const vat = input.value;
+  const regex = /^[0-9]{11}$/;
+  
+  if (vat && !regex.test(vat)) {
+    input.setCustomValidity('La partita IVA deve contenere 11 cifre');
+  } else {
+    input.setCustomValidity('');
+  }
+}
+
+// Event listeners
+document.getElementById('fiscal_code').addEventListener('blur', function() {
+  validateFiscalCode(this);
+});
+
+document.getElementById('company_fiscal_code').addEventListener('blur', function() {
+  validateFiscalCode(this);
+});
+
+document.getElementById('vat_number').addEventListener('blur', function() {
+  validateVAT(this);
+});
+</script>
