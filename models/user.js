@@ -89,14 +89,23 @@ class User {
           return callback(err);
         }
         
-        loggers.info('Nuovo utente creato', {
-          userId: this.lastID,
-          username: userData.username,
-          role: userData.role,
-          name: userData.name
+        // Usa una query separata per ottenere l'ultimo ID inserito
+        db.get('SELECT last_insert_rowid() as lastID', [], (err, row) => {
+          if (err) {
+            loggers.dbError('Errore nel recupero ID utente creato', err);
+            return callback(err);
+          }
+          
+          const newUserId = row.lastID;
+          loggers.info('Nuovo utente creato', {
+            userId: newUserId,
+            username: userData.username,
+            role: userData.role,
+            name: userData.name
+          });
+          
+          callback(null, newUserId);
         });
-        
-        callback(null, this.lastID);
       });
     });
   }
@@ -356,16 +365,27 @@ class User {
     directDb.run(query, [userId, tempSessionId, ipAddress, userAgent], function(err) {
       if (err) {
         loggers.dbError('Errore nel log sessione utente', err, query, [userId, tempSessionId, ipAddress, userAgent]);
+        directDb.close();
         if (callback) callback(err);
       } else {
-        loggers.info('Sessione utente loggata', {
-          userId,
-          sessionLogId: this.lastID,
-          ip: ipAddress
+        // Usa una query separata per ottenere l'ultimo ID inserito
+        directDb.get('SELECT last_insert_rowid() as lastID', [], (err, row) => {
+          if (err) {
+            loggers.dbError('Errore nel recupero ID sessione', err);
+            directDb.close();
+            if (callback) callback(err);
+          } else {
+            const sessionLogId = row.lastID;
+            loggers.info('Sessione utente loggata', {
+              userId,
+              sessionLogId: sessionLogId,
+              ip: ipAddress
+            });
+            directDb.close();
+            if (callback) callback(null, sessionLogId);
+          }
         });
-        if (callback) callback(null, this.lastID);
       }
-      directDb.close();
     });
   }
   

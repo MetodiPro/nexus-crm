@@ -100,6 +100,19 @@ require('./config/database');
 
 // Imposta le variabili globali per le viste
 app.use((req, res, next) => {
+  // DEBUG: Log ogni volta che viene impostato res.locals.user
+  if (req.session.user) {
+    console.log('🌐 DEBUG res.locals.user - Impostazione variabile globale:', {
+      id: req.session.user.id,
+      username: req.session.user.username,
+      role: req.session.user.role,
+      name: req.session.user.name,
+      url: req.originalUrl,
+      method: req.method,
+      timestamp: new Date().toISOString()
+    });
+  }
+  
   res.locals.user = req.session.user || null;
   res.locals.csrfToken = req.session.csrfToken || null;
   next();

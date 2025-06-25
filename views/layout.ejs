@@ -34,72 +34,72 @@
                 </a>
               </li>
               
-              <!-- Menu Clienti con sottomenu -->
+              <!-- Clienti -->
+              <li>
+                <a href="/clients" class="sidebar-link">
+                  <i class="fas fa-users w-5 text-center mr-2"></i> Clienti
+                </a>
+              </li>
+              
+              <!-- Punti di Fornitura -->
+              <li>
+                <a href="/supply-points" class="sidebar-link">
+                  <i class="fas fa-plug w-5 text-center mr-2"></i> Punti di Fornitura
+                </a>
+              </li>
+              
+              <% if (user.role === 'administrator') { %>
+                <!-- Prodotti/Servizi -->
+                <li>
+                  <a href="/products" class="sidebar-link">
+                    <i class="fas fa-box w-5 text-center mr-2"></i> Prodotti/Servizi
+                  </a>
+                </li>
+              <% } %>
+              
+              <!-- Menu Proposte/Contratti con sottomenu -->
               <li>
                 <div class="sidebar-menu-group">
-                  <a href="/clients" class="sidebar-link sidebar-parent">
-                    <i class="fas fa-users w-5 text-center mr-2"></i> Clienti
-                    <i class="fas fa-chevron-down ml-auto transition-transform duration-200" id="clients-chevron"></i>
+                  <a href="/contracts" class="sidebar-link sidebar-parent">
+                    <i class="fas fa-file-contract w-5 text-center mr-2"></i> Proposte/Contratti
+                    <i class="fas fa-chevron-down ml-auto transition-transform duration-200" id="contracts-chevron"></i>
                   </a>
-                  <ul class="sidebar-submenu hidden" id="clients-submenu">
+                  <ul class="sidebar-submenu hidden ml-6 mt-1" id="contracts-submenu">
                     <li>
-                      <a href="/clients/new" class="sidebar-sublink">
-                        <i class="fas fa-plus w-4 text-center mr-2 text-green-400"></i> Nuovo Cliente
-                      </a>
-                    </li>
-                    <li>
-                      <a href="/clients/import-bill" class="sidebar-sublink">
-                        <i class="fas fa-file-import w-4 text-center mr-2 text-blue-400"></i> Importa da Bolletta ENEL
+                      <a href="/utilities/expiring-contracts" class="sidebar-sublink">
+                        <i class="fas fa-exclamation-triangle w-4 text-center mr-2 text-orange-400"></i> Contratti in Scadenza
                       </a>
                     </li>
                   </ul>
                 </div>
               </li>
               
+              <!-- Attività -->
               <li>
                 <a href="/activities" class="sidebar-link">
                   <i class="fas fa-tasks w-5 text-center mr-2"></i> Attività
                 </a>
               </li>
+              
+              <!-- Calendario -->
               <li>
                 <a href="/activities/calendar" class="sidebar-link">
                   <i class="fas fa-calendar w-5 text-center mr-2"></i> Calendario
                 </a>
               </li>
-              <li>
-                <a href="/contracts" class="sidebar-link">
-                  <i class="fas fa-file-contract w-5 text-center mr-2"></i> Contratti
-                </a>
-              </li>
+              
+              <!-- Statistiche -->
               <li>
                 <a href="/contracts/stats" class="sidebar-link">
                   <i class="fas fa-chart-bar w-5 text-center mr-2"></i> Statistiche
                 </a>
               </li>
-              <li>
-                <a href="/supply-points" class="sidebar-link">
-                  <i class="fas fa-plug w-5 text-center mr-2"></i> Punti di Fornitura
-                </a>
-              </li>
-              <li>
-                <a href="/utilities/expiring-contracts" class="sidebar-link">
-                  <i class="fas fa-exclamation-triangle w-5 text-center mr-2"></i> Contratti in Scadenza
-                </a>
-              </li>
-              <li>
-                <a href="/supply-points" class="sidebar-link">
-                  <i class="fas fa-plug w-5 text-center mr-2 text-green-400"></i> Punti di Fornitura
-                </a>
-              </li>
+              
               <% if (user.role === 'administrator') { %>
+                <!-- Utenti -->
                 <li>
                   <a href="/users" class="sidebar-link">
                     <i class="fas fa-user-cog w-5 text-center mr-2"></i> Utenti
-                  </a>
-                </li>
-                <li>
-                  <a href="/products" class="sidebar-link">
-                    <i class="fas fa-box w-5 text-center mr-2"></i> Listino Prodotti
                   </a>
                 </li>
               <% } %>
@@ -128,10 +128,19 @@
 
             <!-- User actions -->
             <div class="flex-1 flex justify-end items-center">
-              <div class="flex-shrink-0 text-white mr-4">
+              <div class="flex-shrink-0 text-white mr-4" id="user-info">
                 <i class="fas fa-user mr-1"></i> <%= user.name %> 
-                <span class="<%= user.role === 'administrator' ? 'badge-red' : 'badge-gray' %> ml-2">
+                <span class="<%= user.role === 'administrator' ? 'badge-red' : 'badge-gray' %> ml-2" id="user-role-badge">
                   <%= user.role === 'administrator' ? 'Admin' : 'Consulente' %>
+                </span>
+                <!-- DEBUG: Inserisci direttamente i dati nel DOM per test -->
+                <span style="display:none;" id="debug-user-data">
+                  {
+                    "id": "<%= user.id %>",
+                    "username": "<%= user.username %>", 
+                    "role": "<%= user.role %>",
+                    "name": "<%= user.name %>"
+                  }
                 </span>
               </div>
               <a href="/logout" class="btn-outline-red btn-sm">
@@ -166,38 +175,38 @@
   <!-- Script per gestione sottomenu sidebar -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      // Gestione sottomenu Clienti
-      const clientsParent = document.querySelector('.sidebar-parent');
-      const clientsSubmenu = document.getElementById('clients-submenu');
-      const clientsChevron = document.getElementById('clients-chevron');
+      // Gestione sottomenu Proposte/Contratti
+      const contractsParent = document.querySelector('#contracts-submenu').parentElement.querySelector('.sidebar-parent');
+      const contractsSubmenu = document.getElementById('contracts-submenu');
+      const contractsChevron = document.getElementById('contracts-chevron');
       
-      if (clientsParent && clientsSubmenu && clientsChevron) {
+      if (contractsParent && contractsSubmenu && contractsChevron) {
         // Controlla se siamo in una pagina del sottomenu per aprirlo automaticamente
         const currentPath = window.location.pathname;
-        if (currentPath.includes('/clients/') || currentPath === '/clients/new') {
-          clientsSubmenu.classList.remove('hidden');
-          clientsChevron.style.transform = 'rotate(180deg)';
+        if (currentPath.includes('/utilities/expiring-contracts')) {
+          contractsSubmenu.classList.remove('hidden');
+          contractsChevron.style.transform = 'rotate(180deg)';
         }
         
-        clientsParent.addEventListener('click', function(e) {
-          // Se non è il link principale /clients, previeni la navigazione
-          if (!e.target.href || !e.target.href.endsWith('/clients')) {
+        contractsParent.addEventListener('click', function(e) {
+          // Se non è il link principale /contracts, previeni la navigazione
+          if (!e.target.href || !e.target.href.endsWith('/contracts')) {
             e.preventDefault();
           }
           
           // Toggle del sottomenu
-          clientsSubmenu.classList.toggle('hidden');
+          contractsSubmenu.classList.toggle('hidden');
           
           // Rotazione della chevron
-          if (clientsSubmenu.classList.contains('hidden')) {
-            clientsChevron.style.transform = 'rotate(0deg)';
+          if (contractsSubmenu.classList.contains('hidden')) {
+            contractsChevron.style.transform = 'rotate(0deg)';
           } else {
-            clientsChevron.style.transform = 'rotate(180deg)';
+            contractsChevron.style.transform = 'rotate(180deg)';
           }
         });
         
         // Evidenzia il link attivo nel sottomenu
-        const subLinks = clientsSubmenu.querySelectorAll('.sidebar-sublink');
+        const subLinks = contractsSubmenu.querySelectorAll('.sidebar-sublink');
         subLinks.forEach(link => {
           if (link.href === window.location.href) {
             link.classList.add('active');

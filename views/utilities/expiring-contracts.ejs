@@ -1,28 +1,63 @@
 <div class="max-w-7xl mx-auto">
   <!-- Header -->
-  <div class="mb-6 flex justify-between items-center">
-    <div>
-      <h2 class="text-2xl font-bold flex items-center">
-        <i class="fas fa-exclamation-triangle mr-3 text-orange-500"></i>
-        Contratti in Scadenza
-      </h2>
-      <p class="text-gray-600 mt-1">
-        Contratti che scadono nei prossimi <%= days %> giorni
-      </p>
+  <div class="mb-6">
+    <!-- Breadcrumb e navigazione -->
+    <div class="mb-4">
+      <nav class="flex" aria-label="Breadcrumb">
+        <ol class="inline-flex items-center space-x-1 md:space-x-3">
+          <li class="inline-flex items-center">
+            <a href="/" class="text-gray-700 hover:text-nexus-red">
+              <i class="fas fa-home"></i> Dashboard
+            </a>
+          </li>
+          <li>
+            <div class="flex items-center">
+              <i class="fas fa-chevron-right text-gray-400 mx-2"></i>
+              <a href="/contracts" class="text-gray-700 hover:text-nexus-red">Proposte/Contratti</a>
+            </div>
+          </li>
+          <li aria-current="page">
+            <div class="flex items-center">
+              <i class="fas fa-chevron-right text-gray-400 mx-2"></i>
+              <span class="text-gray-500">Contratti in Scadenza</span>
+            </div>
+          </li>
+        </ol>
+      </nav>
     </div>
-    <div class="space-x-2">
-      <a href="/utilities/expiring-contracts?days=30" 
-         class="btn-outline btn-sm <%= days == 30 ? 'bg-gray-100' : '' %>">
-        30 giorni
-      </a>
-      <a href="/utilities/expiring-contracts?days=60" 
-         class="btn-outline btn-sm <%= days == 60 ? 'bg-gray-100' : '' %>">
-        60 giorni
-      </a>
-      <a href="/utilities/expiring-contracts?days=90" 
-         class="btn-outline btn-sm <%= days == 90 ? 'bg-gray-100' : '' %>">
-        90 giorni
-      </a>
+    
+    <!-- Titolo e azioni -->
+    <div class="flex justify-between items-center">
+      <div>
+        <h2 class="text-2xl font-bold flex items-center">
+          <i class="fas fa-exclamation-triangle mr-3 text-orange-500"></i>
+          Contratti in Scadenza
+        </h2>
+        <p class="text-gray-600 mt-1">
+          Contratti che scadono nei prossimi <%= days %> giorni
+        </p>
+      </div>
+      <div class="flex space-x-2">
+        <!-- Pulsante torna indietro -->
+        <a href="/contracts" class="btn-outline">
+          <i class="fas fa-arrow-left"></i> Torna ai Contratti
+        </a>
+        <!-- Filtri giorni -->
+        <div class="space-x-2">
+          <a href="/utilities/expiring-contracts?days=30" 
+             class="btn-outline btn-sm <%= days == 30 ? 'bg-gray-100' : '' %>">
+            30 giorni
+          </a>
+          <a href="/utilities/expiring-contracts?days=60" 
+             class="btn-outline btn-sm <%= days == 60 ? 'bg-gray-100' : '' %>">
+            60 giorni
+          </a>
+          <a href="/utilities/expiring-contracts?days=90" 
+             class="btn-outline btn-sm <%= days == 90 ? 'bg-gray-100' : '' %>">
+            90 giorni
+          </a>
+        </div>
+      </div>
     </div>
   </div>
 

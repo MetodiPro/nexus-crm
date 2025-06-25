@@ -323,6 +323,49 @@ router.get('/delete/:id', (req, res) => {
   });
 });
 
+// Form per nuovo cliente da bolletta (con dati precompilati)
+router.get('/new-from-bill', (req, res) => {
+  console.log('📋 GET /clients/new-from-bill chiamato');
+  
+  // Ottieni i dati estratti dalla query string
+  let extractedData = {};
+  if (req.query.data) {
+    try {
+      extractedData = JSON.parse(decodeURIComponent(req.query.data));
+      console.log('✅ Dati estratti caricati:', extractedData);
+    } catch (error) {
+      console.error('❌ Errore parsing dati estratti:', error);
+      extractedData = {};
+    }
+  }
+  
+  // Prepara i dati del cliente per precompilare il form
+  const clientData = {
+    name: extractedData.firstName || '',
+    surname: extractedData.lastName || '',
+    fiscal_code: extractedData.fiscalCode || '',
+    company: extractedData.company || '',
+    vat_number: extractedData.vatNumber || '',
+    address: extractedData.address || '',
+    city: extractedData.city || '',
+    postal_code: extractedData.postalCode || '',
+    province: extractedData.province || '',
+    phone: extractedData.phone || '',
+    email: extractedData.email || ''
+  };
+  
+  console.log('📋 Dati cliente precompilati:', clientData);
+  
+  res.render('clients/form-with-import', {
+    title: 'Nuovo Cliente da Bolletta',
+    client: clientData,
+    action: '/clients/new',
+    extractedData: extractedData,
+    user: req.session.user,
+    csrfToken: req.session.csrfToken
+  });
+});
+
 // Ricerca clienti
 router.get('/search', (req, res) => {
     const searchTerm = req.query.term;

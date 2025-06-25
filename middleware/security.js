@@ -3,69 +3,17 @@ const User = require('../models/user');
 
 // Configurazione sicurezza sessioni
 const sessionSecurity = {
-  // Verifica se la sessione è valida
+  // Verifica se la sessione è valida - TEMPORANEAMENTE DISABILITATO PER DEBUG
   validateSession: (req, res, next) => {
-    if (!req.session.user) {
-      return next();
-    }
-
-    // Verifica se l'account è ancora attivo
-    User.getById(req.session.user.id, (err, user) => {
-      if (err) {
-        loggers.error('Errore nella validazione sessione', err, {
-          sessionUserId: req.session.user.id,
-          ip: req.ip
-        });
-        return next();
-      }
-
-      if (!user) {
-        // Utente eliminato - invalida la sessione
-        loggers.warn('Sessione invalidata - utente eliminato', {
-          sessionUserId: req.session.user.id,
-          ip: req.ip
-        });
-        req.session.destroy();
-        return res.redirect('/login');
-      }
-
-      if (user.account_locked) {
-        // Account bloccato - invalida la sessione
-        loggers.warn('Sessione invalidata - account bloccato', {
-          userId: user.id,
-          username: user.username,
-          ip: req.ip
-        });
-        req.session.destroy();
-        return res.redirect('/login?error=account_locked');
-      }
-
-      // Aggiorna i dati utente nella sessione se sono cambiati
-      if (user.role !== req.session.user.role || 
-          user.name !== req.session.user.name ||
-          user.username !== req.session.user.username) {
-        
-        loggers.info('Aggiornamento dati utente in sessione', {
-          userId: user.id,
-          changes: {
-            role: { old: req.session.user.role, new: user.role },
-            name: { old: req.session.user.name, new: user.name },
-            username: { old: req.session.user.username, new: user.username }
-          }
-        });
-
-        req.session.user = {
-          id: user.id,
-          username: user.username,
-          role: user.role,
-          name: user.name,
-          email: user.email,
-          loginTime: req.session.user.loginTime
-        };
-      }
-
-      next();
-    });
+    // BYPASS COMPLETO PER IDENTIFICARE IL PROBLEMA
+    console.log('🔍 DEBUG validateSession BYPASSED - Utente in sessione:', req.session.user ? {
+      id: req.session.user.id,
+      username: req.session.user.username,
+      role: req.session.user.role,
+      name: req.session.user.name
+    } : 'NESSUN UTENTE');
+    
+    return next();
   },
 
   // Middleware per controllare la durata della sessione

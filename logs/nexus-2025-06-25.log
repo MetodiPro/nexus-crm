@@ -4308,3 +4308,3131 @@ TypeError: Cannot read properties of undefined (reading 'lastID')
   "service": "nexus-crm",
   "error": "Cannot read properties of undefined (reading 'lastID')"
 }
+2025-06-25 14:17:33 [INFO]: Avvio NEXUS CRM
+{
+  "service": "nexus-crm",
+  "port": 3000
+}
+2025-06-25 14:17:34 [INFO]: Server avviato con successo
+{
+  "service": "nexus-crm",
+  "port": 3000,
+  "nodeEnv": "development",
+  "nodeVersion": "v22.13.1"
+}
+2025-06-25 14:17:34 [INFO]: Connesso al database SQLite
+{
+  "service": "nexus-crm",
+  "dbPath": "C:\\progetti\\nexus-crm\\data\\nexus.db"
+}
+2025-06-25 14:17:34 [INFO]: Tabella users verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-25 14:17:34 [INFO]: Tabella clients verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-25 14:17:34 [INFO]: Tabella activities verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-25 14:17:34 [INFO]: Tabella products verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-25 14:17:34 [INFO]: Tabella contracts verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-25 14:17:34 [INFO]: Tabella user_sessions creata
+{
+  "service": "nexus-crm"
+}
+2025-06-25 14:17:34 [INFO]: Tabella electricity_utilities verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-25 14:17:34 [INFO]: Tabella gas_utilities verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-25 14:17:34 [INFO]: Utente admin già esistente
+{
+  "service": "nexus-crm"
+}
+2025-06-25 14:17:42 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/login",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "statusCode": 200,
+  "duration": "13ms",
+  "contentLength": 4597
+}
+2025-06-25 14:17:49 [INFO]: Login riuscito
+{
+  "service": "nexus-crm",
+  "userId": 1,
+  "username": "admin",
+  "role": "administrator",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36"
+}
+2025-06-25 14:17:49 [INFO]: Login completato con successo
+{
+  "service": "nexus-crm",
+  "userId": 1,
+  "username": "admin",
+  "role": "administrator",
+  "ip": "::1",
+  "sessionId": "Bkw7IQOJxvWHN1yD31iDQphJvg1Av9Wa"
+}
+2025-06-25 14:17:49 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "5ms",
+  "contentLength": 11025
+}
+2025-06-25 14:17:49 [INFO]: Sessione utente loggata
+{
+  "service": "nexus-crm",
+  "userId": 1,
+  "sessionLogId": 30,
+  "ip": "::1"
+}
+2025-06-25 14:17:49 [DEBUG]: Session ID aggiornato
+{
+  "service": "nexus-crm",
+  "sessionLogId": 30,
+  "realSessionId": "Bkw7IQOJxvWHN1yD31iDQphJvg1Av9Wa"
+}
+2025-06-25 14:18:01 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/clients",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "12ms",
+  "contentLength": 12539
+}
+2025-06-25 14:19:09 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/contracts",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "97ms",
+  "contentLength": 11665
+}
+2025-06-25 14:19:20 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/contracts/new",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "9ms",
+  "contentLength": 13718
+}
+2025-06-25 14:23:23 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/contracts/stats",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "12ms",
+  "contentLength": 11911
+}
+2025-06-25 14:23:25 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/supply-points",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "32ms",
+  "contentLength": 12026
+}
+2025-06-25 14:23:34 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/users",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "10ms",
+  "contentLength": 10873
+}
+2025-06-25 14:23:39 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/users/edit/2",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "7ms",
+  "contentLength": 10557
+}
+2025-06-25 14:23:51 [WARN]: Errori di validazione
+{
+  "service": "nexus-crm",
+  "url": "/users/edit/2",
+  "method": "POST",
+  "userId": 1,
+  "errors": [
+    {
+      "field": "password",
+      "message": "La password deve essere tra 8 e 128 caratteri",
+      "value": "pluto24"
+    },
+    {
+      "field": "password",
+      "message": "La password deve contenere almeno una lettera minuscola, una maiuscola e un numero",
+      "value": "pluto24"
+    },
+    {
+      "field": "confirm_password",
+      "message": "La conferma password è obbligatoria quando si cambia la password"
+    },
+    {
+      "field": "confirm_password",
+      "message": "Le password non coincidono"
+    }
+  ],
+  "ip": "::1"
+}
+2025-06-25 14:23:51 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "POST",
+  "url": "/users/edit/2",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 400,
+  "duration": "14ms",
+  "contentLength": 8177
+}
+2025-06-25 14:24:16 [WARN]: Errori di validazione
+{
+  "service": "nexus-crm",
+  "url": "/users/edit/2",
+  "method": "POST",
+  "userId": 1,
+  "errors": [
+    {
+      "field": "confirm_password",
+      "message": "La conferma password è obbligatoria quando si cambia la password"
+    },
+    {
+      "field": "confirm_password",
+      "message": "Le password non coincidono"
+    }
+  ],
+  "ip": "::1"
+}
+2025-06-25 14:24:16 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "POST",
+  "url": "/users/edit/2",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 400,
+  "duration": "6ms",
+  "contentLength": 8177
+}
+2025-06-25 14:24:19 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/users",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "6ms",
+  "contentLength": 10873
+}
+2025-06-25 14:24:21 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/users/new",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "4ms",
+  "contentLength": 10462
+}
+2025-06-25 14:25:01 [WARN]: Errori di validazione
+{
+  "service": "nexus-crm",
+  "url": "/users/new",
+  "method": "POST",
+  "userId": 1,
+  "errors": [
+    {
+      "field": "password",
+      "message": "La password deve essere tra 8 e 128 caratteri",
+      "value": "Pluto24"
+    },
+    {
+      "field": "confirm_password",
+      "message": "La conferma password è obbligatoria"
+    },
+    {
+      "field": "confirm_password",
+      "message": "Le password non coincidono"
+    }
+  ],
+  "ip": "::1"
+}
+2025-06-25 14:25:01 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "POST",
+  "url": "/users/new",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 400,
+  "duration": "5ms",
+  "contentLength": 8177
+}
+2025-06-25 14:25:09 [WARN]: Pagina non trovata
+{
+  "service": "nexus-crm",
+  "url": "/.well-known/appspecific/com.chrome.devtools.json",
+  "method": "GET",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1
+}
+2025-06-25 14:25:09 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/.well-known/appspecific/com.chrome.devtools.json",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 404,
+  "duration": "6ms",
+  "contentLength": 8180
+}
+2025-06-25 14:25:11 [WARN]: Pagina non trovata
+{
+  "service": "nexus-crm",
+  "url": "/.well-known/appspecific/com.chrome.devtools.json",
+  "method": "GET",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1
+}
+2025-06-25 14:25:11 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/.well-known/appspecific/com.chrome.devtools.json",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 404,
+  "duration": "9ms",
+  "contentLength": 8180
+}
+2025-06-25 14:25:21 [WARN]: Errori di validazione
+{
+  "service": "nexus-crm",
+  "url": "/users/new",
+  "method": "POST",
+  "userId": 1,
+  "errors": [
+    {
+      "field": "password",
+      "message": "La password deve essere tra 8 e 128 caratteri",
+      "value": "Plito24"
+    },
+    {
+      "field": "confirm_password",
+      "message": "La conferma password è obbligatoria"
+    },
+    {
+      "field": "confirm_password",
+      "message": "Le password non coincidono"
+    }
+  ],
+  "ip": "::1"
+}
+2025-06-25 14:25:21 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "POST",
+  "url": "/users/new",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 400,
+  "duration": "14ms",
+  "contentLength": 8177
+}
+2025-06-25 14:25:21 [WARN]: Pagina non trovata
+{
+  "service": "nexus-crm",
+  "url": "/.well-known/appspecific/com.chrome.devtools.json",
+  "method": "GET",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1
+}
+2025-06-25 14:25:21 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/.well-known/appspecific/com.chrome.devtools.json",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 404,
+  "duration": "5ms",
+  "contentLength": 8180
+}
+2025-06-25 14:25:52 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/supply-points",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "8ms",
+  "contentLength": 12026
+}
+2025-06-25 14:25:58 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/clients",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "6ms",
+  "contentLength": 12539
+}
+2025-06-25 14:26:00 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/clients/edit/12",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "10ms",
+  "contentLength": 24990
+}
+2025-06-25 14:26:04 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/clients/12/utilities",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "15ms",
+  "contentLength": 8903
+}
+2025-06-25 14:26:06 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/clients/12/utilities/electric/new",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "13ms",
+  "contentLength": 16177
+}
+2025-06-25 14:26:52 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/clients/12/utilities",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "12ms",
+  "contentLength": 10971
+}
+2025-06-25 14:26:59 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/utilities/electric/1/edit",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "9ms",
+  "contentLength": 16219
+}
+2025-06-25 14:27:03 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "4ms",
+  "contentLength": 11025
+}
+2025-06-25 14:27:04 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/supply-points",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "6ms",
+  "contentLength": 14578
+}
+2025-06-25 14:27:13 [ERROR]: Unhandled error
+Error: Failed to lookup view "utilities/supply-point-detail" in views directory "C:\progetti\nexus-crm\views"
+    at Function.render (C:\progetti\nexus-crm\node_modules\express\lib\application.js:597:17)
+    at ServerResponse.render (C:\progetti\nexus-crm\node_modules\express\lib\response.js:1049:7)
+    at res.render (C:\progetti\nexus-crm\node_modules\express-ejs-layouts\lib\express-layouts.js:77:18)
+    at C:\progetti\nexus-crm\routes\supplyPoints.js:143:13
+    at C:\progetti\nexus-crm\models\client.js:34:7
+    at args.<computed> (C:\progetti\nexus-crm\middleware\logging.js:111:9)
+{
+  "service": "nexus-crm",
+  "error": "Failed to lookup view \"utilities/supply-point-detail\" in views directory \"C:\\progetti\\nexus-crm\\views\"",
+  "method": "GET",
+  "url": "/supply-points/view/electricity/1",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "body": {},
+  "query": {},
+  "params": {}
+}
+2025-06-25 14:27:13 [ERROR]: Errore non gestito nell'applicazione
+Error: Failed to lookup view "utilities/supply-point-detail" in views directory "C:\progetti\nexus-crm\views"
+    at Function.render (C:\progetti\nexus-crm\node_modules\express\lib\application.js:597:17)
+    at ServerResponse.render (C:\progetti\nexus-crm\node_modules\express\lib\response.js:1049:7)
+    at res.render (C:\progetti\nexus-crm\node_modules\express-ejs-layouts\lib\express-layouts.js:77:18)
+    at C:\progetti\nexus-crm\routes\supplyPoints.js:143:13
+    at C:\progetti\nexus-crm\models\client.js:34:7
+    at args.<computed> (C:\progetti\nexus-crm\middleware\logging.js:111:9)
+{
+  "service": "nexus-crm",
+  "error": "Failed to lookup view \"utilities/supply-point-detail\" in views directory \"C:\\progetti\\nexus-crm\\views\"",
+  "url": "/supply-points/view/electricity/1",
+  "method": "GET",
+  "ip": "::1",
+  "userId": 1,
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36"
+}
+2025-06-25 14:27:13 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/supply-points/view/electricity/1",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 500,
+  "duration": "12ms",
+  "contentLength": 8280
+}
+2025-06-25 14:27:19 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/clients/view/12",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "14ms",
+  "contentLength": 15123
+}
+2025-06-25 14:27:27 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/contracts/new?client_id=12",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "8ms",
+  "contentLength": 13810
+}
+2025-06-25 14:27:33 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "3ms",
+  "contentLength": 11025
+}
+2025-06-25 14:27:37 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/contracts/stats",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "6ms",
+  "contentLength": 11911
+}
+2025-06-25 14:27:39 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/activities/date/2025-06-25",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "12ms",
+  "contentLength": 9424
+}
+2025-06-25 14:27:41 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/activities/new",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "6ms",
+  "contentLength": 11611
+}
+2025-06-25 14:28:14 [WARN]: Token CSRF non valido
+{
+  "service": "nexus-crm",
+  "userId": 1,
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "path": "/activities/new",
+  "method": "POST"
+}
+2025-06-25 14:28:14 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "POST",
+  "url": "/activities/new",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 403,
+  "duration": "4ms",
+  "contentLength": 8222
+}
+2025-06-25 14:28:19 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/activities",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "7ms",
+  "contentLength": 11517
+}
+2025-06-25 14:28:26 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/activities/edit/1",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "5ms",
+  "contentLength": 11748
+}
+2025-06-25 14:28:39 [WARN]: Token CSRF non valido
+{
+  "service": "nexus-crm",
+  "userId": 1,
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "path": "/activities/edit/1",
+  "method": "POST"
+}
+2025-06-25 14:28:39 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "POST",
+  "url": "/activities/edit/1",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 403,
+  "duration": "4ms",
+  "contentLength": 8222
+}
+2025-06-25 14:28:42 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "3ms",
+  "contentLength": 11025
+}
+2025-06-25 14:39:35 [INFO]: Ricevuto SIGINT, chiusura database...
+{
+  "service": "nexus-crm"
+}
+2025-06-25 15:52:30 [INFO]: Avvio NEXUS CRM
+{
+  "service": "nexus-crm",
+  "port": 3000
+}
+2025-06-25 15:52:30 [INFO]: Server avviato con successo
+{
+  "service": "nexus-crm",
+  "port": 3000,
+  "nodeEnv": "development",
+  "nodeVersion": "v22.13.1"
+}
+2025-06-25 15:52:30 [INFO]: Connesso al database SQLite
+{
+  "service": "nexus-crm",
+  "dbPath": "C:\\progetti\\nexus-crm\\data\\nexus.db"
+}
+2025-06-25 15:52:31 [INFO]: Tabella users verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-25 15:52:31 [INFO]: Tabella clients verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-25 15:52:31 [INFO]: Tabella activities verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-25 15:52:31 [INFO]: Tabella products verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-25 15:52:31 [INFO]: Tabella contracts verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-25 15:52:31 [INFO]: Tabella user_sessions creata
+{
+  "service": "nexus-crm"
+}
+2025-06-25 15:52:31 [INFO]: Tabella electricity_utilities verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-25 15:52:31 [INFO]: Tabella gas_utilities verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-25 15:52:31 [INFO]: Utente admin già esistente
+{
+  "service": "nexus-crm"
+}
+2025-06-25 15:52:35 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/login",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "statusCode": 200,
+  "duration": "31ms",
+  "contentLength": 4597
+}
+2025-06-25 15:52:42 [INFO]: Login riuscito
+{
+  "service": "nexus-crm",
+  "userId": 1,
+  "username": "admin",
+  "role": "administrator",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36"
+}
+2025-06-25 15:52:42 [INFO]: Login completato con successo
+{
+  "service": "nexus-crm",
+  "userId": 1,
+  "username": "admin",
+  "role": "administrator",
+  "ip": "::1",
+  "sessionId": "i4_hc3p-k56LJKuiUBCVSHJeXOOqbPrb"
+}
+2025-06-25 15:52:42 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "5ms",
+  "contentLength": 11025
+}
+2025-06-25 15:52:42 [INFO]: Sessione utente loggata
+{
+  "service": "nexus-crm",
+  "userId": 1,
+  "sessionLogId": 31,
+  "ip": "::1"
+}
+2025-06-25 15:52:42 [DEBUG]: Session ID aggiornato
+{
+  "service": "nexus-crm",
+  "sessionLogId": 31,
+  "realSessionId": "i4_hc3p-k56LJKuiUBCVSHJeXOOqbPrb"
+}
+2025-06-25 15:52:45 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/clients",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "9ms",
+  "contentLength": 12539
+}
+2025-06-25 15:52:49 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/clients",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "8ms",
+  "contentLength": 10985
+}
+2025-06-25 15:52:51 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/clients/import-bill",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "7ms",
+  "contentLength": 20425
+}
+2025-06-25 15:52:58 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "POST",
+  "url": "/api/test/test",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "statusCode": 200,
+  "duration": "411ms",
+  "contentLength": 833
+}
+2025-06-25 15:52:59 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/clients/new-from-bill?data=%7B%22fiscalCode%22%3A%22NGLDIA74A56I293T%22%2C%22vatNumber%22%3A%2204494920616%22%2C%22pod%22%3A%22IT001E81073372%22%2C%22postalCode%22%3A%2280138%22%2C%22firstName%22%3A%22IDA%22%2C%22lastName%22%3A%22ANGELINO%22%2C%22clientName%22%3A%22IDA%20ANGELINO%22%2C%22address%22%3A%22Via%20Duomo%20215%22%2C%22city%22%3A%22Napoli%22%2C%22province%22%3A%22NA%22%2C%22supplier%22%3A%22ENEL%20ENERGIA%22%2C%22provider%22%3A%22ENEL%22%2C%22billType%22%3A%22energia_elettrica%22%2C%22supplyType%22%3A%22Altri%20usi%22%2C%22customerNumber%22%3A%22111206508%22%2C%22company%22%3A%22IDA%20ANGELINO%22%2C%22electricConsumption%22%3A5170%2C%22powerCommitted%22%3A15%7D",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "11ms",
+  "contentLength": 20251
+}
+2025-06-25 15:53:03 [WARN]: Token CSRF non valido
+{
+  "service": "nexus-crm",
+  "userId": 1,
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "path": "/clients/new",
+  "method": "POST"
+}
+2025-06-25 15:53:03 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "POST",
+  "url": "/clients/new",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 403,
+  "duration": "7ms",
+  "contentLength": 8222
+}
+2025-06-25 15:53:40 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/clients",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "7ms",
+  "contentLength": 10985
+}
+2025-06-25 15:53:42 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/clients",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "4ms",
+  "contentLength": 10985
+}
+2025-06-25 15:54:13 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/clients/import-bill",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "19ms",
+  "contentLength": 20425
+}
+2025-06-25 15:54:19 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "POST",
+  "url": "/api/test/test",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "statusCode": 200,
+  "duration": "171ms",
+  "contentLength": 833
+}
+2025-06-25 15:54:20 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/clients/new-from-bill?data=%7B%22fiscalCode%22%3A%22NGLDIA74A56I293T%22%2C%22vatNumber%22%3A%2204494920616%22%2C%22pod%22%3A%22IT001E81073372%22%2C%22postalCode%22%3A%2280138%22%2C%22firstName%22%3A%22IDA%22%2C%22lastName%22%3A%22ANGELINO%22%2C%22clientName%22%3A%22IDA%20ANGELINO%22%2C%22address%22%3A%22Via%20Duomo%20215%22%2C%22city%22%3A%22Napoli%22%2C%22province%22%3A%22NA%22%2C%22supplier%22%3A%22ENEL%20ENERGIA%22%2C%22provider%22%3A%22ENEL%22%2C%22billType%22%3A%22energia_elettrica%22%2C%22supplyType%22%3A%22Altri%20usi%22%2C%22customerNumber%22%3A%22111206508%22%2C%22company%22%3A%22IDA%20ANGELINO%22%2C%22electricConsumption%22%3A5170%2C%22powerCommitted%22%3A15%7D",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "8ms",
+  "contentLength": 20297
+}
+2025-06-25 15:54:22 [ERROR]: Uncaught Exception - Spegnimento applicazione
+TypeError: Cannot read properties of undefined (reading 'lastID')
+    at C:\progetti\nexus-crm\models\client.js:96:36
+    at args.<computed> (C:\progetti\nexus-crm\middleware\logging.js:111:9)
+{
+  "service": "nexus-crm",
+  "error": "Cannot read properties of undefined (reading 'lastID')"
+}
+2025-06-25 15:55:40 [INFO]: Avvio NEXUS CRM
+{
+  "service": "nexus-crm",
+  "port": 3000
+}
+2025-06-25 15:55:40 [INFO]: Server avviato con successo
+{
+  "service": "nexus-crm",
+  "port": 3000,
+  "nodeEnv": "development",
+  "nodeVersion": "v22.13.1"
+}
+2025-06-25 15:55:40 [INFO]: Connesso al database SQLite
+{
+  "service": "nexus-crm",
+  "dbPath": "C:\\progetti\\nexus-crm\\data\\nexus.db"
+}
+2025-06-25 15:55:40 [INFO]: Tabella users verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-25 15:55:40 [INFO]: Tabella clients verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-25 15:55:40 [INFO]: Tabella activities verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-25 15:55:40 [INFO]: Tabella products verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-25 15:55:40 [INFO]: Tabella contracts verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-25 15:55:40 [INFO]: Tabella user_sessions creata
+{
+  "service": "nexus-crm"
+}
+2025-06-25 15:55:40 [INFO]: Tabella electricity_utilities verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-25 15:55:40 [INFO]: Tabella gas_utilities verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-25 15:55:40 [INFO]: Utente admin già esistente
+{
+  "service": "nexus-crm"
+}
+2025-06-25 15:55:44 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/login",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "statusCode": 200,
+  "duration": "8ms",
+  "contentLength": 4597
+}
+2025-06-25 15:55:50 [INFO]: Login riuscito
+{
+  "service": "nexus-crm",
+  "userId": 1,
+  "username": "admin",
+  "role": "administrator",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36"
+}
+2025-06-25 15:55:50 [INFO]: Login completato con successo
+{
+  "service": "nexus-crm",
+  "userId": 1,
+  "username": "admin",
+  "role": "administrator",
+  "ip": "::1",
+  "sessionId": "q2Mtjtg6dP3uwhge1jcVX7fsi8BP1DmN"
+}
+2025-06-25 15:55:50 [INFO]: Sessione utente loggata
+{
+  "service": "nexus-crm",
+  "userId": 1,
+  "sessionLogId": 32,
+  "ip": "::1"
+}
+2025-06-25 15:55:50 [DEBUG]: Session ID aggiornato
+{
+  "service": "nexus-crm",
+  "sessionLogId": 32,
+  "realSessionId": "q2Mtjtg6dP3uwhge1jcVX7fsi8BP1DmN"
+}
+2025-06-25 15:55:50 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "15ms",
+  "contentLength": 11025
+}
+2025-06-25 15:55:52 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/clients",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "7ms",
+  "contentLength": 12539
+}
+2025-06-25 15:55:57 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/clients",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "5ms",
+  "contentLength": 10985
+}
+2025-06-25 15:55:59 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/clients/import-bill",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "8ms",
+  "contentLength": 20425
+}
+2025-06-25 15:56:04 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "POST",
+  "url": "/api/test/test",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "statusCode": 200,
+  "duration": "392ms",
+  "contentLength": 833
+}
+2025-06-25 15:56:06 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/clients/new-from-bill?data=%7B%22fiscalCode%22%3A%22NGLDIA74A56I293T%22%2C%22vatNumber%22%3A%2204494920616%22%2C%22pod%22%3A%22IT001E81073372%22%2C%22postalCode%22%3A%2280138%22%2C%22firstName%22%3A%22IDA%22%2C%22lastName%22%3A%22ANGELINO%22%2C%22clientName%22%3A%22IDA%20ANGELINO%22%2C%22address%22%3A%22Via%20Duomo%20215%22%2C%22city%22%3A%22Napoli%22%2C%22province%22%3A%22NA%22%2C%22supplier%22%3A%22ENEL%20ENERGIA%22%2C%22provider%22%3A%22ENEL%22%2C%22billType%22%3A%22energia_elettrica%22%2C%22supplyType%22%3A%22Altri%20usi%22%2C%22customerNumber%22%3A%22111206508%22%2C%22company%22%3A%22IDA%20ANGELINO%22%2C%22electricConsumption%22%3A5170%2C%22powerCommitted%22%3A15%7D",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "7ms",
+  "contentLength": 20297
+}
+2025-06-25 15:56:08 [ERROR]: Uncaught Exception - Spegnimento applicazione
+TypeError: Cannot read properties of undefined (reading 'lastID')
+    at C:\progetti\nexus-crm\models\client.js:96:76
+    at args.<computed> (C:\progetti\nexus-crm\middleware\logging.js:111:9)
+{
+  "service": "nexus-crm",
+  "error": "Cannot read properties of undefined (reading 'lastID')"
+}
+2025-06-25 15:57:38 [INFO]: Avvio NEXUS CRM
+{
+  "service": "nexus-crm",
+  "port": 3000
+}
+2025-06-25 15:57:38 [INFO]: Server avviato con successo
+{
+  "service": "nexus-crm",
+  "port": 3000,
+  "nodeEnv": "development",
+  "nodeVersion": "v22.13.1"
+}
+2025-06-25 15:57:38 [INFO]: Connesso al database SQLite
+{
+  "service": "nexus-crm",
+  "dbPath": "C:\\progetti\\nexus-crm\\data\\nexus.db"
+}
+2025-06-25 15:57:38 [INFO]: Tabella users verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-25 15:57:38 [INFO]: Tabella clients verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-25 15:57:38 [INFO]: Tabella activities verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-25 15:57:38 [INFO]: Tabella products verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-25 15:57:38 [INFO]: Tabella contracts verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-25 15:57:38 [INFO]: Tabella user_sessions creata
+{
+  "service": "nexus-crm"
+}
+2025-06-25 15:57:38 [INFO]: Tabella electricity_utilities verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-25 15:57:38 [INFO]: Tabella gas_utilities verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-25 15:57:38 [INFO]: Utente admin già esistente
+{
+  "service": "nexus-crm"
+}
+2025-06-25 15:57:47 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/login",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "statusCode": 200,
+  "duration": "9ms",
+  "contentLength": 4597
+}
+2025-06-25 15:57:53 [INFO]: Login riuscito
+{
+  "service": "nexus-crm",
+  "userId": 1,
+  "username": "admin",
+  "role": "administrator",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36"
+}
+2025-06-25 15:57:53 [INFO]: Login completato con successo
+{
+  "service": "nexus-crm",
+  "userId": 1,
+  "username": "admin",
+  "role": "administrator",
+  "ip": "::1",
+  "sessionId": "lO-QVg6M1-9AHB2Nh7uBq2XXIGSmF3R7"
+}
+2025-06-25 15:57:53 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "12ms",
+  "contentLength": 11025
+}
+2025-06-25 15:57:53 [INFO]: Sessione utente loggata
+{
+  "service": "nexus-crm",
+  "userId": 1,
+  "sessionLogId": 33,
+  "ip": "::1"
+}
+2025-06-25 15:57:53 [DEBUG]: Session ID aggiornato
+{
+  "service": "nexus-crm",
+  "sessionLogId": 33,
+  "realSessionId": "lO-QVg6M1-9AHB2Nh7uBq2XXIGSmF3R7"
+}
+2025-06-25 15:57:54 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/clients",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "5ms",
+  "contentLength": 12539
+}
+2025-06-25 15:57:59 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/clients",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "8ms",
+  "contentLength": 10985
+}
+2025-06-25 15:58:00 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/clients/import-bill",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "7ms",
+  "contentLength": 20425
+}
+2025-06-25 15:58:09 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "POST",
+  "url": "/api/test/test",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "statusCode": 200,
+  "duration": "411ms",
+  "contentLength": 833
+}
+2025-06-25 15:58:11 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/clients/new-from-bill?data=%7B%22fiscalCode%22%3A%22NGLDIA74A56I293T%22%2C%22vatNumber%22%3A%2204494920616%22%2C%22pod%22%3A%22IT001E81073372%22%2C%22postalCode%22%3A%2280138%22%2C%22firstName%22%3A%22IDA%22%2C%22lastName%22%3A%22ANGELINO%22%2C%22clientName%22%3A%22IDA%20ANGELINO%22%2C%22address%22%3A%22Via%20Duomo%20215%22%2C%22city%22%3A%22Napoli%22%2C%22province%22%3A%22NA%22%2C%22supplier%22%3A%22ENEL%20ENERGIA%22%2C%22provider%22%3A%22ENEL%22%2C%22billType%22%3A%22energia_elettrica%22%2C%22supplyType%22%3A%22Altri%20usi%22%2C%22customerNumber%22%3A%22111206508%22%2C%22company%22%3A%22IDA%20ANGELINO%22%2C%22electricConsumption%22%3A5170%2C%22powerCommitted%22%3A15%7D",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "8ms",
+  "contentLength": 20297
+}
+2025-06-25 15:58:13 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/clients/view/15",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "103ms",
+  "contentLength": 13982
+}
+2025-06-25 15:58:24 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/clients/15/utilities",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "14ms",
+  "contentLength": 8903
+}
+2025-06-25 15:58:26 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/clients/15/utilities/electric/new",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "8ms",
+  "contentLength": 16177
+}
+2025-06-25 15:59:19 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/clients/15/utilities",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "28ms",
+  "contentLength": 11981
+}
+2025-06-25 15:59:23 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/clients/view/15",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "10ms",
+  "contentLength": 15184
+}
+2025-06-25 16:00:26 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/activities/date/2025-06-25",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "9ms",
+  "contentLength": 8592
+}
+2025-06-25 16:00:28 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/contracts/stats",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "6ms",
+  "contentLength": 11756
+}
+2025-06-25 16:00:29 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/supply-points",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "16ms",
+  "contentLength": 14598
+}
+2025-06-25 16:00:31 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/utilities/expiring-contracts",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "10ms",
+  "contentLength": 6079
+}
+2025-06-25 16:00:35 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/users",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "8ms",
+  "contentLength": 10718
+}
+2025-06-25 16:00:46 [ERROR]: Uncaught Exception - Spegnimento applicazione
+TypeError: Cannot read properties of undefined (reading 'changes')
+    at C:\progetti\nexus-crm\models\user.js:177:29
+    at args.<computed> (C:\progetti\nexus-crm\middleware\logging.js:111:9)
+{
+  "service": "nexus-crm",
+  "error": "Cannot read properties of undefined (reading 'changes')"
+}
+2025-06-25 16:01:21 [INFO]: Avvio NEXUS CRM
+{
+  "service": "nexus-crm",
+  "port": 3000
+}
+2025-06-25 16:01:21 [INFO]: Server avviato con successo
+{
+  "service": "nexus-crm",
+  "port": 3000,
+  "nodeEnv": "development",
+  "nodeVersion": "v22.13.1"
+}
+2025-06-25 16:01:21 [INFO]: Connesso al database SQLite
+{
+  "service": "nexus-crm",
+  "dbPath": "C:\\progetti\\nexus-crm\\data\\nexus.db"
+}
+2025-06-25 16:01:21 [INFO]: Tabella users verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-25 16:01:21 [INFO]: Tabella clients verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-25 16:01:21 [INFO]: Tabella activities verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-25 16:01:21 [INFO]: Tabella products verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-25 16:01:21 [INFO]: Tabella contracts verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-25 16:01:21 [INFO]: Tabella user_sessions creata
+{
+  "service": "nexus-crm"
+}
+2025-06-25 16:01:21 [INFO]: Tabella electricity_utilities verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-25 16:01:21 [INFO]: Tabella gas_utilities verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-25 16:01:21 [INFO]: Utente admin già esistente
+{
+  "service": "nexus-crm"
+}
+2025-06-25 16:01:26 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/login",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "statusCode": 200,
+  "duration": "8ms",
+  "contentLength": 4680
+}
+2025-06-25 16:01:32 [INFO]: Login riuscito
+{
+  "service": "nexus-crm",
+  "userId": 1,
+  "username": "admin",
+  "role": "administrator",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36"
+}
+2025-06-25 16:01:32 [INFO]: Login completato con successo
+{
+  "service": "nexus-crm",
+  "userId": 1,
+  "username": "admin",
+  "role": "administrator",
+  "ip": "::1",
+  "sessionId": "fBJ8j-GjVnIvZw2MBfCbNIweeoO0KLci"
+}
+2025-06-25 16:01:32 [INFO]: Sessione utente loggata
+{
+  "service": "nexus-crm",
+  "userId": 1,
+  "sessionLogId": 34,
+  "ip": "::1"
+}
+2025-06-25 16:01:32 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "21ms",
+  "contentLength": 10494
+}
+2025-06-25 16:01:32 [DEBUG]: Session ID aggiornato
+{
+  "service": "nexus-crm",
+  "sessionLogId": 34,
+  "realSessionId": "fBJ8j-GjVnIvZw2MBfCbNIweeoO0KLci"
+}
+2025-06-25 16:01:34 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/clients",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "9ms",
+  "contentLength": 12008
+}
+2025-06-25 16:01:36 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/activities",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "35ms",
+  "contentLength": 10986
+}
+2025-06-25 16:01:36 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/activities/date/2025-06-25",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "7ms",
+  "contentLength": 8893
+}
+2025-06-25 16:01:37 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/contracts",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "9ms",
+  "contentLength": 11134
+}
+2025-06-25 16:01:38 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/contracts",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "6ms",
+  "contentLength": 11134
+}
+2025-06-25 16:01:40 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/utilities/expiring-contracts",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "8ms",
+  "contentLength": 6162
+}
+2025-06-25 16:01:45 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/contracts/stats",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "4ms",
+  "contentLength": 11380
+}
+2025-06-25 16:01:47 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/supply-points",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "16ms",
+  "contentLength": 14222
+}
+2025-06-25 16:01:48 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/users",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "5ms",
+  "contentLength": 9261
+}
+2025-06-25 16:01:49 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/products",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "6ms",
+  "contentLength": 9752
+}
+2025-06-25 16:05:05 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/contracts",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "4ms",
+  "contentLength": 11134
+}
+2025-06-25 16:05:05 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/contracts",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "5ms",
+  "contentLength": 11134
+}
+2025-06-25 16:08:07 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/contracts",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "84ms",
+  "contentLength": 11451
+}
+2025-06-25 16:08:14 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/clients",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "5ms",
+  "contentLength": 12325
+}
+2025-06-25 16:08:15 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/supply-points",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "17ms",
+  "contentLength": 14539
+}
+2025-06-25 16:08:16 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/products",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "5ms",
+  "contentLength": 10069
+}
+2025-06-25 16:08:16 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/contracts",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "4ms",
+  "contentLength": 11451
+}
+2025-06-25 16:08:17 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/contracts",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "6ms",
+  "contentLength": 11451
+}
+2025-06-25 16:08:19 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/utilities/expiring-contracts",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "8ms",
+  "contentLength": 6162
+}
+2025-06-25 16:09:25 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/supply-points",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "8ms",
+  "contentLength": 14539
+}
+2025-06-25 16:09:29 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/clients",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "4ms",
+  "contentLength": 12325
+}
+2025-06-25 16:09:31 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/clients/edit/15",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "8ms",
+  "contentLength": 24776
+}
+2025-06-25 16:09:35 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/clients/15/utilities",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "14ms",
+  "contentLength": 12064
+}
+2025-06-25 16:09:41 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/clients/view/15",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "15ms",
+  "contentLength": 14970
+}
+2025-06-25 16:09:45 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/clients/15/utilities",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "10ms",
+  "contentLength": 12064
+}
+2025-06-25 16:09:47 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "4ms",
+  "contentLength": 10811
+}
+2025-06-25 16:09:48 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/contracts/stats",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "5ms",
+  "contentLength": 11697
+}
+2025-06-25 16:09:49 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "3ms",
+  "contentLength": 10811
+}
+2025-06-25 16:09:57 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "3ms",
+  "contentLength": 10811
+}
+2025-06-25 16:10:00 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/contracts",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "3ms",
+  "contentLength": 11451
+}
+2025-06-25 16:10:02 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/utilities/expiring-contracts",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "7ms",
+  "contentLength": 7483
+}
+2025-06-25 16:10:07 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/utilities/expiring-contracts?days=30",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "6ms",
+  "contentLength": 7483
+}
+2025-06-25 16:10:08 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/utilities/expiring-contracts?days=60",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "5ms",
+  "contentLength": 7483
+}
+2025-06-25 16:10:08 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/utilities/expiring-contracts?days=90",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "6ms",
+  "contentLength": 7483
+}
+2025-06-25 16:10:09 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/contracts",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "5ms",
+  "contentLength": 11451
+}
+2025-06-25 16:10:10 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/clients",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "4ms",
+  "contentLength": 12325
+}
+2025-06-25 16:11:04 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/users",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "8ms",
+  "contentLength": 9578
+}
+2025-06-25 16:11:07 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/users/new",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "5ms",
+  "contentLength": 10159
+}
+2025-06-25 16:11:22 [WARN]: Errori di validazione
+{
+  "service": "nexus-crm",
+  "url": "/users/new",
+  "method": "POST",
+  "userId": 1,
+  "errors": [
+    {
+      "field": "password",
+      "message": "La password deve essere tra 8 e 128 caratteri",
+      "value": "pippo24"
+    },
+    {
+      "field": "password",
+      "message": "La password deve contenere almeno una lettera minuscola, una maiuscola e un numero",
+      "value": "pippo24"
+    },
+    {
+      "field": "confirm_password",
+      "message": "La conferma password è obbligatoria"
+    },
+    {
+      "field": "confirm_password",
+      "message": "Le password non coincidono"
+    }
+  ],
+  "ip": "::1"
+}
+2025-06-25 16:11:22 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "POST",
+  "url": "/users/new",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 400,
+  "duration": "21ms",
+  "contentLength": 7963
+}
+2025-06-25 16:11:43 [WARN]: Errori di validazione
+{
+  "service": "nexus-crm",
+  "url": "/users/new",
+  "method": "POST",
+  "userId": 1,
+  "errors": [
+    {
+      "field": "password",
+      "message": "La password deve essere tra 8 e 128 caratteri",
+      "value": "Pippo24"
+    },
+    {
+      "field": "confirm_password",
+      "message": "La conferma password è obbligatoria"
+    },
+    {
+      "field": "confirm_password",
+      "message": "Le password non coincidono"
+    }
+  ],
+  "ip": "::1"
+}
+2025-06-25 16:11:43 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "POST",
+  "url": "/users/new",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 400,
+  "duration": "13ms",
+  "contentLength": 7963
+}
+2025-06-25 16:11:58 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/login",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "statusCode": 200,
+  "duration": "10ms",
+  "contentLength": 4680
+}
+2025-06-25 16:12:06 [WARN]: Tentativo di login con username inesistente
+{
+  "service": "nexus-crm",
+  "username": "pippo",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36"
+}
+2025-06-25 16:12:06 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "POST",
+  "url": "/login",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "statusCode": 200,
+  "duration": "4ms",
+  "contentLength": 4889
+}
+2025-06-25 16:12:14 [INFO]: Login riuscito
+{
+  "service": "nexus-crm",
+  "userId": 1,
+  "username": "admin",
+  "role": "administrator",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36"
+}
+2025-06-25 16:12:14 [INFO]: Login completato con successo
+{
+  "service": "nexus-crm",
+  "userId": 1,
+  "username": "admin",
+  "role": "administrator",
+  "ip": "::1",
+  "sessionId": "_ppQYNjAZmpju8RUPJi1SLjGxVCMKm6q"
+}
+2025-06-25 16:12:14 [INFO]: Sessione utente loggata
+{
+  "service": "nexus-crm",
+  "userId": 1,
+  "sessionLogId": 35,
+  "ip": "::1"
+}
+2025-06-25 16:12:14 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "15ms",
+  "contentLength": 10811
+}
+2025-06-25 16:12:14 [DEBUG]: Session ID aggiornato
+{
+  "service": "nexus-crm",
+  "sessionLogId": 35,
+  "realSessionId": "_ppQYNjAZmpju8RUPJi1SLjGxVCMKm6q"
+}
+2025-06-25 16:12:17 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/users",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "3ms",
+  "contentLength": 9578
+}
+2025-06-25 16:12:23 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/users/new",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "3ms",
+  "contentLength": 10159
+}
+2025-06-25 16:12:51 [WARN]: Errori di validazione
+{
+  "service": "nexus-crm",
+  "url": "/users/new",
+  "method": "POST",
+  "userId": 1,
+  "errors": [
+    {
+      "field": "password",
+      "message": "La password deve essere tra 8 e 128 caratteri",
+      "value": "pippo24"
+    },
+    {
+      "field": "password",
+      "message": "La password deve contenere almeno una lettera minuscola, una maiuscola e un numero",
+      "value": "pippo24"
+    },
+    {
+      "field": "confirm_password",
+      "message": "La conferma password è obbligatoria"
+    },
+    {
+      "field": "confirm_password",
+      "message": "Le password non coincidono"
+    }
+  ],
+  "ip": "::1"
+}
+2025-06-25 16:12:51 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "POST",
+  "url": "/users/new",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 400,
+  "duration": "3ms",
+  "contentLength": 7963
+}
+2025-06-25 16:15:55 [WARN]: Errori di validazione
+{
+  "service": "nexus-crm",
+  "url": "/users/new",
+  "method": "POST",
+  "userId": 1,
+  "errors": [
+    {
+      "field": "password",
+      "message": "La password deve essere tra 8 e 128 caratteri",
+      "value": "pippo24"
+    },
+    {
+      "field": "password",
+      "message": "La password deve contenere almeno una lettera minuscola, una maiuscola e un numero",
+      "value": "pippo24"
+    },
+    {
+      "field": "confirm_password",
+      "message": "La conferma password è obbligatoria"
+    },
+    {
+      "field": "confirm_password",
+      "message": "Le password non coincidono"
+    }
+  ],
+  "ip": "::1"
+}
+2025-06-25 16:15:55 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "POST",
+  "url": "/users/new",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 400,
+  "duration": "5ms",
+  "contentLength": 7963
+}
+2025-06-25 16:15:59 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "1ms",
+  "contentLength": 10811
+}
+2025-06-25 16:16:01 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/users",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "2ms",
+  "contentLength": 9578
+}
+2025-06-25 16:16:02 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/users/new",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "3ms",
+  "contentLength": 10637
+}
+2025-06-25 16:16:24 [WARN]: Errori di validazione
+{
+  "service": "nexus-crm",
+  "url": "/users/new",
+  "method": "POST",
+  "userId": 1,
+  "errors": [
+    {
+      "field": "password",
+      "message": "La password deve essere tra 8 e 128 caratteri",
+      "value": "pippo"
+    },
+    {
+      "field": "password",
+      "message": "La password deve contenere almeno una lettera minuscola, una maiuscola e un numero",
+      "value": "pippo"
+    }
+  ],
+  "ip": "::1"
+}
+2025-06-25 16:16:24 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "POST",
+  "url": "/users/new",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 400,
+  "duration": "4ms",
+  "contentLength": 7963
+}
+2025-06-25 16:16:32 [INFO]: Ricevuto SIGINT, chiusura database...
+{
+  "service": "nexus-crm"
+}
+2025-06-25 16:16:36 [INFO]: Avvio NEXUS CRM
+{
+  "service": "nexus-crm",
+  "port": 3000
+}
+2025-06-25 16:16:36 [INFO]: Server avviato con successo
+{
+  "service": "nexus-crm",
+  "port": 3000,
+  "nodeEnv": "development",
+  "nodeVersion": "v22.13.1"
+}
+2025-06-25 16:16:36 [INFO]: Connesso al database SQLite
+{
+  "service": "nexus-crm",
+  "dbPath": "C:\\progetti\\nexus-crm\\data\\nexus.db"
+}
+2025-06-25 16:16:36 [INFO]: Tabella users verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-25 16:16:36 [INFO]: Tabella clients verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-25 16:16:36 [INFO]: Tabella activities verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-25 16:16:36 [INFO]: Tabella products verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-25 16:16:36 [INFO]: Tabella contracts verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-25 16:16:36 [INFO]: Tabella user_sessions creata
+{
+  "service": "nexus-crm"
+}
+2025-06-25 16:16:36 [INFO]: Tabella electricity_utilities verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-25 16:16:36 [INFO]: Tabella gas_utilities verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-25 16:16:36 [INFO]: Utente admin già esistente
+{
+  "service": "nexus-crm"
+}
+2025-06-25 16:16:39 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/login",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "statusCode": 200,
+  "duration": "8ms",
+  "contentLength": 4680
+}
+2025-06-25 16:16:47 [INFO]: Login riuscito
+{
+  "service": "nexus-crm",
+  "userId": 1,
+  "username": "admin",
+  "role": "administrator",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36"
+}
+2025-06-25 16:16:47 [INFO]: Login completato con successo
+{
+  "service": "nexus-crm",
+  "userId": 1,
+  "username": "admin",
+  "role": "administrator",
+  "ip": "::1",
+  "sessionId": "KpNxxJjxptWOmaxMfd0X4NSZlSH7ujf6"
+}
+2025-06-25 16:16:47 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "23ms",
+  "contentLength": 10811
+}
+2025-06-25 16:16:47 [INFO]: Sessione utente loggata
+{
+  "service": "nexus-crm",
+  "userId": 1,
+  "sessionLogId": 36,
+  "ip": "::1"
+}
+2025-06-25 16:16:47 [DEBUG]: Session ID aggiornato
+{
+  "service": "nexus-crm",
+  "sessionLogId": 36,
+  "realSessionId": "KpNxxJjxptWOmaxMfd0X4NSZlSH7ujf6"
+}
+2025-06-25 16:16:48 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/users",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "85ms",
+  "contentLength": 9578
+}
+2025-06-25 16:16:52 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/users/new",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "5ms",
+  "contentLength": 10637
+}
+2025-06-25 16:17:58 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/users/new",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "6ms",
+  "contentLength": 10637
+}
+2025-06-25 16:19:34 [INFO]: Ricevuto SIGINT, chiusura database...
+{
+  "service": "nexus-crm"
+}
+2025-06-25 16:19:37 [INFO]: Avvio NEXUS CRM
+{
+  "service": "nexus-crm",
+  "port": 3000
+}
+2025-06-25 16:19:37 [INFO]: Server avviato con successo
+{
+  "service": "nexus-crm",
+  "port": 3000,
+  "nodeEnv": "development",
+  "nodeVersion": "v22.13.1"
+}
+2025-06-25 16:19:37 [INFO]: Connesso al database SQLite
+{
+  "service": "nexus-crm",
+  "dbPath": "C:\\progetti\\nexus-crm\\data\\nexus.db"
+}
+2025-06-25 16:19:37 [INFO]: Tabella users verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-25 16:19:37 [INFO]: Tabella clients verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-25 16:19:37 [INFO]: Tabella activities verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-25 16:19:37 [INFO]: Tabella products verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-25 16:19:37 [INFO]: Tabella contracts verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-25 16:19:37 [INFO]: Tabella user_sessions creata
+{
+  "service": "nexus-crm"
+}
+2025-06-25 16:19:37 [INFO]: Tabella electricity_utilities verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-25 16:19:37 [INFO]: Tabella gas_utilities verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-25 16:19:37 [INFO]: Utente admin già esistente
+{
+  "service": "nexus-crm"
+}
+2025-06-25 16:19:40 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/login",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "statusCode": 200,
+  "duration": "8ms",
+  "contentLength": 4680
+}
+2025-06-25 16:19:46 [INFO]: Login riuscito
+{
+  "service": "nexus-crm",
+  "userId": 1,
+  "username": "admin",
+  "role": "administrator",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36"
+}
+2025-06-25 16:19:46 [INFO]: Login completato con successo
+{
+  "service": "nexus-crm",
+  "userId": 1,
+  "username": "admin",
+  "role": "administrator",
+  "ip": "::1",
+  "sessionId": "YORftuoeyG7kZ4bhojQfE32BcIaJx4pQ"
+}
+2025-06-25 16:19:46 [INFO]: Sessione utente loggata
+{
+  "service": "nexus-crm",
+  "userId": 1,
+  "sessionLogId": 37,
+  "ip": "::1"
+}
+2025-06-25 16:19:46 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "19ms",
+  "contentLength": 10811
+}
+2025-06-25 16:19:46 [DEBUG]: Session ID aggiornato
+{
+  "service": "nexus-crm",
+  "sessionLogId": 37,
+  "realSessionId": "YORftuoeyG7kZ4bhojQfE32BcIaJx4pQ"
+}
+2025-06-25 16:19:47 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/users",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "33ms",
+  "contentLength": 9578
+}
+2025-06-25 16:19:49 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/users/new",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "5ms",
+  "contentLength": 10637
+}
+2025-06-25 16:19:56 [WARN]: Pagina non trovata
+{
+  "service": "nexus-crm",
+  "url": "/.well-known/appspecific/com.chrome.devtools.json",
+  "method": "GET",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1
+}
+2025-06-25 16:19:56 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/.well-known/appspecific/com.chrome.devtools.json",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 404,
+  "duration": "9ms",
+  "contentLength": 7966
+}
+2025-06-25 16:20:48 [INFO]: Ricevuto SIGINT, chiusura database...
+{
+  "service": "nexus-crm"
+}
+2025-06-25 16:20:50 [INFO]: Avvio NEXUS CRM
+{
+  "service": "nexus-crm",
+  "port": 3000
+}
+2025-06-25 16:20:50 [INFO]: Server avviato con successo
+{
+  "service": "nexus-crm",
+  "port": 3000,
+  "nodeEnv": "development",
+  "nodeVersion": "v22.13.1"
+}
+2025-06-25 16:20:50 [INFO]: Connesso al database SQLite
+{
+  "service": "nexus-crm",
+  "dbPath": "C:\\progetti\\nexus-crm\\data\\nexus.db"
+}
+2025-06-25 16:20:50 [INFO]: Tabella users verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-25 16:20:50 [INFO]: Tabella clients verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-25 16:20:50 [INFO]: Tabella activities verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-25 16:20:50 [INFO]: Tabella products verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-25 16:20:50 [INFO]: Tabella contracts verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-25 16:20:50 [INFO]: Tabella user_sessions creata
+{
+  "service": "nexus-crm"
+}
+2025-06-25 16:20:50 [INFO]: Tabella electricity_utilities verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-25 16:20:50 [INFO]: Tabella gas_utilities verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-25 16:20:50 [INFO]: Utente admin già esistente
+{
+  "service": "nexus-crm"
+}
+2025-06-25 16:20:53 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/login",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "statusCode": 200,
+  "duration": "17ms",
+  "contentLength": 4680
+}
+2025-06-25 16:21:00 [INFO]: Login riuscito
+{
+  "service": "nexus-crm",
+  "userId": 1,
+  "username": "admin",
+  "role": "administrator",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36"
+}
+2025-06-25 16:21:00 [INFO]: Login completato con successo
+{
+  "service": "nexus-crm",
+  "userId": 1,
+  "username": "admin",
+  "role": "administrator",
+  "ip": "::1",
+  "sessionId": "X9MAJn83oRTtbDdMvL8Yn616u0DLODhN"
+}
+2025-06-25 16:21:00 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "10ms",
+  "contentLength": 10811
+}
+2025-06-25 16:21:00 [INFO]: Sessione utente loggata
+{
+  "service": "nexus-crm",
+  "userId": 1,
+  "sessionLogId": 38,
+  "ip": "::1"
+}
+2025-06-25 16:21:00 [DEBUG]: Session ID aggiornato
+{
+  "service": "nexus-crm",
+  "sessionLogId": 38,
+  "realSessionId": "X9MAJn83oRTtbDdMvL8Yn616u0DLODhN"
+}
+2025-06-25 16:21:25 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/clients",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "8ms",
+  "contentLength": 12325
+}
+2025-06-25 16:21:28 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/users",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "36ms",
+  "contentLength": 9578
+}
+2025-06-25 16:21:31 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/users/new",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "8ms",
+  "contentLength": 10637
+}
+2025-06-25 16:24:23 [INFO]: Ricevuto SIGINT, chiusura database...
+{
+  "service": "nexus-crm"
+}
+2025-06-25 16:24:32 [INFO]: Avvio NEXUS CRM
+{
+  "service": "nexus-crm",
+  "port": 3000
+}
+2025-06-25 16:24:32 [INFO]: Server avviato con successo
+{
+  "service": "nexus-crm",
+  "port": 3000,
+  "nodeEnv": "development",
+  "nodeVersion": "v22.13.1"
+}
+2025-06-25 16:24:32 [INFO]: Connesso al database SQLite
+{
+  "service": "nexus-crm",
+  "dbPath": "C:\\progetti\\nexus-crm\\data\\nexus.db"
+}
+2025-06-25 16:24:32 [INFO]: Tabella users verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-25 16:24:32 [INFO]: Tabella clients verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-25 16:24:32 [INFO]: Tabella activities verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-25 16:24:32 [INFO]: Tabella products verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-25 16:24:32 [INFO]: Tabella contracts verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-25 16:24:32 [INFO]: Tabella user_sessions creata
+{
+  "service": "nexus-crm"
+}
+2025-06-25 16:24:32 [INFO]: Tabella electricity_utilities verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-25 16:24:32 [INFO]: Tabella gas_utilities verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-25 16:24:32 [INFO]: Utente admin già esistente
+{
+  "service": "nexus-crm"
+}
+2025-06-25 16:24:36 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/login",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "statusCode": 200,
+  "duration": "18ms",
+  "contentLength": 4680
+}
+2025-06-25 16:24:43 [INFO]: Login riuscito
+{
+  "service": "nexus-crm",
+  "userId": 1,
+  "username": "admin",
+  "role": "administrator",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36"
+}
+2025-06-25 16:24:43 [INFO]: Login completato con successo
+{
+  "service": "nexus-crm",
+  "userId": 1,
+  "username": "admin",
+  "role": "administrator",
+  "ip": "::1",
+  "sessionId": "psP3leKawnQFyk-xKLnssmCYwU_5cWKM"
+}
+2025-06-25 16:24:43 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "22ms",
+  "contentLength": 11272
+}
+2025-06-25 16:24:43 [INFO]: Sessione utente loggata
+{
+  "service": "nexus-crm",
+  "userId": 1,
+  "sessionLogId": 39,
+  "ip": "::1"
+}
+2025-06-25 16:24:43 [DEBUG]: Session ID aggiornato
+{
+  "service": "nexus-crm",
+  "sessionLogId": 39,
+  "realSessionId": "psP3leKawnQFyk-xKLnssmCYwU_5cWKM"
+}
+2025-06-25 16:25:13 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/users",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "32ms",
+  "contentLength": 10039
+}
+2025-06-25 16:25:18 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/users/new",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "7ms",
+  "contentLength": 11065
+}
+2025-06-25 16:25:28 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/users",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "6ms",
+  "contentLength": 10039
+}
+2025-06-25 16:27:11 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/users/new",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "4ms",
+  "contentLength": 11065
+}
+2025-06-25 16:27:34 [WARN]: Errori di validazione
+{
+  "service": "nexus-crm",
+  "url": "/users/new",
+  "method": "POST",
+  "userId": 1,
+  "errors": [
+    {
+      "field": "password",
+      "message": "La password deve essere tra 8 e 128 caratteri",
+      "value": "pippo11"
+    },
+    {
+      "field": "password",
+      "message": "La password deve contenere almeno una lettera minuscola, una maiuscola e un numero",
+      "value": "pippo11"
+    }
+  ],
+  "ip": "::1"
+}
+2025-06-25 16:27:34 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "POST",
+  "url": "/users/new",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 400,
+  "duration": "15ms",
+  "contentLength": 8424
+}
+2025-06-25 16:29:59 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/users/new",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "6ms",
+  "contentLength": 16043
+}
+2025-06-25 16:30:14 [INFO]: Ricevuto SIGINT, chiusura database...
+{
+  "service": "nexus-crm"
+}

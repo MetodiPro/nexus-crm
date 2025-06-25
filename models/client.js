@@ -93,8 +93,17 @@ class Client {
           console.error('❌ DEBUG Client.create errore DB:', err);
           callback(err, null);
         } else {
-          console.log('✅ DEBUG Client.create successo, ID generato:', this.lastID);
-          callback(null, this.lastID);
+          // Usa una query separata per ottenere l'ultimo ID inserito
+          db.get('SELECT last_insert_rowid() as lastID', [], (err, row) => {
+            if (err) {
+              console.error('❌ DEBUG Client.create errore nel recupero ID:', err);
+              callback(err, null);
+            } else {
+              const newClientId = row.lastID;
+              console.log('✅ DEBUG Client.create successo, ID generato:', newClientId);
+              callback(null, newClientId);
+            }
+          });
         }
       }
     );

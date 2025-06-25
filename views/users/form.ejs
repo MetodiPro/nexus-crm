@@ -35,6 +35,44 @@
       </h4>
     </div>
     <div class="card-body">
+      <!-- Mostra errori di validazione -->
+      <% if (typeof errors !== 'undefined' && errors.length > 0) { %>
+        <div class="bg-red-50 border border-red-200 rounded-lg p-4 mb-6">
+          <div class="flex">
+            <div class="flex-shrink-0">
+              <i class="fas fa-exclamation-triangle text-red-400"></i>
+            </div>
+            <div class="ml-3">
+              <h3 class="text-sm font-medium text-red-800">Errori di validazione:</h3>
+              <div class="mt-2 text-sm text-red-700">
+                <ul class="list-disc pl-5 space-y-1">
+                  <% errors.forEach(error => { %>
+                    <li><%= error.message %></li>
+                  <% }) %>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% } %>
+      
+      <!-- Mostra errore generico -->
+      <% if (typeof error !== 'undefined' && error) { %>
+        <div class="bg-red-50 border border-red-200 rounded-lg p-4 mb-6">
+          <div class="flex">
+            <div class="flex-shrink-0">
+              <i class="fas fa-exclamation-triangle text-red-400"></i>
+            </div>
+            <div class="ml-3">
+              <h3 class="text-sm font-medium text-red-800">Errore:</h3>
+              <div class="mt-2 text-sm text-red-700">
+                <%= error %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% } %>
+      
       <form action="<%= action %>" method="POST">
         <input type="hidden" name="_csrf" value="<%= csrfToken %>">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
@@ -57,24 +95,51 @@
             </label>
             <input type="password" class="form-input" id="password" name="password" 
                    <%= user.id ? '' : 'required' %>>
+            <% if (!user.id) { %>
+              <div class="mt-2 text-sm text-gray-600 bg-blue-50 border border-blue-200 rounded p-3">
+                <h6 class="font-semibold text-blue-800 mb-2">Requisiti password:</h6>
+                <ul class="text-xs space-y-1 list-disc list-inside">
+                  <li>Minimo <strong>8 caratteri</strong>, massimo 128 caratteri</li>
+                  <li>Almeno <strong>1 lettera minuscola</strong> (a-z)</li>
+                  <li>Almeno <strong>1 lettera maiuscola</strong> (A-Z)</li>
+                  <li>Almeno <strong>1 numero</strong> (0-9)</li>
+                </ul>
+                <p class="text-xs text-blue-700 mt-2"><strong>Esempio valido:</strong> Password123</p>
+              </div>
+            <% } %>
           </div>
+          <div>
+            <label for="confirm_password" class="form-label">
+              Conferma Password <%= user.id ? '(solo se cambi la password)' : '' %>
+            </label>
+            <input type="password" class="form-input" id="confirm_password" name="confirm_password" 
+                   <%= user.id ? '' : 'required' %>>
+            <% if (!user.id) { %>
+              <div class="mt-2 text-sm text-gray-500">
+                <i class="fas fa-info-circle mr-1"></i>
+                Ripeti esattamente la password inserita sopra
+              </div>
+            <% } %>
+          </div>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
           <div>
             <label for="email" class="form-label">Email</label>
             <input type="email" class="form-input" id="email" name="email" 
                    value="<%= user.email || '' %>">
           </div>
-        </div>
-        
-        <div class="mb-6">
-          <label for="role" class="form-label">Ruolo</label>
-          <select class="form-select" id="role" name="role" required>
-            <option value="consultant" <%= (user.role === 'consultant') ? 'selected' : '' %>>
-              Consulente
-            </option>
-            <option value="administrator" <%= (user.role === 'administrator') ? 'selected' : '' %>>
-              Amministratore
-            </option>
-          </select>
+          <div>
+            <label for="role" class="form-label">Ruolo</label>
+            <select class="form-select" id="role" name="role" required>
+              <option value="consultant" <%= (user.role === 'consultant') ? 'selected' : '' %>>
+                Consulente
+              </option>
+              <option value="administrator" <%= (user.role === 'administrator') ? 'selected' : '' %>>
+                Amministratore
+              </option>
+            </select>
+          </div>
         </div>
         
         <div class="flex justify-between">
@@ -88,3 +153,106 @@
       </form>
     </div>
   </div>
+
+<% if (!user.id) { %>
+<!-- JavaScript per validazione password in tempo reale -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const passwordField = document.getElementById('password');
+  const confirmField = document.getElementById('confirm_password');
+  
+  if (passwordField) {
+    // Crea indicatori di validazione
+    const validationDiv = document.createElement('div');
+    validationDiv.className = 'mt-2 text-xs space-y-1';
+    validationDiv.innerHTML = `
+      <div id="length-check" class="text-gray-500">
+        <i class="fas fa-circle mr-1"></i> Minimo 8 caratteri
+      </div>
+      <div id="lowercase-check" class="text-gray-500">
+        <i class="fas fa-circle mr-1"></i> Lettera minuscola
+      </div>
+      <div id="uppercase-check" class="text-gray-500">
+        <i class="fas fa-circle mr-1"></i> Lettera maiuscola
+      </div>
+      <div id="number-check" class="text-gray-500">
+        <i class="fas fa-circle mr-1"></i> Numero
+      </div>
+    `;
+    
+    passwordField.parentNode.appendChild(validationDiv);
+    
+    passwordField.addEventListener('input', function() {
+      const password = this.value;
+      
+      // Controlla lunghezza
+      const lengthCheck = document.getElementById('length-check');
+      if (password.length >= 8) {
+        lengthCheck.className = 'text-green-600';
+        lengthCheck.innerHTML = '<i class="fas fa-check-circle mr-1"></i> Minimo 8 caratteri';
+      } else {
+        lengthCheck.className = 'text-gray-500';
+        lengthCheck.innerHTML = '<i class="fas fa-circle mr-1"></i> Minimo 8 caratteri';
+      }
+      
+      // Controlla minuscola
+      const lowercaseCheck = document.getElementById('lowercase-check');
+      if (/[a-z]/.test(password)) {
+        lowercaseCheck.className = 'text-green-600';
+        lowercaseCheck.innerHTML = '<i class="fas fa-check-circle mr-1"></i> Lettera minuscola';
+      } else {
+        lowercaseCheck.className = 'text-gray-500';
+        lowercaseCheck.innerHTML = '<i class="fas fa-circle mr-1"></i> Lettera minuscola';
+      }
+      
+      // Controlla maiuscola
+      const uppercaseCheck = document.getElementById('uppercase-check');
+      if (/[A-Z]/.test(password)) {
+        uppercaseCheck.className = 'text-green-600';
+        uppercaseCheck.innerHTML = '<i class="fas fa-check-circle mr-1"></i> Lettera maiuscola';
+      } else {
+        uppercaseCheck.className = 'text-gray-500';
+        uppercaseCheck.innerHTML = '<i class="fas fa-circle mr-1"></i> Lettera maiuscola';
+      }
+      
+      // Controlla numero
+      const numberCheck = document.getElementById('number-check');
+      if (/[0-9]/.test(password)) {
+        numberCheck.className = 'text-green-600';
+        numberCheck.innerHTML = '<i class="fas fa-check-circle mr-1"></i> Numero';
+      } else {
+        numberCheck.className = 'text-gray-500';
+        numberCheck.innerHTML = '<i class="fas fa-circle mr-1"></i> Numero';
+      }
+    });
+    
+    // Validazione conferma password
+    if (confirmField) {
+      const confirmValidation = document.createElement('div');
+      confirmValidation.id = 'confirm-validation';
+      confirmValidation.className = 'mt-2 text-xs';
+      confirmField.parentNode.appendChild(confirmValidation);
+      
+      function checkPasswordMatch() {
+        const password = passwordField.value;
+        const confirm = confirmField.value;
+        const validation = document.getElementById('confirm-validation');
+        
+        if (confirm === '') {
+          validation.innerHTML = '';
+        } else if (password === confirm) {
+          validation.className = 'mt-2 text-xs text-green-600';
+          validation.innerHTML = '<i class="fas fa-check-circle mr-1"></i> Le password coincidono';
+        } else {
+          validation.className = 'mt-2 text-xs text-red-600';
+          validation.innerHTML = '<i class="fas fa-times-circle mr-1"></i> Le password non coincidono';
+        }
+      }
+      
+      passwordField.addEventListener('input', checkPasswordMatch);
+      confirmField.addEventListener('input', checkPasswordMatch);
+    }
+  }
+});
+</script>
+<% } %>

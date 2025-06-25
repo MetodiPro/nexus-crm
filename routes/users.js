@@ -57,6 +57,14 @@ router.get('/view/:id', validateId, auditMiddleware('VIEW', 'users'), (req, res)
 
 // Form per nuovo utente
 router.get('/new', (req, res) => {
+  console.log('📝 DEBUG /users/new - Utente in sessione:', {
+    id: req.session.user?.id,
+    username: req.session.user?.username,
+    role: req.session.user?.role,
+    name: req.session.user?.name,
+    timestamp: new Date().toISOString()
+  });
+  
   res.render('users/form', { 
     user: {}, 
     action: '/users/new',
