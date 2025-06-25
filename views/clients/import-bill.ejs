@@ -16,18 +16,28 @@
       <li aria-current="page">
         <div class="flex items-center">
           <i class="fas fa-chevron-right text-gray-400 mx-2"></i>
-          <span class="text-gray-500">Importa da Bolletta</span>
+          <span class="text-gray-500">Importa da Bolletta ENEL</span>
         </div>
       </li>
     </ol>
   </nav>
   <h1 class="text-3xl font-bold text-nexus-dark mt-4">
     <i class="fas fa-file-import mr-3 text-blue-600"></i>
-    Importa Cliente da Bolletta
+    Importa Cliente da Bolletta ENEL
   </h1>
   <p class="text-gray-600 mt-2">
-    Carica una bolletta PDF per estrarre automaticamente i dati del cliente
+    Carica una bolletta ENEL PDF per estrarre automaticamente i dati del cliente
   </p>
+  <div class="bg-amber-50 border border-amber-200 rounded-lg p-3 mt-3">
+    <div class="flex items-center">
+      <i class="fas fa-exclamation-triangle text-amber-600 mr-2"></i>
+      <span class="text-amber-800 font-medium">Funzionalità Ottimizzata per ENEL</span>
+    </div>
+    <p class="text-amber-700 text-sm mt-1">
+      Questa funzione è specificatamente ottimizzata per bollette <strong>ENEL Energia</strong>. 
+      Per altri gestori energetici, inserire i dati del cliente manualmente.
+    </p>
+  </div>
 </div>
 
 <div class="max-w-4xl mx-auto">
@@ -36,27 +46,29 @@
     <div class="card-header bg-blue-600 text-white">
       <h4 class="text-lg font-semibold">
         <i class="fas fa-info-circle mr-2"></i>
-        Come Funziona
+        Dati Estratti da Bollette ENEL
       </h4>
     </div>
     <div class="card-body">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
-          <h5 class="font-semibold text-blue-600 mb-3">📄 Dati Cliente Estratti</h5>
+          <h5 class="font-semibold text-blue-600 mb-3">👤 Dati Cliente ENEL</h5>
           <ul class="text-sm space-y-1 text-gray-700">
-            <li>• <strong>Nome e Cognome</strong> dell'intestatario</li>
+            <li>• <strong>Nome e Cognome</strong> separati</li>
             <li>• <strong>Codice Fiscale</strong> e Partita IVA</li>
             <li>• <strong>Indirizzo di fornitura</strong> completo</li>
             <li>• <strong>Città, CAP e Provincia</strong></li>
+            <li>• <strong>Numero Cliente</strong> ENEL</li>
           </ul>
         </div>
         <div>
-          <h5 class="font-semibold text-orange-600 mb-3">⚡ Dati Utenze Estratti</h5>
+          <h5 class="font-semibold text-orange-600 mb-3">⚡ Dati Utenze ENEL</h5>
           <ul class="text-sm space-y-1 text-gray-700">
             <li>• <strong>Codice POD</strong> (energia elettrica)</li>
             <li>• <strong>Codice PDR</strong> (gas naturale)</li>
-            <li>• <strong>Consumi annuali</strong> (kWh/Smc)</li>
-            <li>• <strong>Fornitore attuale</strong></li>
+            <li>• <strong>Consumi annuali</strong> stimati</li>
+            <li>• <strong>Potenza impegnata</strong> (kW)</li>
+            <li>• <strong>Tipologia uso</strong> (domestico/business)</li>
           </ul>
         </div>
       </div>
@@ -68,7 +80,7 @@
     <div class="card-header bg-nexus-dark text-white">
       <h4 class="text-lg font-semibold">
         <i class="fas fa-upload mr-2"></i>
-        Carica Bolletta PDF
+        Carica Bolletta ENEL PDF
       </h4>
     </div>
     <div class="card-body">
@@ -77,21 +89,21 @@
       <div id="dropZone" class="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-blue-400 transition-colors cursor-pointer">
         <div id="dropContent">
           <i class="fas fa-cloud-upload-alt text-4xl text-gray-400 mb-4"></i>
-          <h5 class="text-lg font-semibold text-gray-700 mb-2">Trascina qui la bolletta PDF</h5>
+          <h5 class="text-lg font-semibold text-gray-700 mb-2">Trascina qui la bolletta ENEL PDF</h5>
           <p class="text-gray-500 mb-4">oppure clicca per selezionare il file</p>
           <button type="button" class="btn-primary" onclick="document.getElementById('billFile').click()">
             <i class="fas fa-folder-open mr-2"></i>
-            Seleziona File PDF
+            Seleziona Bolletta ENEL
           </button>
           <input type="file" id="billFile" name="billFile" accept=".pdf" class="hidden">
-          <p class="text-xs text-gray-400 mt-2">Dimensione massima: 10MB | Solo file PDF</p>
+          <p class="text-xs text-gray-400 mt-2">Dimensione massima: 10MB | Solo bollette ENEL in formato PDF</p>
         </div>
         
         <!-- Loading State -->
         <div id="loadingState" class="hidden">
           <i class="fas fa-spinner fa-spin text-4xl text-blue-500 mb-4"></i>
-          <h5 class="text-lg font-semibold text-blue-600 mb-2">Elaborazione in corso...</h5>
-          <p class="text-gray-600">Stiamo estraendo i dati dalla bolletta</p>
+          <h5 class="text-lg font-semibold text-blue-600 mb-2">Elaborazione bolletta ENEL...</h5>
+          <p class="text-gray-600">Analisi del contenuto e estrazione automatica dei dati</p>
         </div>
       </div>
 
@@ -128,7 +140,13 @@
             <h5 class="font-semibold text-red-800">Errore nell'Elaborazione</h5>
           </div>
           <p id="errorMessage" class="text-red-700 mb-4"></p>
-          <button type="button" id="retryBtn" class="btn-outline">
+          <div class="bg-red-100 border border-red-300 rounded p-3 mt-3">
+            <p class="text-red-800 text-sm">
+              <strong>Suggerimento:</strong> Se il file non è una bolletta ENEL, 
+              <a href="/clients/new" class="text-red-600 underline font-medium">inserisci i dati manualmente</a>
+            </p>
+          </div>
+          <button type="button" id="retryBtn" class="btn-outline mt-3">
             <i class="fas fa-redo mr-2"></i>
             Riprova
           </button>
@@ -187,13 +205,19 @@ function handleFileSelect(e) {
 // Processing
 function handleFile(file) {
   if (file.type !== 'application/pdf') {
-    showError('Solo file PDF sono supportati');
+    showError('Solo file PDF sono supportati. Per altri formati, inserire i dati manualmente.');
     return;
   }
   
   if (file.size > 10 * 1024 * 1024) {
     showError('Il file è troppo grande. Dimensione massima: 10MB');
     return;
+  }
+  
+  // Controlla se il nome del file suggerisce che sia una bolletta ENEL
+  const fileName = file.name.toLowerCase();
+  if (!fileName.includes('enel') && !fileName.includes('bolletta')) {
+    console.warn('⚠️ File potrebbe non essere una bolletta ENEL');
   }
   
   uploadAndProcess(file);
@@ -225,12 +249,12 @@ function uploadAndProcess(file) {
     if (data.success) {
       showSuccess(data);
     } else {
-      showError(data.message || 'Errore sconosciuto');
+      showError(data.message || 'Errore nell\'elaborazione della bolletta ENEL');
     }
   })
   .catch(error => {
     console.error('Errore upload:', error);
-    showError('Errore di connessione');
+    showError('Errore di connessione. Verificare la connessione internet.');
   });
 }
 
@@ -238,21 +262,39 @@ function showSuccess(data) {
   loadingState.classList.add('hidden');
   extractedData = data;
   
+  // Mostra dettagli più specifici per ENEL
+  const isEnel = data.provider === 'ENEL' || (data.data && data.data.provider === 'ENEL');
+  const confidenceColor = (data.confidence || 0) >= 70 ? 'text-green-700' : 
+                         (data.confidence || 0) >= 50 ? 'text-yellow-700' : 'text-red-700';
+  
   extractionSummary.innerHTML = `
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 text-sm">
       <div>
         <span class="font-semibold text-green-700">Fornitore:</span>
-        <p class="text-gray-700">${data.provider || 'Non identificato'}</p>
+        <p class="text-gray-700">${data.provider || 'Non identificato'} ${isEnel ? '✅' : '⚠️'}</p>
       </div>
       <div>
-        <span class="font-semibold text-green-700">Confidenza:</span>
+        <span class="font-semibold ${confidenceColor}">Confidenza:</span>
         <p class="text-gray-700">${data.confidence || 0}%</p>
       </div>
       <div>
         <span class="font-semibold text-green-700">Campi Estratti:</span>
         <p class="text-gray-700">${Object.keys(data.data || {}).length} campi</p>
       </div>
+      <div>
+        <span class="font-semibold text-blue-700">Tipo:</span>
+        <p class="text-gray-700">${data.data?.billType || 'Generico'}</p>
+      </div>
     </div>
+    ${!isEnel ? `
+    <div class="bg-yellow-50 border border-yellow-200 rounded p-3 mt-3">
+      <p class="text-yellow-800 text-sm">
+        <i class="fas fa-exclamation-triangle mr-1"></i>
+        <strong>Attenzione:</strong> Il file potrebbe non essere una bolletta ENEL. 
+        La qualità dei dati estratti potrebbe essere ridotta.
+      </p>
+    </div>
+    ` : ''}
   `;
   
   extractionResults.classList.remove('hidden');

@@ -43,10 +43,20 @@ router.post('/test', upload.single('billFile'), async (req, res) => {
     
     console.log('📄 Testo estratto dal PDF:', pdfData.text.substring(0, 200) + '...');
     
-    // Usa il parser per estrarre i dati
+    // Usa il parser per estrarre i dati (ora con supporto ENEL specifico)
     const SimpleBillParser = require('../services/simpleBillParser');
+    const EnelBillParser = require('../services/enelBillParser');
+    
     const extractedData = SimpleBillParser.parseFromText(pdfData.text);
-    const confidence = SimpleBillParser.calculateConfidence(extractedData);
+    
+    // Calcola confidenza usando il parser appropriato
+    let confidence;
+    const isEnelBill = EnelBillParser.isEnelBill(pdfData.text);
+    if (isEnelBill) {
+      confidence = EnelBillParser.calculateConfidence(extractedData);
+    } else {
+      confidence = SimpleBillParser.calculateConfidence(extractedData);
+    }
     
     console.log('✅ Dati estratti dal PDF:', extractedData);
     
@@ -81,17 +91,22 @@ router.post('/test', upload.single('billFile'), async (req, res) => {
       });
     }
     
+    // Determina il tipo di parser utilizzato
+    const parserUsed = isEnelBill ? 'ENEL_SPECIFIC' : 'GENERIC';
+    
     res.json({ 
       success: true, 
-      message: 'PDF elaborato con successo!',
+      message: `PDF elaborato con successo! (Parser: ${parserUsed})`,
       provider: extractedData.provider || 'SCONOSCIUTO',
       confidence: confidence,
       data: extractedData,
+      parserType: parserUsed,
       debug: {
         filename: req.file.originalname,
         size: req.file.size,
         extractedFields: Object.keys(extractedData).length,
-        pdfTextPreview: pdfData.text.substring(0, 100)
+        pdfTextPreview: pdfData.text.substring(0, 100),
+        enelDetected: isEnelBill
       }
     });
     
@@ -124,6 +139,7 @@ router.post('/test', upload.single('billFile'), async (req, res) => {
         error: error.message
       }
     });
-  }});
+  }
+});
 
 module.exports = router;

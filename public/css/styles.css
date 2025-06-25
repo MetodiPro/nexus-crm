@@ -2108,3 +2108,61 @@ video {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
+
+/* Stili per sottomenu sidebar */
+.sidebar-parent {
+  position: relative;
+  cursor: pointer;
+}
+
+.sidebar-submenu {
+  margin-top: 0.25rem;
+  margin-left: 1rem;
+}
+
+.sidebar-sublink {
+  display: flex;
+  align-items: center;
+  border-radius: 0.25rem;
+  padding: 0.375rem 0.75rem;
+  font-size: 0.875rem;
+  color: rgb(156 163 175);
+  transition: all 0.15s ease;
+}
+
+.sidebar-sublink:hover {
+  background-color: rgb(55 65 81);
+  color: rgb(255 255 255);
+  padding-left: 1rem;
+}
+
+.sidebar-sublink.active {
+  background-color: rgb(37 99 235);
+  color: rgb(255 255 255);
+  font-weight: 500;
+}
+
+.sidebar-parent .fa-chevron-down {
+  transition: transform 0.2s ease;
+  font-size: 0.75rem;
+}
+
+.ml-auto {
+  margin-left: auto;
+}
+
+/* Animazione per l'apertura del sottomenu */
+.sidebar-submenu:not(.hidden) {
+  animation: slideDown 0.2s ease-out;
+}
+
+@keyframes slideDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

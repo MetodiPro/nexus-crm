@@ -2,7 +2,29 @@
 
 NEXUS CRM è un'applicazione web avanzata progettata per consulenti nel settore dell'energia elettrica e gas naturale. Offre una soluzione completa e sicura per la gestione di clienti, attività commerciali e contratti energetici con funzionalità enterprise-grade.
 
-## 🌟 Caratteristiche Principali
+## ✨ Nuove Funzionalità - Versione 2.0
+
+### 📋 Parser Bollette ENEL Automatico
+- **Estrazione automatica dati** da bollette ENEL Energia PDF
+- **Riconoscimento intelligente** di nome, cognome, codice fiscale
+- **Estrazione codici utenza** (POD, PDR) e dati consumo
+- **Validazione automatica** con punteggio di confidenza
+- **Creazione cliente one-click** con dati precompilati
+- **Interfaccia drag & drop** per caricamento file
+
+#### Dati Estratti Automaticamente:
+- 👤 **Anagrafica**: Nome, Cognome, Codice Fiscale, P.IVA
+- 🏠 **Indirizzo**: Via completa, CAP, Città, Provincia
+- ⚡ **Utenza elettrica**: Codice POD, consumi kWh, potenza impegnata
+- 🔥 **Utenza gas**: Codice PDR, consumi Smc
+- 📞 **Cliente**: Numero cliente ENEL, tipo fornitura
+
+**Accesso rapido:**
+- Menu laterale: "Importa da Bolletta ENEL"
+- Pagina Clienti: Pulsante "Importa da Bolletta ENEL"
+- URL diretto: `/clients/import-bill`
+
+---
 
 ### 🔐 Sicurezza Avanzata
 - **Sistema di autenticazione a due livelli** (amministratore e consulente)
@@ -22,6 +44,7 @@ NEXUS CRM è un'applicazione web avanzata progettata per consulenti nel settore 
 
 ### 📊 Gestione Dati Completa
 - **Gestione clienti** con informazioni dettagliate e storico delle interazioni
+- **📋 Importazione automatica da bollette ENEL** con parser intelligente
 - **Pianificazione attività** con calendario e gestione appuntamenti
 - **Gestione contratti energetici** (elettricità, gas, dual fuel)
 - **Gestione prodotti** con listino prezzi e caratteristiche tecniche

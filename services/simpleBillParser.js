@@ -2,19 +2,32 @@
  * 🔍 Parser Bollette Semplificato - NEXUS CRM
  * 
  * Estrae i dati base da bollette energetiche italiane
+ * Utilizza parser specifici per ogni fornitore quando disponibili
  */
+
+const EnelBillParser = require('./enelBillParser');
 
 class SimpleBillParser {
   
   /**
    * Estrae dati da testo bolletta usando pattern regex
+   * Utilizza parser specifici quando il fornitore è riconosciuto
    */
   static parseFromText(text) {
-    const data = {};
     const normalizedText = text.toLowerCase();
     
     console.log('🔍 Analisi testo bolletta...');
     console.log('📄 Prime 500 caratteri:', text.substring(0, 500));
+    
+    // Verifica se è una bolletta ENEL e usa il parser specifico
+    if (EnelBillParser.isEnelBill(text)) {
+      console.log('📋 Bolletta ENEL rilevata - usando parser specifico');
+      return EnelBillParser.parseFromText(text);
+    }
+    
+    console.log('📋 Bolletta generica - usando parser base');
+    
+    const data = {};
 
     // Pattern migliorati per ENEL e altri fornitori
     const patterns = {

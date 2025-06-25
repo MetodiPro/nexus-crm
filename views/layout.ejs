@@ -33,11 +33,29 @@
                   <i class="fas fa-tachometer-alt w-5 text-center mr-2"></i> Dashboard
                 </a>
               </li>
+              
+              <!-- Menu Clienti con sottomenu -->
               <li>
-                <a href="/clients" class="sidebar-link">
-                  <i class="fas fa-users w-5 text-center mr-2"></i> Clienti
-                </a>
+                <div class="sidebar-menu-group">
+                  <a href="/clients" class="sidebar-link sidebar-parent">
+                    <i class="fas fa-users w-5 text-center mr-2"></i> Clienti
+                    <i class="fas fa-chevron-down ml-auto transition-transform duration-200" id="clients-chevron"></i>
+                  </a>
+                  <ul class="sidebar-submenu hidden" id="clients-submenu">
+                    <li>
+                      <a href="/clients/new" class="sidebar-sublink">
+                        <i class="fas fa-plus w-4 text-center mr-2 text-green-400"></i> Nuovo Cliente
+                      </a>
+                    </li>
+                    <li>
+                      <a href="/clients/import-bill" class="sidebar-sublink">
+                        <i class="fas fa-file-import w-4 text-center mr-2 text-blue-400"></i> Importa da Bolletta ENEL
+                      </a>
+                    </li>
+                  </ul>
+                </div>
               </li>
+              
               <li>
                 <a href="/activities" class="sidebar-link">
                   <i class="fas fa-tasks w-5 text-center mr-2"></i> Attività
@@ -61,6 +79,11 @@
               <li>
                 <a href="/utilities/expiring-contracts" class="sidebar-link">
                   <i class="fas fa-exclamation-triangle w-5 text-center mr-2"></i> Contratti in Scadenza
+                </a>
+              </li>
+              <li>
+                <a href="/supply-points" class="sidebar-link">
+                  <i class="fas fa-plug w-5 text-center mr-2 text-green-400"></i> Punti di Fornitura
                 </a>
               </li>
               <% if (user.role === 'administrator') { %>
@@ -134,5 +157,49 @@
   <% } %>
 
   <script src="/js/main.js"></script>
+  
+  <!-- Script per gestione sottomenu sidebar -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Gestione sottomenu Clienti
+      const clientsParent = document.querySelector('.sidebar-parent');
+      const clientsSubmenu = document.getElementById('clients-submenu');
+      const clientsChevron = document.getElementById('clients-chevron');
+      
+      if (clientsParent && clientsSubmenu && clientsChevron) {
+        // Controlla se siamo in una pagina del sottomenu per aprirlo automaticamente
+        const currentPath = window.location.pathname;
+        if (currentPath.includes('/clients/') || currentPath === '/clients/new') {
+          clientsSubmenu.classList.remove('hidden');
+          clientsChevron.style.transform = 'rotate(180deg)';
+        }
+        
+        clientsParent.addEventListener('click', function(e) {
+          // Se non è il link principale /clients, previeni la navigazione
+          if (!e.target.href || !e.target.href.endsWith('/clients')) {
+            e.preventDefault();
+          }
+          
+          // Toggle del sottomenu
+          clientsSubmenu.classList.toggle('hidden');
+          
+          // Rotazione della chevron
+          if (clientsSubmenu.classList.contains('hidden')) {
+            clientsChevron.style.transform = 'rotate(0deg)';
+          } else {
+            clientsChevron.style.transform = 'rotate(180deg)';
+          }
+        });
+        
+        // Evidenzia il link attivo nel sottomenu
+        const subLinks = clientsSubmenu.querySelectorAll('.sidebar-sublink');
+        subLinks.forEach(link => {
+          if (link.href === window.location.href) {
+            link.classList.add('active');
+          }
+        });
+      }
+    });
+  </script>
 </body>
 </html>
