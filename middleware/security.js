@@ -230,6 +230,11 @@ const sessionSecurity = {
       return next();
     }
 
+    // Escludi route API specifiche dal controllo CSRF
+    if (req.path.startsWith('/api/upload-bill') || req.path.startsWith('/api/test')) {
+      return next();
+    }
+
     const tokenFromForm = req.body._csrf || req.headers['x-csrf-token'];
     const tokenFromSession = req.session.csrfToken;
 

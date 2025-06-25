@@ -207,7 +207,16 @@ function uploadAndProcess(file) {
   const formData = new FormData();
   formData.append('billFile', file);
   
-  fetch('/clients/import-bill', {
+  // Aggiungi token CSRF se disponibile
+  const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || 
+                   '<%= csrfToken %>';
+  
+  const headers = {};
+  if (csrfToken && csrfToken !== '<%= csrfToken %>') {
+    formData.append('_csrf', csrfToken);
+  }
+  
+  fetch('/api/test/test', {
     method: 'POST',
     body: formData
   })

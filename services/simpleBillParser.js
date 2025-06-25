@@ -12,55 +12,101 @@ class SimpleBillParser {
   static parseFromText(text) {
     const data = {};
     const normalizedText = text.toLowerCase();
+    
+    console.log('🔍 Analisi testo bolletta...');
+    console.log('📄 Prime 500 caratteri:', text.substring(0, 500));
 
-    // Pattern per dati anagrafici
+    // Pattern migliorati per ENEL e altri fornitori
     const patterns = {
-      clientName: /(?:intestatario|cliente)[:\s]+([A-Z\s]{2,50})/i,
-      fiscalCode: /(?:codice\s*fiscale|cod\.?\s*fisc\.?|c\.f\.?)[:\s]+([A-Z0-9]{16})/i,
-      vatNumber: /(?:partita\s*iva|p\.?\s*iva)[:\s]+([0-9]{11})/i,
+      // Nome completo - pattern più specifici
+      clientName: [
+        /gentile\s+([A-Z\s]{2,50})[,\n]/i,
+        /intestatario[:\s]+([A-Z\s]{2,50})[\n,]/i,
+        /sig\.?\s*([A-Z]+\s+[A-Z]+)/i,
+        /cliente[:\s]+([A-Z\s]{2,50})[\n,]/i
+      ],
       
-      // Indirizzo fornitura
-      address: /(?:indirizzo\s*(?:di\s*)?fornitura|fornitura)[:\s]+(.+?)(?:\n|[0-9]{5})/i,
-      postalCode: /([0-9]{5})\s+([A-Z\s]+)\s+\(([A-Z]{2})\)/i,
+      // Codice fiscale - molto specifico
+      fiscalCode: [
+        /codice\s*fiscale[:\s]+([A-Z]{6}[0-9]{2}[A-Z][0-9]{2}[A-Z][0-9]{3}[A-Z])/i,
+        /([A-Z]{6}[0-9]{2}[A-Z][0-9]{2}[A-Z][0-9]{3}[A-Z])(?=\s)/g
+      ],
       
-      // Codici utenze
-      pod: /pod[:\s]+([A-Z0-9]{14,15})/i,
-      pdr: /pdr[:\s]+([0-9]{14})/i,
+      // POD - specifico per energia elettrica
+      pod: [
+        /pod[:\s]*([A-Z]{2}[0-9]{3}[A-Z][0-9]{8})/i,
+        /codice\s*pod[:\s]*([A-Z]{2}[0-9]{3}[A-Z][0-9]{8})/i
+      ],
       
-      // Consumi
-      electricConsumption: /(?:consumo|energia\s*attiva)[:\s]+([0-9,\.]+)\s*kwh/i,
-      gasConsumption: /consumo[:\s]+([0-9,\.]+)\s*(?:smc|m3)/i,
+      // Indirizzo - pattern per ENEL
+      address: [
+        /fornitura\s*(?:di\s*energia\s*elettrica\s*)?(?:è\s*)?(?:in|:)\s*([^\n]{10,100})/i,
+        /via\s+([^\n]{5,80})\s+[0-9]{5}/i,
+        /indirizzo[:\s]+([^\n]{10,100})/i
+      ],
+      
+      // CAP e Città
+      postalCode: [
+        /([0-9]{5})\s+([A-Z\s]{2,30})\s+([A-Z]{2})(?=\s|$)/i
+      ],
+      
+      // PDR per gas
+      pdr: [
+        /pdr[:\s]*([0-9]{14})/i
+      ],
       
       // Fornitore
-      supplier: /(?:fornitore|venditore)[:\s]+(.+?)(?:\n|via)/i
+      supplier: [
+        /enel\s*energia/i,
+        /eni\s*gas/i,
+        /edison/i,
+        /a2a/i
+      ]
     };
 
-    // Applica pattern
-    for (const [key, pattern] of Object.entries(patterns)) {
-      const match = text.match(pattern);
-      if (match) {
-        if (key === 'postalCode' && match.length >= 4) {
-          data.postalCode = match[1];
-          data.city = match[2].trim();
-          data.province = match[3];
-        } else if (match[1]) {
+    // Applica tutti i pattern
+    for (const [key, patternList] of Object.entries(patterns)) {
+      for (const pattern of patternList) {
+        const match = text.match(pattern);
+        if (match && match[1]) {
+          console.log(`✅ Trovato ${key}:`, match[1]);
           data[key] = match[1].trim();
+          break; // Prende il primo match valido
         }
       }
     }
-
-    // Post-processing
+    
+    // Post-processing specifico
+    if (data.postalCode) {
+      const cityMatch = text.match(/([0-9]{5})\s+([A-Z\s]{2,30})\s+([A-Z]{2})/i);
+      if (cityMatch) {
+        data.postalCode = cityMatch[1];
+        data.city = cityMatch[2].trim();
+        data.province = cityMatch[3];
+        console.log(`📍 Estratto indirizzo completo: ${data.postalCode} ${data.city} (${data.province})`);
+      }
+    }
+    
+    // Estrazione nome e cognome da clientName
     if (data.clientName) {
-      const parts = data.clientName.split(/\s+/);
-      if (parts.length >= 2) {
-        data.firstName = parts[0];
-        data.lastName = parts.slice(1).join(' ');
+      // Pulisci il nome da caratteri extra
+      let cleanName = data.clientName
+        .replace(/[,\.]/g, '')
+        .replace(/\s+/g, ' ')
+        .trim();
+      
+      const nameParts = cleanName.split(/\s+/);
+      if (nameParts.length >= 2) {
+        data.firstName = nameParts[0];
+        data.lastName = nameParts.slice(1).join(' ');
+        console.log(`👤 Nome: ${data.firstName}, Cognome: ${data.lastName}`);
       }
     }
 
     // Identifica fornitore
     data.provider = this.identifyProvider(normalizedText);
     
+    console.log('📋 Dati finali estratti:', data);
     return this.validateData(data);
   }
 

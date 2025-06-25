@@ -14,6 +14,11 @@
             "date": 1750761844590,
             "name": "C:\\progetti\\nexus-crm\\logs\\audit-2025-06-24.log",
             "hash": "635ad755b4183541af176a92046a75d60319a55e438f032937c250e86d3aaf8e"
+        },
+        {
+            "date": 1750840300317,
+            "name": "C:\\progetti\\nexus-crm\\logs\\audit-2025-06-25.log",
+            "hash": "a0b729ce16af5ac11b1cfdb1e61ae8f73e19ae89299b46c9e5834171fb2bab6a"
         }
     ],
     "hashType": "sha256"

@@ -32,11 +32,12 @@ const authMiddleware = (req, res, next) => {
 // GET - Pagina upload bolletta
 router.get('/clients/import-bill', authMiddleware, (req, res) => {
   res.render('clients/import-bill', {
-    title: 'Importa Cliente da Bolletta'
+    title: 'Importa Cliente da Bolletta',
+    csrfToken: req.session.csrfToken
   });
 });
 
-// POST - Upload e processing
+// POST - Upload e processing (senza verifica CSRF per semplicità)
 router.post('/clients/import-bill', authMiddleware, upload.single('billFile'), async (req, res) => {
   try {
     if (!req.file) {

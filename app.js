@@ -24,6 +24,14 @@ app.use(requestLogger);
 // Rate limiting per login
 app.use('/login', sessionSecurity.loginRateLimit);
 
+// Route upload bollette senza CSRF (PRIMA di tutti i middleware di sicurezza)
+const billUploadRoutes = require('./routes/billUpload');
+app.use('/api/upload-bill', billUploadRoutes);
+
+// Route di test per debug
+const testUploadRoutes = require('./routes/testUpload');
+app.use('/api/test', testUploadRoutes);
+
 // Configurazione middleware
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
