@@ -129,6 +129,63 @@ const db = new sqlite3.Database(dbPath, (err) => {
         else loggers.info('Tabella user_sessions creata');
       });
       
+      // Tabella utenze elettriche
+      db.run(`CREATE TABLE IF NOT EXISTS electricity_utilities (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        client_id INTEGER NOT NULL,
+        pod_code TEXT NOT NULL,
+        utility_name TEXT,
+        power_kw REAL,
+        voltage TEXT CHECK(voltage IN ('BT', 'MT', 'AT')),
+        meter_type TEXT,
+        supplier TEXT,
+        contract_start_date DATE,
+        contract_end_date DATE,
+        last_bill_date DATE,
+        annual_consumption_kwh INTEGER,
+        annual_consumption_year INTEGER,
+        utility_address TEXT,
+        utility_city TEXT,
+        utility_postal_code TEXT,
+        utility_province TEXT,
+        notes TEXT,
+        is_active BOOLEAN DEFAULT 1,
+        created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+        updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+        FOREIGN KEY (client_id) REFERENCES clients (id) ON DELETE CASCADE
+      )`, (err) => {
+        if (err) loggers.dbError('Errore creazione tabella electricity_utilities', err);
+        else loggers.info('Tabella electricity_utilities verificata/creata');
+      });
+      
+      // Tabella utenze gas
+      db.run(`CREATE TABLE IF NOT EXISTS gas_utilities (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        client_id INTEGER NOT NULL,
+        pdr_code TEXT NOT NULL,
+        utility_name TEXT,
+        meter_type TEXT,
+        remi_code TEXT,
+        supplier TEXT,
+        contract_start_date DATE,
+        contract_end_date DATE,
+        last_bill_date DATE,
+        annual_consumption_smc INTEGER,
+        annual_consumption_year INTEGER,
+        utility_address TEXT,
+        utility_city TEXT,
+        utility_postal_code TEXT,
+        utility_province TEXT,
+        notes TEXT,
+        is_active BOOLEAN DEFAULT 1,
+        created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+        updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+        FOREIGN KEY (client_id) REFERENCES clients (id) ON DELETE CASCADE
+      )`, (err) => {
+        if (err) loggers.dbError('Errore creazione tabella gas_utilities', err);
+        else loggers.info('Tabella gas_utilities verificata/creata');
+      });
+      
       // Inserisci un utente admin di default se non esiste
       const bcrypt = require('bcrypt');
       const salt = bcrypt.genSaltSync(10);

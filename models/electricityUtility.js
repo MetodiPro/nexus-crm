@@ -1,6 +1,17 @@
 const db = require('../config/database');
 
 class ElectricityUtility {
+  // Ottieni tutte le utenze elettriche
+  static getAll(callback) {
+    db.all(`
+      SELECT eu.*, c.name as client_name, c.surname as client_surname, c.company
+      FROM electricity_utilities eu
+      JOIN clients c ON eu.client_id = c.id
+      WHERE eu.is_active = 1
+      ORDER BY c.name ASC, c.surname ASC, eu.utility_name ASC
+    `, callback);
+  }
+  
   // Ottieni tutte le utenze elettriche di un cliente
   static getByClientId(clientId, callback) {
     db.all(`

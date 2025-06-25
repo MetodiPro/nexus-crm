@@ -95,6 +95,7 @@
 - Funziona **solo con bollette ENEL Energia**
 - Richiede PDF con **testo selezionabile** (no scansioni)
 - Dimensione massima **10MB**
+- **ESTRAE SOLO DATI ANAGRAFICI** (non crea più utenze automaticamente)
 
 ### 💡 Come Usare
 1. Andare su **"Importa da Bolletta ENEL"** dal menu
@@ -102,7 +103,8 @@
 3. Verificare **punteggio di confidenza** (>70% ottimale)
 4. Cliccare **"Crea Cliente con Dati Estratti"**
 5. Completare eventuali **campi mancanti**
-6. Salvare per creare cliente e utenze
+6. Salvare per creare cliente con dati anagrafici
+7. **Inserire manualmente** i punti di fornitura dalla sezione "Gestione Utenze"
 
 ### 🔧 Risoluzione Problemi
 - **Confidenza bassa**: Verificare che sia una bolletta ENEL recente

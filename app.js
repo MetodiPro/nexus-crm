@@ -140,6 +140,10 @@ app.use('/contracts', contractRoutes);
 const utilityRoutes = require('./routes/utilities');
 app.use('/', utilityRoutes);
 
+// Rotte per i punti di fornitura
+const supplyPointsRoutes = require('./routes/supplyPoints');
+app.use('/supply-points', supplyPointsRoutes);
+
 // Rotte per l'import bollette (versione semplificata)
 const billImportRoutes = require('./routes/billImportSimple');
 app.use('/', billImportRoutes);

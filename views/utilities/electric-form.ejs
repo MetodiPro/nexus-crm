@@ -57,6 +57,7 @@
   </div>
   <div class="card-body">
     <form action="<%= action %>" method="POST" onsubmit="return validateElectricForm()" id="electricForm">
+      <input type="hidden" name="_csrf" value="<%= csrfToken %>">
       
       <!-- IDENTIFICAZIONE UTENZA -->
       <div class="mb-6">

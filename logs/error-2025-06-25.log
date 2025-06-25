@@ -128,3 +128,192 @@ Error: listen EADDRINUSE: address already in use :::3000
   "service": "nexus-crm",
   "error": "listen EADDRINUSE: address already in use :::3000"
 }
+2025-06-25 13:04:54 [ERROR]: Uncaught Exception - Spegnimento applicazione
+Error: listen EADDRINUSE: address already in use :::3000
+    at Server.setupListenHandle [as _listen2] (node:net:1937:16)
+    at listenInCluster (node:net:1994:12)
+    at Server.listen (node:net:2099:7)
+    at Function.listen (C:\progetti\nexus-crm\node_modules\express\lib\application.js:635:24)
+    at gracefulShutdown (C:\progetti\nexus-crm\app.js:208:22)
+    at process.<anonymous> (C:\progetti\nexus-crm\app.js:232:28)
+    at process.emit (node:events:536:35)
+{
+  "service": "nexus-crm",
+  "error": "listen EADDRINUSE: address already in use :::3000"
+}
+2025-06-25 13:08:57 [ERROR]: Unhandled error
+SyntaxError: Invalid or unexpected token in C:\progetti\nexus-crm\views\utilities\supply-points.ejs while compiling ejs
+
+If the above error is not helpful, you may want to try EJS-Lint:
+https://github.com/RyanZim/EJS-Lint
+Or, if you meant to create an async function, pass `async: true` as an option.
+    at new Function (<anonymous>)
+    at Template.compile (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:673:12)
+    at Object.compile (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:398:16)
+    at handleCache (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:235:18)
+    at tryHandleCache (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:274:16)
+    at exports.renderFile [as engine] (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:491:10)
+    at View.render (C:\progetti\nexus-crm\node_modules\express\lib\view.js:135:8)
+    at tryRender (C:\progetti\nexus-crm\node_modules\express\lib\application.js:657:10)
+    at Function.render (C:\progetti\nexus-crm\node_modules\express\lib\application.js:609:3)
+    at ServerResponse.render (C:\progetti\nexus-crm\node_modules\express\lib\response.js:1049:7)
+{
+  "service": "nexus-crm",
+  "error": "Invalid or unexpected token in C:\\progetti\\nexus-crm\\views\\utilities\\supply-points.ejs while compiling ejs\n\nIf the above error is not helpful, you may want to try EJS-Lint:\nhttps://github.com/RyanZim/EJS-Lint\nOr, if you meant to create an async function, pass `async: true` as an option.",
+  "method": "GET",
+  "url": "/supply-points",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "body": {},
+  "query": {},
+  "params": {}
+}
+2025-06-25 13:08:57 [ERROR]: Errore non gestito nell'applicazione
+SyntaxError: Invalid or unexpected token in C:\progetti\nexus-crm\views\utilities\supply-points.ejs while compiling ejs
+
+If the above error is not helpful, you may want to try EJS-Lint:
+https://github.com/RyanZim/EJS-Lint
+Or, if you meant to create an async function, pass `async: true` as an option.
+    at new Function (<anonymous>)
+    at Template.compile (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:673:12)
+    at Object.compile (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:398:16)
+    at handleCache (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:235:18)
+    at tryHandleCache (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:274:16)
+    at exports.renderFile [as engine] (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:491:10)
+    at View.render (C:\progetti\nexus-crm\node_modules\express\lib\view.js:135:8)
+    at tryRender (C:\progetti\nexus-crm\node_modules\express\lib\application.js:657:10)
+    at Function.render (C:\progetti\nexus-crm\node_modules\express\lib\application.js:609:3)
+    at ServerResponse.render (C:\progetti\nexus-crm\node_modules\express\lib\response.js:1049:7)
+{
+  "service": "nexus-crm",
+  "error": "Invalid or unexpected token in C:\\progetti\\nexus-crm\\views\\utilities\\supply-points.ejs while compiling ejs\n\nIf the above error is not helpful, you may want to try EJS-Lint:\nhttps://github.com/RyanZim/EJS-Lint\nOr, if you meant to create an async function, pass `async: true` as an option.",
+  "url": "/supply-points",
+  "method": "GET",
+  "ip": "::1",
+  "userId": 1,
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36"
+}
+2025-06-25 13:10:37 [ERROR]: Unhandled error
+SyntaxError: Invalid or unexpected token in C:\progetti\nexus-crm\views\utilities\supply-points.ejs while compiling ejs
+
+If the above error is not helpful, you may want to try EJS-Lint:
+https://github.com/RyanZim/EJS-Lint
+Or, if you meant to create an async function, pass `async: true` as an option.
+    at new Function (<anonymous>)
+    at Template.compile (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:673:12)
+    at Object.compile (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:398:16)
+    at handleCache (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:235:18)
+    at tryHandleCache (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:274:16)
+    at exports.renderFile [as engine] (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:491:10)
+    at View.render (C:\progetti\nexus-crm\node_modules\express\lib\view.js:135:8)
+    at tryRender (C:\progetti\nexus-crm\node_modules\express\lib\application.js:657:10)
+    at Function.render (C:\progetti\nexus-crm\node_modules\express\lib\application.js:609:3)
+    at ServerResponse.render (C:\progetti\nexus-crm\node_modules\express\lib\response.js:1049:7)
+{
+  "service": "nexus-crm",
+  "error": "Invalid or unexpected token in C:\\progetti\\nexus-crm\\views\\utilities\\supply-points.ejs while compiling ejs\n\nIf the above error is not helpful, you may want to try EJS-Lint:\nhttps://github.com/RyanZim/EJS-Lint\nOr, if you meant to create an async function, pass `async: true` as an option.",
+  "method": "GET",
+  "url": "/supply-points",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "body": {},
+  "query": {},
+  "params": {}
+}
+2025-06-25 13:10:37 [ERROR]: Errore non gestito nell'applicazione
+SyntaxError: Invalid or unexpected token in C:\progetti\nexus-crm\views\utilities\supply-points.ejs while compiling ejs
+
+If the above error is not helpful, you may want to try EJS-Lint:
+https://github.com/RyanZim/EJS-Lint
+Or, if you meant to create an async function, pass `async: true` as an option.
+    at new Function (<anonymous>)
+    at Template.compile (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:673:12)
+    at Object.compile (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:398:16)
+    at handleCache (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:235:18)
+    at tryHandleCache (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:274:16)
+    at exports.renderFile [as engine] (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:491:10)
+    at View.render (C:\progetti\nexus-crm\node_modules\express\lib\view.js:135:8)
+    at tryRender (C:\progetti\nexus-crm\node_modules\express\lib\application.js:657:10)
+    at Function.render (C:\progetti\nexus-crm\node_modules\express\lib\application.js:609:3)
+    at ServerResponse.render (C:\progetti\nexus-crm\node_modules\express\lib\response.js:1049:7)
+{
+  "service": "nexus-crm",
+  "error": "Invalid or unexpected token in C:\\progetti\\nexus-crm\\views\\utilities\\supply-points.ejs while compiling ejs\n\nIf the above error is not helpful, you may want to try EJS-Lint:\nhttps://github.com/RyanZim/EJS-Lint\nOr, if you meant to create an async function, pass `async: true` as an option.",
+  "url": "/supply-points",
+  "method": "GET",
+  "ip": "::1",
+  "userId": 1,
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36"
+}
+2025-06-25 13:15:16 [ERROR]: Uncaught Exception - Spegnimento applicazione
+Error: listen EADDRINUSE: address already in use :::3000
+    at Server.setupListenHandle [as _listen2] (node:net:1937:16)
+    at listenInCluster (node:net:1994:12)
+    at Server.listen (node:net:2099:7)
+    at Function.listen (C:\progetti\nexus-crm\node_modules\express\lib\application.js:635:24)
+    at gracefulShutdown (C:\progetti\nexus-crm\app.js:212:22)
+    at process.<anonymous> (C:\progetti\nexus-crm\app.js:236:28)
+    at process.emit (node:events:536:35)
+{
+  "service": "nexus-crm",
+  "error": "listen EADDRINUSE: address already in use :::3000"
+}
+2025-06-25 13:27:30 [ERROR]: Uncaught Exception - Spegnimento applicazione
+Error: listen EADDRINUSE: address already in use :::3000
+    at Server.setupListenHandle [as _listen2] (node:net:1937:16)
+    at listenInCluster (node:net:1994:12)
+    at Server.listen (node:net:2099:7)
+    at Function.listen (C:\progetti\nexus-crm\node_modules\express\lib\application.js:635:24)
+    at gracefulShutdown (C:\progetti\nexus-crm\app.js:212:22)
+    at process.<anonymous> (C:\progetti\nexus-crm\app.js:236:28)
+    at process.emit (node:events:536:35)
+{
+  "service": "nexus-crm",
+  "error": "listen EADDRINUSE: address already in use :::3000"
+}
+2025-06-25 13:37:29 [ERROR]: Uncaught Exception - Spegnimento applicazione
+Error: listen EADDRINUSE: address already in use :::3000
+    at Server.setupListenHandle [as _listen2] (node:net:1937:16)
+    at listenInCluster (node:net:1994:12)
+    at Server.listen (node:net:2099:7)
+    at Function.listen (C:\progetti\nexus-crm\node_modules\express\lib\application.js:635:24)
+    at gracefulShutdown (C:\progetti\nexus-crm\app.js:212:22)
+    at process.<anonymous> (C:\progetti\nexus-crm\app.js:236:28)
+    at process.emit (node:events:536:35)
+{
+  "service": "nexus-crm",
+  "error": "listen EADDRINUSE: address already in use :::3000"
+}
+2025-06-25 13:40:14 [ERROR]: Uncaught Exception - Spegnimento applicazione
+Error: listen EADDRINUSE: address already in use :::3000
+    at Server.setupListenHandle [as _listen2] (node:net:1937:16)
+    at listenInCluster (node:net:1994:12)
+    at Server.listen (node:net:2099:7)
+    at Function.listen (C:\progetti\nexus-crm\node_modules\express\lib\application.js:635:24)
+    at gracefulShutdown (C:\progetti\nexus-crm\app.js:212:22)
+    at process.<anonymous> (C:\progetti\nexus-crm\app.js:236:28)
+    at process.emit (node:events:536:35)
+{
+  "service": "nexus-crm",
+  "error": "listen EADDRINUSE: address already in use :::3000"
+}
+2025-06-25 13:40:50 [ERROR]: Uncaught Exception - Spegnimento applicazione
+TypeError: Cannot read properties of undefined (reading 'lastID')
+    at C:\progetti\nexus-crm\models\client.js:95:76
+    at args.<computed> (C:\progetti\nexus-crm\middleware\logging.js:111:9)
+{
+  "service": "nexus-crm",
+  "error": "Cannot read properties of undefined (reading 'lastID')"
+}
+2025-06-25 13:43:58 [ERROR]: Uncaught Exception - Spegnimento applicazione
+TypeError: Cannot read properties of undefined (reading 'lastID')
+    at C:\progetti\nexus-crm\models\client.js:96:76
+    at args.<computed> (C:\progetti\nexus-crm\middleware\logging.js:111:9)
+{
+  "service": "nexus-crm",
+  "error": "Cannot read properties of undefined (reading 'lastID')"
+}

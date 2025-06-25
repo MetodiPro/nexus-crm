@@ -47,18 +47,19 @@ function createUtilitiesFromExtractedData(clientId, extractedData, callback) {
   if (extractedData.pod) {
     const electricityData = {
       client_id: clientId,
-      pod: extractedData.pod,
-      supply_address: extractedData.address || '',
-      supply_city: extractedData.city || '',
-      supply_postal_code: extractedData.postalCode || '',
-      supply_province: extractedData.province || '',
-      current_supplier: extractedData.supplier || extractedData.provider || 'ENEL ENERGIA',
-      annual_consumption: extractedData.electricConsumption || extractedData.electricityConsumption || 0,
-      committed_power: extractedData.powerCommitted || 0,
-      supply_type: extractedData.supplyType || 'Domestico',
-      rate_type: 'Mercato Libero',
-      meter_serial: '',
-      activation_date: new Date().toISOString().split('T')[0],
+      pod_code: extractedData.pod,
+      utility_name: 'Utenza Principale',
+      utility_address: extractedData.address || '',
+      utility_city: extractedData.city || '',
+      utility_postal_code: extractedData.postalCode || '',
+      utility_province: extractedData.province || '',
+      supplier: extractedData.supplier || extractedData.provider || 'ENEL ENERGIA',
+      annual_consumption_kwh: extractedData.electricConsumption || extractedData.electricityConsumption || 0,
+      annual_consumption_year: new Date().getFullYear(),
+      power_kw: extractedData.powerCommitted || 0,
+      voltage: 'BT',
+      meter_type: 'Elettronico',
+      is_active: 1,
       notes: `Utenza creata automaticamente da bolletta ${extractedData.provider || 'ENEL'}`
     };
     
@@ -78,17 +79,17 @@ function createUtilitiesFromExtractedData(clientId, extractedData, callback) {
   if (extractedData.pdr) {
     const gasData = {
       client_id: clientId,
-      pdr: extractedData.pdr,
-      supply_address: extractedData.address || '',
-      supply_city: extractedData.city || '',
-      supply_postal_code: extractedData.postalCode || '',
-      supply_province: extractedData.province || '',
-      current_supplier: extractedData.supplier || extractedData.provider || 'ENEL ENERGIA',
-      annual_consumption: extractedData.gasConsumption || 0,
-      supply_type: extractedData.supplyType || 'Domestico',
-      rate_type: 'Mercato Libero',
-      meter_serial: '',
-      activation_date: new Date().toISOString().split('T')[0],
+      pdr_code: extractedData.pdr,
+      utility_name: 'Utenza Gas Principale',
+      utility_address: extractedData.address || '',
+      utility_city: extractedData.city || '',
+      utility_postal_code: extractedData.postalCode || '',
+      utility_province: extractedData.province || '',
+      supplier: extractedData.supplier || extractedData.provider || 'ENEL ENERGIA',
+      annual_consumption_smc: extractedData.gasConsumption || 0,
+      annual_consumption_year: new Date().getFullYear(),
+      meter_type: 'Elettronico',
+      is_active: 1,
       notes: `Utenza creata automaticamente da bolletta ${extractedData.provider || 'ENEL'}`
     };
     
@@ -162,59 +163,87 @@ router.post('/new', (req, res) => {
   
   Client.create(clientData, (err, clientId) => {
     if (err) {
+      console.error('❌ Errore creazione cliente:', err);
       return res.status(500).render('error', { message: 'Errore nella creazione del cliente' });
     }
     
-    // Gestione utenze estratte da bolletta
-    if (req.body.extracted_utilities) {
-      try {
-        const utilitiesData = JSON.parse(req.body.extracted_utilities);
-        console.log('🔌 Creazione automatica utenze per cliente ID:', clientId);
-        console.log('📋 Dati utenze:', utilitiesData);
-        
-        createUtilitiesFromExtractedData(clientId, utilitiesData, () => {
-          console.log('✅ Utenze create automaticamente');
-          // Verifica che il cliente esista prima del redirect
-          Client.getById(clientId, (err, client) => {
-            if (err || !client) {
-              console.error('❌ Cliente non trovato dopo creazione:', clientId);
-              res.redirect('/clients');
-            } else {
-              console.log('✅ Cliente trovato, redirect a view');
-              res.redirect(`/clients/view/${clientId}`);
-            }
-          });
-        });
-      } catch (error) {
-        console.error('❌ Errore creazione utenze automatiche:', error);
-        // Continua comunque con il redirect
-        res.redirect('/clients');
+    console.log('✅ Cliente creato con ID:', clientId);
+    
+    // Verifica immediata che il cliente sia stato creato
+    Client.getById(clientId, (err, createdClient) => {
+      if (err) {
+        console.error('❌ Errore verifica cliente creato:', err);
+        return res.redirect('/clients');
       }
-    } else {
-      res.redirect('/clients');
-    }
+      
+      if (!createdClient) {
+        console.error('❌ Cliente non trovato subito dopo creazione, ID:', clientId);
+        return res.redirect('/clients');
+      }
+      
+      console.log('✅ Cliente verificato esistente:', createdClient.name, createdClient.surname);
+      
+      // Import bolletta serve solo per dati anagrafici
+      // Le utenze vengono inserite manualmente
+      console.log('✅ Cliente creato con dati anagrafici');
+      if (req.body.extracted_utilities) {
+        console.log('ℹ️ Dati utenze estratti ignorati - inserimento manuale richiesto');
+      }
+      
+      console.log('🔄 Redirect a /clients/view/' + clientId);
+      res.redirect(`/clients/view/${clientId}`);
+    });
   });
 });
 
 // Visualizza dettagli cliente
 router.get('/view/:id', (req, res) => {
-  Client.getById(req.params.id, (err, client) => {
-    if (err || !client) {
+  const clientId = req.params.id;
+  console.log('📝 Richiesta visualizzazione cliente ID:', clientId);
+  
+  Client.getById(clientId, (err, client) => {
+    if (err) {
+      console.error('❌ Errore database getById:', err);
+      return res.status(500).render('error', { message: 'Errore del database' });
+    }
+    
+    if (!client) {
+      console.error('❌ Cliente non trovato con ID:', clientId);
       return res.status(404).render('error', { message: 'Cliente non trovato' });
     }
     
+    console.log('✅ Cliente trovato:', client.name, client.surname);
+    
     // Carica attività e contratti del cliente
     Activity.getByClientId(client.id, (err, activities) => {
+      if (err) {
+        console.error('⚠️ Errore caricamento attività:', err);
+        activities = [];
+      }
+      
       Contract.getByClientId(client.id, (err, contracts) => {
+        if (err) {
+          console.error('⚠️ Errore caricamento contratti:', err);
+          contracts = [];
+        }
+        
         // Carica anche le utenze per il riepilogo
         const ElectricityUtility = require('../models/electricityUtility');
         const GasUtility = require('../models/gasUtility');
         
         ElectricityUtility.getByClientId(client.id, (err, electricityUtilities) => {
-          if (err) electricityUtilities = [];
+          if (err) {
+            console.error('⚠️ Errore caricamento utenze elettriche:', err);
+            electricityUtilities = [];
+          }
           
           GasUtility.getByClientId(client.id, (err, gasUtilities) => {
-            if (err) gasUtilities = [];
+            if (err) {
+              console.error('⚠️ Errore caricamento utenze gas:', err);
+              gasUtilities = [];
+            }
+            
+            console.log('✅ Rendering vista cliente con', electricityUtilities.length, 'utenze elettriche e', gasUtilities.length, 'utenze gas');
             
             res.render('clients/view', { 
               client, 

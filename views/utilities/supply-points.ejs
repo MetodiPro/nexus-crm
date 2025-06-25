@@ -1,1 +1,226 @@
-<!-- Breadcrumb e Titolo -->\n<div class=\"mb-6\">\n  <nav class=\"flex\" aria-label=\"Breadcrumb\">\n    <ol class=\"inline-flex items-center space-x-1 md:space-x-3\">\n      <li class=\"inline-flex items-center\">\n        <a href=\"/\" class=\"text-gray-700 hover:text-nexus-red\">\n          <i class=\"fas fa-home\"></i> Dashboard\n        </a>\n      </li>\n      <li aria-current=\"page\">\n        <div class=\"flex items-center\">\n          <i class=\"fas fa-chevron-right text-gray-400 mx-2\"></i>\n          <span class=\"text-gray-500\">Punti di Fornitura</span>\n        </div>\n      </li>\n    </ol>\n  </nav>\n  <h1 class=\"text-3xl font-bold text-nexus-dark mt-4\">\n    <i class=\"fas fa-plug mr-3 text-blue-600\"></i>\n    Punti di Fornitura\n  </h1>\n  <p class=\"text-gray-600 mt-2\">\n    Gestione di tutti i punti di fornitura elettrica e gas\n  </p>\n</div>\n\n<div class=\"max-w-7xl mx-auto\">\n  \n  <!-- Statistiche Rapide -->\n  <div class=\"grid grid-cols-1 md:grid-cols-4 gap-4 mb-6\">\n    <% \n      const electricUtilities = utilities.filter(u => u.type === 'Elettrica');\n      const gasUtilities = utilities.filter(u => u.type === 'Gas');\n      const totalConsumptionElectric = electricUtilities.reduce((sum, u) => sum + (u.annual_consumption || 0), 0);\n      const totalConsumptionGas = gasUtilities.reduce((sum, u) => sum + (u.annual_consumption || 0), 0);\n    %>\n    \n    <div class=\"card border-l-4 border-yellow-500\">\n      <div class=\"card-body\">\n        <div class=\"flex items-center\">\n          <div class=\"flex-shrink-0\">\n            <i class=\"fas fa-bolt text-2xl text-yellow-500\"></i>\n          </div>\n          <div class=\"ml-3\">\n            <p class=\"text-sm font-medium text-gray-500\">Utenze Elettriche</p>\n            <p class=\"text-lg font-semibold text-gray-900\"><%= electricUtilities.length %></p>\n          </div>\n        </div>\n      </div>\n    </div>\n    \n    <div class=\"card border-l-4 border-orange-500\">\n      <div class=\"card-body\">\n        <div class=\"flex items-center\">\n          <div class=\"flex-shrink-0\">\n            <i class=\"fas fa-fire text-2xl text-orange-500\"></i>\n          </div>\n          <div class=\"ml-3\">\n            <p class=\"text-sm font-medium text-gray-500\">Utenze Gas</p>\n            <p class=\"text-lg font-semibold text-gray-900\"><%= gasUtilities.length %></p>\n          </div>\n        </div>\n      </div>\n    </div>\n    \n    <div class=\"card border-l-4 border-blue-500\">\n      <div class=\"card-body\">\n        <div class=\"flex items-center\">\n          <div class=\"flex-shrink-0\">\n            <i class=\"fas fa-chart-line text-2xl text-blue-500\"></i>\n          </div>\n          <div class=\"ml-3\">\n            <p class=\"text-sm font-medium text-gray-500\">Consumo Elettrico Totale</p>\n            <p class=\"text-lg font-semibold text-gray-900\"><%= totalConsumptionElectric.toLocaleString() %> kWh</p>\n          </div>\n        </div>\n      </div>\n    </div>\n    \n    <div class=\"card border-l-4 border-green-500\">\n      <div class=\"card-body\">\n        <div class=\"flex items-center\">\n          <div class=\"flex-shrink-0\">\n            <i class=\"fas fa-chart-area text-2xl text-green-500\"></i>\n          </div>\n          <div class=\"ml-3\">\n            <p class=\"text-sm font-medium text-gray-500\">Consumo Gas Totale</p>\n            <p class=\"text-lg font-semibold text-gray-900\"><%= totalConsumptionGas.toLocaleString() %> Smc</p>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n\n  <!-- Lista Punti di Fornitura -->\n  <div class=\"card\">\n    <div class=\"card-header bg-nexus-dark text-white flex justify-between items-center\">\n      <h4 class=\"text-lg font-semibold\">\n        <i class=\"fas fa-list\"></i> \n        Elenco Punti di Fornitura\n      </h4>\n      <div class=\"flex items-center space-x-3\">\n        <span class=\"text-sm\">Totale: <%= utilities.length %> punti</span>\n      </div>\n    </div>\n    <div class=\"card-body\">\n      \n      <% if (utilities && utilities.length > 0) { %>\n        <div class=\"table-container\">\n          <table class=\"table\">\n            <thead>\n              <tr>\n                <th>Tipo</th>\n                <th>Codice POD/PDR</th>\n                <th>Cliente</th>\n                <th>Indirizzo Fornitura</th>\n                <th>Consumo Annuo</th>\n                <th>Fornitore</th>\n                <th>Azioni</th>\n              </tr>\n            </thead>\n            <tbody class=\"divide-y divide-gray-200\">\n              <% utilities.forEach(utility => { %>\n                <tr>\n                  <td class=\"align-middle\">\n                    <div class=\"flex items-center\">\n                      <div class=\"bg-<%= utility.type_color %>-100 text-<%= utility.type_color %>-800 px-2 py-1 rounded-full text-xs font-medium flex items-center\">\n                        <i class=\"<%= utility.type_icon %> mr-1\"></i>\n                        <%= utility.type %>\n                      </div>\n                    </div>\n                  </td>\n                  <td class=\"align-middle\">\n                    <div class=\"font-mono text-sm font-medium text-gray-900\">\n                      <%= utility.code %>\n                    </div>\n                    <% if (utility.supply_type) { %>\n                      <div class=\"text-xs text-gray-500\"><%= utility.supply_type %></div>\n                    <% } %>\n                  </td>\n                  <td class=\"align-middle\">\n                    <div class=\"font-medium text-gray-900\">\n                      <a href=\"/clients/view/<%= utility.client_id %>\" class=\"text-blue-600 hover:text-blue-800\">\n                        <%= utility.client_name %>\n                      </a>\n                    </div>\n                    <% if (utility.client_company) { %>\n                      <div class=\"text-sm text-gray-500\"><%= utility.client_company %></div>\n                    <% } %>\n                  </td>\n                  <td class=\"align-middle\">\n                    <div class=\"text-sm\">\n                      <% if (utility.supply_address) { %>\n                        <%= utility.supply_address %><br>\n                        <%= utility.supply_postal_code %> <%= utility.supply_city %> \n                        <% if (utility.supply_province) { %>(<%= utility.supply_province %>)<% } %>\n                      <% } else { %>\n                        <span class=\"text-gray-400\">Non specificato</span>\n                      <% } %>\n                    </div>\n                  </td>\n                  <td class=\"align-middle\">\n                    <% if (utility.annual_consumption && utility.annual_consumption > 0) { %>\n                      <div class=\"font-semibold text-gray-900\">\n                        <%= utility.annual_consumption.toLocaleString() %> <%= utility.consumption_unit %>\n                      </div>\n                      <% if (utility.committed_power) { %>\n                        <div class=\"text-xs text-gray-500\">Potenza: <%= utility.committed_power %> kW</div>\n                      <% } %>\n                    <% } else { %>\n                      <span class=\"text-gray-400\">Non disponibile</span>\n                    <% } %>\n                  </td>\n                  <td class=\"align-middle\">\n                    <div class=\"text-sm font-medium text-gray-900\">\n                      <%= utility.current_supplier || 'Non specificato' %>\n                    </div>\n                    <% if (utility.rate_type) { %>\n                      <div class=\"text-xs text-gray-500\"><%= utility.rate_type %></div>\n                    <% } %>\n                  </td>\n                  <td class=\"align-middle space-x-1\">\n                    <a href=\"/supply-points/view/<%= utility.type === 'Elettrica' ? 'electricity' : 'gas' %>/<%= utility.id %>\" \n                       class=\"inline-block bg-blue-100 text-blue-700 p-1.5 rounded hover:bg-blue-200\" \n                       title=\"Visualizza dettagli\">\n                      <i class=\"fas fa-eye\"></i>\n                    </a>\n                    <a href=\"/clients/view/<%= utility.client_id %>\" \n                       class=\"inline-block bg-green-100 text-green-700 p-1.5 rounded hover:bg-green-200\" \n                       title=\"Vai al cliente\">\n                      <i class=\"fas fa-user\"></i>\n                    </a>\n                  </td>\n                </tr>\n              <% }) %>\n            </tbody>\n          </table>\n        </div>\n      <% } else { %>\n        <div class=\"text-center py-8\">\n          <i class=\"fas fa-plug text-4xl text-gray-300 mb-4\"></i>\n          <h3 class=\"text-lg font-medium text-gray-900 mb-2\">Nessun Punto di Fornitura</h3>\n          <p class=\"text-gray-500 mb-4\">Non sono ancora stati creati punti di fornitura.</p>\n          <a href=\"/clients/import-bill\" class=\"btn-primary\">\n            <i class=\"fas fa-file-import mr-2\"></i>\n            Importa da Bolletta ENEL\n          </a>\n        </div>\n      <% } %>\n      \n    </div>\n  </div>\n  \n</div>\n\n<style>\n.bg-yellow-100 { background-color: #fef3c7; }\n.text-yellow-800 { color: #92400e; }\n.bg-orange-100 { background-color: #fed7aa; }\n.text-orange-800 { color: #9a3412; }\n</style>"
+<!-- Breadcrumb e Titolo -->
+<div class="mb-6">
+  <nav class="flex" aria-label="Breadcrumb">
+    <ol class="inline-flex items-center space-x-1 md:space-x-3">
+      <li class="inline-flex items-center">
+        <a href="/" class="text-gray-700 hover:text-nexus-red">
+          <i class="fas fa-home"></i> Dashboard
+        </a>
+      </li>
+      <li aria-current="page">
+        <div class="flex items-center">
+          <i class="fas fa-chevron-right text-gray-400 mx-2"></i>
+          <span class="text-gray-500">Punti di Fornitura</span>
+        </div>
+      </li>
+    </ol>
+  </nav>
+  <h1 class="text-3xl font-bold text-nexus-dark mt-4">
+    <i class="fas fa-plug mr-3 text-blue-600"></i>
+    Punti di Fornitura
+  </h1>
+  <p class="text-gray-600 mt-2">
+    Gestione di tutti i punti di fornitura elettrica e gas
+  </p>
+</div>
+
+<div class="max-w-7xl mx-auto">
+  
+  <!-- Statistiche Rapide -->
+  <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+    <% 
+      const electricUtilities = utilities ? utilities.filter(u => u.type === 'Elettrica') : [];
+      const gasUtilities = utilities ? utilities.filter(u => u.type === 'Gas') : [];
+      const totalConsumptionElectric = electricUtilities.reduce((sum, u) => sum + (parseInt(u.annual_consumption) || 0), 0);
+      const totalConsumptionGas = gasUtilities.reduce((sum, u) => sum + (parseInt(u.annual_consumption) || 0), 0);
+    %>
+    
+    <div class="card border-l-4 border-yellow-500">
+      <div class="card-body">
+        <div class="flex items-center">
+          <div class="flex-shrink-0">
+            <i class="fas fa-bolt text-2xl text-yellow-500"></i>
+          </div>
+          <div class="ml-3">
+            <p class="text-sm font-medium text-gray-500">Utenze Elettriche</p>
+            <p class="text-lg font-semibold text-gray-900"><%= electricUtilities.length %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="card border-l-4 border-orange-500">
+      <div class="card-body">
+        <div class="flex items-center">
+          <div class="flex-shrink-0">
+            <i class="fas fa-fire text-2xl text-orange-500"></i>
+          </div>
+          <div class="ml-3">
+            <p class="text-sm font-medium text-gray-500">Utenze Gas</p>
+            <p class="text-lg font-semibold text-gray-900"><%= gasUtilities.length %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="card border-l-4 border-blue-500">
+      <div class="card-body">
+        <div class="flex items-center">
+          <div class="flex-shrink-0">
+            <i class="fas fa-chart-line text-2xl text-blue-500"></i>
+          </div>
+          <div class="ml-3">
+            <p class="text-sm font-medium text-gray-500">Consumo Elettrico Totale</p>
+            <p class="text-lg font-semibold text-gray-900"><%= totalConsumptionElectric.toLocaleString() %> kWh</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="card border-l-4 border-green-500">
+      <div class="card-body">
+        <div class="flex items-center">
+          <div class="flex-shrink-0">
+            <i class="fas fa-chart-area text-2xl text-green-500"></i>
+          </div>
+          <div class="ml-3">
+            <p class="text-sm font-medium text-gray-500">Consumo Gas Totale</p>
+            <p class="text-lg font-semibold text-gray-900"><%= totalConsumptionGas.toLocaleString() %> Smc</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Lista Punti di Fornitura -->
+  <div class="card">
+    <div class="card-header bg-nexus-dark text-white flex justify-between items-center">
+      <h4 class="text-lg font-semibold">
+        <i class="fas fa-list"></i> 
+        Elenco Punti di Fornitura
+      </h4>
+      <div class="flex items-center space-x-3">
+        <span class="text-sm">Totale: <%= (utilities && utilities.length) || 0 %> punti</span>
+      </div>
+    </div>
+    <div class="card-body">
+      
+      <% if (utilities && utilities.length > 0) { %>
+        <div class="table-container">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Tipo</th>
+                <th>Codice POD/PDR</th>
+                <th>Cliente</th>
+                <th>Indirizzo Fornitura</th>
+                <th>Consumo Annuo</th>
+                <th>Fornitore</th>
+                <th>Azioni</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-200">
+              <% utilities.forEach(utility => { %>
+                <tr>
+                  <td class="align-middle">
+                    <div class="flex items-center">
+                      <div class="bg-<%= utility.type_color || 'gray' %>-100 text-<%= utility.type_color || 'gray' %>-800 px-2 py-1 rounded-full text-xs font-medium flex items-center">
+                        <i class="<%= utility.type_icon || 'fas fa-plug' %> mr-1"></i>
+                        <%= utility.type %>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="align-middle">
+                    <div class="font-mono text-sm font-medium text-gray-900">
+                      <%= utility.code || 'N/D' %>
+                    </div>
+                    <% if (utility.supply_type) { %>
+                      <div class="text-xs text-gray-500"><%= utility.supply_type %></div>
+                    <% } %>
+                  </td>
+                  <td class="align-middle">
+                    <div class="font-medium text-gray-900">
+                      <a href="/clients/view/<%= utility.client_id %>" class="text-blue-600 hover:text-blue-800">
+                        <%= utility.client_name || 'Nome non disponibile' %>
+                      </a>
+                    </div>
+                    <% if (utility.client_company) { %>
+                      <div class="text-sm text-gray-500"><%= utility.client_company %></div>
+                    <% } %>
+                  </td>
+                  <td class="align-middle">
+                    <div class="text-sm">
+                      <% if (utility.supply_address) { %>
+                        <%= utility.supply_address %><br>
+                        <%= utility.supply_postal_code || '' %> <%= utility.supply_city || '' %> 
+                        <% if (utility.supply_province) { %>(<%= utility.supply_province %>)<% } %>
+                      <% } else { %>
+                        <span class="text-gray-400">Non specificato</span>
+                      <% } %>
+                    </div>
+                  </td>
+                  <td class="align-middle">
+                    <% if (utility.annual_consumption && utility.annual_consumption > 0) { %>
+                      <div class="font-semibold text-gray-900">
+                        <%= parseInt(utility.annual_consumption).toLocaleString() %> <%= utility.consumption_unit || 'kWh' %>
+                      </div>
+                      <% if (utility.committed_power) { %>
+                        <div class="text-xs text-gray-500">Potenza: <%= utility.committed_power %> kW</div>
+                      <% } %>
+                    <% } else { %>
+                      <span class="text-gray-400">Non disponibile</span>
+                    <% } %>
+                  </td>
+                  <td class="align-middle">
+                    <div class="text-sm font-medium text-gray-900">
+                      <%= utility.current_supplier || 'Non specificato' %>
+                    </div>
+                    <% if (utility.rate_type) { %>
+                      <div class="text-xs text-gray-500"><%= utility.rate_type %></div>
+                    <% } %>
+                  </td>
+                  <td class="align-middle space-x-1">
+                    <a href="/supply-points/view/<%= utility.type === 'Elettrica' ? 'electricity' : 'gas' %>/<%= utility.id %>" 
+                       class="inline-block bg-blue-100 text-blue-700 p-1.5 rounded hover:bg-blue-200" 
+                       title="Visualizza dettagli">
+                      <i class="fas fa-eye"></i>
+                    </a>
+                    <a href="/clients/view/<%= utility.client_id %>" 
+                       class="inline-block bg-green-100 text-green-700 p-1.5 rounded hover:bg-green-200" 
+                       title="Vai al cliente">
+                      <i class="fas fa-user"></i>
+                    </a>
+                  </td>
+                </tr>
+              <% }) %>
+            </tbody>
+          </table>
+        </div>
+      <% } else { %>
+        <div class="text-center py-8">
+          <i class="fas fa-plug text-4xl text-gray-300 mb-4"></i>
+          <h3 class="text-lg font-medium text-gray-900 mb-2">Nessun Punto di Fornitura</h3>
+          <p class="text-gray-500 mb-4">Non sono ancora stati creati punti di fornitura.</p>
+          <p class="text-sm text-gray-400 mb-4">
+            I punti di fornitura vanno inseriti manualmente dalla sezione "Gestione Utenze" di ogni cliente.
+          </p>
+          <a href="/clients" class="btn-primary">
+            <i class="fas fa-users mr-2"></i>
+            Vai ai Clienti
+          </a>
+        </div>
+      <% } %>
+      
+    </div>
+  </div>
+  
+</div>
+
+<style>
+.bg-yellow-100 { background-color: #fef3c7; }
+.text-yellow-800 { color: #92400e; }
+.bg-orange-100 { background-color: #fed7aa; }
+.text-orange-800 { color: #9a3412; }
+.bg-gray-100 { background-color: #f3f4f6; }
+.text-gray-800 { color: #1f2937; }
+</style>

@@ -1,0 +1,1 @@
+{"action":"LIST","details":{"body":{},"method":"GET","params":{},"query":{}},"ip":"::1","level":"info","message":"User action","resource":"users","service":"nexus-audit","timestamp":"2025-06-25T11:32:06.380Z","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36","userId":1}

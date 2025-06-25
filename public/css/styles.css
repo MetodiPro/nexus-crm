@@ -904,6 +904,10 @@ video {
   margin-left: 0.75rem;
 }
 
+.ml-auto {
+  margin-left: auto;
+}
+
 .mr-1 {
   margin-right: 0.25rem;
 }
@@ -1069,6 +1073,10 @@ video {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
+.cursor-pointer {
+  cursor: pointer;
+}
+
 .grid-cols-1 {
   grid-template-columns: repeat(1, minmax(0, 1fr));
 }
@@ -1131,6 +1139,12 @@ video {
   --tw-space-x-reverse: 0;
   margin-right: calc(0.5rem * var(--tw-space-x-reverse));
   margin-left: calc(0.5rem * calc(1 - var(--tw-space-x-reverse)));
+}
+
+.space-x-3 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 0;
+  margin-right: calc(0.75rem * var(--tw-space-x-reverse));
+  margin-left: calc(0.75rem * calc(1 - var(--tw-space-x-reverse)));
 }
 
 .space-y-1 > :not([hidden]) ~ :not([hidden]) {
@@ -1218,6 +1232,10 @@ video {
   border-width: 1px;
 }
 
+.border-2 {
+  border-width: 2px;
+}
+
 .border-b {
   border-bottom-width: 1px;
 }
@@ -1234,9 +1252,23 @@ video {
   border-top-width: 4px;
 }
 
+.border-dashed {
+  border-style: dashed;
+}
+
+.border-amber-200 {
+  --tw-border-opacity: 1;
+  border-color: rgb(253 230 138 / var(--tw-border-opacity));
+}
+
 .border-blue-200 {
   --tw-border-opacity: 1;
   border-color: rgb(191 219 254 / var(--tw-border-opacity));
+}
+
+.border-blue-400 {
+  --tw-border-opacity: 1;
+  border-color: rgb(96 165 250 / var(--tw-border-opacity));
 }
 
 .border-blue-500 {
@@ -1262,6 +1294,11 @@ video {
 .border-gray-700 {
   --tw-border-opacity: 1;
   border-color: rgb(55 65 81 / var(--tw-border-opacity));
+}
+
+.border-green-200 {
+  --tw-border-opacity: 1;
+  border-color: rgb(187 247 208 / var(--tw-border-opacity));
 }
 
 .border-green-300 {
@@ -1342,6 +1379,11 @@ video {
 .border-yellow-500 {
   --tw-border-opacity: 1;
   border-color: rgb(234 179 8 / var(--tw-border-opacity));
+}
+
+.bg-amber-50 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 251 235 / var(--tw-bg-opacity));
 }
 
 .bg-black {
@@ -1537,6 +1579,15 @@ video {
   padding: 1.5rem;
 }
 
+.p-8 {
+  padding: 2rem;
+}
+
+.px-1 {
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+}
+
 .px-2 {
   padding-left: 0.5rem;
   padding-right: 0.5rem;
@@ -1699,6 +1750,26 @@ video {
   font-style: italic;
 }
 
+.text-amber-600 {
+  --tw-text-opacity: 1;
+  color: rgb(217 119 6 / var(--tw-text-opacity));
+}
+
+.text-amber-700 {
+  --tw-text-opacity: 1;
+  color: rgb(180 83 9 / var(--tw-text-opacity));
+}
+
+.text-amber-800 {
+  --tw-text-opacity: 1;
+  color: rgb(146 64 14 / var(--tw-text-opacity));
+}
+
+.text-blue-400 {
+  --tw-text-opacity: 1;
+  color: rgb(96 165 250 / var(--tw-text-opacity));
+}
+
 .text-blue-500 {
   --tw-text-opacity: 1;
   color: rgb(59 130 246 / var(--tw-text-opacity));
@@ -1717,6 +1788,11 @@ video {
 .text-blue-800 {
   --tw-text-opacity: 1;
   color: rgb(30 64 175 / var(--tw-text-opacity));
+}
+
+.text-gray-300 {
+  --tw-text-opacity: 1;
+  color: rgb(209 213 219 / var(--tw-text-opacity));
 }
 
 .text-gray-400 {
@@ -1747,6 +1823,11 @@ video {
 .text-gray-900 {
   --tw-text-opacity: 1;
   color: rgb(17 24 39 / var(--tw-text-opacity));
+}
+
+.text-green-400 {
+  --tw-text-opacity: 1;
+  color: rgb(74 222 128 / var(--tw-text-opacity));
 }
 
 .text-green-500 {
@@ -1854,6 +1935,10 @@ video {
   color: rgb(133 77 14 / var(--tw-text-opacity));
 }
 
+.underline {
+  text-decoration-line: underline;
+}
+
 .opacity-50 {
   opacity: 0.5;
 }
@@ -1879,6 +1964,10 @@ video {
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 
+.filter {
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+
 .transition {
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
@@ -1899,6 +1988,12 @@ video {
   transition-duration: 150ms;
 }
 
+.transition-transform {
+  transition-property: transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
 .duration-200 {
   transition-duration: 200ms;
 }
@@ -1915,6 +2010,11 @@ video {
 
 .last\:border-b-0:last-child {
   border-bottom-width: 0px;
+}
+
+.hover\:border-blue-400:hover {
+  --tw-border-opacity: 1;
+  border-color: rgb(96 165 250 / var(--tw-border-opacity));
 }
 
 .hover\:bg-blue-200:hover {
@@ -1955,6 +2055,11 @@ video {
 .hover\:bg-green-100:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(220 252 231 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-green-200:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(187 247 208 / var(--tw-bg-opacity));
 }
 
 .hover\:bg-orange-400:hover {
@@ -2106,63 +2211,5 @@ video {
 @media (min-width: 1280px) {
   .xl\:grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-/* Stili per sottomenu sidebar */
-.sidebar-parent {
-  position: relative;
-  cursor: pointer;
-}
-
-.sidebar-submenu {
-  margin-top: 0.25rem;
-  margin-left: 1rem;
-}
-
-.sidebar-sublink {
-  display: flex;
-  align-items: center;
-  border-radius: 0.25rem;
-  padding: 0.375rem 0.75rem;
-  font-size: 0.875rem;
-  color: rgb(156 163 175);
-  transition: all 0.15s ease;
-}
-
-.sidebar-sublink:hover {
-  background-color: rgb(55 65 81);
-  color: rgb(255 255 255);
-  padding-left: 1rem;
-}
-
-.sidebar-sublink.active {
-  background-color: rgb(37 99 235);
-  color: rgb(255 255 255);
-  font-weight: 500;
-}
-
-.sidebar-parent .fa-chevron-down {
-  transition: transform 0.2s ease;
-  font-size: 0.75rem;
-}
-
-.ml-auto {
-  margin-left: auto;
-}
-
-/* Animazione per l'apertura del sottomenu */
-.sidebar-submenu:not(.hidden) {
-  animation: slideDown 0.2s ease-out;
-}
-
-@keyframes slideDown {
-  0% {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
   }
 }

@@ -22,11 +22,28 @@ class Client {
   
   // Ottieni un cliente per ID con tutti i dettagli
   static getById(id, callback) {
-    db.get("SELECT * FROM clients WHERE id = ?", [id], callback);
+    console.log('📎 DEBUG Client.getById chiamato con ID:', id);
+    db.get("SELECT * FROM clients WHERE id = ?", [id], (err, row) => {
+      if (err) {
+        console.error('❌ DEBUG Client.getById errore DB:', err);
+      } else if (row) {
+        console.log('✅ DEBUG Client.getById trovato:', row.name, row.surname);
+      } else {
+        console.log('⚠️ DEBUG Client.getById nessun risultato per ID:', id);
+      }
+      callback(err, row);
+    });
   }
   
   // Crea un nuovo cliente (SENZA fax e campi utenze singole)
   static create(clientData, callback) {
+    console.log('📝 DEBUG Client.create chiamato con dati:', {
+      name: clientData.name,
+      surname: clientData.surname,
+      fiscal_code: clientData.fiscal_code,
+      consultant_id: clientData.consultant_id
+    });
+    
     db.run(
       `INSERT INTO clients (
         name, surname, fiscal_code, birth_date, birth_place, gender,
@@ -72,7 +89,13 @@ class Client {
         clientData.consultant_id
       ],
       function(err) {
-        callback(err, this?.lastID);
+        if (err) {
+          console.error('❌ DEBUG Client.create errore DB:', err);
+          callback(err, null);
+        } else {
+          console.log('✅ DEBUG Client.create successo, ID generato:', this.lastID);
+          callback(null, this.lastID);
+        }
       }
     );
   }
