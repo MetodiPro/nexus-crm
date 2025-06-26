@@ -14,22 +14,28 @@ const Client = require('../models/client');
 router.get('/', (req, res) => {
   console.log('📋 Caricamento punti di fornitura...');
   
-  // Recupera tutte le utenze elettriche
-  ElectricityUtility.getAll((err, electricityUtilities) => {
+  // Determina se filtrare per consulente
+  const consultantId = req.session.user.role === 'administrator' ? null : req.session.user.id;
+  
+  console.log(`👤 Utente: ${req.session.user.username} (${req.session.user.role})`);
+  console.log(`🔍 Filtro consulente: ${consultantId ? 'Sì (ID: ' + consultantId + ')' : 'No (Admin)'}`);
+  
+  // Recupera utenze elettriche filtrate per consulente
+  ElectricityUtility.getAllByConsultant(consultantId, (err, electricityUtilities) => {
     if (err) {
       console.error('❌ Errore caricamento utenze elettriche:', err);
       electricityUtilities = [];
     }
     
-    // Recupera tutte le utenze gas
-    GasUtility.getAll((err, gasUtilities) => {
+    // Recupera utenze gas filtrate per consulente
+    GasUtility.getAllByConsultant(consultantId, (err, gasUtilities) => {
       if (err) {
         console.error('❌ Errore caricamento utenze gas:', err);
         gasUtilities = [];
       }
       
-      console.log(`⚡ Utenze elettriche: ${electricityUtilities.length}`);
-      console.log(`🔥 Utenze gas: ${gasUtilities.length}`);
+      console.log(`⚡ Utenze elettriche (${req.session.user.role}): ${electricityUtilities.length}`);
+      console.log(`🔥 Utenze gas (${req.session.user.role}): ${gasUtilities.length}`);
       
       // Carica i dati dei clienti per ogni utenza
       loadClientsForUtilities(electricityUtilities, gasUtilities, (utilities) => {
@@ -132,6 +138,7 @@ function loadClientsForUtilities(electricityUtilities, gasUtilities, callback) {
 // Dettaglio singolo punto di fornitura
 router.get('/view/:type/:id', (req, res) => {
   const { type, id } = req.params;
+  const consultantId = req.session.user.role === 'administrator' ? null : req.session.user.id;
   
   if (type === 'electricity') {
     ElectricityUtility.getById(id, (err, utility) => {
@@ -140,6 +147,17 @@ router.get('/view/:type/:id', (req, res) => {
       }
       
       Client.getById(utility.client_id, (err, client) => {
+        if (err || !client) {
+          return res.status(404).render('error', { message: 'Cliente associato non trovato' });
+        }
+        
+        // Verifica autorizzazione per consulenti
+        if (consultantId && client.consultant_id !== consultantId) {
+          return res.status(403).render('error', { 
+            message: 'Non hai l\'autorizzazione per visualizzare questa utenza' 
+          });
+        }
+        
         res.render('utilities/supply-point-detail', {
           title: 'Dettaglio Utenza Elettrica',
           utility,
@@ -155,6 +173,17 @@ router.get('/view/:type/:id', (req, res) => {
       }
       
       Client.getById(utility.client_id, (err, client) => {
+        if (err || !client) {
+          return res.status(404).render('error', { message: 'Cliente associato non trovato' });
+        }
+        
+        // Verifica autorizzazione per consulenti
+        if (consultantId && client.consultant_id !== consultantId) {
+          return res.status(403).render('error', { 
+            message: 'Non hai l\'autorizzazione per visualizzare questa utenza' 
+          });
+        }
+        
         res.render('utilities/supply-point-detail', {
           title: 'Dettaglio Utenza Gas',
           utility,

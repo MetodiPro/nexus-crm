@@ -12,6 +12,26 @@ class ElectricityUtility {
     `, callback);
   }
   
+  // Ottieni tutte le utenze elettriche filtrate per consulente
+  static getAllByConsultant(consultantId, callback) {
+    if (!consultantId) {
+      // Admin vede tutto
+      return this.getAll(callback);
+    }
+    
+    // Consulenti vedono SOLO le utenze dei clienti che hanno loro assegnati
+    // Esclude esplicitamente clienti senza consulente (consultant_id IS NULL)
+    db.all(`
+      SELECT eu.*, c.name as client_name, c.surname as client_surname, c.company
+      FROM electricity_utilities eu
+      JOIN clients c ON eu.client_id = c.id
+      WHERE eu.is_active = 1 
+        AND c.consultant_id IS NOT NULL 
+        AND c.consultant_id = ?
+      ORDER BY c.name ASC, c.surname ASC, eu.utility_name ASC
+    `, [consultantId], callback);
+  }
+  
   // Ottieni tutte le utenze elettriche di un cliente
   static getByClientId(clientId, callback) {
     db.all(`

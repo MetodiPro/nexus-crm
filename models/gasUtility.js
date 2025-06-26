@@ -12,6 +12,26 @@ class GasUtility {
     `, callback);
   }
   
+  // Ottieni tutte le utenze gas filtrate per consulente
+  static getAllByConsultant(consultantId, callback) {
+    if (!consultantId) {
+      // Admin vede tutto
+      return this.getAll(callback);
+    }
+    
+    // Consulenti vedono SOLO le utenze dei clienti che hanno loro assegnati
+    // Esclude esplicitamente clienti senza consulente (consultant_id IS NULL)
+    db.all(`
+      SELECT gu.*, c.name as client_name, c.surname as client_surname, c.company
+      FROM gas_utilities gu
+      JOIN clients c ON gu.client_id = c.id
+      WHERE gu.is_active = 1 
+        AND c.consultant_id IS NOT NULL 
+        AND c.consultant_id = ?
+      ORDER BY c.name ASC, c.surname ASC, gu.utility_name ASC
+    `, [consultantId], callback);
+  }
+  
   // Ottieni tutte le utenze gas di un cliente
   static getByClientId(clientId, callback) {
     db.all(`
