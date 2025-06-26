@@ -1,0 +1,1516 @@
+2025-06-26 10:37:50 [INFO]: Avvio NEXUS CRM
+{
+  "service": "nexus-crm",
+  "port": 3000
+}
+2025-06-26 10:37:50 [INFO]: Server avviato con successo
+{
+  "service": "nexus-crm",
+  "port": 3000,
+  "nodeEnv": "development",
+  "nodeVersion": "v22.13.1"
+}
+2025-06-26 10:37:50 [INFO]: Connesso al database SQLite
+{
+  "service": "nexus-crm",
+  "dbPath": "C:\\progetti\\nexus-crm\\data\\nexus.db"
+}
+2025-06-26 10:37:50 [INFO]: Tabella users verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-26 10:37:50 [INFO]: Tabella clients verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-26 10:37:50 [INFO]: Tabella activities verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-26 10:37:50 [INFO]: Tabella products verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-26 10:37:50 [INFO]: Tabella contracts verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-26 10:37:50 [INFO]: Tabella user_sessions creata
+{
+  "service": "nexus-crm"
+}
+2025-06-26 10:37:50 [INFO]: Tabella electricity_utilities verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-26 10:37:50 [INFO]: Tabella gas_utilities verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-26 10:37:50 [INFO]: Utente admin già esistente
+{
+  "service": "nexus-crm"
+}
+2025-06-26 10:37:54 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/login",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "statusCode": 200,
+  "duration": "27ms",
+  "contentLength": 4680
+}
+2025-06-26 10:38:04 [INFO]: Login riuscito
+{
+  "service": "nexus-crm",
+  "userId": 1,
+  "username": "admin",
+  "role": "administrator",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36"
+}
+2025-06-26 10:38:04 [INFO]: Login completato con successo
+{
+  "service": "nexus-crm",
+  "userId": 1,
+  "username": "admin",
+  "role": "administrator",
+  "ip": "::1",
+  "sessionId": "fAHLAdpuBHkUZoupRYdb4_1fJVrmls7T"
+}
+2025-06-26 10:38:04 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "8ms",
+  "contentLength": 11219
+}
+2025-06-26 10:38:04 [INFO]: Sessione utente loggata
+{
+  "service": "nexus-crm",
+  "userId": 1,
+  "sessionLogId": 40,
+  "ip": "::1"
+}
+2025-06-26 10:38:04 [DEBUG]: Session ID aggiornato
+{
+  "service": "nexus-crm",
+  "sessionLogId": 40,
+  "realSessionId": "fAHLAdpuBHkUZoupRYdb4_1fJVrmls7T"
+}
+2025-06-26 10:38:06 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/users",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "139ms",
+  "contentLength": 9986
+}
+2025-06-26 10:38:08 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/users/new",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "15ms",
+  "contentLength": 16043
+}
+2025-06-26 10:39:51 [WARN]: Pagina non trovata
+{
+  "service": "nexus-crm",
+  "url": "/.well-known/appspecific/com.chrome.devtools.json",
+  "method": "GET",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1
+}
+2025-06-26 10:39:51 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/.well-known/appspecific/com.chrome.devtools.json",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 404,
+  "duration": "221ms",
+  "contentLength": 8374
+}
+2025-06-26 10:42:31 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/login",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "statusCode": 200,
+  "duration": "34ms",
+  "contentLength": 4680
+}
+2025-06-26 10:42:32 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/login",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "statusCode": 200,
+  "duration": "5ms",
+  "contentLength": 4680
+}
+2025-06-26 10:42:38 [INFO]: Login riuscito
+{
+  "service": "nexus-crm",
+  "userId": 1,
+  "username": "admin",
+  "role": "administrator",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36"
+}
+2025-06-26 10:42:38 [INFO]: Login completato con successo
+{
+  "service": "nexus-crm",
+  "userId": 1,
+  "username": "admin",
+  "role": "administrator",
+  "ip": "::1",
+  "sessionId": "x8SuUIk21r7Dm4iYjOW4KyCMN36KhEqg"
+}
+2025-06-26 10:42:38 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "6ms",
+  "contentLength": 11219
+}
+2025-06-26 10:42:38 [INFO]: Sessione utente loggata
+{
+  "service": "nexus-crm",
+  "userId": 1,
+  "sessionLogId": 41,
+  "ip": "::1"
+}
+2025-06-26 10:42:38 [WARN]: Pagina non trovata
+{
+  "service": "nexus-crm",
+  "url": "/.well-known/appspecific/com.chrome.devtools.json",
+  "method": "GET",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1
+}
+2025-06-26 10:42:38 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/.well-known/appspecific/com.chrome.devtools.json",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 404,
+  "duration": "14ms",
+  "contentLength": 8374
+}
+2025-06-26 10:42:38 [DEBUG]: Session ID aggiornato
+{
+  "service": "nexus-crm",
+  "sessionLogId": 41,
+  "realSessionId": "x8SuUIk21r7Dm4iYjOW4KyCMN36KhEqg"
+}
+2025-06-26 10:42:43 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/users",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "26ms",
+  "contentLength": 9986
+}
+2025-06-26 10:42:43 [WARN]: Pagina non trovata
+{
+  "service": "nexus-crm",
+  "url": "/.well-known/appspecific/com.chrome.devtools.json",
+  "method": "GET",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1
+}
+2025-06-26 10:42:43 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/.well-known/appspecific/com.chrome.devtools.json",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 404,
+  "duration": "7ms",
+  "contentLength": 8374
+}
+2025-06-26 10:42:44 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/users/new",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "6ms",
+  "contentLength": 16043
+}
+2025-06-26 10:42:44 [WARN]: Pagina non trovata
+{
+  "service": "nexus-crm",
+  "url": "/.well-known/appspecific/com.chrome.devtools.json",
+  "method": "GET",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1
+}
+2025-06-26 10:42:44 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/.well-known/appspecific/com.chrome.devtools.json",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 404,
+  "duration": "4ms",
+  "contentLength": 8374
+}
+2025-06-26 10:45:53 [ERROR]: Unhandled error
+ReferenceError: C:\progetti\nexus-crm\views\users\form.ejs:19
+    17|         <div class="flex items-center">
+    18|           <i class="fas fa-chevron-right text-gray-400 mx-2"></i>
+ >> 19|           <span class="text-gray-500"><%= formUser.id ? 'Modifica Utente' : 'Nuovo Utente' %></span>
+    20|         </div>
+    21|       </li>
+    22|     </ol>
+
+formUser is not defined
+    at eval ("C:\\progetti\\nexus-crm\\views\\users\\form.ejs":12:26)
+    at form (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:703:17)
+    at tryHandleCache (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:274:36)
+    at exports.renderFile [as engine] (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:491:10)
+    at View.render (C:\progetti\nexus-crm\node_modules\express\lib\view.js:135:8)
+    at tryRender (C:\progetti\nexus-crm\node_modules\express\lib\application.js:657:10)
+    at Function.render (C:\progetti\nexus-crm\node_modules\express\lib\application.js:609:3)
+    at ServerResponse.render (C:\progetti\nexus-crm\node_modules\express\lib\response.js:1049:7)
+    at res.render (C:\progetti\nexus-crm\node_modules\express-ejs-layouts\lib\express-layouts.js:77:18)
+    at C:\progetti\nexus-crm\routes\users.js:68:7
+{
+  "service": "nexus-crm",
+  "error": "C:\\progetti\\nexus-crm\\views\\users\\form.ejs:19\n    17|         <div class=\"flex items-center\">\n    18|           <i class=\"fas fa-chevron-right text-gray-400 mx-2\"></i>\n >> 19|           <span class=\"text-gray-500\"><%= formUser.id ? 'Modifica Utente' : 'Nuovo Utente' %></span>\n    20|         </div>\n    21|       </li>\n    22|     </ol>\n\nformUser is not defined",
+  "method": "GET",
+  "url": "/users/new",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "body": {},
+  "query": {},
+  "params": {}
+}
+2025-06-26 10:45:53 [ERROR]: Errore non gestito nell'applicazione
+ReferenceError: C:\progetti\nexus-crm\views\users\form.ejs:19
+    17|         <div class="flex items-center">
+    18|           <i class="fas fa-chevron-right text-gray-400 mx-2"></i>
+ >> 19|           <span class="text-gray-500"><%= formUser.id ? 'Modifica Utente' : 'Nuovo Utente' %></span>
+    20|         </div>
+    21|       </li>
+    22|     </ol>
+
+formUser is not defined
+    at eval ("C:\\progetti\\nexus-crm\\views\\users\\form.ejs":12:26)
+    at form (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:703:17)
+    at tryHandleCache (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:274:36)
+    at exports.renderFile [as engine] (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:491:10)
+    at View.render (C:\progetti\nexus-crm\node_modules\express\lib\view.js:135:8)
+    at tryRender (C:\progetti\nexus-crm\node_modules\express\lib\application.js:657:10)
+    at Function.render (C:\progetti\nexus-crm\node_modules\express\lib\application.js:609:3)
+    at ServerResponse.render (C:\progetti\nexus-crm\node_modules\express\lib\response.js:1049:7)
+    at res.render (C:\progetti\nexus-crm\node_modules\express-ejs-layouts\lib\express-layouts.js:77:18)
+    at C:\progetti\nexus-crm\routes\users.js:68:7
+{
+  "service": "nexus-crm",
+  "error": "C:\\progetti\\nexus-crm\\views\\users\\form.ejs:19\n    17|         <div class=\"flex items-center\">\n    18|           <i class=\"fas fa-chevron-right text-gray-400 mx-2\"></i>\n >> 19|           <span class=\"text-gray-500\"><%= formUser.id ? 'Modifica Utente' : 'Nuovo Utente' %></span>\n    20|         </div>\n    21|       </li>\n    22|     </ol>\n\nformUser is not defined",
+  "url": "/users/new",
+  "method": "GET",
+  "ip": "::1",
+  "userId": 1,
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36"
+}
+2025-06-26 10:45:53 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/users/new",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 500,
+  "duration": "36ms",
+  "contentLength": 9729
+}
+2025-06-26 10:45:53 [WARN]: Pagina non trovata
+{
+  "service": "nexus-crm",
+  "url": "/.well-known/appspecific/com.chrome.devtools.json",
+  "method": "GET",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1
+}
+2025-06-26 10:45:53 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/.well-known/appspecific/com.chrome.devtools.json",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 404,
+  "duration": "14ms",
+  "contentLength": 9285
+}
+2025-06-26 10:47:07 [ERROR]: Unhandled error
+ReferenceError: C:\progetti\nexus-crm\views\users\form.ejs:19
+    17|         <div class="flex items-center">
+    18|           <i class="fas fa-chevron-right text-gray-400 mx-2"></i>
+ >> 19|           <span class="text-gray-500"><%= formUser.id ? 'Modifica Utente' : 'Nuovo Utente' %></span>
+    20|         </div>
+    21|       </li>
+    22|     </ol>
+
+formUser is not defined
+    at eval ("C:\\progetti\\nexus-crm\\views\\users\\form.ejs":12:26)
+    at form (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:703:17)
+    at tryHandleCache (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:274:36)
+    at exports.renderFile [as engine] (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:491:10)
+    at View.render (C:\progetti\nexus-crm\node_modules\express\lib\view.js:135:8)
+    at tryRender (C:\progetti\nexus-crm\node_modules\express\lib\application.js:657:10)
+    at Function.render (C:\progetti\nexus-crm\node_modules\express\lib\application.js:609:3)
+    at ServerResponse.render (C:\progetti\nexus-crm\node_modules\express\lib\response.js:1049:7)
+    at res.render (C:\progetti\nexus-crm\node_modules\express-ejs-layouts\lib\express-layouts.js:77:18)
+    at C:\progetti\nexus-crm\routes\users.js:68:7
+{
+  "service": "nexus-crm",
+  "error": "C:\\progetti\\nexus-crm\\views\\users\\form.ejs:19\n    17|         <div class=\"flex items-center\">\n    18|           <i class=\"fas fa-chevron-right text-gray-400 mx-2\"></i>\n >> 19|           <span class=\"text-gray-500\"><%= formUser.id ? 'Modifica Utente' : 'Nuovo Utente' %></span>\n    20|         </div>\n    21|       </li>\n    22|     </ol>\n\nformUser is not defined",
+  "method": "GET",
+  "url": "/users/new",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "body": {},
+  "query": {},
+  "params": {}
+}
+2025-06-26 10:47:07 [ERROR]: Errore non gestito nell'applicazione
+ReferenceError: C:\progetti\nexus-crm\views\users\form.ejs:19
+    17|         <div class="flex items-center">
+    18|           <i class="fas fa-chevron-right text-gray-400 mx-2"></i>
+ >> 19|           <span class="text-gray-500"><%= formUser.id ? 'Modifica Utente' : 'Nuovo Utente' %></span>
+    20|         </div>
+    21|       </li>
+    22|     </ol>
+
+formUser is not defined
+    at eval ("C:\\progetti\\nexus-crm\\views\\users\\form.ejs":12:26)
+    at form (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:703:17)
+    at tryHandleCache (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:274:36)
+    at exports.renderFile [as engine] (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:491:10)
+    at View.render (C:\progetti\nexus-crm\node_modules\express\lib\view.js:135:8)
+    at tryRender (C:\progetti\nexus-crm\node_modules\express\lib\application.js:657:10)
+    at Function.render (C:\progetti\nexus-crm\node_modules\express\lib\application.js:609:3)
+    at ServerResponse.render (C:\progetti\nexus-crm\node_modules\express\lib\response.js:1049:7)
+    at res.render (C:\progetti\nexus-crm\node_modules\express-ejs-layouts\lib\express-layouts.js:77:18)
+    at C:\progetti\nexus-crm\routes\users.js:68:7
+{
+  "service": "nexus-crm",
+  "error": "C:\\progetti\\nexus-crm\\views\\users\\form.ejs:19\n    17|         <div class=\"flex items-center\">\n    18|           <i class=\"fas fa-chevron-right text-gray-400 mx-2\"></i>\n >> 19|           <span class=\"text-gray-500\"><%= formUser.id ? 'Modifica Utente' : 'Nuovo Utente' %></span>\n    20|         </div>\n    21|       </li>\n    22|     </ol>\n\nformUser is not defined",
+  "url": "/users/new",
+  "method": "GET",
+  "ip": "::1",
+  "userId": 1,
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36"
+}
+2025-06-26 10:47:07 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/users/new",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 500,
+  "duration": "12ms",
+  "contentLength": 9729
+}
+2025-06-26 10:47:07 [WARN]: Pagina non trovata
+{
+  "service": "nexus-crm",
+  "url": "/.well-known/appspecific/com.chrome.devtools.json",
+  "method": "GET",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1
+}
+2025-06-26 10:47:07 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/.well-known/appspecific/com.chrome.devtools.json",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 404,
+  "duration": "19ms",
+  "contentLength": 9285
+}
+2025-06-26 10:47:08 [ERROR]: Unhandled error
+ReferenceError: C:\progetti\nexus-crm\views\users\form.ejs:19
+    17|         <div class="flex items-center">
+    18|           <i class="fas fa-chevron-right text-gray-400 mx-2"></i>
+ >> 19|           <span class="text-gray-500"><%= formUser.id ? 'Modifica Utente' : 'Nuovo Utente' %></span>
+    20|         </div>
+    21|       </li>
+    22|     </ol>
+
+formUser is not defined
+    at eval ("C:\\progetti\\nexus-crm\\views\\users\\form.ejs":12:26)
+    at form (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:703:17)
+    at tryHandleCache (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:274:36)
+    at exports.renderFile [as engine] (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:491:10)
+    at View.render (C:\progetti\nexus-crm\node_modules\express\lib\view.js:135:8)
+    at tryRender (C:\progetti\nexus-crm\node_modules\express\lib\application.js:657:10)
+    at Function.render (C:\progetti\nexus-crm\node_modules\express\lib\application.js:609:3)
+    at ServerResponse.render (C:\progetti\nexus-crm\node_modules\express\lib\response.js:1049:7)
+    at res.render (C:\progetti\nexus-crm\node_modules\express-ejs-layouts\lib\express-layouts.js:77:18)
+    at C:\progetti\nexus-crm\routes\users.js:68:7
+{
+  "service": "nexus-crm",
+  "error": "C:\\progetti\\nexus-crm\\views\\users\\form.ejs:19\n    17|         <div class=\"flex items-center\">\n    18|           <i class=\"fas fa-chevron-right text-gray-400 mx-2\"></i>\n >> 19|           <span class=\"text-gray-500\"><%= formUser.id ? 'Modifica Utente' : 'Nuovo Utente' %></span>\n    20|         </div>\n    21|       </li>\n    22|     </ol>\n\nformUser is not defined",
+  "method": "GET",
+  "url": "/users/new",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "body": {},
+  "query": {},
+  "params": {}
+}
+2025-06-26 10:47:08 [ERROR]: Errore non gestito nell'applicazione
+ReferenceError: C:\progetti\nexus-crm\views\users\form.ejs:19
+    17|         <div class="flex items-center">
+    18|           <i class="fas fa-chevron-right text-gray-400 mx-2"></i>
+ >> 19|           <span class="text-gray-500"><%= formUser.id ? 'Modifica Utente' : 'Nuovo Utente' %></span>
+    20|         </div>
+    21|       </li>
+    22|     </ol>
+
+formUser is not defined
+    at eval ("C:\\progetti\\nexus-crm\\views\\users\\form.ejs":12:26)
+    at form (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:703:17)
+    at tryHandleCache (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:274:36)
+    at exports.renderFile [as engine] (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:491:10)
+    at View.render (C:\progetti\nexus-crm\node_modules\express\lib\view.js:135:8)
+    at tryRender (C:\progetti\nexus-crm\node_modules\express\lib\application.js:657:10)
+    at Function.render (C:\progetti\nexus-crm\node_modules\express\lib\application.js:609:3)
+    at ServerResponse.render (C:\progetti\nexus-crm\node_modules\express\lib\response.js:1049:7)
+    at res.render (C:\progetti\nexus-crm\node_modules\express-ejs-layouts\lib\express-layouts.js:77:18)
+    at C:\progetti\nexus-crm\routes\users.js:68:7
+{
+  "service": "nexus-crm",
+  "error": "C:\\progetti\\nexus-crm\\views\\users\\form.ejs:19\n    17|         <div class=\"flex items-center\">\n    18|           <i class=\"fas fa-chevron-right text-gray-400 mx-2\"></i>\n >> 19|           <span class=\"text-gray-500\"><%= formUser.id ? 'Modifica Utente' : 'Nuovo Utente' %></span>\n    20|         </div>\n    21|       </li>\n    22|     </ol>\n\nformUser is not defined",
+  "url": "/users/new",
+  "method": "GET",
+  "ip": "::1",
+  "userId": 1,
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36"
+}
+2025-06-26 10:47:08 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/users/new",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 500,
+  "duration": "9ms",
+  "contentLength": 9729
+}
+2025-06-26 10:47:08 [WARN]: Pagina non trovata
+{
+  "service": "nexus-crm",
+  "url": "/.well-known/appspecific/com.chrome.devtools.json",
+  "method": "GET",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1
+}
+2025-06-26 10:47:08 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/.well-known/appspecific/com.chrome.devtools.json",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 404,
+  "duration": "22ms",
+  "contentLength": 9285
+}
+2025-06-26 10:47:09 [ERROR]: Unhandled error
+ReferenceError: C:\progetti\nexus-crm\views\users\form.ejs:19
+    17|         <div class="flex items-center">
+    18|           <i class="fas fa-chevron-right text-gray-400 mx-2"></i>
+ >> 19|           <span class="text-gray-500"><%= formUser.id ? 'Modifica Utente' : 'Nuovo Utente' %></span>
+    20|         </div>
+    21|       </li>
+    22|     </ol>
+
+formUser is not defined
+    at eval ("C:\\progetti\\nexus-crm\\views\\users\\form.ejs":12:26)
+    at form (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:703:17)
+    at tryHandleCache (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:274:36)
+    at exports.renderFile [as engine] (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:491:10)
+    at View.render (C:\progetti\nexus-crm\node_modules\express\lib\view.js:135:8)
+    at tryRender (C:\progetti\nexus-crm\node_modules\express\lib\application.js:657:10)
+    at Function.render (C:\progetti\nexus-crm\node_modules\express\lib\application.js:609:3)
+    at ServerResponse.render (C:\progetti\nexus-crm\node_modules\express\lib\response.js:1049:7)
+    at res.render (C:\progetti\nexus-crm\node_modules\express-ejs-layouts\lib\express-layouts.js:77:18)
+    at C:\progetti\nexus-crm\routes\users.js:68:7
+{
+  "service": "nexus-crm",
+  "error": "C:\\progetti\\nexus-crm\\views\\users\\form.ejs:19\n    17|         <div class=\"flex items-center\">\n    18|           <i class=\"fas fa-chevron-right text-gray-400 mx-2\"></i>\n >> 19|           <span class=\"text-gray-500\"><%= formUser.id ? 'Modifica Utente' : 'Nuovo Utente' %></span>\n    20|         </div>\n    21|       </li>\n    22|     </ol>\n\nformUser is not defined",
+  "method": "GET",
+  "url": "/users/new",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "body": {},
+  "query": {},
+  "params": {}
+}
+2025-06-26 10:47:09 [ERROR]: Errore non gestito nell'applicazione
+ReferenceError: C:\progetti\nexus-crm\views\users\form.ejs:19
+    17|         <div class="flex items-center">
+    18|           <i class="fas fa-chevron-right text-gray-400 mx-2"></i>
+ >> 19|           <span class="text-gray-500"><%= formUser.id ? 'Modifica Utente' : 'Nuovo Utente' %></span>
+    20|         </div>
+    21|       </li>
+    22|     </ol>
+
+formUser is not defined
+    at eval ("C:\\progetti\\nexus-crm\\views\\users\\form.ejs":12:26)
+    at form (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:703:17)
+    at tryHandleCache (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:274:36)
+    at exports.renderFile [as engine] (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:491:10)
+    at View.render (C:\progetti\nexus-crm\node_modules\express\lib\view.js:135:8)
+    at tryRender (C:\progetti\nexus-crm\node_modules\express\lib\application.js:657:10)
+    at Function.render (C:\progetti\nexus-crm\node_modules\express\lib\application.js:609:3)
+    at ServerResponse.render (C:\progetti\nexus-crm\node_modules\express\lib\response.js:1049:7)
+    at res.render (C:\progetti\nexus-crm\node_modules\express-ejs-layouts\lib\express-layouts.js:77:18)
+    at C:\progetti\nexus-crm\routes\users.js:68:7
+{
+  "service": "nexus-crm",
+  "error": "C:\\progetti\\nexus-crm\\views\\users\\form.ejs:19\n    17|         <div class=\"flex items-center\">\n    18|           <i class=\"fas fa-chevron-right text-gray-400 mx-2\"></i>\n >> 19|           <span class=\"text-gray-500\"><%= formUser.id ? 'Modifica Utente' : 'Nuovo Utente' %></span>\n    20|         </div>\n    21|       </li>\n    22|     </ol>\n\nformUser is not defined",
+  "url": "/users/new",
+  "method": "GET",
+  "ip": "::1",
+  "userId": 1,
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36"
+}
+2025-06-26 10:47:09 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/users/new",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 500,
+  "duration": "7ms",
+  "contentLength": 9729
+}
+2025-06-26 10:47:09 [WARN]: Pagina non trovata
+{
+  "service": "nexus-crm",
+  "url": "/.well-known/appspecific/com.chrome.devtools.json",
+  "method": "GET",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1
+}
+2025-06-26 10:47:09 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/.well-known/appspecific/com.chrome.devtools.json",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 404,
+  "duration": "10ms",
+  "contentLength": 9285
+}
+2025-06-26 10:47:10 [ERROR]: Unhandled error
+ReferenceError: C:\progetti\nexus-crm\views\users\form.ejs:19
+    17|         <div class="flex items-center">
+    18|           <i class="fas fa-chevron-right text-gray-400 mx-2"></i>
+ >> 19|           <span class="text-gray-500"><%= formUser.id ? 'Modifica Utente' : 'Nuovo Utente' %></span>
+    20|         </div>
+    21|       </li>
+    22|     </ol>
+
+formUser is not defined
+    at eval ("C:\\progetti\\nexus-crm\\views\\users\\form.ejs":12:26)
+    at form (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:703:17)
+    at tryHandleCache (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:274:36)
+    at exports.renderFile [as engine] (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:491:10)
+    at View.render (C:\progetti\nexus-crm\node_modules\express\lib\view.js:135:8)
+    at tryRender (C:\progetti\nexus-crm\node_modules\express\lib\application.js:657:10)
+    at Function.render (C:\progetti\nexus-crm\node_modules\express\lib\application.js:609:3)
+    at ServerResponse.render (C:\progetti\nexus-crm\node_modules\express\lib\response.js:1049:7)
+    at res.render (C:\progetti\nexus-crm\node_modules\express-ejs-layouts\lib\express-layouts.js:77:18)
+    at C:\progetti\nexus-crm\routes\users.js:68:7
+{
+  "service": "nexus-crm",
+  "error": "C:\\progetti\\nexus-crm\\views\\users\\form.ejs:19\n    17|         <div class=\"flex items-center\">\n    18|           <i class=\"fas fa-chevron-right text-gray-400 mx-2\"></i>\n >> 19|           <span class=\"text-gray-500\"><%= formUser.id ? 'Modifica Utente' : 'Nuovo Utente' %></span>\n    20|         </div>\n    21|       </li>\n    22|     </ol>\n\nformUser is not defined",
+  "method": "GET",
+  "url": "/users/new",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "body": {},
+  "query": {},
+  "params": {}
+}
+2025-06-26 10:47:10 [ERROR]: Errore non gestito nell'applicazione
+ReferenceError: C:\progetti\nexus-crm\views\users\form.ejs:19
+    17|         <div class="flex items-center">
+    18|           <i class="fas fa-chevron-right text-gray-400 mx-2"></i>
+ >> 19|           <span class="text-gray-500"><%= formUser.id ? 'Modifica Utente' : 'Nuovo Utente' %></span>
+    20|         </div>
+    21|       </li>
+    22|     </ol>
+
+formUser is not defined
+    at eval ("C:\\progetti\\nexus-crm\\views\\users\\form.ejs":12:26)
+    at form (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:703:17)
+    at tryHandleCache (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:274:36)
+    at exports.renderFile [as engine] (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:491:10)
+    at View.render (C:\progetti\nexus-crm\node_modules\express\lib\view.js:135:8)
+    at tryRender (C:\progetti\nexus-crm\node_modules\express\lib\application.js:657:10)
+    at Function.render (C:\progetti\nexus-crm\node_modules\express\lib\application.js:609:3)
+    at ServerResponse.render (C:\progetti\nexus-crm\node_modules\express\lib\response.js:1049:7)
+    at res.render (C:\progetti\nexus-crm\node_modules\express-ejs-layouts\lib\express-layouts.js:77:18)
+    at C:\progetti\nexus-crm\routes\users.js:68:7
+{
+  "service": "nexus-crm",
+  "error": "C:\\progetti\\nexus-crm\\views\\users\\form.ejs:19\n    17|         <div class=\"flex items-center\">\n    18|           <i class=\"fas fa-chevron-right text-gray-400 mx-2\"></i>\n >> 19|           <span class=\"text-gray-500\"><%= formUser.id ? 'Modifica Utente' : 'Nuovo Utente' %></span>\n    20|         </div>\n    21|       </li>\n    22|     </ol>\n\nformUser is not defined",
+  "url": "/users/new",
+  "method": "GET",
+  "ip": "::1",
+  "userId": 1,
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36"
+}
+2025-06-26 10:47:10 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/users/new",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 500,
+  "duration": "25ms",
+  "contentLength": 9729
+}
+2025-06-26 10:47:10 [WARN]: Pagina non trovata
+{
+  "service": "nexus-crm",
+  "url": "/.well-known/appspecific/com.chrome.devtools.json",
+  "method": "GET",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1
+}
+2025-06-26 10:47:10 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/.well-known/appspecific/com.chrome.devtools.json",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 404,
+  "duration": "15ms",
+  "contentLength": 9285
+}
+2025-06-26 10:48:00 [ERROR]: Unhandled error
+ReferenceError: C:\progetti\nexus-crm\views\users\form.ejs:19
+    17|         <div class="flex items-center">
+    18|           <i class="fas fa-chevron-right text-gray-400 mx-2"></i>
+ >> 19|           <span class="text-gray-500"><%= formUser.id ? 'Modifica Utente' : 'Nuovo Utente' %></span>
+    20|         </div>
+    21|       </li>
+    22|     </ol>
+
+formUser is not defined
+    at eval ("C:\\progetti\\nexus-crm\\views\\users\\form.ejs":12:26)
+    at form (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:703:17)
+    at tryHandleCache (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:274:36)
+    at exports.renderFile [as engine] (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:491:10)
+    at View.render (C:\progetti\nexus-crm\node_modules\express\lib\view.js:135:8)
+    at tryRender (C:\progetti\nexus-crm\node_modules\express\lib\application.js:657:10)
+    at Function.render (C:\progetti\nexus-crm\node_modules\express\lib\application.js:609:3)
+    at ServerResponse.render (C:\progetti\nexus-crm\node_modules\express\lib\response.js:1049:7)
+    at res.render (C:\progetti\nexus-crm\node_modules\express-ejs-layouts\lib\express-layouts.js:77:18)
+    at C:\progetti\nexus-crm\routes\users.js:68:7
+{
+  "service": "nexus-crm",
+  "error": "C:\\progetti\\nexus-crm\\views\\users\\form.ejs:19\n    17|         <div class=\"flex items-center\">\n    18|           <i class=\"fas fa-chevron-right text-gray-400 mx-2\"></i>\n >> 19|           <span class=\"text-gray-500\"><%= formUser.id ? 'Modifica Utente' : 'Nuovo Utente' %></span>\n    20|         </div>\n    21|       </li>\n    22|     </ol>\n\nformUser is not defined",
+  "method": "GET",
+  "url": "/users/new",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "body": {},
+  "query": {},
+  "params": {}
+}
+2025-06-26 10:48:00 [ERROR]: Errore non gestito nell'applicazione
+ReferenceError: C:\progetti\nexus-crm\views\users\form.ejs:19
+    17|         <div class="flex items-center">
+    18|           <i class="fas fa-chevron-right text-gray-400 mx-2"></i>
+ >> 19|           <span class="text-gray-500"><%= formUser.id ? 'Modifica Utente' : 'Nuovo Utente' %></span>
+    20|         </div>
+    21|       </li>
+    22|     </ol>
+
+formUser is not defined
+    at eval ("C:\\progetti\\nexus-crm\\views\\users\\form.ejs":12:26)
+    at form (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:703:17)
+    at tryHandleCache (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:274:36)
+    at exports.renderFile [as engine] (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:491:10)
+    at View.render (C:\progetti\nexus-crm\node_modules\express\lib\view.js:135:8)
+    at tryRender (C:\progetti\nexus-crm\node_modules\express\lib\application.js:657:10)
+    at Function.render (C:\progetti\nexus-crm\node_modules\express\lib\application.js:609:3)
+    at ServerResponse.render (C:\progetti\nexus-crm\node_modules\express\lib\response.js:1049:7)
+    at res.render (C:\progetti\nexus-crm\node_modules\express-ejs-layouts\lib\express-layouts.js:77:18)
+    at C:\progetti\nexus-crm\routes\users.js:68:7
+{
+  "service": "nexus-crm",
+  "error": "C:\\progetti\\nexus-crm\\views\\users\\form.ejs:19\n    17|         <div class=\"flex items-center\">\n    18|           <i class=\"fas fa-chevron-right text-gray-400 mx-2\"></i>\n >> 19|           <span class=\"text-gray-500\"><%= formUser.id ? 'Modifica Utente' : 'Nuovo Utente' %></span>\n    20|         </div>\n    21|       </li>\n    22|     </ol>\n\nformUser is not defined",
+  "url": "/users/new",
+  "method": "GET",
+  "ip": "::1",
+  "userId": 1,
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36"
+}
+2025-06-26 10:48:00 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/users/new",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 500,
+  "duration": "9ms",
+  "contentLength": 9729
+}
+2025-06-26 10:48:00 [WARN]: Pagina non trovata
+{
+  "service": "nexus-crm",
+  "url": "/.well-known/appspecific/com.chrome.devtools.json",
+  "method": "GET",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1
+}
+2025-06-26 10:48:00 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/.well-known/appspecific/com.chrome.devtools.json",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 404,
+  "duration": "7ms",
+  "contentLength": 9285
+}
+2025-06-26 10:48:01 [ERROR]: Unhandled error
+ReferenceError: C:\progetti\nexus-crm\views\users\form.ejs:19
+    17|         <div class="flex items-center">
+    18|           <i class="fas fa-chevron-right text-gray-400 mx-2"></i>
+ >> 19|           <span class="text-gray-500"><%= formUser.id ? 'Modifica Utente' : 'Nuovo Utente' %></span>
+    20|         </div>
+    21|       </li>
+    22|     </ol>
+
+formUser is not defined
+    at eval ("C:\\progetti\\nexus-crm\\views\\users\\form.ejs":12:26)
+    at form (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:703:17)
+    at tryHandleCache (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:274:36)
+    at exports.renderFile [as engine] (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:491:10)
+    at View.render (C:\progetti\nexus-crm\node_modules\express\lib\view.js:135:8)
+    at tryRender (C:\progetti\nexus-crm\node_modules\express\lib\application.js:657:10)
+    at Function.render (C:\progetti\nexus-crm\node_modules\express\lib\application.js:609:3)
+    at ServerResponse.render (C:\progetti\nexus-crm\node_modules\express\lib\response.js:1049:7)
+    at res.render (C:\progetti\nexus-crm\node_modules\express-ejs-layouts\lib\express-layouts.js:77:18)
+    at C:\progetti\nexus-crm\routes\users.js:68:7
+{
+  "service": "nexus-crm",
+  "error": "C:\\progetti\\nexus-crm\\views\\users\\form.ejs:19\n    17|         <div class=\"flex items-center\">\n    18|           <i class=\"fas fa-chevron-right text-gray-400 mx-2\"></i>\n >> 19|           <span class=\"text-gray-500\"><%= formUser.id ? 'Modifica Utente' : 'Nuovo Utente' %></span>\n    20|         </div>\n    21|       </li>\n    22|     </ol>\n\nformUser is not defined",
+  "method": "GET",
+  "url": "/users/new",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "body": {},
+  "query": {},
+  "params": {}
+}
+2025-06-26 10:48:01 [ERROR]: Errore non gestito nell'applicazione
+ReferenceError: C:\progetti\nexus-crm\views\users\form.ejs:19
+    17|         <div class="flex items-center">
+    18|           <i class="fas fa-chevron-right text-gray-400 mx-2"></i>
+ >> 19|           <span class="text-gray-500"><%= formUser.id ? 'Modifica Utente' : 'Nuovo Utente' %></span>
+    20|         </div>
+    21|       </li>
+    22|     </ol>
+
+formUser is not defined
+    at eval ("C:\\progetti\\nexus-crm\\views\\users\\form.ejs":12:26)
+    at form (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:703:17)
+    at tryHandleCache (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:274:36)
+    at exports.renderFile [as engine] (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:491:10)
+    at View.render (C:\progetti\nexus-crm\node_modules\express\lib\view.js:135:8)
+    at tryRender (C:\progetti\nexus-crm\node_modules\express\lib\application.js:657:10)
+    at Function.render (C:\progetti\nexus-crm\node_modules\express\lib\application.js:609:3)
+    at ServerResponse.render (C:\progetti\nexus-crm\node_modules\express\lib\response.js:1049:7)
+    at res.render (C:\progetti\nexus-crm\node_modules\express-ejs-layouts\lib\express-layouts.js:77:18)
+    at C:\progetti\nexus-crm\routes\users.js:68:7
+{
+  "service": "nexus-crm",
+  "error": "C:\\progetti\\nexus-crm\\views\\users\\form.ejs:19\n    17|         <div class=\"flex items-center\">\n    18|           <i class=\"fas fa-chevron-right text-gray-400 mx-2\"></i>\n >> 19|           <span class=\"text-gray-500\"><%= formUser.id ? 'Modifica Utente' : 'Nuovo Utente' %></span>\n    20|         </div>\n    21|       </li>\n    22|     </ol>\n\nformUser is not defined",
+  "url": "/users/new",
+  "method": "GET",
+  "ip": "::1",
+  "userId": 1,
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36"
+}
+2025-06-26 10:48:01 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/users/new",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 500,
+  "duration": "12ms",
+  "contentLength": 9729
+}
+2025-06-26 10:48:01 [WARN]: Pagina non trovata
+{
+  "service": "nexus-crm",
+  "url": "/.well-known/appspecific/com.chrome.devtools.json",
+  "method": "GET",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1
+}
+2025-06-26 10:48:01 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/.well-known/appspecific/com.chrome.devtools.json",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 404,
+  "duration": "13ms",
+  "contentLength": 9285
+}
+2025-06-26 10:48:02 [ERROR]: Unhandled error
+ReferenceError: C:\progetti\nexus-crm\views\users\form.ejs:19
+    17|         <div class="flex items-center">
+    18|           <i class="fas fa-chevron-right text-gray-400 mx-2"></i>
+ >> 19|           <span class="text-gray-500"><%= formUser.id ? 'Modifica Utente' : 'Nuovo Utente' %></span>
+    20|         </div>
+    21|       </li>
+    22|     </ol>
+
+formUser is not defined
+    at eval ("C:\\progetti\\nexus-crm\\views\\users\\form.ejs":12:26)
+    at form (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:703:17)
+    at tryHandleCache (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:274:36)
+    at exports.renderFile [as engine] (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:491:10)
+    at View.render (C:\progetti\nexus-crm\node_modules\express\lib\view.js:135:8)
+    at tryRender (C:\progetti\nexus-crm\node_modules\express\lib\application.js:657:10)
+    at Function.render (C:\progetti\nexus-crm\node_modules\express\lib\application.js:609:3)
+    at ServerResponse.render (C:\progetti\nexus-crm\node_modules\express\lib\response.js:1049:7)
+    at res.render (C:\progetti\nexus-crm\node_modules\express-ejs-layouts\lib\express-layouts.js:77:18)
+    at C:\progetti\nexus-crm\routes\users.js:68:7
+{
+  "service": "nexus-crm",
+  "error": "C:\\progetti\\nexus-crm\\views\\users\\form.ejs:19\n    17|         <div class=\"flex items-center\">\n    18|           <i class=\"fas fa-chevron-right text-gray-400 mx-2\"></i>\n >> 19|           <span class=\"text-gray-500\"><%= formUser.id ? 'Modifica Utente' : 'Nuovo Utente' %></span>\n    20|         </div>\n    21|       </li>\n    22|     </ol>\n\nformUser is not defined",
+  "method": "GET",
+  "url": "/users/new",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "body": {},
+  "query": {},
+  "params": {}
+}
+2025-06-26 10:48:02 [ERROR]: Errore non gestito nell'applicazione
+ReferenceError: C:\progetti\nexus-crm\views\users\form.ejs:19
+    17|         <div class="flex items-center">
+    18|           <i class="fas fa-chevron-right text-gray-400 mx-2"></i>
+ >> 19|           <span class="text-gray-500"><%= formUser.id ? 'Modifica Utente' : 'Nuovo Utente' %></span>
+    20|         </div>
+    21|       </li>
+    22|     </ol>
+
+formUser is not defined
+    at eval ("C:\\progetti\\nexus-crm\\views\\users\\form.ejs":12:26)
+    at form (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:703:17)
+    at tryHandleCache (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:274:36)
+    at exports.renderFile [as engine] (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:491:10)
+    at View.render (C:\progetti\nexus-crm\node_modules\express\lib\view.js:135:8)
+    at tryRender (C:\progetti\nexus-crm\node_modules\express\lib\application.js:657:10)
+    at Function.render (C:\progetti\nexus-crm\node_modules\express\lib\application.js:609:3)
+    at ServerResponse.render (C:\progetti\nexus-crm\node_modules\express\lib\response.js:1049:7)
+    at res.render (C:\progetti\nexus-crm\node_modules\express-ejs-layouts\lib\express-layouts.js:77:18)
+    at C:\progetti\nexus-crm\routes\users.js:68:7
+{
+  "service": "nexus-crm",
+  "error": "C:\\progetti\\nexus-crm\\views\\users\\form.ejs:19\n    17|         <div class=\"flex items-center\">\n    18|           <i class=\"fas fa-chevron-right text-gray-400 mx-2\"></i>\n >> 19|           <span class=\"text-gray-500\"><%= formUser.id ? 'Modifica Utente' : 'Nuovo Utente' %></span>\n    20|         </div>\n    21|       </li>\n    22|     </ol>\n\nformUser is not defined",
+  "url": "/users/new",
+  "method": "GET",
+  "ip": "::1",
+  "userId": 1,
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36"
+}
+2025-06-26 10:48:02 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/users/new",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 500,
+  "duration": "8ms",
+  "contentLength": 9729
+}
+2025-06-26 10:48:02 [WARN]: Pagina non trovata
+{
+  "service": "nexus-crm",
+  "url": "/.well-known/appspecific/com.chrome.devtools.json",
+  "method": "GET",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1
+}
+2025-06-26 10:48:02 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/.well-known/appspecific/com.chrome.devtools.json",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 404,
+  "duration": "8ms",
+  "contentLength": 9285
+}
+2025-06-26 10:48:03 [ERROR]: Unhandled error
+ReferenceError: C:\progetti\nexus-crm\views\users\form.ejs:19
+    17|         <div class="flex items-center">
+    18|           <i class="fas fa-chevron-right text-gray-400 mx-2"></i>
+ >> 19|           <span class="text-gray-500"><%= formUser.id ? 'Modifica Utente' : 'Nuovo Utente' %></span>
+    20|         </div>
+    21|       </li>
+    22|     </ol>
+
+formUser is not defined
+    at eval ("C:\\progetti\\nexus-crm\\views\\users\\form.ejs":12:26)
+    at form (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:703:17)
+    at tryHandleCache (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:274:36)
+    at exports.renderFile [as engine] (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:491:10)
+    at View.render (C:\progetti\nexus-crm\node_modules\express\lib\view.js:135:8)
+    at tryRender (C:\progetti\nexus-crm\node_modules\express\lib\application.js:657:10)
+    at Function.render (C:\progetti\nexus-crm\node_modules\express\lib\application.js:609:3)
+    at ServerResponse.render (C:\progetti\nexus-crm\node_modules\express\lib\response.js:1049:7)
+    at res.render (C:\progetti\nexus-crm\node_modules\express-ejs-layouts\lib\express-layouts.js:77:18)
+    at C:\progetti\nexus-crm\routes\users.js:68:7
+{
+  "service": "nexus-crm",
+  "error": "C:\\progetti\\nexus-crm\\views\\users\\form.ejs:19\n    17|         <div class=\"flex items-center\">\n    18|           <i class=\"fas fa-chevron-right text-gray-400 mx-2\"></i>\n >> 19|           <span class=\"text-gray-500\"><%= formUser.id ? 'Modifica Utente' : 'Nuovo Utente' %></span>\n    20|         </div>\n    21|       </li>\n    22|     </ol>\n\nformUser is not defined",
+  "method": "GET",
+  "url": "/users/new",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "body": {},
+  "query": {},
+  "params": {}
+}
+2025-06-26 10:48:03 [ERROR]: Errore non gestito nell'applicazione
+ReferenceError: C:\progetti\nexus-crm\views\users\form.ejs:19
+    17|         <div class="flex items-center">
+    18|           <i class="fas fa-chevron-right text-gray-400 mx-2"></i>
+ >> 19|           <span class="text-gray-500"><%= formUser.id ? 'Modifica Utente' : 'Nuovo Utente' %></span>
+    20|         </div>
+    21|       </li>
+    22|     </ol>
+
+formUser is not defined
+    at eval ("C:\\progetti\\nexus-crm\\views\\users\\form.ejs":12:26)
+    at form (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:703:17)
+    at tryHandleCache (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:274:36)
+    at exports.renderFile [as engine] (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:491:10)
+    at View.render (C:\progetti\nexus-crm\node_modules\express\lib\view.js:135:8)
+    at tryRender (C:\progetti\nexus-crm\node_modules\express\lib\application.js:657:10)
+    at Function.render (C:\progetti\nexus-crm\node_modules\express\lib\application.js:609:3)
+    at ServerResponse.render (C:\progetti\nexus-crm\node_modules\express\lib\response.js:1049:7)
+    at res.render (C:\progetti\nexus-crm\node_modules\express-ejs-layouts\lib\express-layouts.js:77:18)
+    at C:\progetti\nexus-crm\routes\users.js:68:7
+{
+  "service": "nexus-crm",
+  "error": "C:\\progetti\\nexus-crm\\views\\users\\form.ejs:19\n    17|         <div class=\"flex items-center\">\n    18|           <i class=\"fas fa-chevron-right text-gray-400 mx-2\"></i>\n >> 19|           <span class=\"text-gray-500\"><%= formUser.id ? 'Modifica Utente' : 'Nuovo Utente' %></span>\n    20|         </div>\n    21|       </li>\n    22|     </ol>\n\nformUser is not defined",
+  "url": "/users/new",
+  "method": "GET",
+  "ip": "::1",
+  "userId": 1,
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36"
+}
+2025-06-26 10:48:03 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/users/new",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 500,
+  "duration": "6ms",
+  "contentLength": 9729
+}
+2025-06-26 10:48:03 [WARN]: Pagina non trovata
+{
+  "service": "nexus-crm",
+  "url": "/.well-known/appspecific/com.chrome.devtools.json",
+  "method": "GET",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1
+}
+2025-06-26 10:48:03 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/.well-known/appspecific/com.chrome.devtools.json",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 404,
+  "duration": "14ms",
+  "contentLength": 9285
+}
+2025-06-26 10:48:03 [ERROR]: Unhandled error
+ReferenceError: C:\progetti\nexus-crm\views\users\form.ejs:19
+    17|         <div class="flex items-center">
+    18|           <i class="fas fa-chevron-right text-gray-400 mx-2"></i>
+ >> 19|           <span class="text-gray-500"><%= formUser.id ? 'Modifica Utente' : 'Nuovo Utente' %></span>
+    20|         </div>
+    21|       </li>
+    22|     </ol>
+
+formUser is not defined
+    at eval ("C:\\progetti\\nexus-crm\\views\\users\\form.ejs":12:26)
+    at form (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:703:17)
+    at tryHandleCache (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:274:36)
+    at exports.renderFile [as engine] (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:491:10)
+    at View.render (C:\progetti\nexus-crm\node_modules\express\lib\view.js:135:8)
+    at tryRender (C:\progetti\nexus-crm\node_modules\express\lib\application.js:657:10)
+    at Function.render (C:\progetti\nexus-crm\node_modules\express\lib\application.js:609:3)
+    at ServerResponse.render (C:\progetti\nexus-crm\node_modules\express\lib\response.js:1049:7)
+    at res.render (C:\progetti\nexus-crm\node_modules\express-ejs-layouts\lib\express-layouts.js:77:18)
+    at C:\progetti\nexus-crm\routes\users.js:68:7
+{
+  "service": "nexus-crm",
+  "error": "C:\\progetti\\nexus-crm\\views\\users\\form.ejs:19\n    17|         <div class=\"flex items-center\">\n    18|           <i class=\"fas fa-chevron-right text-gray-400 mx-2\"></i>\n >> 19|           <span class=\"text-gray-500\"><%= formUser.id ? 'Modifica Utente' : 'Nuovo Utente' %></span>\n    20|         </div>\n    21|       </li>\n    22|     </ol>\n\nformUser is not defined",
+  "method": "GET",
+  "url": "/users/new",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "body": {},
+  "query": {},
+  "params": {}
+}
+2025-06-26 10:48:03 [ERROR]: Errore non gestito nell'applicazione
+ReferenceError: C:\progetti\nexus-crm\views\users\form.ejs:19
+    17|         <div class="flex items-center">
+    18|           <i class="fas fa-chevron-right text-gray-400 mx-2"></i>
+ >> 19|           <span class="text-gray-500"><%= formUser.id ? 'Modifica Utente' : 'Nuovo Utente' %></span>
+    20|         </div>
+    21|       </li>
+    22|     </ol>
+
+formUser is not defined
+    at eval ("C:\\progetti\\nexus-crm\\views\\users\\form.ejs":12:26)
+    at form (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:703:17)
+    at tryHandleCache (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:274:36)
+    at exports.renderFile [as engine] (C:\progetti\nexus-crm\node_modules\ejs\lib\ejs.js:491:10)
+    at View.render (C:\progetti\nexus-crm\node_modules\express\lib\view.js:135:8)
+    at tryRender (C:\progetti\nexus-crm\node_modules\express\lib\application.js:657:10)
+    at Function.render (C:\progetti\nexus-crm\node_modules\express\lib\application.js:609:3)
+    at ServerResponse.render (C:\progetti\nexus-crm\node_modules\express\lib\response.js:1049:7)
+    at res.render (C:\progetti\nexus-crm\node_modules\express-ejs-layouts\lib\express-layouts.js:77:18)
+    at C:\progetti\nexus-crm\routes\users.js:68:7
+{
+  "service": "nexus-crm",
+  "error": "C:\\progetti\\nexus-crm\\views\\users\\form.ejs:19\n    17|         <div class=\"flex items-center\">\n    18|           <i class=\"fas fa-chevron-right text-gray-400 mx-2\"></i>\n >> 19|           <span class=\"text-gray-500\"><%= formUser.id ? 'Modifica Utente' : 'Nuovo Utente' %></span>\n    20|         </div>\n    21|       </li>\n    22|     </ol>\n\nformUser is not defined",
+  "url": "/users/new",
+  "method": "GET",
+  "ip": "::1",
+  "userId": 1,
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36"
+}
+2025-06-26 10:48:03 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/users/new",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 500,
+  "duration": "9ms",
+  "contentLength": 9729
+}
+2025-06-26 10:48:03 [WARN]: Pagina non trovata
+{
+  "service": "nexus-crm",
+  "url": "/.well-known/appspecific/com.chrome.devtools.json",
+  "method": "GET",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1
+}
+2025-06-26 10:48:03 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/.well-known/appspecific/com.chrome.devtools.json",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 404,
+  "duration": "7ms",
+  "contentLength": 9285
+}
+2025-06-26 10:48:17 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/users/new",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "6ms",
+  "contentLength": 16454
+}
+2025-06-26 10:48:17 [WARN]: Pagina non trovata
+{
+  "service": "nexus-crm",
+  "url": "/.well-known/appspecific/com.chrome.devtools.json",
+  "method": "GET",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1
+}
+2025-06-26 10:48:17 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/.well-known/appspecific/com.chrome.devtools.json",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 404,
+  "duration": "3ms",
+  "contentLength": 9285
+}
+2025-06-26 10:48:30 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/login",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "statusCode": 200,
+  "duration": "18ms",
+  "contentLength": 4680
+}
+2025-06-26 10:48:30 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/login",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "statusCode": 200,
+  "duration": "14ms",
+  "contentLength": 4680
+}
+2025-06-26 10:48:37 [INFO]: Login riuscito
+{
+  "service": "nexus-crm",
+  "userId": 1,
+  "username": "admin",
+  "role": "administrator",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36"
+}
+2025-06-26 10:48:37 [INFO]: Login completato con successo
+{
+  "service": "nexus-crm",
+  "userId": 1,
+  "username": "admin",
+  "role": "administrator",
+  "ip": "::1",
+  "sessionId": "x8E7038terGvUBnyvcUYHl-sVTGPNw5s"
+}
+2025-06-26 10:48:37 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "4ms",
+  "contentLength": 12130
+}
+2025-06-26 10:48:37 [INFO]: Sessione utente loggata
+{
+  "service": "nexus-crm",
+  "userId": 1,
+  "sessionLogId": 42,
+  "ip": "::1"
+}
+2025-06-26 10:48:37 [DEBUG]: Session ID aggiornato
+{
+  "service": "nexus-crm",
+  "sessionLogId": 42,
+  "realSessionId": "x8E7038terGvUBnyvcUYHl-sVTGPNw5s"
+}
+2025-06-26 10:48:37 [WARN]: Pagina non trovata
+{
+  "service": "nexus-crm",
+  "url": "/.well-known/appspecific/com.chrome.devtools.json",
+  "method": "GET",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1
+}
+2025-06-26 10:48:37 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/.well-known/appspecific/com.chrome.devtools.json",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 404,
+  "duration": "8ms",
+  "contentLength": 9285
+}
+2025-06-26 10:48:41 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/users",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "11ms",
+  "contentLength": 10897
+}
+2025-06-26 10:48:41 [WARN]: Pagina non trovata
+{
+  "service": "nexus-crm",
+  "url": "/.well-known/appspecific/com.chrome.devtools.json",
+  "method": "GET",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1
+}
+2025-06-26 10:48:41 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/.well-known/appspecific/com.chrome.devtools.json",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 404,
+  "duration": "5ms",
+  "contentLength": 9285
+}
+2025-06-26 10:48:43 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/users/new",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "5ms",
+  "contentLength": 16454
+}
+2025-06-26 10:48:43 [WARN]: Pagina non trovata
+{
+  "service": "nexus-crm",
+  "url": "/.well-known/appspecific/com.chrome.devtools.json",
+  "method": "GET",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1
+}
+2025-06-26 10:48:43 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/.well-known/appspecific/com.chrome.devtools.json",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 404,
+  "duration": "14ms",
+  "contentLength": 9285
+}
+2025-06-26 10:49:44 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/users/new",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "8ms",
+  "contentLength": 16454
+}
+2025-06-26 10:49:44 [WARN]: Pagina non trovata
+{
+  "service": "nexus-crm",
+  "url": "/.well-known/appspecific/com.chrome.devtools.json",
+  "method": "GET",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1
+}
+2025-06-26 10:49:44 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/.well-known/appspecific/com.chrome.devtools.json",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 404,
+  "duration": "4ms",
+  "contentLength": 9285
+}
+2025-06-26 10:49:50 [INFO]: Ricevuto SIGINT, chiusura database...
+{
+  "service": "nexus-crm"
+}

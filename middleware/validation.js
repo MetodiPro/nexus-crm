@@ -28,6 +28,17 @@ const handleValidationErrors = (req, res, next) => {
     }
 
     // Altrimenti, ritorna alla pagina con errori
+    // Per il form utenti, dobbiamo gestire la variabile formUser
+    if (req.originalUrl.includes('/users/')) {
+      return res.status(400).render('users/form', {
+        formUser: req.body || {}, // Usa i dati del form inviato
+        action: req.originalUrl,
+        isEdit: req.originalUrl.includes('/edit/'),
+        errors: errorMessages,
+        csrfToken: req.session.csrfToken
+      });
+    }
+    
     return res.status(400).render('error', {
       message: 'Dati non validi',
       errors: errorMessages

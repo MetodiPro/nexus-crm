@@ -65,8 +65,15 @@ router.get('/new', (req, res) => {
     timestamp: new Date().toISOString()
   });
   
+  console.log('📝 DEBUG /users/new - res.locals.user:', {
+    id: res.locals.user?.id,
+    username: res.locals.user?.username,
+    role: res.locals.user?.role,
+    name: res.locals.user?.name
+  });
+  
   res.render('users/form', { 
-    user: {}, 
+    formUser: {}, // Rinominiamo per evitare conflitti
     action: '/users/new',
     isEdit: false,
     csrfToken: req.session.csrfToken,
@@ -92,7 +99,7 @@ router.post('/new', validateUser, auditMiddleware('CREATE', 'users'), (req, res)
         errorMessage = 'Username già esistente';
         
         return res.status(400).render('users/form', {
-          user: userData,
+          formUser: userData, // Cambiamo user in formUser
           action: '/users/new',
           isEdit: false,
           error: errorMessage,
@@ -146,7 +153,7 @@ router.get('/edit/:id', validateId, (req, res) => {
     }
 
     res.render('users/form', { 
-      user, 
+      formUser: user, // Cambiamo user in formUser
       action: `/users/edit/${user.id}`,
       isEdit: true,
       csrfToken: req.session.csrfToken,
@@ -191,7 +198,7 @@ router.post('/edit/:id', validateId, validateUserUpdate, auditMiddleware('UPDATE
           }
           
           return res.status(400).render('users/form', {
-            user: { ...user, ...userData },
+            formUser: { ...user, ...userData }, // Cambiamo user in formUser
             action: `/users/edit/${userId}`,
             isEdit: true,
             error: errorMessage,

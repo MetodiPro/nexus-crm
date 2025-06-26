@@ -1,3 +1,6 @@
+<!-- Definizione di sicurezza per formUser -->
+<% if (typeof formUser === 'undefined') { formUser = {}; } %>
+
 <!-- Breadcrumb e Titolo -->
 <div class="mb-6">
   <nav class="flex" aria-label="Breadcrumb">
@@ -16,14 +19,14 @@
       <li aria-current="page">
         <div class="flex items-center">
           <i class="fas fa-chevron-right text-gray-400 mx-2"></i>
-          <span class="text-gray-500"><%= user.id ? 'Modifica Utente' : 'Nuovo Utente' %></span>
+          <span class="text-gray-500"><%= formUser.id ? 'Modifica Utente' : 'Nuovo Utente' %></span>
         </div>
       </li>
     </ol>
   </nav>
   <h1 class="text-3xl font-bold text-nexus-dark mt-4">
-    <i class="fas fa-user-cog mr-3"></i>
-    <%= user.id ? 'Modifica Utente' : 'Nuovo Utente' %>
+  <i class="fas fa-user-cog mr-3"></i>
+  <%= (typeof formUser !== 'undefined' && formUser.id) ? 'Modifica Utente' : 'Nuovo Utente' %>
   </h1>
 </div>
 
@@ -31,7 +34,7 @@
     <div class="card-header bg-nexus-dark text-white">
       <h4 class="text-lg font-semibold">
         <i class="fas fa-user-cog"></i> 
-        <%= user.id ? 'Modifica Utente' : 'Nuovo Utente' %>
+        <%= formUser.id ? 'Modifica Utente' : 'Nuovo Utente' %>
       </h4>
     </div>
     <div class="card-body">
@@ -79,23 +82,23 @@
           <div>
             <label for="username" class="form-label">Username</label>
             <input type="text" class="form-input" id="username" name="username" 
-                   value="<%= user.username || '' %>" required>
+                   value="<%= formUser.username || '' %>" required>
           </div>
           <div>
             <label for="name" class="form-label">Nome e Cognome</label>
             <input type="text" class="form-input" id="name" name="name" 
-                   value="<%= user.name || '' %>" required>
+                   value="<%= formUser.name || '' %>" required>
           </div>
         </div>
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
           <div>
             <label for="password" class="form-label">
-              Password <%= user.id ? '(lascia vuoto per non modificare)' : '' %>
+              Password <%= formUser.id ? '(lascia vuoto per non modificare)' : '' %>
             </label>
             <input type="password" class="form-input" id="password" name="password" 
-                   <%= user.id ? '' : 'required' %>>
-            <% if (!user.id) { %>
+                   <%= formUser.id ? '' : 'required' %>>
+            <% if (!formUser.id) { %>
               <div class="mt-2 text-sm text-gray-600 bg-blue-50 border border-blue-200 rounded p-3">
                 <h6 class="font-semibold text-blue-800 mb-2">Requisiti password:</h6>
                 <ul class="text-xs space-y-1 list-disc list-inside">
@@ -110,11 +113,11 @@
           </div>
           <div>
             <label for="confirm_password" class="form-label">
-              Conferma Password <%= user.id ? '(solo se cambi la password)' : '' %>
+              Conferma Password <%= formUser.id ? '(solo se cambi la password)' : '' %>
             </label>
             <input type="password" class="form-input" id="confirm_password" name="confirm_password" 
-                   <%= user.id ? '' : 'required' %>>
-            <% if (!user.id) { %>
+                   <%= formUser.id ? '' : 'required' %>>
+            <% if (!formUser.id) { %>
               <div class="mt-2 text-sm text-gray-500">
                 <i class="fas fa-info-circle mr-1"></i>
                 Ripeti esattamente la password inserita sopra
@@ -127,15 +130,15 @@
           <div>
             <label for="email" class="form-label">Email</label>
             <input type="email" class="form-input" id="email" name="email" 
-                   value="<%= user.email || '' %>">
+                   value="<%= formUser.email || '' %>">
           </div>
           <div>
             <label for="role" class="form-label">Ruolo</label>
             <select class="form-select" id="role" name="role" required>
-              <option value="consultant" <%= (user.role === 'consultant') ? 'selected' : '' %>>
+              <option value="consultant" <%= (formUser.role === 'consultant') ? 'selected' : '' %>>
                 Consulente
               </option>
-              <option value="administrator" <%= (user.role === 'administrator') ? 'selected' : '' %>>
+              <option value="administrator" <%= (formUser.role === 'administrator') ? 'selected' : '' %>>
                 Amministratore
               </option>
             </select>
@@ -154,7 +157,7 @@
     </div>
   </div>
 
-<% if (!user.id) { %>
+<% if (!formUser.id) { %>
 <!-- JavaScript per validazione password in tempo reale -->
 <script>
 document.addEventListener('DOMContentLoaded', function() {

@@ -3,17 +3,45 @@ const User = require('../models/user');
 
 // Configurazione sicurezza sessioni
 const sessionSecurity = {
-  // Verifica se la sessione è valida - TEMPORANEAMENTE DISABILITATO PER DEBUG
+  // Verifica se la sessione è valida
   validateSession: (req, res, next) => {
-    // BYPASS COMPLETO PER IDENTIFICARE IL PROBLEMA
-    console.log('🔍 DEBUG validateSession BYPASSED - Utente in sessione:', req.session.user ? {
-      id: req.session.user.id,
-      username: req.session.user.username,
-      role: req.session.user.role,
-      name: req.session.user.name
-    } : 'NESSUN UTENTE');
-    
-    return next();
+    if (!req.session.user) {
+      return next();
+    }
+
+    // Verifica se l'account è ancora attivo
+    User.getById(req.session.user.id, (err, user) => {
+      if (err) {
+        loggers.error('Errore nella validazione sessione', err, {
+          sessionUserId: req.session.user.id,
+          ip: req.ip
+        });
+        return next();
+      }
+
+      if (!user) {
+        // Utente eliminato - invalida la sessione
+        loggers.warn('Sessione invalidata - utente eliminato', {
+          sessionUserId: req.session.user.id,
+          ip: req.ip
+        });
+        req.session.destroy();
+        return res.redirect('/login');
+      }
+
+      if (user.account_locked) {
+        // Account bloccato - invalida la sessione
+        loggers.warn('Sessione invalidata - account bloccato', {
+          userId: user.id,
+          username: user.username,
+          ip: req.ip
+        });
+        req.session.destroy();
+        return res.redirect('/login?error=account_locked');
+      }
+
+      next();
+    });
   },
 
   // Middleware per controllare la durata della sessione

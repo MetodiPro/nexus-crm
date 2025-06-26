@@ -43,6 +43,12 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.set('layout', 'layout');
 
+// Disabilita cache EJS per sviluppo (DEBUG)
+if (process.env.NODE_ENV !== 'production') {
+  app.set('view cache', false);
+  console.log('🔧 DEBUG: Cache EJS disabilitata');
+}
+
 // Configurazione della sessione sicura
 app.use(session({
   secret: process.env.SESSION_SECRET || 'nexus-secret-key-change-in-production',

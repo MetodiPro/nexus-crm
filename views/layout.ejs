@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 </head>
 <body class="bg-gray-50 min-h-screen flex flex-col">
-  <% if (user) { %>
+  <% if (locals.user) { %>
     <!-- Layout con sidebar -->
     <div class="flex h-screen overflow-hidden">
       <!-- Sidebar mobile overlay -->
@@ -128,19 +128,39 @@
 
             <!-- User actions -->
             <div class="flex-1 flex justify-end items-center">
+              <!-- DEBUG: Log tutte le variabili disponibili -->
+              <script>
+                console.log('DEBUG LAYOUT - Tutte le variabili:', {
+                  'locals.user': JSON.parse('<%= JSON.stringify(locals.user || {}) %>'),
+                  'user': JSON.parse('<%= JSON.stringify(user || {}) %>'),
+                  'req.session.user esisterebbe': '<%= typeof req !== "undefined" && req.session && req.session.user ? "SI" : "NO" %>'
+                });
+              </script>
+              
               <div class="flex-shrink-0 text-white mr-4" id="user-info">
-                <i class="fas fa-user mr-1"></i> <%= user.name %> 
-                <span class="<%= user.role === 'administrator' ? 'badge-red' : 'badge-gray' %> ml-2" id="user-role-badge">
-                  <%= user.role === 'administrator' ? 'Admin' : 'Consulente' %>
-                </span>
-                <!-- DEBUG: Inserisci direttamente i dati nel DOM per test -->
+                <% if (locals.user && locals.user.id) { %>
+                  <i class="fas fa-user mr-1"></i> <%= locals.user.name %> 
+                  <span class="<%= locals.user.role === 'administrator' ? 'badge-red' : 'badge-gray' %> ml-2" id="user-role-badge">
+                    <%= locals.user.role === 'administrator' ? 'Admin' : 'Consulente' %>
+                  </span>
+                <% } else { %>
+                  <!-- FALLBACK: se locals.user non funziona, proviamo la sessione diretta -->
+                  <i class="fas fa-user mr-1"></i> UTENTE SCONOSCIUTO
+                  <span class="badge-gray ml-2">ERROR</span>
+                <% } %>
+                
+                <!-- DEBUG: Dati per test -->
                 <span style="display:none;" id="debug-user-data">
-                  {
-                    "id": "<%= user.id %>",
-                    "username": "<%= user.username %>", 
-                    "role": "<%= user.role %>",
-                    "name": "<%= user.name %>"
-                  }
+                  <% if (locals.user && locals.user.id) { %>
+                    {
+                      "id": "<%= locals.user.id %>",
+                      "username": "<%= locals.user.username %>", 
+                      "role": "<%= locals.user.role %>",
+                      "name": "<%= locals.user.name %>"
+                    }
+                  <% } else { %>
+                    {"error": "locals.user non disponibile"}
+                  <% } %>
                 </span>
               </div>
               <a href="/logout" class="btn-outline-red btn-sm">
