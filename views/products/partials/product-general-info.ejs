@@ -1,0 +1,85 @@
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+  <div class="bg-gray-50 p-4 rounded-lg">
+    <h3 class="text-lg font-medium text-gray-900 mb-4">Informazioni Generali</h3>
+    
+    <div class="space-y-3">
+      <div>
+        <span class="text-sm font-medium text-gray-500">Nome Prodotto/Servizio:</span>
+        <p class="text-lg font-semibold text-gray-900"><%= product.name %></p>
+      </div>
+      
+      <div>
+        <span class="text-sm font-medium text-gray-500">Tipo Servizio:</span>
+        <div class="mt-1">
+          <% let serviceTypeClass = 'bg-gray-100 text-gray-800'; %>
+          <% if (product.service_type === 'Energia Elettrica') serviceTypeClass = 'bg-blue-100 text-blue-800'; %>
+          <% if (product.service_type === 'Gas Naturale') serviceTypeClass = 'bg-orange-100 text-orange-800'; %>
+          <% if (product.service_type === 'Dual Fuel (Luce+Gas)') serviceTypeClass = 'bg-purple-100 text-purple-800'; %>
+          <% if (product.service_type === 'Altro Servizio') serviceTypeClass = 'bg-yellow-100 text-yellow-800'; %>
+          
+          <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium <%= serviceTypeClass %>">
+            <% if (product.service_type === 'Energia Elettrica') { %>
+              <i class="fas fa-bolt mr-2"></i>
+            <% } else if (product.service_type === 'Gas Naturale') { %>
+              <i class="fas fa-fire mr-2"></i>
+            <% } else if (product.service_type === 'Dual Fuel (Luce+Gas)') { %>
+              <i class="fas fa-bolt mr-1"></i><i class="fas fa-fire mr-1"></i>
+            <% } else { %>
+              <i class="fas fa-cog mr-2"></i>
+            <% } %>
+            <%= product.service_type %>
+          </span>
+        </div>
+      </div>
+      
+      <div>
+        <span class="text-sm font-medium text-gray-500">Fornitore/Operatore:</span>
+        <p class="text-gray-900"><%= product.supplier_operator %></p>
+      </div>
+      
+      <div>
+        <span class="text-sm font-medium text-gray-500">Stato:</span>
+        <div class="mt-1">
+          <% if (product.is_active) { %>
+            <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">
+              <i class="fas fa-check-circle mr-2"></i>Attivo
+            </span>
+          <% } else { %>
+            <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-red-100 text-red-800">
+              <i class="fas fa-times-circle mr-2"></i>Inattivo
+            </span>
+          <% } %>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Metadati -->
+  <div class="bg-gray-50 p-4 rounded-lg">
+    <h3 class="text-lg font-medium text-gray-900 mb-4">Informazioni Sistema</h3>
+    
+    <div class="space-y-3">
+      <div>
+        <span class="text-sm font-medium text-gray-500">Creato da:</span>
+        <p class="text-gray-900"><%= product.created_by_name || 'N/A' %></p>
+      </div>
+      
+      <div>
+        <span class="text-sm font-medium text-gray-500">Data creazione:</span>
+        <p class="text-gray-900"><%= new Date(product.created_at).toLocaleDateString('it-IT') %></p>
+      </div>
+      
+      <div>
+        <span class="text-sm font-medium text-gray-500">Ultimo aggiornamento:</span>
+        <p class="text-gray-900"><%= new Date(product.updated_at).toLocaleDateString('it-IT') %></p>
+      </div>
+      
+      <% if (product.attachments && product.attachments.length > 0) { %>
+      <div>
+        <span class="text-sm font-medium text-gray-500">Allegati:</span>
+        <p class="text-gray-900"><%= product.attachments.length %> file PDF</p>
+      </div>
+      <% } %>
+    </div>
+  </div>
+</div>

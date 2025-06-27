@@ -1,0 +1,229 @@
+<div class="bg-white rounded-lg shadow-md">
+  <div class="px-6 py-4 bg-nexus-dark text-white flex justify-between items-center">
+    <h1 class="text-xl font-semibold">
+      <i class="fas fa-file-pdf mr-2"></i>
+      Allegati Offerte
+    </h1>
+    <a href="/products" class="btn-white">
+      <i class="fas fa-arrow-left mr-2"></i>Torna ai Prodotti
+    </a>
+  </div>
+  
+  <div class="p-6">
+    <!-- Statistiche rapide -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+      <div class="bg-red-50 p-4 rounded-lg">
+        <div class="flex items-center">
+          <div class="flex-shrink-0">
+            <i class="fas fa-file-pdf text-red-600 text-2xl"></i>
+          </div>
+          <div class="ml-3">
+            <p class="text-sm font-medium text-red-900">Totale Allegati</p>
+            <p class="text-2xl font-semibold text-red-700"><%= attachments ? attachments.length : 0 %></p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="bg-blue-50 p-4 rounded-lg">
+        <div class="flex items-center">
+          <div class="flex-shrink-0">
+            <i class="fas fa-box text-blue-600 text-2xl"></i>
+          </div>
+          <div class="ml-3">
+            <p class="text-sm font-medium text-blue-900">Prodotti con PDF</p>
+            <p class="text-2xl font-semibold text-blue-700">
+              <%= attachments ? new Set(attachments.map(a => a.product_id)).size : 0 %>
+            </p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="bg-green-50 p-4 rounded-lg">
+        <div class="flex items-center">
+          <div class="flex-shrink-0">
+            <i class="fas fa-calendar text-green-600 text-2xl"></i>
+          </div>
+          <div class="ml-3">
+            <p class="text-sm font-medium text-green-900">Ultimo Upload</p>
+            <p class="text-sm font-semibold text-green-700">
+              <% if (attachments && attachments.length > 0) { %>
+                <%= new Date(attachments[0].upload_date).toLocaleDateString('it-IT') %>
+              <% } else { %>
+                Nessuno
+              <% } %>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Filtro ricerca -->
+    <div class="bg-gray-50 p-4 rounded-lg mb-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <label for="searchAttachment" class="block text-sm font-medium text-gray-700 mb-1">
+            Cerca nei file
+          </label>
+          <input type="text" id="searchAttachment" placeholder="Nome file o prodotto..." 
+                 class="w-full px-3 py-2 border border-gray-300 rounded-md" 
+                 onkeyup="filterAttachments()">
+        </div>
+        <div>
+          <label for="sortAttachments" class="block text-sm font-medium text-gray-700 mb-1">
+            Ordina per
+          </label>
+          <select id="sortAttachments" class="w-full px-3 py-2 border border-gray-300 rounded-md" 
+                  onchange="sortAttachments()">
+            <option value="date_desc">Data caricamento (più recente)</option>
+            <option value="date_asc">Data caricamento (meno recente)</option>
+            <option value="name_asc">Nome file (A-Z)</option>
+            <option value="name_desc">Nome file (Z-A)</option>
+            <option value="product_asc">Nome prodotto (A-Z)</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Lista allegati -->
+    <% if (attachments && attachments.length > 0) { %>
+      <div class="space-y-4" id="attachmentsList">
+        <% attachments.forEach(attachment => { %>
+          <div class="attachment-item bg-white border rounded-lg p-4 hover:shadow-md transition-shadow"
+               data-search="<%= (attachment.original_filename + ' ' + attachment.product_name).toLowerCase() %>"
+               data-date="<%= attachment.upload_date %>"
+               data-filename="<%= attachment.original_filename.toLowerCase() %>"
+               data-product="<%= attachment.product_name.toLowerCase() %>">
+            
+            <div class="flex items-center justify-between">
+              <div class="flex items-center space-x-4">
+                <!-- Icona PDF -->
+                <div class="flex-shrink-0">
+                  <i class="fas fa-file-pdf text-red-500 text-2xl"></i>
+                </div>
+                
+                <!-- Info file -->
+                <div>
+                  <h3 class="text-lg font-medium text-gray-900">
+                    <%= attachment.original_filename %>
+                  </h3>
+                  <p class="text-sm text-gray-600">
+                    <i class="fas fa-box mr-1"></i>
+                    Prodotto: <span class="font-medium"><%= attachment.product_name %></span>
+                  </p>
+                  <div class="flex items-center space-x-4 text-xs text-gray-500 mt-1">
+                    <span>
+                      <i class="fas fa-calendar mr-1"></i>
+                      <%= new Date(attachment.upload_date).toLocaleDateString('it-IT') %>
+                    </span>
+                    <% if (attachment.file_size) { %>
+                      <span>
+                        <i class="fas fa-file mr-1"></i>
+                        <%= Math.round(attachment.file_size / 1024) %> KB
+                      </span>
+                    <% } %>
+                    <% if (attachment.uploaded_by_name) { %>
+                      <span>
+                        <i class="fas fa-user mr-1"></i>
+                        <%= attachment.uploaded_by_name %>
+                      </span>
+                    <% } %>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Azioni -->
+              <div class="flex items-center space-x-2">
+                <a href="/products/view/<%= attachment.product_id %>" 
+                   class="text-blue-600 hover:text-blue-800 px-3 py-1 rounded text-sm border border-blue-200 hover:bg-blue-50"
+                   title="Visualizza prodotto">
+                  <i class="fas fa-eye mr-1"></i>Prodotto
+                </a>
+                
+                <a href="/products/download/<%= attachment.product_id %>" 
+                   class="bg-nexus-red text-white px-3 py-1 rounded text-sm hover:bg-red-700"
+                   title="Scarica PDF">
+                  <i class="fas fa-download mr-1"></i>Scarica
+                </a>
+              </div>
+            </div>
+          </div>
+        <% }) %>
+      </div>
+      
+      <!-- Risultati ricerca -->
+      <div id="searchResults" class="mt-4 text-sm text-gray-600 hidden">
+        Mostrando <span id="visibleAttachments">0</span> di <span id="totalAttachments"><%= attachments.length %></span> allegati
+      </div>
+      
+    <% } else { %>
+      <!-- Stato vuoto -->
+      <div class="text-center py-12">
+        <i class="fas fa-file-pdf text-6xl text-gray-300 mb-4"></i>
+        <h3 class="text-lg font-medium text-gray-900 mb-2">Nessun allegato presente</h3>
+        <p class="text-gray-500 mb-6">
+          Non ci sono ancora file PDF allegati ai prodotti/servizi.
+        </p>
+        <a href="/products/new" class="btn-primary">
+          <i class="fas fa-plus mr-2"></i>Aggiungi primo prodotto con allegato
+        </a>
+      </div>
+    <% } %>
+  </div>
+</div>
+
+<script>
+// Funzione per filtrare gli allegati
+function filterAttachments() {
+  const searchTerm = document.getElementById('searchAttachment').value.toLowerCase();
+  const items = document.querySelectorAll('.attachment-item');
+  let visibleCount = 0;
+  
+  items.forEach(item => {
+    const searchData = item.dataset.search;
+    if (searchData.includes(searchTerm)) {
+      item.style.display = '';
+      visibleCount++;
+    } else {
+      item.style.display = 'none';
+    }
+  });
+  
+  // Mostra risultati ricerca
+  const searchResults = document.getElementById('searchResults');
+  const visibleSpan = document.getElementById('visibleAttachments');
+  
+  if (searchTerm) {
+    visibleSpan.textContent = visibleCount;
+    searchResults.classList.remove('hidden');
+  } else {
+    searchResults.classList.add('hidden');
+  }
+}
+
+// Funzione per ordinare gli allegati
+function sortAttachments() {
+  const sortValue = document.getElementById('sortAttachments').value;
+  const container = document.getElementById('attachmentsList');
+  const items = Array.from(container.children);
+  
+  items.sort((a, b) => {
+    switch (sortValue) {
+      case 'date_desc':
+        return new Date(b.dataset.date) - new Date(a.dataset.date);
+      case 'date_asc':
+        return new Date(a.dataset.date) - new Date(b.dataset.date);
+      case 'name_asc':
+        return a.dataset.filename.localeCompare(b.dataset.filename);
+      case 'name_desc':
+        return b.dataset.filename.localeCompare(a.dataset.filename);
+      case 'product_asc':
+        return a.dataset.product.localeCompare(b.dataset.product);
+      default:
+        return 0;
+    }
+  });
+  
+  // Riordina nel DOM
+  items.forEach(item => container.appendChild(item));
+}
+</script>

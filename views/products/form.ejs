@@ -1,70 +1,341 @@
-<div class="card max-w-4xl mx-auto">
-    <div class="card-header bg-nexus-dark text-white">
-      <h4 class="text-lg font-semibold">
-        <i class="fas fa-box"></i> 
-        <%= product.id ? 'Modifica Prodotto' : 'Nuovo Prodotto' %>
-      </h4>
-    </div>
-    <div class="card-body">
-      <form action="<%= action %>" method="POST" onsubmit="return validateForm('productForm')" id="productForm">
-        <div class="mb-4">
-          <label for="name" class="form-label">Nome Prodotto/Servizio *</label>
-          <input type="text" class="form-input" id="name" name="name" 
-                 value="<%= product.name || '' %>" required>
-        </div>
-        
-        <div class="mb-4">
-          <label for="energy_type" class="form-label">Tipo Energia *</label>
-          <select class="form-select" id="energy_type" name="energy_type" required>
-            <option value="">Seleziona tipo...</option>
-            <option value="electricity" <%= (product.energy_type === 'electricity') ? 'selected' : '' %>>
-              Energia Elettrica
-            </option>
-            <option value="gas" <%= (product.energy_type === 'gas') ? 'selected' : '' %>>
-              Gas Naturale
-            </option>
-            <option value="both" <%= (product.energy_type === 'both') ? 'selected' : '' %>>
-              Dual Fuel (Elettricità + Gas)
-            </option>
-          </select>
-        </div>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+<div class="bg-white rounded-lg shadow-md">
+  <div class="px-6 py-4 bg-nexus-dark text-white">
+    <h1 class="text-xl font-semibold">
+      <i class="fas fa-box mr-2"></i>
+      <%= title || 'Prodotto/Servizio' %>
+    </h1>
+  </div>
+  
+  <div class="p-6">
+    <form action="<%= action %>" method="POST" enctype="multipart/form-data" class="space-y-6">
+      <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+      
+      <!-- Campi Base -->
+      <div class="bg-gray-50 p-4 rounded-lg">
+        <h3 class="text-lg font-medium text-gray-900 mb-4">Informazioni Generali</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <!-- Nome Prodotto/Servizio -->
           <div>
-            <label for="supplier" class="form-label">Fornitore</label>
-            <input type="text" class="form-input" id="supplier" name="supplier" 
-                   value="<%= product.supplier || '' %>">
+            <label for="name" class="block text-sm font-medium text-gray-700 mb-1">
+              Nome Prodotto/Servizio <span class="text-red-500">*</span>
+            </label>
+            <input type="text" id="name" name="name" value="<%= product.name || '' %>" 
+                   class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-nexus-red" 
+                   required>
           </div>
+          
+          <!-- Tipo Servizio -->
           <div>
-            <label for="base_price" class="form-label">Prezzo Base (€)</label>
-            <input type="number" step="0.01" min="0" class="form-input" id="base_price" name="base_price" 
-                   value="<%= product.base_price || '' %>">
+            <label for="service_type" class="block text-sm font-medium text-gray-700 mb-1">
+              Tipo Servizio <span class="text-red-500">*</span>
+            </label>
+            <select id="service_type" name="service_type" 
+                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-nexus-red" 
+                    required onchange="toggleTariffSections()">
+              <option value="">Seleziona tipo servizio</option>
+              <option value="Energia Elettrica" <%= product.service_type === 'Energia Elettrica' ? 'selected' : '' %>>Energia Elettrica</option>
+              <option value="Gas Naturale" <%= product.service_type === 'Gas Naturale' ? 'selected' : '' %>>Gas Naturale</option>
+              <option value="Dual Fuel (Luce+Gas)" <%= product.service_type === 'Dual Fuel (Luce+Gas)' ? 'selected' : '' %>>Dual Fuel (Luce+Gas)</option>
+              <option value="Altro Servizio" <%= product.service_type === 'Altro Servizio' ? 'selected' : '' %>>Altro Servizio</option>
+            </select>
           </div>
         </div>
         
-        <div class="mb-4">
-          <label for="description" class="form-label">Descrizione</label>
-          <textarea class="form-input h-24" id="description" name="description"><%= product.description || '' %></textarea>
-        </div>
-        
-        <div class="mb-6">
-          <div class="flex items-center">
-            <input type="checkbox" id="is_active" name="is_active" class="h-4 w-4 text-nexus-red focus:ring-nexus-red border-gray-300 rounded"
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+          <!-- Fornitore/Operatore -->
+          <div>
+            <label for="supplier_operator" class="block text-sm font-medium text-gray-700 mb-1">
+              Fornitore/Operatore <span class="text-red-500">*</span>
+            </label>
+            <input type="text" id="supplier_operator" name="supplier_operator" 
+                   value="<%= product.supplier_operator || '' %>" 
+                   class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-nexus-red" 
+                   placeholder="es. Enel Energia, Eni Gas e Luce..." required>
+          </div>
+          
+          <!-- Stato Attivo -->
+          <div class="flex items-center mt-6">
+            <input type="checkbox" id="is_active" name="is_active" 
+                   class="h-4 w-4 text-nexus-red border-gray-300 rounded focus:ring-nexus-red" 
                    <%= product.is_active ? 'checked' : '' %>>
             <label for="is_active" class="ml-2 block text-sm text-gray-900">
               Prodotto attivo (disponibile per i consulenti)
             </label>
           </div>
         </div>
-        
-        <div class="flex justify-between">
-          <a href="/products" class="btn-outline">
-            <i class="fas fa-arrow-left"></i> Annulla
-          </a>
-          <button type="submit" class="btn-primary">
-            <i class="fas fa-save"></i> Salva
-          </button>
+      </div>
+
+      <!-- Sezione Energia Elettrica -->
+      <div id="electricity_section" class="bg-blue-50 p-4 rounded-lg hidden">
+        <h3 class="text-lg font-medium text-blue-900 mb-4">
+          <i class="fas fa-bolt mr-2"></i>Tariffe Energia Elettrica
+        </h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <!-- Tariffa Fissa -->
+          <div>
+            <label for="electricity_fixed_rate" class="block text-sm font-medium text-gray-700 mb-1">
+              Tariffa Fissa (€/kWh)
+            </label>
+            <input type="number" step="0.0001" id="electricity_fixed_rate" name="electricity_fixed_rate" 
+                   value="<%= product.electricity_fixed_rate || '' %>" 
+                   class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-nexus-red" 
+                   placeholder="es. 0.35">
+            <p class="text-xs text-gray-500 mt-1">Prezzo fisso per kWh</p>
+          </div>
+          
+          <!-- Tariffa Variabile (Spread) -->
+          <div>
+            <label for="electricity_variable_spread" class="block text-sm font-medium text-gray-700 mb-1">
+              Tariffa Variabile - Spread (€/kWh)
+            </label>
+            <input type="number" step="0.0001" id="electricity_variable_spread" name="electricity_variable_spread" 
+                   value="<%= product.electricity_variable_spread || '' %>" 
+                   class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-nexus-red" 
+                   placeholder="es. 0.025">
+            <p class="text-xs text-gray-500 mt-1">Spread da aggiungere al PUN (Prezzo Unico Nazionale)</p>
+          </div>
         </div>
-      </form>
-    </div>
+        
+        <!-- Altra Tariffa -->
+        <div class="mt-4">
+          <label for="electricity_other_rate_notes" class="block text-sm font-medium text-gray-700 mb-1">
+            Altra Tariffa - Note
+          </label>
+          <textarea id="electricity_other_rate_notes" name="electricity_other_rate_notes" rows="3"
+                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-nexus-red" 
+                    placeholder="Descrivi come è costituita la tariffa speciale..."><%= product.electricity_other_rate_notes || '' %></textarea>
+        </div>
+      </div>
+
+      <!-- Sezione Gas Naturale -->
+      <div id="gas_section" class="bg-orange-50 p-4 rounded-lg hidden">
+        <h3 class="text-lg font-medium text-orange-900 mb-4">
+          <i class="fas fa-fire mr-2"></i>Tariffe Gas Naturale
+        </h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <!-- Tariffa Fissa -->
+          <div>
+            <label for="gas_fixed_rate" class="block text-sm font-medium text-gray-700 mb-1">
+              Tariffa Fissa (€/Smc)
+            </label>
+            <input type="number" step="0.0001" id="gas_fixed_rate" name="gas_fixed_rate" 
+                   value="<%= product.gas_fixed_rate || '' %>" 
+                   class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-nexus-red" 
+                   placeholder="es. 0.85">
+            <p class="text-xs text-gray-500 mt-1">Prezzo fisso per Standard metro cubo</p>
+          </div>
+          
+          <!-- Tariffa Variabile (Spread) -->
+          <div>
+            <label for="gas_variable_spread" class="block text-sm font-medium text-gray-700 mb-1">
+              Tariffa Variabile - Spread (€/Smc)
+            </label>
+            <input type="number" step="0.0001" id="gas_variable_spread" name="gas_variable_spread" 
+                   value="<%= product.gas_variable_spread || '' %>" 
+                   class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-nexus-red" 
+                   placeholder="es. 0.05">
+            <p class="text-xs text-gray-500 mt-1">Spread da aggiungere al PSV (Punto di Scambio Virtuale)</p>
+          </div>
+        </div>
+        
+        <!-- Altra Tariffa -->
+        <div class="mt-4">
+          <label for="gas_other_rate_notes" class="block text-sm font-medium text-gray-700 mb-1">
+            Altra Tariffa - Note
+          </label>
+          <textarea id="gas_other_rate_notes" name="gas_other_rate_notes" rows="3"
+                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-nexus-red" 
+                    placeholder="Descrivi come è costituita la tariffa speciale..."><%= product.gas_other_rate_notes || '' %></textarea>
+        </div>
+      </div>
+
+      <!-- Costi Aggiuntivi -->
+      <div class="bg-yellow-50 p-4 rounded-lg">
+        <h3 class="text-lg font-medium text-yellow-900 mb-4">
+          <i class="fas fa-plus-circle mr-2"></i>Costi Aggiuntivi
+        </h3>
+        
+        <!-- Costo Aggiuntivo 1 -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+          <div>
+            <label for="additional_cost1_description" class="block text-sm font-medium text-gray-700 mb-1">
+              Descrizione Costo 1
+            </label>
+            <input type="text" id="additional_cost1_description" name="additional_cost1_description" 
+                   value="<%= product.additional_cost1_description || '' %>" 
+                   class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-nexus-red" 
+                   placeholder="es. Canone mensile">
+          </div>
+          <div>
+            <label for="additional_cost1_value" class="block text-sm font-medium text-gray-700 mb-1">
+              Valore
+            </label>
+            <input type="number" step="0.01" id="additional_cost1_value" name="additional_cost1_value" 
+                   value="<%= product.additional_cost1_value || '' %>" 
+                   class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-nexus-red" 
+                   placeholder="8.50">
+          </div>
+          <div>
+            <label for="additional_cost1_unit" class="block text-sm font-medium text-gray-700 mb-1">
+              Unità
+            </label>
+            <select id="additional_cost1_unit" name="additional_cost1_unit" 
+                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-nexus-red">
+              <option value="€/kWh" <%= product.additional_cost1_unit === '€/kWh' ? 'selected' : '' %>>€/kWh</option>
+              <option value="€/Smc" <%= product.additional_cost1_unit === '€/Smc' ? 'selected' : '' %>>€/Smc</option>
+              <option value="€/mese" <%= product.additional_cost1_unit === '€/mese' ? 'selected' : '' %>>€/mese</option>
+              <option value="una tantum" <%= product.additional_cost1_unit === 'una tantum' ? 'selected' : '' %>>una tantum</option>
+            </select>
+          </div>
+        </div>
+        
+        <!-- Costo Aggiuntivo 2 -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+          <div>
+            <label for="additional_cost2_description" class="block text-sm font-medium text-gray-700 mb-1">
+              Descrizione Costo 2
+            </label>
+            <input type="text" id="additional_cost2_description" name="additional_cost2_description" 
+                   value="<%= product.additional_cost2_description || '' %>" 
+                   class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-nexus-red" 
+                   placeholder="es. Costo attivazione">
+          </div>
+          <div>
+            <label for="additional_cost2_value" class="block text-sm font-medium text-gray-700 mb-1">
+              Valore
+            </label>
+            <input type="number" step="0.01" id="additional_cost2_value" name="additional_cost2_value" 
+                   value="<%= product.additional_cost2_value || '' %>" 
+                   class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-nexus-red" 
+                   placeholder="25.00">
+          </div>
+          <div>
+            <label for="additional_cost2_unit" class="block text-sm font-medium text-gray-700 mb-1">
+              Unità
+            </label>
+            <select id="additional_cost2_unit" name="additional_cost2_unit" 
+                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-nexus-red">
+              <option value="€/kWh" <%= product.additional_cost2_unit === '€/kWh' ? 'selected' : '' %>>€/kWh</option>
+              <option value="€/Smc" <%= product.additional_cost2_unit === '€/Smc' ? 'selected' : '' %>>€/Smc</option>
+              <option value="€/mese" <%= product.additional_cost2_unit === '€/mese' ? 'selected' : '' %>>€/mese</option>
+              <option value="una tantum" <%= product.additional_cost2_unit === 'una tantum' ? 'selected' : '' %>>una tantum</option>
+            </select>
+          </div>
+        </div>
+        
+        <!-- Costo Aggiuntivo 3 -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div>
+            <label for="additional_cost3_description" class="block text-sm font-medium text-gray-700 mb-1">
+              Descrizione Costo 3
+            </label>
+            <input type="text" id="additional_cost3_description" name="additional_cost3_description" 
+                   value="<%= product.additional_cost3_description || '' %>" 
+                   class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-nexus-red" 
+                   placeholder="es. Sconto fedeltà">
+          </div>
+          <div>
+            <label for="additional_cost3_value" class="block text-sm font-medium text-gray-700 mb-1">
+              Valore
+            </label>
+            <input type="number" step="0.01" id="additional_cost3_value" name="additional_cost3_value" 
+                   value="<%= product.additional_cost3_value || '' %>" 
+                   class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-nexus-red" 
+                   placeholder="-10.00">
+          </div>
+          <div>
+            <label for="additional_cost3_unit" class="block text-sm font-medium text-gray-700 mb-1">
+              Unità
+            </label>
+            <select id="additional_cost3_unit" name="additional_cost3_unit" 
+                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-nexus-red">
+              <option value="€/kWh" <%= product.additional_cost3_unit === '€/kWh' ? 'selected' : '' %>>€/kWh</option>
+              <option value="€/Smc" <%= product.additional_cost3_unit === '€/Smc' ? 'selected' : '' %>>€/Smc</option>
+              <option value="€/mese" <%= product.additional_cost3_unit === '€/mese' ? 'selected' : '' %>>€/mese</option>
+              <option value="una tantum" <%= product.additional_cost3_unit === 'una tantum' ? 'selected' : '' %>>una tantum</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Allegato PDF -->
+      <div class="bg-green-50 p-4 rounded-lg">
+        <h3 class="text-lg font-medium text-green-900 mb-4">
+          <i class="fas fa-file-pdf mr-2"></i>Allegato PDF
+        </h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label for="pdf_attachment" class="block text-sm font-medium text-gray-700 mb-1">
+              Carica file PDF (max 10MB)
+            </label>
+            <input type="file" id="pdf_attachment" name="pdf_attachment" accept=".pdf"
+                   class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-nexus-red">
+            <p class="text-xs text-gray-500 mt-1">Solo file PDF ammessi. Sostituisce il file esistente se presente.</p>
+          </div>
+          
+          <% if (product.pdf_attachment_filename) { %>
+          <div class="bg-white p-3 rounded border">
+            <p class="text-sm font-medium text-gray-700">File attuale:</p>
+            <p class="text-sm text-gray-600"><%= product.pdf_attachment_filename %></p>
+            <p class="text-xs text-gray-500">
+              Caricato il <%= product.pdf_upload_date ? new Date(product.pdf_upload_date).toLocaleDateString() : 'N/A' %>
+            </p>
+            <a href="/products/download/<%= product.id %>" class="text-nexus-red hover:underline text-sm">
+              <i class="fas fa-download mr-1"></i>Scarica
+            </a>
+          </div>
+          <% } %>
+        </div>
+      </div>
+
+      <!-- Descrizione/Note -->
+      <div class="bg-gray-50 p-4 rounded-lg">
+        <h3 class="text-lg font-medium text-gray-900 mb-4">Descrizione/Note</h3>
+        <div>
+          <label for="description_notes" class="block text-sm font-medium text-gray-700 mb-1">
+            Descrizione dettagliata del prodotto/servizio
+          </label>
+          <textarea id="description_notes" name="description_notes" rows="4"
+                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-nexus-red" 
+                    placeholder="Inserisci descrizione dettagliata, condizioni particolari, vantaggi per il cliente..."><%= product.description_notes || '' %></textarea>
+        </div>
+      </div>
+      
+      <!-- Bottoni -->
+      <div class="flex justify-between pt-6">
+        <a href="/products" class="btn-outline">
+          <i class="fas fa-arrow-left mr-2"></i>Annulla
+        </a>
+        <button type="submit" class="btn-primary">
+          <i class="fas fa-save mr-2"></i>Salva Prodotto/Servizio
+        </button>
+      </div>
+    </form>
   </div>
+</div>
+
+<script>
+function toggleTariffSections() {
+  const serviceType = document.getElementById('service_type').value;
+  const electricitySection = document.getElementById('electricity_section');
+  const gasSection = document.getElementById('gas_section');
+  
+  // Nascondi tutte le sezioni
+  electricitySection.classList.add('hidden');
+  gasSection.classList.add('hidden');
+  
+  // Mostra sezioni appropriate
+  if (serviceType === 'Energia Elettrica' || serviceType === 'Dual Fuel (Luce+Gas)') {
+    electricitySection.classList.remove('hidden');
+  }
+  
+  if (serviceType === 'Gas Naturale' || serviceType === 'Dual Fuel (Luce+Gas)') {
+    gasSection.classList.remove('hidden');
+  }
+}
+
+// Inizializza la visualizzazione al caricamento della pagina
+document.addEventListener('DOMContentLoaded', function() {
+  toggleTariffSections();
+});
+</script>

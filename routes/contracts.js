@@ -54,7 +54,7 @@ router.get('/new', (req, res) => {
   });
 });
 
-// Crea nuovo contratto
+// Crea nuovo contratto - RIMOSSO CAMPO VALUE
 router.post('/new', (req, res) => {
   const contractData = {
     client_id: req.body.client_id,
@@ -63,7 +63,7 @@ router.post('/new', (req, res) => {
     energy_type: req.body.energy_type,
     supplier: req.body.supplier,
     status: req.body.status,
-    value: req.body.value,
+    // value: req.body.value,  // RIMOSSO
     start_date: req.body.start_date,
     end_date: req.body.end_date,
     notes: req.body.notes,
@@ -137,7 +137,7 @@ router.get('/edit/:id', (req, res) => {
   });
 });
 
-// Aggiorna contratto
+// Aggiorna contratto - RIMOSSO CAMPO VALUE
 router.post('/edit/:id', (req, res) => {
   const contractData = {
     client_id: req.body.client_id,
@@ -146,7 +146,7 @@ router.post('/edit/:id', (req, res) => {
     energy_type: req.body.energy_type,
     supplier: req.body.supplier,
     status: req.body.status,
-    value: req.body.value,
+    // value: req.body.value,  // RIMOSSO
     start_date: req.body.start_date,
     end_date: req.body.end_date,
     notes: req.body.notes

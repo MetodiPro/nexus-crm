@@ -1,0 +1,15 @@
+<div class="flex justify-between pt-6 border-t">
+  <a href="/products" class="btn-outline">
+    <i class="fas fa-arrow-left mr-2"></i>Torna al listino
+  </a>
+  <div class="space-x-2">
+    <a href="/products/delete/<%= product.id %>" 
+       class="btn-outline-red delete-btn" 
+       onclick="return confirm('Sei sicuro di voler eliminare questo prodotto? Questa azione non può essere annullata.')">
+      <i class="fas fa-trash mr-2"></i>Elimina
+    </a>
+    <a href="/products/edit/<%= product.id %>" class="btn-primary">
+      <i class="fas fa-edit mr-2"></i>Modifica
+    </a>
+  </div>
+</div>

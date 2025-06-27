@@ -2,6 +2,7 @@ const db = require('../config/database');
 const Client = require('../models/client');
 const Contract = require('../models/contract');
 const Activity = require('../models/activity');
+const Product = require('../models/product');
 const ElectricityUtility = require('../models/electricityUtility');
 const GasUtility = require('../models/gasUtility');
 
@@ -9,19 +10,17 @@ class AnalyticsService {
   // Dashboard KPI principali per consulente/admin
   static async getDashboardKPIs(consultantId = null) {
     return new Promise((resolve, reject) => {
-      const queries = [];
-      
       // Query clienti per stato
       const clientQuery = consultantId 
         ? "SELECT client_status, COUNT(*) as count FROM clients WHERE consultant_id = ? GROUP BY client_status"
         : "SELECT client_status, COUNT(*) as count FROM clients GROUP BY client_status";
       
-      // Query contratti per stato corrente anno
+      // Query contratti per stato corrente anno - RIMOSSO VALORE
       const contractQuery = consultantId
-        ? `SELECT status, COUNT(*) as count, COALESCE(SUM(value), 0) as total_value 
+        ? `SELECT status, COUNT(*) as count
            FROM contracts WHERE consultant_id = ? AND strftime('%Y', created_at) = strftime('%Y', 'now') 
            GROUP BY status`
-        : `SELECT status, COUNT(*) as count, COALESCE(SUM(value), 0) as total_value 
+        : `SELECT status, COUNT(*) as count
            FROM contracts WHERE strftime('%Y', created_at) = strftime('%Y', 'now') 
            GROUP BY status`;
       
@@ -45,38 +44,56 @@ class AnalyticsService {
            UNION ALL
            SELECT 'gas' as type, COUNT(*) as count FROM gas_utilities WHERE is_active = 1`;
       
-      const params = consultantId ? [consultantId, consultantId, consultantId, consultantId, consultantId] : [];
+      // NUOVA QUERY: Prodotti/Servizi per tipo (solo admin)
+      const productsQuery = !consultantId
+        ? `SELECT service_type, COUNT(*) as count, 
+                  COUNT(CASE WHEN is_active = 1 THEN 1 END) as active_count
+           FROM products GROUP BY service_type`
+        : null;
       
       // Esegui query in parallelo
-      Promise.all([
+      const queries = [
         this.executeQuery(clientQuery, consultantId ? [consultantId] : []),
         this.executeQuery(contractQuery, consultantId ? [consultantId] : []),
         this.executeQuery(activityQuery, consultantId ? [consultantId] : []),
         this.executeQuery(utilitiesQuery, consultantId ? [consultantId, consultantId] : [])
-      ]).then(([clients, contracts, activities, utilities]) => {
-        resolve({
+      ];
+      
+      if (productsQuery) {
+        queries.push(this.executeQuery(productsQuery, []));
+      }
+      
+      Promise.all(queries).then((results) => {
+        const [clients, contracts, activities, utilities, products] = results;
+        
+        const kpis = {
           clients,
           contracts,
           activities,
           utilities,
           generated_at: new Date().toISOString()
-        });
+        };
+        
+        // Aggiungi prodotti solo per admin
+        if (products) {
+          kpis.products = products;
+        }
+        
+        resolve(kpis);
       }).catch(reject);
     });
   }
   
-  // Trend ultimi 12 mesi per grafici
+  // Trend ultimi 12 mesi per grafici - RIMOSSO VALORE
   static async getMonthlyTrends(consultantId = null) {
     const contractTrendQuery = consultantId
       ? `SELECT strftime('%Y-%m', created_at) as month, 
-               COUNT(*) as contracts_count,
-               COALESCE(SUM(value), 0) as total_value
+               COUNT(*) as contracts_count
          FROM contracts WHERE consultant_id = ? 
          AND created_at >= date('now', '-12 months')
          GROUP BY month ORDER BY month`
       : `SELECT strftime('%Y-%m', created_at) as month, 
-               COUNT(*) as contracts_count,
-               COALESCE(SUM(value), 0) as total_value
+               COUNT(*) as contracts_count
          FROM contracts 
          WHERE created_at >= date('now', '-12 months')
          GROUP BY month ORDER BY month`;
@@ -91,10 +108,33 @@ class AnalyticsService {
          WHERE created_at >= date('now', '-12 months')
          GROUP BY month ORDER BY month`;
     
-    return Promise.all([
+    // NUOVA QUERY: Prodotti creati ultimi 12 mesi (solo admin)
+    const productTrendQuery = !consultantId
+      ? `SELECT strftime('%Y-%m', created_at) as month, COUNT(*) as products_count
+         FROM products 
+         WHERE created_at >= date('now', '-12 months')
+         GROUP BY month ORDER BY month`
+      : null;
+    
+    const queries = [
       this.executeQuery(contractTrendQuery, consultantId ? [consultantId] : []),
       this.executeQuery(clientTrendQuery, consultantId ? [consultantId] : [])
-    ]).then(([contracts, clients]) => ({ contracts, clients }));
+    ];
+    
+    if (productTrendQuery) {
+      queries.push(this.executeQuery(productTrendQuery, []));
+    }
+    
+    return Promise.all(queries).then((results) => {
+      const [contracts, clients, products] = results;
+      const trends = { contracts, clients };
+      
+      if (products) {
+        trends.products = products;
+      }
+      
+      return trends;
+    });
   }
   
   // Attività imminenti e scadenze
@@ -133,6 +173,53 @@ class AnalyticsService {
     ]).then(([activities, contracts]) => ({ activities, contracts }));
   }
   
+  // NUOVO: Statistiche dettagliate prodotti/servizi (solo admin)
+  static async getProductsAnalytics() {
+    const queries = [
+      // Distribuzione per tipo servizio
+      this.executeQuery(`
+        SELECT service_type, COUNT(*) as total, 
+               COUNT(CASE WHEN is_active = 1 THEN 1 END) as active
+        FROM products GROUP BY service_type
+      `),
+      
+      // Prodotti più utilizzati nei contratti
+      this.executeQuery(`
+        SELECT p.name, p.service_type, COUNT(c.id) as usage_count
+        FROM products p
+        LEFT JOIN contracts c ON p.id = c.product_id
+        WHERE p.is_active = 1
+        GROUP BY p.id
+        ORDER BY usage_count DESC
+        LIMIT 10
+      `),
+      
+      // Allegati PDF statistics
+      this.executeQuery(`
+        SELECT COUNT(*) as total_attachments,
+               COUNT(DISTINCT product_id) as products_with_attachments
+        FROM product_attachments
+      `),
+      
+      // Fornitori più utilizzati
+      this.executeQuery(`
+        SELECT supplier_operator, COUNT(*) as count
+        FROM products 
+        WHERE is_active = 1 AND supplier_operator IS NOT NULL
+        GROUP BY supplier_operator
+        ORDER BY count DESC
+        LIMIT 10
+      `)
+    ];
+    
+    return Promise.all(queries).then(([byType, mostUsed, attachments, suppliers]) => ({
+      byType,
+      mostUsed,
+      attachments: attachments[0] || { total_attachments: 0, products_with_attachments: 0 },
+      suppliers
+    }));
+  }
+  
   // Helper per eseguire query con Promise
   static executeQuery(query, params = []) {
     return new Promise((resolve, reject) => {
@@ -143,7 +230,7 @@ class AnalyticsService {
     });
   }
   
-  // Performance del mese (per consulenti)
+  // Performance del mese (per consulenti) - RIMOSSO VALORE CONTRATTI
   static async getMonthlyPerformance(consultantId) {
     const currentMonth = new Date().toISOString().slice(0, 7);
     
@@ -156,8 +243,7 @@ class AnalyticsService {
       ),
       // Contratti chiusi questo mese
       this.executeQuery(
-        `SELECT COUNT(*) as count, COALESCE(SUM(value), 0) as total_value 
-         FROM contracts 
+        `SELECT COUNT(*) as count FROM contracts 
          WHERE consultant_id = ? AND status = 'accepted' 
          AND strftime('%Y-%m', created_at) = ?`,
         [consultantId, currentMonth]
@@ -174,7 +260,6 @@ class AnalyticsService {
     return Promise.all(queries).then(([newClients, contracts, activities]) => ({
       new_clients: newClients[0]?.count || 0,
       closed_contracts: contracts[0]?.count || 0,
-      contract_value: contracts[0]?.total_value || 0,
       completed_activities: activities[0]?.count || 0
     }));
   }

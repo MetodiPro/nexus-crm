@@ -5,7 +5,7 @@ class Contract {
   static getAll(consultantId, callback) {
     let query = `
       SELECT co.*, c.name as client_name, c.surname as client_surname, 
-             p.name as product_name, p.supplier as product_supplier
+             p.name as product_name, p.supplier_operator as product_supplier
       FROM contracts co
       JOIN clients c ON co.client_id = c.id
       LEFT JOIN products p ON co.product_id = p.id
@@ -33,8 +33,8 @@ class Contract {
   static getById(id, callback) {
     db.get(`
       SELECT co.*, c.name as client_name, c.surname as client_surname,
-             p.name as product_name, p.supplier as product_supplier,
-             p.base_price as product_base_price, p.description as product_description
+             p.name as product_name, p.supplier_operator as product_supplier,
+             p.electricity_fixed_rate, p.gas_fixed_rate, p.description_notes as product_description
       FROM contracts co
       JOIN clients c ON co.client_id = c.id
       LEFT JOIN products p ON co.product_id = p.id
@@ -120,7 +120,8 @@ class Contract {
         value = ?, 
         start_date = ?, 
         end_date = ?, 
-        notes = ? 
+        notes = ?, 
+        updated_at = CURRENT_TIMESTAMP
        WHERE id = ?`,
       [
         contractData.client_id,
@@ -185,7 +186,7 @@ class Contract {
   static getByStatus(status, consultantId, callback) {
     let query = `
       SELECT co.*, c.name as client_name, c.surname as client_surname, 
-             p.name as product_name, p.supplier as product_supplier
+             p.name as product_name, p.supplier_operator as product_supplier
       FROM contracts co
       JOIN clients c ON co.client_id = c.id
       LEFT JOIN products p ON co.product_id = p.id
@@ -272,7 +273,7 @@ class Contract {
   static search(term, consultantId, callback) {
     let query = `
       SELECT co.*, c.name as client_name, c.surname as client_surname, 
-             p.name as product_name, p.supplier as product_supplier
+             p.name as product_name, p.supplier_operator as product_supplier
       FROM contracts co
       JOIN clients c ON co.client_id = c.id
       LEFT JOIN products p ON co.product_id = p.id

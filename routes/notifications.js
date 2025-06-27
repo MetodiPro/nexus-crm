@@ -273,49 +273,122 @@ router.get('/', async (req, res) => {
 // Impostazioni notifiche utente
 router.get('/settings', async (req, res) => {
   try {
-    // Recupera impostazioni utente dal database
-    const db = require('../models/database');
+    // Recupera impostazioni utente dal database - CORRETTO il percorso
+    const db = require('../config/database');
     
     let userSettings = [];
     try {
-      const stmt = db.prepare(`
+      // Usiamo il metodo standard SQLite3 invece di prepare
+      db.get(`
         SELECT notification_contracts, notification_activities, notification_digest, email
         FROM users 
         WHERE id = ?
-      `);
-      const user = stmt.get(req.session.user.id);
+      `, [req.session.user.id], (err, user) => {
+        if (err) {
+          console.error('❌ Errore query database:', err.message);
+          userSettings = [
+            {
+              name: 'notification_contracts',
+              label: 'Notifiche Contratti in Scadenza',
+              enabled: false,
+              description: 'Ricevi notifiche quando i contratti stanno per scadere'
+            },
+            {
+              name: 'notification_activities',
+              label: 'Promemoria Attività',
+              enabled: false,
+              description: 'Ricevi promemoria per le attività in programma'
+            },
+            {
+              name: 'notification_digest',
+              label: 'Digest Settimanale',
+              enabled: false,
+              description: 'Ricevi un riepilogo settimanale delle tue attività'
+            }
+          ];
+        } else if (user) {
+          userSettings = [
+            {
+              name: 'notification_contracts',
+              label: 'Notifiche Contratti in Scadenza',
+              enabled: user.notification_contracts === 1,
+              description: 'Ricevi notifiche quando i contratti stanno per scadere'
+            },
+            {
+              name: 'notification_activities',
+              label: 'Promemoria Attività',
+              enabled: user.notification_activities === 1,
+              description: 'Ricevi promemoria per le attività in programma'
+            },
+            {
+              name: 'notification_digest',
+              label: 'Digest Settimanale',
+              enabled: user.notification_digest === 1,
+              description: 'Ricevi un riepilogo settimanale delle tue attività'
+            }
+          ];
+        } else {
+          // Utente non trovato, usa valori predefiniti
+          userSettings = [
+            {
+              name: 'notification_contracts',
+              label: 'Notifiche Contratti in Scadenza',
+              enabled: false,
+              description: 'Ricevi notifiche quando i contratti stanno per scadere'
+            },
+            {
+              name: 'notification_activities',
+              label: 'Promemoria Attività',
+              enabled: false,
+              description: 'Ricevi promemoria per le attività in programma'
+            },
+            {
+              name: 'notification_digest',
+              label: 'Digest Settimanale',
+              enabled: false,
+              description: 'Ricevi un riepilogo settimanale delle tue attività'
+            }
+          ];
+        }
+        
+        res.render('notifications/settings', {
+          title: 'Impostazioni Notifiche',
+          settings: userSettings,
+          userEmail: req.session.user.email || 'Non configurata'
+        });
+      });
       
-      if (user) {
-        userSettings = [
-          {
-            name: 'notification_contracts',
-            label: 'Notifiche Contratti in Scadenza',
-            enabled: user.notification_contracts === 1,
-            description: 'Ricevi notifiche quando i contratti stanno per scadere'
-          },
-          {
-            name: 'notification_activities',
-            label: 'Promemoria Attività',
-            enabled: user.notification_activities === 1,
-            description: 'Ricevi promemoria per le attività in programma'
-          },
-          {
-            name: 'notification_digest',
-            label: 'Digest Settimanale',
-            enabled: user.notification_digest === 1,
-            description: 'Ricevi un riepilogo settimanale delle tue attività'
-          }
-        ];
-      }
     } catch (error) {
       console.error('❌ Errore recupero impostazioni:', error.message);
+      
+      // Fallback con impostazioni predefinite
+      userSettings = [
+        {
+          name: 'notification_contracts',
+          label: 'Notifiche Contratti in Scadenza',
+          enabled: false,
+          description: 'Ricevi notifiche quando i contratti stanno per scadere'
+        },
+        {
+          name: 'notification_activities',
+          label: 'Promemoria Attività',
+          enabled: false,
+          description: 'Ricevi promemoria per le attività in programma'
+        },
+        {
+          name: 'notification_digest',
+          label: 'Digest Settimanale',
+          enabled: false,
+          description: 'Ricevi un riepilogo settimanale delle tue attività'
+        }
+      ];
+      
+      res.render('notifications/settings', {
+        title: 'Impostazioni Notifiche',
+        settings: userSettings,
+        userEmail: req.session.user.email || 'Non configurata'
+      });
     }
-    
-    res.render('notifications/settings', {
-      title: 'Impostazioni Notifiche',
-      settings: userSettings,
-      userEmail: req.session.user.email || 'Non configurata'
-    });
     
   } catch (error) {
     console.error('❌ Errore impostazioni notifiche:', error.message);
@@ -328,29 +401,35 @@ router.get('/settings', async (req, res) => {
 // Aggiorna impostazioni notifiche utente
 router.post('/settings', async (req, res) => {
   try {
-    const db = require('../models/database');
+    const db = require('../config/database'); // CORRETTO il percorso
     const { notification_contracts, notification_activities, notification_digest } = req.body;
     
-    const stmt = db.prepare(`
+    db.run(`
       UPDATE users 
       SET notification_contracts = ?, 
           notification_activities = ?, 
           notification_digest = ?
       WHERE id = ?
-    `);
-    
-    stmt.run(
+    `, [
       notification_contracts ? 1 : 0,
       notification_activities ? 1 : 0,
       notification_digest ? 1 : 0,
       req.session.user.id
-    );
-    
-    console.log('✅ Impostazioni notifiche aggiornate per utente:', req.session.user.username);
-    
-    res.json({ 
-      success: true, 
-      message: 'Impostazioni aggiornate con successo' 
+    ], function(err) {
+      if (err) {
+        console.error('❌ Errore aggiornamento impostazioni:', err.message);
+        return res.status(500).json({ 
+          success: false, 
+          error: err.message 
+        });
+      }
+      
+      console.log('✅ Impostazioni notifiche aggiornate per utente:', req.session.user.username);
+      
+      res.json({ 
+        success: true, 
+        message: 'Impostazioni aggiornate con successo' 
+      });
     });
     
   } catch (error) {

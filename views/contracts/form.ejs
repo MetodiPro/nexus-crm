@@ -2,11 +2,12 @@
   <div class="card-header bg-nexus-dark text-white">
     <h4 class="text-lg font-semibold">
       <i class="fas fa-file-contract"></i> 
-      <%= contract.id ? 'Modifica Contratto' : 'Nuovo Contratto' %>
+      <%= contract.id ? 'Modifica Proposta/Contratto' : 'Nuova Proposta/Contratto' %>
     </h4>
   </div>
   <div class="card-body">
     <form action="<%= action %>" method="POST" onsubmit="return validateForm('contractForm')" id="contractForm">
+      <input type="hidden" name="_csrf" value="<%= csrfToken %>">
       <% if (contract.client_id) { %>
         <input type="hidden" name="redirect_to_client" value="true">
       <% } %>
@@ -28,23 +29,26 @@
       
       <!-- Selezione prodotto da listino -->
       <div class="mb-4">
-        <label for="product_id" class="form-label">Seleziona dal Listino</label>
-        <select class="form-select" id="product_id" name="product_id">
+        <label for="product_id" class="form-label">Selezione Prodotto/Servizio</label>
+        <select class="form-select" id="product_id" name="product_id" onchange="fillFromProduct()">
           <option value="">Seleziona prodotto/servizio...</option>
           <% products.forEach(product => { %>
             <option 
               value="<%= product.id %>" 
               <%= (contract.product_id == product.id) ? 'selected' : '' %>
-              data-energy-type="<%= product.energy_type %>"
-              data-supplier="<%= product.supplier %>"
-              data-price="<%= product.base_price %>"
+              data-service-type="<%= product.service_type %>"
+              data-supplier="<%= product.supplier_operator %>"
+              data-electricity-fixed="<%= product.electricity_fixed_rate || '' %>"
+              data-electricity-variable="<%= product.electricity_variable_spread || '' %>"
+              data-gas-fixed="<%= product.gas_fixed_rate || '' %>"
+              data-gas-variable="<%= product.gas_variable_spread || '' %>"
+              data-cost1-desc="<%= product.additional_cost1_description || '' %>"
+              data-cost1-value="<%= product.additional_cost1_value || '' %>"
+              data-cost1-unit="<%= product.additional_cost1_unit || '' %>"
             >
-              <%= product.name %> - 
-              <%= product.energy_type === 'electricity' ? 'Energia Elettrica' : 
-                 product.energy_type === 'gas' ? 'Gas Naturale' : 
-                 product.energy_type === 'both' ? 'Dual Fuel' : product.energy_type %>
-              <% if (product.supplier) { %>
-                - <%= product.supplier %>
+              <%= product.name %> - <%= product.service_type %>
+              <% if (product.supplier_operator) { %>
+                - <%= product.supplier_operator %>
               <% } %>
             </option>
           <% }) %>
@@ -60,7 +64,7 @@
                  placeholder="es. Rinnovo, Nuovo allaccio, Subentro...">
         </div>
         <div>
-          <label for="energy_type" class="form-label">Tipo Energia *</label>
+          <label for="energy_type" class="form-label">Tipo Servizio *</label>
           <select class="form-select" id="energy_type" name="energy_type" required>
             <option value="">Seleziona tipo...</option>
             <option value="electricity" <%= (contract.energy_type === 'electricity') ? 'selected' : '' %>>
@@ -72,20 +76,32 @@
             <option value="both" <%= (contract.energy_type === 'both') ? 'selected' : '' %>>
               Dual Fuel (Elettricità + Gas)
             </option>
+            <option value="other" <%= (contract.energy_type === 'other') ? 'selected' : '' %>>
+              Altro Servizio
+            </option>
           </select>
         </div>
       </div>
       
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
         <div>
-          <label for="supplier" class="form-label">Fornitore</label>
+          <label for="supplier" class="form-label">Fornitore/Operatore</label>
           <input type="text" class="form-input" id="supplier" name="supplier" 
-                 value="<%= contract.supplier || '' %>">
+                 value="<%= contract.supplier || '' %>"
+                 placeholder="es. Enel Energia, Eni Gas e Luce...">
         </div>
         <div>
-          <label for="value" class="form-label">Valore (€)</label>
-          <input type="number" step="0.01" min="0" class="form-input" id="value" name="value" 
-                 value="<%= contract.value || '' %>">
+          <!-- Campo rimosso come richiesto -->
+        </div>
+      </div>
+      
+      <!-- Sezione dettagli tariffe (compilata automaticamente dal prodotto selezionato) -->
+      <div id="tariff-details" class="bg-blue-50 p-4 rounded-lg mb-4 hidden">
+        <h5 class="text-lg font-medium text-blue-900 mb-3">
+          <i class="fas fa-info-circle mr-2"></i>Dettagli Tariffe dal Prodotto Selezionato
+        </h5>
+        <div id="tariff-content" class="text-sm space-y-2">
+          <!-- Contenuto dinamico basato sul prodotto selezionato -->
         </div>
       </div>
       
@@ -119,7 +135,8 @@
       
       <div class="mb-6">
         <label for="notes" class="form-label">Note</label>
-        <textarea class="form-input h-24" id="notes" name="notes"><%= contract.notes || '' %></textarea>
+        <textarea class="form-input h-24" id="notes" name="notes" 
+                  placeholder="Note aggiuntive sulla proposta/contratto..."><%= contract.notes || '' %></textarea>
       </div>
       
       <div class="flex justify-between">
@@ -127,7 +144,7 @@
           <i class="fas fa-arrow-left"></i> Annulla
         </a>
         <button type="submit" class="btn-primary">
-          <i class="fas fa-save"></i> Salva
+          <i class="fas fa-save"></i> Salva Proposta/Contratto
         </button>
       </div>
     </form>
@@ -135,34 +152,118 @@
 </div>
 
 <script>
-  // Script per autocompilare i campi quando si seleziona un prodotto dal listino
-  document.addEventListener('DOMContentLoaded', function() {
-    const productSelect = document.getElementById('product_id');
-    const energyTypeSelect = document.getElementById('energy_type');
+// Funzione per compilare automaticamente i campi quando si seleziona un prodotto dal listino
+function fillFromProduct() {
+  const productSelect = document.getElementById('product_id');
+  const selectedOption = productSelect.options[productSelect.selectedIndex];
+  
+  if (productSelect.value) {
+    // Compila i campi base
     const supplierInput = document.getElementById('supplier');
-    const valueInput = document.getElementById('value');
+    const energyTypeSelect = document.getElementById('energy_type');
+    const tariffDetails = document.getElementById('tariff-details');
+    const tariffContent = document.getElementById('tariff-content');
     
-    if (productSelect) {
-      productSelect.addEventListener('change', function() {
-        const selectedOption = this.options[this.selectedIndex];
-        
-        if (this.value) {
-          // Imposta il tipo di energia
-          if (selectedOption.dataset.energyType) {
-            energyTypeSelect.value = selectedOption.dataset.energyType;
-          }
-          
-          // Imposta il fornitore
-          if (selectedOption.dataset.supplier) {
-            supplierInput.value = selectedOption.dataset.supplier;
-          }
-          
-          // Imposta il prezzo
-          if (selectedOption.dataset.price) {
-            valueInput.value = selectedOption.dataset.price;
-          }
-        }
-      });
+    // Fornitore/Operatore
+    if (selectedOption.dataset.supplier) {
+      supplierInput.value = selectedOption.dataset.supplier;
     }
-  });
+    
+    // Tipo servizio basato sul service_type
+    const serviceType = selectedOption.dataset.serviceType;
+    if (serviceType === 'Energia Elettrica') {
+      energyTypeSelect.value = 'electricity';
+    } else if (serviceType === 'Gas Naturale') {
+      energyTypeSelect.value = 'gas';
+    } else if (serviceType === 'Dual Fuel (Luce+Gas)') {
+      energyTypeSelect.value = 'both';
+    } else if (serviceType === 'Altro Servizio') {
+      energyTypeSelect.value = 'other';
+    }
+    
+    // Mostra dettagli tariffe
+    let tariffHtml = '';
+    
+    // Tariffe energia elettrica
+    if (selectedOption.dataset.electricityFixed) {
+      tariffHtml += `<div class="bg-white p-2 rounded border-l-4 border-blue-500">
+        <strong>Energia Elettrica - Tariffa Fissa:</strong> €${selectedOption.dataset.electricityFixed}/kWh
+      </div>`;
+    }
+    if (selectedOption.dataset.electricityVariable) {
+      tariffHtml += `<div class="bg-white p-2 rounded border-l-4 border-blue-500">
+        <strong>Energia Elettrica - Variabile:</strong> PUN + €${selectedOption.dataset.electricityVariable}/kWh
+      </div>`;
+    }
+    
+    // Tariffe gas naturale
+    if (selectedOption.dataset.gasFixed) {
+      tariffHtml += `<div class="bg-white p-2 rounded border-l-4 border-orange-500">
+        <strong>Gas Naturale - Tariffa Fissa:</strong> €${selectedOption.dataset.gasFixed}/Smc
+      </div>`;
+    }
+    if (selectedOption.dataset.gasVariable) {
+      tariffHtml += `<div class="bg-white p-2 rounded border-l-4 border-orange-500">
+        <strong>Gas Naturale - Variabile:</strong> PSV + €${selectedOption.dataset.gasVariable}/Smc
+      </div>`;
+    }
+    
+    // Costi aggiuntivi
+    if (selectedOption.dataset.cost1Desc && selectedOption.dataset.cost1Value) {
+      tariffHtml += `<div class="bg-white p-2 rounded border-l-4 border-yellow-500">
+        <strong>${selectedOption.dataset.cost1Desc}:</strong> €${selectedOption.dataset.cost1Value} ${selectedOption.dataset.cost1Unit}
+      </div>`;
+    }
+    
+    if (tariffHtml) {
+      tariffContent.innerHTML = tariffHtml;
+      tariffDetails.classList.remove('hidden');
+    } else {
+      tariffDetails.classList.add('hidden');
+    }
+    
+  } else {
+    // Nasconde i dettagli se nessun prodotto è selezionato
+    document.getElementById('tariff-details').classList.add('hidden');
+  }
+}
+
+// Validazione form
+function validateForm(formId) {
+  const form = document.getElementById(formId);
+  const clientId = form.querySelector('#client_id').value;
+  const contractType = form.querySelector('#contract_type').value;
+  const energyType = form.querySelector('#energy_type').value;
+  const status = form.querySelector('#status').value;
+  
+  if (!clientId) {
+    alert('Seleziona un cliente');
+    return false;
+  }
+  
+  if (!contractType.trim()) {
+    alert('Inserisci il tipo di contratto');
+    return false;
+  }
+  
+  if (!energyType) {
+    alert('Seleziona il tipo di servizio');
+    return false;
+  }
+  
+  if (!status) {
+    alert('Seleziona lo stato del contratto');
+    return false;
+  }
+  
+  return true;
+}
+
+// Inizializza la vista se c'è già un prodotto selezionato
+document.addEventListener('DOMContentLoaded', function() {
+  const productSelect = document.getElementById('product_id');
+  if (productSelect.value) {
+    fillFromProduct();
+  }
+});
 </script>

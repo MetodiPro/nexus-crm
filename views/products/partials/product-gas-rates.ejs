@@ -1,0 +1,30 @@
+<div class="bg-orange-50 p-4 rounded-lg mb-6">
+  <h3 class="text-lg font-medium text-orange-900 mb-4">
+    <i class="fas fa-fire mr-2"></i>Tariffe Gas Naturale
+  </h3>
+  
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+    <% if (product.gas_fixed_rate) { %>
+    <div class="bg-white p-3 rounded border-l-4 border-orange-500">
+      <div class="text-sm font-medium text-gray-500">Tariffa Fissa</div>
+      <div class="text-xl font-bold text-orange-600">€<%= product.gas_fixed_rate %>/Smc</div>
+      <div class="text-xs text-gray-500">Prezzo fisso per Standard metro cubo</div>
+    </div>
+    <% } %>
+    
+    <% if (product.gas_variable_spread) { %>
+    <div class="bg-white p-3 rounded border-l-4 border-orange-500">
+      <div class="text-sm font-medium text-gray-500">Tariffa Variabile</div>
+      <div class="text-xl font-bold text-orange-600">PSV + €<%= product.gas_variable_spread %>/Smc</div>
+      <div class="text-xs text-gray-500">Spread su Punto Scambio Virtuale</div>
+    </div>
+    <% } %>
+    
+    <% if (product.gas_other_rate_notes) { %>
+    <div class="bg-white p-3 rounded border-l-4 border-orange-500">
+      <div class="text-sm font-medium text-gray-500">Altra Tariffa</div>
+      <div class="text-sm text-gray-700 mt-1"><%= product.gas_other_rate_notes %></div>
+    </div>
+    <% } %>
+  </div>
+</div>

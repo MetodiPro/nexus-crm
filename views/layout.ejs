@@ -42,13 +42,6 @@
                 </a>
               </li>
               
-              <!-- Import Bollette -->
-              <li>
-                <a href="/clients/import-bill" class="sidebar-link">
-                  <i class="fas fa-file-upload w-5 text-center mr-2"></i> Importa da Bolletta ENEL
-                </a>
-              </li>
-              
               <!-- Punti di Fornitura -->
               <li>
                 <a href="/supply-points" class="sidebar-link">
@@ -57,11 +50,21 @@
               </li>
               
               <% if (user.role === 'administrator') { %>
-                <!-- Prodotti/Servizi -->
+                <!-- Menu Prodotti/Servizi con sottomenu -->
                 <li>
-                  <a href="/products" class="sidebar-link">
-                    <i class="fas fa-box w-5 text-center mr-2"></i> Prodotti/Servizi
-                  </a>
+                  <div class="sidebar-menu-group">
+                    <a href="/products" class="sidebar-link sidebar-parent">
+                      <i class="fas fa-box w-5 text-center mr-2"></i> Prodotti/Servizi
+                      <i class="fas fa-chevron-down ml-auto transition-transform duration-200" id="products-chevron"></i>
+                    </a>
+                    <ul class="sidebar-submenu hidden ml-6 mt-1" id="products-submenu">
+                      <li>
+                        <a href="/products/attachments" class="sidebar-sublink">
+                          <i class="fas fa-file-pdf w-4 text-center mr-2 text-red-400"></i> Allegati Offerte
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
                 </li>
               <% } %>
               
@@ -193,8 +196,41 @@
   <!-- Script per gestione sottomenu sidebar -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
+      // Gestione sottomenu Prodotti/Servizi
+      const productsParent = document.querySelector('#products-submenu')?.parentElement.querySelector('.sidebar-parent');
+      const productsSubmenu = document.getElementById('products-submenu');
+      const productsChevron = document.getElementById('products-chevron');
+      
+      if (productsParent && productsSubmenu && productsChevron) {
+        // Controlla se siamo in una pagina del sottomenu per aprirlo automaticamente
+        const currentPath = window.location.pathname;
+        if (currentPath.includes('/products/attachments')) {
+          productsSubmenu.classList.remove('hidden');
+          productsChevron.style.transform = 'rotate(180deg)';
+        }
+        
+        productsParent.addEventListener('click', function(e) {
+          // Se il click è sulla chevron o non è il link principale, previeni navigazione
+          if (e.target.classList.contains('fa-chevron-down') || 
+              e.target.id === 'products-chevron' ||
+              (!e.target.href || !e.target.href.endsWith('/products'))) {
+            e.preventDefault();
+          }
+          
+          // Toggle del sottomenu
+          productsSubmenu.classList.toggle('hidden');
+          
+          // Rotazione della chevron
+          if (productsSubmenu.classList.contains('hidden')) {
+            productsChevron.style.transform = 'rotate(0deg)';
+          } else {
+            productsChevron.style.transform = 'rotate(180deg)';
+          }
+        });
+      }
+      
       // Gestione sottomenu Proposte/Contratti
-      const contractsParent = document.querySelector('#contracts-submenu').parentElement.querySelector('.sidebar-parent');
+      const contractsParent = document.querySelector('#contracts-submenu')?.parentElement.querySelector('.sidebar-parent');
       const contractsSubmenu = document.getElementById('contracts-submenu');
       const contractsChevron = document.getElementById('contracts-chevron');
       
@@ -207,8 +243,10 @@
         }
         
         contractsParent.addEventListener('click', function(e) {
-          // Se non è il link principale /contracts, previeni la navigazione
-          if (!e.target.href || !e.target.href.endsWith('/contracts')) {
+          // Se il click è sulla chevron o non è il link principale, previeni navigazione
+          if (e.target.classList.contains('fa-chevron-down') || 
+              e.target.id === 'contracts-chevron' ||
+              (!e.target.href || !e.target.href.endsWith('/contracts'))) {
             e.preventDefault();
           }
           
@@ -222,15 +260,15 @@
             contractsChevron.style.transform = 'rotate(180deg)';
           }
         });
-        
-        // Evidenzia il link attivo nel sottomenu
-        const subLinks = contractsSubmenu.querySelectorAll('.sidebar-sublink');
-        subLinks.forEach(link => {
-          if (link.href === window.location.href) {
-            link.classList.add('active');
-          }
-        });
       }
+      
+      // Evidenzia i link attivi nei sottomenu
+      const subLinks = document.querySelectorAll('.sidebar-sublink');
+      subLinks.forEach(link => {
+        if (link.href === window.location.href) {
+          link.classList.add('active');
+        }
+      });
     });
   </script>
 </body>
