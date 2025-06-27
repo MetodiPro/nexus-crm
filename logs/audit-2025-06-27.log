@@ -1,0 +1,1 @@
+{"action":"POST /test-email","details":{"method":"POST","params":{},"statusCode":200},"ip":"::1","level":"info","message":"User action","resource":"general","service":"nexus-audit","timestamp":"2025-06-27T08:07:26.150Z","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36","userId":1}

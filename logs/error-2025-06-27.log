@@ -148,3 +148,36 @@ Error: listen EADDRINUSE: address already in use :::3000
   "service": "nexus-crm",
   "error": "listen EADDRINUSE: address already in use :::3000"
 }
+2025-06-27 10:05:20 [ERROR]: Errore connessione SMTP dopo tutti i tentativi:
+Error: connect ECONNREFUSED 127.0.0.1:25
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1634:16)
+{
+  "service": "nexus-crm",
+  "error": "connect ECONNREFUSED 127.0.0.1:25"
+}
+2025-06-27 10:06:55 [ERROR]: Uncaught Exception - Spegnimento applicazione
+Error: listen EADDRINUSE: address already in use :::3000
+    at Server.setupListenHandle [as _listen2] (node:net:1937:16)
+    at listenInCluster (node:net:1994:12)
+    at Server.listen (node:net:2099:7)
+    at Function.listen (C:\progetti\nexus-crm\node_modules\express\lib\application.js:635:24)
+    at gracefulShutdown (C:\progetti\nexus-crm\app.js:284:22)
+    at process.<anonymous> (C:\progetti\nexus-crm\app.js:308:28)
+    at process.emit (node:events:536:35)
+{
+  "service": "nexus-crm",
+  "error": "listen EADDRINUSE: address already in use :::3000"
+}
+2025-06-27 10:09:43 [ERROR]: Uncaught Exception - Spegnimento applicazione
+Error: listen EADDRINUSE: address already in use :::3000
+    at Server.setupListenHandle [as _listen2] (node:net:1937:16)
+    at listenInCluster (node:net:1994:12)
+    at Server.listen (node:net:2099:7)
+    at Function.listen (C:\progetti\nexus-crm\node_modules\express\lib\application.js:635:24)
+    at gracefulShutdown (C:\progetti\nexus-crm\app.js:287:22)
+    at process.<anonymous> (C:\progetti\nexus-crm\app.js:311:28)
+    at process.emit (node:events:536:35)
+{
+  "service": "nexus-crm",
+  "error": "listen EADDRINUSE: address already in use :::3000"
+}

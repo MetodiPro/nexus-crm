@@ -520,3 +520,306 @@ Error: Impossibile stabilire connessione SMTP con nessuna configurazione
 {
   "service": "nexus-crm"
 }
+2025-06-27 10:04:27 [INFO]: Connessione SMTP verificata con successo
+{
+  "service": "nexus-crm"
+}
+2025-06-27 10:04:30 [INFO]: Connessione SMTP verificata con successo
+{
+  "service": "nexus-crm"
+}
+2025-06-27 10:04:32 [INFO]: Email inviata con successo
+{
+  "service": "nexus-crm",
+  "to": "nexus@metodi.pro",
+  "subject": "🧪 Test Email - NEXUS CRM System (Enhanced)",
+  "messageId": "<eb492aa4-1065-1242-8843-743dd1930ce5@metodi.pro>"
+}
+2025-06-27 10:05:01 [INFO]: Avvio NEXUS CRM
+{
+  "service": "nexus-crm",
+  "port": 3000
+}
+2025-06-27 10:05:01 [INFO]: Server avviato con successo
+{
+  "service": "nexus-crm",
+  "port": 3000,
+  "nodeEnv": "development",
+  "nodeVersion": "v22.13.1"
+}
+2025-06-27 10:05:01 [INFO]: Connesso al database SQLite
+{
+  "service": "nexus-crm",
+  "dbPath": "C:\\progetti\\nexus-crm\\data\\nexus.db"
+}
+2025-06-27 10:05:01 [INFO]: Tabella users verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-27 10:05:01 [INFO]: Tabella clients verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-27 10:05:01 [INFO]: Tabella activities verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-27 10:05:01 [INFO]: Tabella products verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-27 10:05:01 [INFO]: Tabella contracts verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-27 10:05:01 [INFO]: Tabella user_sessions creata
+{
+  "service": "nexus-crm"
+}
+2025-06-27 10:05:01 [INFO]: Tabella electricity_utilities verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-27 10:05:01 [INFO]: Tabella gas_utilities verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-27 10:05:01 [INFO]: Utente admin già esistente
+{
+  "service": "nexus-crm"
+}
+2025-06-27 10:05:20 [ERROR]: Errore connessione SMTP dopo tutti i tentativi:
+Error: connect ECONNREFUSED 127.0.0.1:25
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1634:16)
+{
+  "service": "nexus-crm",
+  "error": "connect ECONNREFUSED 127.0.0.1:25"
+}
+2025-06-27 10:05:20 [WARN]: ⚠️ Servizio email non configurato - controlla variabili ambiente SMTP
+{
+  "service": "nexus-crm"
+}
+2025-06-27 10:06:55 [INFO]: Ricevuto SIGINT, chiusura database...
+{
+  "service": "nexus-crm"
+}
+2025-06-27 10:06:57 [INFO]: Avvio NEXUS CRM
+{
+  "service": "nexus-crm",
+  "port": 3000,
+  "nodeEnv": "development"
+}
+2025-06-27 10:06:57 [INFO]: Avvio scheduler notifiche NEXUS CRM
+{
+  "service": "nexus-crm"
+}
+2025-06-27 10:06:57 [INFO]: ✅ Scheduler controlli orari attivato (9-18, lun-ven)
+{
+  "service": "nexus-crm"
+}
+2025-06-27 10:06:57 [INFO]: ✅ Scheduler digest settimanale attivato (lunedì 08:00)
+{
+  "service": "nexus-crm"
+}
+2025-06-27 10:06:57 [INFO]: ✅ Scheduler controllo giornaliero attivato (09:00)
+{
+  "service": "nexus-crm"
+}
+2025-06-27 10:06:57 [INFO]: ✅ Scheduler pulizia log attivato (domenica 23:00)
+{
+  "service": "nexus-crm"
+}
+2025-06-27 10:06:57 [INFO]: Tutti gli scheduler sono stati avviati
+{
+  "service": "nexus-crm"
+}
+2025-06-27 10:06:57 [INFO]: ✅ Scheduler notifiche avviato
+{
+  "service": "nexus-crm"
+}
+2025-06-27 10:06:57 [INFO]: Server avviato con successo
+{
+  "service": "nexus-crm",
+  "port": 3000,
+  "nodeEnv": "development",
+  "nodeVersion": "v22.13.1"
+}
+2025-06-27 10:06:57 [INFO]: Connesso al database SQLite
+{
+  "service": "nexus-crm",
+  "dbPath": "C:\\progetti\\nexus-crm\\data\\nexus.db"
+}
+2025-06-27 10:06:58 [INFO]: Tabella users verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-27 10:06:58 [INFO]: Tabella clients verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-27 10:06:58 [INFO]: Tabella activities verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-27 10:06:58 [INFO]: Tabella products verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-27 10:06:58 [INFO]: Tabella contracts verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-27 10:06:58 [INFO]: Tabella user_sessions creata
+{
+  "service": "nexus-crm"
+}
+2025-06-27 10:06:58 [INFO]: Tabella electricity_utilities verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-27 10:06:58 [INFO]: Tabella gas_utilities verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-27 10:06:58 [INFO]: Utente admin già esistente
+{
+  "service": "nexus-crm"
+}
+2025-06-27 10:06:59 [INFO]: Connessione SMTP verificata con successo
+{
+  "service": "nexus-crm"
+}
+2025-06-27 10:06:59 [INFO]: Connessione SMTP verificata con successo
+{
+  "service": "nexus-crm"
+}
+2025-06-27 10:06:59 [INFO]: ✅ Servizio email configurato correttamente
+{
+  "service": "nexus-crm"
+}
+2025-06-27 10:07:05 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/login",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "statusCode": 200,
+  "duration": "7ms",
+  "contentLength": 4680
+}
+2025-06-27 10:07:11 [INFO]: Login riuscito
+{
+  "service": "nexus-crm",
+  "userId": 1,
+  "username": "admin",
+  "role": "administrator",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36"
+}
+2025-06-27 10:07:11 [INFO]: Login completato con successo
+{
+  "service": "nexus-crm",
+  "userId": 1,
+  "username": "admin",
+  "role": "administrator",
+  "ip": "::1",
+  "sessionId": "K4u-F08BXastYY58jOcIDK5hPQlNOHGg"
+}
+2025-06-27 10:07:11 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/dashboard",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "67ms",
+  "contentLength": 17561
+}
+2025-06-27 10:07:11 [INFO]: Sessione utente loggata
+{
+  "service": "nexus-crm",
+  "userId": 1,
+  "sessionLogId": 53,
+  "ip": "::1"
+}
+2025-06-27 10:07:11 [DEBUG]: Session ID aggiornato
+{
+  "service": "nexus-crm",
+  "sessionLogId": 53,
+  "realSessionId": "K4u-F08BXastYY58jOcIDK5hPQlNOHGg"
+}
+2025-06-27 10:07:13 [INFO]: Connessione SMTP verificata con successo
+{
+  "service": "nexus-crm"
+}
+2025-06-27 10:07:13 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/notifications",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "611ms",
+  "contentLength": 19839
+}
+2025-06-27 10:07:16 [INFO]: Connessione SMTP verificata con successo
+{
+  "service": "nexus-crm"
+}
+2025-06-27 10:07:16 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/notifications/email-status",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "2740ms",
+  "contentLength": 233
+}
+2025-06-27 10:07:26 [INFO]: Email inviata con successo
+{
+  "service": "nexus-crm",
+  "to": "admin@nexus.it",
+  "subject": "🧪 Test Email - NEXUS CRM System (Enhanced)",
+  "messageId": "<09c667de-44ff-8390-cff7-d02b03bbd5b2@metodi.pro>"
+}
+2025-06-27 10:07:26 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "POST",
+  "url": "/notifications/test-email",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "3887ms",
+  "contentLength": 153
+}
+2025-06-27 10:07:30 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/notifications/scheduler-status",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "5ms",
+  "contentLength": 56
+}
+2025-06-27 10:09:43 [INFO]: Ricevuto SIGINT, chiusura database...
+{
+  "service": "nexus-crm"
+}
