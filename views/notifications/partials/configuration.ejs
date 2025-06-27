@@ -1,0 +1,24 @@
+<div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+  <h3 class="text-lg font-semibold text-gray-900 mb-4">
+    <i class="fas fa-cog mr-2"></i>
+    Configurazione Sistema
+  </h3>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div>
+      <h4 class="font-medium text-gray-900 mb-2">Impostazioni SMTP</h4>
+      <div class="text-sm text-gray-600 space-y-1">
+        <div><strong>Host:</strong> <%= process.env.SMTP_HOST || 'Non configurato' %></div>
+        <div><strong>Porta:</strong> <%= process.env.SMTP_PORT || 'Non configurata' %></div>
+        <div><strong>From Email:</strong> <%= process.env.FROM_EMAIL || 'Non configurata' %></div>
+      </div>
+    </div>
+    <div>
+      <h4 class="font-medium text-gray-900 mb-2">Statistiche</h4>
+      <div class="text-sm text-gray-600 space-y-1">
+        <div><strong>Utenti Attivi:</strong> <span id="active-users">-</span></div>
+        <div><strong>Notifiche Oggi:</strong> <span id="notifications-today">-</span></div>
+        <div><strong>Ultimo Controllo:</strong> <span id="last-check">-</span></div>
+      </div>
+    </div>
+  </div>
+</div>

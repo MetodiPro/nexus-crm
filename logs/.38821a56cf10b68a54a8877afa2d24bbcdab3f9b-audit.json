@@ -1,0 +1,20 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 7
+    },
+    "auditLog": "C:\\progetti\\nexus-crm\\logs\\.38821a56cf10b68a54a8877afa2d24bbcdab3f9b-audit.json",
+    "files": [
+        {
+            "date": 1750933933764,
+            "name": "C:\\progetti\\nexus-crm\\logs\\database-2025-06-26.log",
+            "hash": "f272a7c0bbe41b2393b899356e8a80fe86dc82f9e15c709cfd7915efd98e1431"
+        },
+        {
+            "date": 1751009803443,
+            "name": "C:\\progetti\\nexus-crm\\logs\\database-2025-06-27.log",
+            "hash": "7e4a9d965a8b5eec1ced7e8cd7be1de793ebd6697ccfd2594a38a2fe52966a0f"
+        }
+    ],
+    "hashType": "sha256"
+}

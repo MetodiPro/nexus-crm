@@ -1,0 +1,522 @@
+2025-06-27 09:36:43 [INFO]: Avvio NEXUS CRM
+{
+  "service": "nexus-crm",
+  "port": 3000
+}
+2025-06-27 09:36:43 [INFO]: Server avviato con successo
+{
+  "service": "nexus-crm",
+  "port": 3000,
+  "nodeEnv": "development",
+  "nodeVersion": "v22.13.1"
+}
+2025-06-27 09:36:43 [INFO]: Connesso al database SQLite
+{
+  "service": "nexus-crm",
+  "dbPath": "C:\\progetti\\nexus-crm\\data\\nexus.db"
+}
+2025-06-27 09:36:43 [INFO]: Tabella users verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-27 09:36:43 [INFO]: Tabella clients verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-27 09:36:43 [INFO]: Tabella activities verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-27 09:36:43 [INFO]: Tabella products verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-27 09:36:43 [INFO]: Tabella contracts verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-27 09:36:43 [INFO]: Tabella user_sessions creata
+{
+  "service": "nexus-crm"
+}
+2025-06-27 09:36:43 [INFO]: Tabella electricity_utilities verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-27 09:36:43 [INFO]: Tabella gas_utilities verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-27 09:36:43 [INFO]: Utente admin già esistente
+{
+  "service": "nexus-crm"
+}
+2025-06-27 09:36:47 [ERROR]: Errore connessione SMTP:
+Error: Invalid login: 535 5.7.1 Authentication failed
+    at SMTPConnection._formatError (C:\progetti\nexus-crm\node_modules\nodemailer\lib\smtp-connection\index.js:790:19)
+    at SMTPConnection._actionAUTHComplete (C:\progetti\nexus-crm\node_modules\nodemailer\lib\smtp-connection\index.js:1564:34)
+    at SMTPConnection.<anonymous> (C:\progetti\nexus-crm\node_modules\nodemailer\lib\smtp-connection\index.js:546:26)
+    at SMTPConnection._processResponse (C:\progetti\nexus-crm\node_modules\nodemailer\lib\smtp-connection\index.js:969:20)
+    at SMTPConnection._onData (C:\progetti\nexus-crm\node_modules\nodemailer\lib\smtp-connection\index.js:755:14)
+    at SMTPConnection._onSocketData (C:\progetti\nexus-crm\node_modules\nodemailer\lib\smtp-connection\index.js:193:44)
+    at TLSSocket.emit (node:events:524:28)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+    at Readable.push (node:internal/streams/readable:392:5)
+{
+  "service": "nexus-crm",
+  "error": "Invalid login: 535 5.7.1 Authentication failed"
+}
+2025-06-27 09:36:47 [WARN]: ⚠️ Servizio email non configurato - controlla variabili ambiente SMTP
+{
+  "service": "nexus-crm"
+}
+2025-06-27 09:36:48 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/login",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "statusCode": 200,
+  "duration": "10ms",
+  "contentLength": 4680
+}
+2025-06-27 09:36:55 [INFO]: Login riuscito
+{
+  "service": "nexus-crm",
+  "userId": 1,
+  "username": "admin",
+  "role": "administrator",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36"
+}
+2025-06-27 09:36:55 [INFO]: Login completato con successo
+{
+  "service": "nexus-crm",
+  "userId": 1,
+  "username": "admin",
+  "role": "administrator",
+  "ip": "::1",
+  "sessionId": "sFNxK4ldN8uiVE_jDprFLeMkRowprFm3"
+}
+2025-06-27 09:36:55 [INFO]: Sessione utente loggata
+{
+  "service": "nexus-crm",
+  "userId": 1,
+  "sessionLogId": 51,
+  "ip": "::1"
+}
+2025-06-27 09:36:55 [DEBUG]: Session ID aggiornato
+{
+  "service": "nexus-crm",
+  "sessionLogId": 51,
+  "realSessionId": "sFNxK4ldN8uiVE_jDprFLeMkRowprFm3"
+}
+2025-06-27 09:36:55 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/dashboard",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "147ms",
+  "contentLength": 17561
+}
+2025-06-27 09:37:02 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/contracts",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "8ms",
+  "contentLength": 12445
+}
+2025-06-27 09:37:03 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/contracts",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "5ms",
+  "contentLength": 12445
+}
+2025-06-27 09:37:09 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/notifications",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "20ms",
+  "contentLength": 20068
+}
+2025-06-27 09:37:14 [ERROR]: Errore connessione SMTP:
+Error: Invalid login: 535 5.7.1 Authentication failed
+    at SMTPConnection._formatError (C:\progetti\nexus-crm\node_modules\nodemailer\lib\smtp-connection\index.js:790:19)
+    at SMTPConnection._actionAUTHComplete (C:\progetti\nexus-crm\node_modules\nodemailer\lib\smtp-connection\index.js:1564:34)
+    at SMTPConnection.<anonymous> (C:\progetti\nexus-crm\node_modules\nodemailer\lib\smtp-connection\index.js:546:26)
+    at SMTPConnection._processResponse (C:\progetti\nexus-crm\node_modules\nodemailer\lib\smtp-connection\index.js:969:20)
+    at SMTPConnection._onData (C:\progetti\nexus-crm\node_modules\nodemailer\lib\smtp-connection\index.js:755:14)
+    at SMTPConnection._onSocketData (C:\progetti\nexus-crm\node_modules\nodemailer\lib\smtp-connection\index.js:193:44)
+    at TLSSocket.emit (node:events:524:28)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+    at Readable.push (node:internal/streams/readable:392:5)
+{
+  "service": "nexus-crm",
+  "error": "Invalid login: 535 5.7.1 Authentication failed"
+}
+2025-06-27 09:37:14 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/notifications/email-status",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "4546ms",
+  "contentLength": 80
+}
+2025-06-27 09:37:18 [ERROR]: Errore invio email:
+Error: Invalid login: 535 5.7.1 Authentication failed
+    at SMTPConnection._formatError (C:\progetti\nexus-crm\node_modules\nodemailer\lib\smtp-connection\index.js:790:19)
+    at SMTPConnection._actionAUTHComplete (C:\progetti\nexus-crm\node_modules\nodemailer\lib\smtp-connection\index.js:1564:34)
+    at SMTPConnection.<anonymous> (C:\progetti\nexus-crm\node_modules\nodemailer\lib\smtp-connection\index.js:546:26)
+    at SMTPConnection._processResponse (C:\progetti\nexus-crm\node_modules\nodemailer\lib\smtp-connection\index.js:969:20)
+    at SMTPConnection._onData (C:\progetti\nexus-crm\node_modules\nodemailer\lib\smtp-connection\index.js:755:14)
+    at SMTPConnection._onSocketData (C:\progetti\nexus-crm\node_modules\nodemailer\lib\smtp-connection\index.js:193:44)
+    at TLSSocket.emit (node:events:524:28)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+    at Readable.push (node:internal/streams/readable:392:5)
+{
+  "service": "nexus-crm",
+  "error": "Invalid login: 535 5.7.1 Authentication failed",
+  "to": "admin@nexus.it",
+  "subject": "🧪 Test Email - NEXUS CRM System"
+}
+2025-06-27 09:37:18 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "POST",
+  "url": "/notifications/test-email",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 500,
+  "duration": "3406ms",
+  "contentLength": 102
+}
+2025-06-27 09:39:02 [ERROR]: Errore invio email:
+Error: Invalid login: 535 5.7.1 Authentication failed
+    at SMTPConnection._formatError (C:\progetti\nexus-crm\node_modules\nodemailer\lib\smtp-connection\index.js:790:19)
+    at SMTPConnection._actionAUTHComplete (C:\progetti\nexus-crm\node_modules\nodemailer\lib\smtp-connection\index.js:1564:34)
+    at SMTPConnection.<anonymous> (C:\progetti\nexus-crm\node_modules\nodemailer\lib\smtp-connection\index.js:546:26)
+    at SMTPConnection._processResponse (C:\progetti\nexus-crm\node_modules\nodemailer\lib\smtp-connection\index.js:969:20)
+    at SMTPConnection._onData (C:\progetti\nexus-crm\node_modules\nodemailer\lib\smtp-connection\index.js:755:14)
+    at SMTPConnection._onSocketData (C:\progetti\nexus-crm\node_modules\nodemailer\lib\smtp-connection\index.js:193:44)
+    at TLSSocket.emit (node:events:524:28)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+    at Readable.push (node:internal/streams/readable:392:5)
+{
+  "service": "nexus-crm",
+  "error": "Invalid login: 535 5.7.1 Authentication failed",
+  "to": "admin@nexus.it",
+  "subject": "🧪 Test Email - NEXUS CRM System"
+}
+2025-06-27 09:39:02 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "POST",
+  "url": "/notifications/test-email",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 500,
+  "duration": "2545ms",
+  "contentLength": 102
+}
+2025-06-27 09:39:09 [ERROR]: Errore invio email:
+Error: Invalid login: 535 5.7.1 Authentication failed
+    at SMTPConnection._formatError (C:\progetti\nexus-crm\node_modules\nodemailer\lib\smtp-connection\index.js:790:19)
+    at SMTPConnection._actionAUTHComplete (C:\progetti\nexus-crm\node_modules\nodemailer\lib\smtp-connection\index.js:1564:34)
+    at SMTPConnection.<anonymous> (C:\progetti\nexus-crm\node_modules\nodemailer\lib\smtp-connection\index.js:546:26)
+    at SMTPConnection._processResponse (C:\progetti\nexus-crm\node_modules\nodemailer\lib\smtp-connection\index.js:969:20)
+    at SMTPConnection._onData (C:\progetti\nexus-crm\node_modules\nodemailer\lib\smtp-connection\index.js:755:14)
+    at SMTPConnection._onSocketData (C:\progetti\nexus-crm\node_modules\nodemailer\lib\smtp-connection\index.js:193:44)
+    at TLSSocket.emit (node:events:524:28)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+    at Readable.push (node:internal/streams/readable:392:5)
+{
+  "service": "nexus-crm",
+  "error": "Invalid login: 535 5.7.1 Authentication failed",
+  "to": "admin@nexus.it",
+  "subject": "🧪 Test Email - NEXUS CRM System"
+}
+2025-06-27 09:39:09 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "POST",
+  "url": "/notifications/test-email",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 500,
+  "duration": "3602ms",
+  "contentLength": 102
+}
+2025-06-27 09:41:51 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/clients",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "33ms",
+  "contentLength": 13319
+}
+2025-06-27 09:42:54 [INFO]: Ricevuto SIGINT, chiusura database...
+{
+  "service": "nexus-crm"
+}
+2025-06-27 09:43:15 [INFO]: Avvio NEXUS CRM
+{
+  "service": "nexus-crm",
+  "port": 3000
+}
+2025-06-27 09:43:15 [INFO]: Server avviato con successo
+{
+  "service": "nexus-crm",
+  "port": 3000,
+  "nodeEnv": "development",
+  "nodeVersion": "v22.13.1"
+}
+2025-06-27 09:43:15 [INFO]: Connesso al database SQLite
+{
+  "service": "nexus-crm",
+  "dbPath": "C:\\progetti\\nexus-crm\\data\\nexus.db"
+}
+2025-06-27 09:43:16 [INFO]: Tabella users verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-27 09:43:16 [INFO]: Tabella clients verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-27 09:43:16 [INFO]: Tabella activities verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-27 09:43:16 [INFO]: Tabella products verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-27 09:43:16 [INFO]: Tabella contracts verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-27 09:43:16 [INFO]: Tabella user_sessions creata
+{
+  "service": "nexus-crm"
+}
+2025-06-27 09:43:16 [INFO]: Tabella electricity_utilities verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-27 09:43:16 [INFO]: Tabella gas_utilities verificata/creata
+{
+  "service": "nexus-crm"
+}
+2025-06-27 09:43:16 [INFO]: Utente admin già esistente
+{
+  "service": "nexus-crm"
+}
+2025-06-27 09:43:19 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/login",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "statusCode": 200,
+  "duration": "19ms",
+  "contentLength": 4680
+}
+2025-06-27 09:43:25 [INFO]: Login riuscito
+{
+  "service": "nexus-crm",
+  "userId": 1,
+  "username": "admin",
+  "role": "administrator",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36"
+}
+2025-06-27 09:43:25 [INFO]: Login completato con successo
+{
+  "service": "nexus-crm",
+  "userId": 1,
+  "username": "admin",
+  "role": "administrator",
+  "ip": "::1",
+  "sessionId": "jNkBdGj-6-02UpxYgySQgZr7qhZbfzWW"
+}
+2025-06-27 09:43:25 [INFO]: Sessione utente loggata
+{
+  "service": "nexus-crm",
+  "userId": 1,
+  "sessionLogId": 52,
+  "ip": "::1"
+}
+2025-06-27 09:43:25 [DEBUG]: Session ID aggiornato
+{
+  "service": "nexus-crm",
+  "sessionLogId": 52,
+  "realSessionId": "jNkBdGj-6-02UpxYgySQgZr7qhZbfzWW"
+}
+2025-06-27 09:43:25 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/dashboard",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "73ms",
+  "contentLength": 17561
+}
+2025-06-27 09:43:25 [ERROR]: Errore connessione SMTP:
+Error: Timeout connessione SMTP
+    at Timeout._onTimeout (C:\progetti\nexus-crm\services\emailService.js:58:33)
+    at listOnTimeout (node:internal/timers:594:17)
+    at process.processTimers (node:internal/timers:529:7)
+{
+  "service": "nexus-crm",
+  "error": "Timeout connessione SMTP"
+}
+2025-06-27 09:43:25 [WARN]: ⚠️ Servizio email non configurato - controlla variabili ambiente SMTP
+{
+  "service": "nexus-crm"
+}
+2025-06-27 09:43:29 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/notifications",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "15ms",
+  "contentLength": 20068
+}
+2025-06-27 09:43:32 [WARN]: Pagina non trovata
+{
+  "service": "nexus-crm",
+  "url": "/notifications/scheduler-status",
+  "method": "GET",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "referer": "http://localhost:3000/notifications"
+}
+2025-06-27 09:43:32 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/notifications/scheduler-status",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 404,
+  "duration": "4ms",
+  "contentLength": 8960
+}
+2025-06-27 09:43:39 [ERROR]: Errore connessione SMTP:
+Error: Timeout connessione SMTP
+    at Timeout._onTimeout (C:\progetti\nexus-crm\services\emailService.js:58:33)
+    at listOnTimeout (node:internal/timers:594:17)
+    at process.processTimers (node:internal/timers:529:7)
+{
+  "service": "nexus-crm",
+  "error": "Timeout connessione SMTP"
+}
+2025-06-27 09:43:39 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "GET",
+  "url": "/notifications/email-status",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 200,
+  "duration": "10016ms",
+  "contentLength": 80
+}
+2025-06-27 09:43:45 [ERROR]: Errore connessione SMTP:
+Error: Timeout connessione SMTP
+    at Timeout._onTimeout (C:\progetti\nexus-crm\services\emailService.js:58:33)
+    at listOnTimeout (node:internal/timers:594:17)
+    at process.processTimers (node:internal/timers:529:7)
+{
+  "service": "nexus-crm",
+  "error": "Timeout connessione SMTP"
+}
+2025-06-27 09:43:49 [ERROR]: Errore invio email:
+Error: Impossibile stabilire connessione SMTP con nessuna configurazione
+    at EmailService.sendEmail (C:\progetti\nexus-crm\services\emailService.js:157:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async C:\progetti\nexus-crm\routes\notifications.js:24:5
+{
+  "service": "nexus-crm",
+  "error": "Impossibile stabilire connessione SMTP con nessuna configurazione",
+  "to": "admin@nexus.it",
+  "subject": "🧪 Test Email - NEXUS CRM System (OVH Configuration)"
+}
+2025-06-27 09:43:49 [INFO]: HTTP Request
+{
+  "service": "nexus-crm",
+  "method": "POST",
+  "url": "/notifications/test-email",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+  "userId": 1,
+  "username": "admin",
+  "statusCode": 500,
+  "duration": "14804ms",
+  "contentLength": 121
+}
+2025-06-27 09:44:47 [INFO]: Ricevuto SIGINT, chiusura database...
+{
+  "service": "nexus-crm"
+}

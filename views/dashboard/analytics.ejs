@@ -1,0 +1,368 @@
+<div class="max-w-7xl mx-auto space-y-6">
+  <!-- Header Dashboard -->
+  <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+    <div class="flex justify-between items-center">
+      <div>
+        <h1 class="text-2xl font-bold text-gray-900">
+          <i class="fas fa-tachometer-alt text-nexus-red mr-2"></i>
+          Dashboard Analytics
+        </h1>
+        <p class="text-gray-600 mt-1">
+          <%= isAdmin ? 'Panoramica generale sistema' : 'Le tue performance come consulente' %>
+        </p>
+      </div>
+      <div class="text-right">
+        <div class="text-sm text-gray-500">Ultimo aggiornamento</div>
+        <div class="text-sm font-medium" id="last-update">
+          <%= new Date().toLocaleString('it-IT') %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- KPI Cards -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+    <!-- Clienti -->
+    <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+      <div class="flex items-center justify-between">
+        <div>
+          <p class="text-sm font-medium text-gray-600">Clienti Totali</p>
+          <p class="text-2xl font-bold text-gray-900">
+            <%= kpis.clients.reduce((sum, c) => sum + c.count, 0) %>
+          </p>
+        </div>
+        <div class="bg-blue-100 p-3 rounded-full">
+          <i class="fas fa-users text-blue-600 text-xl"></i>
+        </div>
+      </div>
+      <div class="mt-4">
+        <% kpis.clients.forEach(client => { %>
+          <div class="flex justify-between text-sm">
+            <span class="text-gray-600">
+              <%= client.client_status === 'prospect' ? 'Prospect' : 
+                  client.client_status === 'active' ? 'Attivi' : 
+                  client.client_status === 'inactive' ? 'Inattivi' : client.client_status %>
+            </span>
+            <span class="font-medium"><%= client.count %></span>
+          </div>
+        <% }) %>
+      </div>
+    </div>
+
+    <!-- Contratti -->
+    <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+      <div class="flex items-center justify-between">
+        <div>
+          <p class="text-sm font-medium text-gray-600">Contratti Anno</p>
+          <p class="text-2xl font-bold text-gray-900">
+            <%= kpis.contracts.reduce((sum, c) => sum + c.count, 0) %>
+          </p>
+        </div>
+        <div class="bg-green-100 p-3 rounded-full">
+          <i class="fas fa-file-contract text-green-600 text-xl"></i>
+        </div>
+      </div>
+      <div class="mt-4">
+        <% kpis.contracts.forEach(contract => { %>
+          <div class="flex justify-between text-sm">
+            <span class="text-gray-600">
+              <%= contract.status === 'pending' ? 'In attesa' : 
+                  contract.status === 'accepted' ? 'Accettati' : 
+                  contract.status === 'rejected' ? 'Rifiutati' : contract.status %>
+            </span>
+            <span class="font-medium"><%= contract.count %></span>
+          </div>
+        <% }) %>
+      </div>
+    </div>
+
+    <!-- Valore Contratti -->
+    <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+      <div class="flex items-center justify-between">
+        <div>
+          <p class="text-sm font-medium text-gray-600">Valore Anno</p>
+          <p class="text-2xl font-bold text-gray-900">
+            €<%= Math.round(kpis.contracts.reduce((sum, c) => sum + (c.total_value || 0), 0)).toLocaleString() %>
+          </p>
+        </div>
+        <div class="bg-yellow-100 p-3 rounded-full">
+          <i class="fas fa-euro-sign text-yellow-600 text-xl"></i>
+        </div>
+      </div>
+      <div class="mt-4">
+        <div class="flex justify-between text-sm">
+          <span class="text-gray-600">Accettati</span>
+          <span class="font-medium text-green-600">
+            €<%= Math.round(kpis.contracts.find(c => c.status === 'accepted')?.total_value || 0).toLocaleString() %>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Utenze -->
+    <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+      <div class="flex items-center justify-between">
+        <div>
+          <p class="text-sm font-medium text-gray-600">Utenze Attive</p>
+          <p class="text-2xl font-bold text-gray-900">
+            <%= kpis.utilities.reduce((sum, u) => sum + u.count, 0) %>
+          </p>
+        </div>
+        <div class="bg-red-100 p-3 rounded-full">
+          <i class="fas fa-plug text-red-600 text-xl"></i>
+        </div>
+      </div>
+      <div class="mt-4">
+        <% kpis.utilities.forEach(utility => { %>
+          <div class="flex justify-between text-sm">
+            <span class="text-gray-600">
+              <%= utility.type === 'electricity' ? 'Elettriche' : 'Gas' %>
+            </span>
+            <span class="font-medium"><%= utility.count %></span>
+          </div>
+        <% }) %>
+      </div>
+    </div>
+  </div>
+
+  <!-- Performance del Mese (Solo Consulenti) -->
+  <% if (!isAdmin && performance) { %>
+  <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+    <h3 class="text-lg font-semibold text-gray-900 mb-4">
+      <i class="fas fa-chart-line text-nexus-red mr-2"></i>
+      Performance del Mese
+    </h3>
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+      <div class="text-center">
+        <div class="text-2xl font-bold text-blue-600"><%= performance.new_clients %></div>
+        <div class="text-sm text-gray-600">Nuovi Clienti</div>
+      </div>
+      <div class="text-center">
+        <div class="text-2xl font-bold text-green-600"><%= performance.closed_contracts %></div>
+        <div class="text-sm text-gray-600">Contratti Chiusi</div>
+      </div>
+      <div class="text-center">
+        <div class="text-2xl font-bold text-yellow-600">€<%= Math.round(performance.contract_value).toLocaleString() %></div>
+        <div class="text-sm text-gray-600">Valore Generato</div>
+      </div>
+      <div class="text-center">
+        <div class="text-2xl font-bold text-purple-600"><%= performance.completed_activities %></div>
+        <div class="text-sm text-gray-600">Attività Completate</div>
+      </div>
+    </div>
+  </div>
+  <% } %>
+
+  <!-- Grafici Trend -->
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+    <!-- Trend Contratti -->
+    <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+      <h3 class="text-lg font-semibold text-gray-900 mb-4">Trend Contratti (12 mesi)</h3>
+      <div class="h-64">
+        <canvas id="contractsChart"></canvas>
+      </div>
+    </div>
+
+    <!-- Trend Clienti -->
+    <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+      <h3 class="text-lg font-semibold text-gray-900 mb-4">Nuovi Clienti (12 mesi)</h3>
+      <div class="h-64">
+        <canvas id="clientsChart"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <!-- Prossimi Impegni -->
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+    <!-- Attività Imminenti -->
+    <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+      <h3 class="text-lg font-semibold text-gray-900 mb-4">
+        <i class="fas fa-calendar-check text-nexus-red mr-2"></i>
+        Prossime Attività (7 giorni)
+      </h3>
+      <% if (upcoming.activities.length > 0) { %>
+        <div class="space-y-3">
+          <% upcoming.activities.slice(0, 5).forEach(activity => { %>
+            <div class="flex items-center justify-between py-2 border-b border-gray-100 last:border-b-0">
+              <div>
+                <div class="font-medium text-gray-900"><%= activity.title %></div>
+                <div class="text-sm text-gray-600">
+                  <%= activity.client_name %> <%= activity.client_surname %>
+                </div>
+              </div>
+              <div class="text-right">
+                <div class="text-sm font-medium text-gray-900">
+                  <%= new Date(activity.activity_date).toLocaleDateString('it-IT') %>
+                </div>
+                <div class="text-xs text-yellow-600">In attesa</div>
+              </div>
+            </div>
+          <% }) %>
+        </div>
+        <% if (upcoming.activities.length > 5) { %>
+          <div class="text-center mt-4">
+            <a href="/activities" class="text-nexus-red hover:text-red-700 text-sm font-medium">
+              Vedi tutte (<%= upcoming.activities.length %>)
+            </a>
+          </div>
+        <% } %>
+      <% } else { %>
+        <div class="text-center py-8 text-gray-500">
+          <i class="fas fa-calendar-times text-3xl mb-2"></i>
+          <p>Nessuna attività nei prossimi 7 giorni</p>
+        </div>
+      <% } %>
+    </div>
+
+    <!-- Contratti in Scadenza -->
+    <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+      <h3 class="text-lg font-semibold text-gray-900 mb-4">
+        <i class="fas fa-exclamation-triangle text-yellow-500 mr-2"></i>
+        Contratti in Scadenza (30 giorni)
+      </h3>
+      <% if (upcoming.contracts.length > 0) { %>
+        <div class="space-y-3">
+          <% upcoming.contracts.slice(0, 5).forEach(contract => { %>
+            <div class="flex items-center justify-between py-2 border-b border-gray-100 last:border-b-0">
+              <div>
+                <div class="font-medium text-gray-900"><%= contract.contract_type %></div>
+                <div class="text-sm text-gray-600">
+                  <%= contract.client_name %> <%= contract.client_surname %>
+                </div>
+              </div>
+              <div class="text-right">
+                <div class="text-sm font-medium text-gray-900">
+                  <%= new Date(contract.end_date).toLocaleDateString('it-IT') %>
+                </div>
+                <div class="text-xs text-red-600">Scadenza</div>
+              </div>
+            </div>
+          <% }) %>
+        </div>
+        <% if (upcoming.contracts.length > 5) { %>
+          <div class="text-center mt-4">
+            <a href="/contracts" class="text-nexus-red hover:text-red-700 text-sm font-medium">
+              Vedi tutti (<%= upcoming.contracts.length %>)
+            </a>
+          </div>
+        <% } %>
+      <% } else { %>
+        <div class="text-center py-8 text-gray-500">
+          <i class="fas fa-check-circle text-3xl mb-2"></i>
+          <p>Nessun contratto in scadenza</p>
+        </div>
+      <% } %>
+    </div>
+  </div>
+</div>
+
+<!-- Chart.js per i grafici -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Dati per i grafici
+  const contractsData = <%- JSON.stringify(trends.contracts) %>;
+  const clientsData = <%- JSON.stringify(trends.clients) %>;
+  
+  // Genera ultimi 12 mesi
+  const months = [];
+  for (let i = 11; i >= 0; i--) {
+    const date = new Date();
+    date.setMonth(date.getMonth() - i);
+    months.push(date.toISOString().slice(0, 7));
+  }
+  
+  // Prepara dati contratti
+  const contractCounts = months.map(month => {
+    const found = contractsData.find(d => d.month === month);
+    return found ? found.contracts_count : 0;
+  });
+  
+  const contractValues = months.map(month => {
+    const found = contractsData.find(d => d.month === month);
+    return found ? found.total_value : 0;
+  });
+  
+  // Prepara dati clienti
+  const clientCounts = months.map(month => {
+    const found = clientsData.find(d => d.month === month);
+    return found ? found.clients_count : 0;
+  });
+  
+  // Grafico Contratti
+  new Chart(document.getElementById('contractsChart'), {
+    type: 'line',
+    data: {
+      labels: months.map(m => new Date(m + '-01').toLocaleDateString('it-IT', {month: 'short', year: '2-digit'})),
+      datasets: [{
+        label: 'Numero Contratti',
+        data: contractCounts,
+        borderColor: 'rgb(220, 38, 38)',
+        backgroundColor: 'rgba(220, 38, 38, 0.1)',
+        yAxisID: 'y'
+      }, {
+        label: 'Valore (€)',
+        data: contractValues,
+        borderColor: 'rgb(251, 191, 36)',
+        backgroundColor: 'rgba(251, 191, 36, 0.1)',
+        yAxisID: 'y1'
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: {
+        y: {
+          type: 'linear',
+          display: true,
+          position: 'left',
+        },
+        y1: {
+          type: 'linear',
+          display: true,
+          position: 'right',
+          grid: {
+            drawOnChartArea: false,
+          },
+        }
+      }
+    }
+  });
+  
+  // Grafico Clienti
+  new Chart(document.getElementById('clientsChart'), {
+    type: 'bar',
+    data: {
+      labels: months.map(m => new Date(m + '-01').toLocaleDateString('it-IT', {month: 'short', year: '2-digit'})),
+      datasets: [{
+        label: 'Nuovi Clienti',
+        data: clientCounts,
+        backgroundColor: 'rgba(31, 41, 55, 0.7)',
+        borderColor: 'rgb(31, 41, 55)',
+        borderWidth: 1
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+  
+  // Auto-refresh ogni 5 minuti
+  setInterval(async function() {
+    try {
+      const response = await fetch('/dashboard/api/kpis');
+      const newKpis = await response.json();
+      document.getElementById('last-update').textContent = new Date().toLocaleString('it-IT');
+      // Qui potresti aggiornare i valori nella pagina
+    } catch (error) {
+      console.error('Errore aggiornamento dati:', error);
+    }
+  }, 5 * 60 * 1000);
+});
+</script>

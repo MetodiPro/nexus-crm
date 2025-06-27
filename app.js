@@ -106,19 +106,6 @@ require('./config/database');
 
 // Imposta le variabili globali per le viste
 app.use((req, res, next) => {
-  // DEBUG: Log ogni volta che viene impostato res.locals.user
-  if (req.session.user) {
-    console.log('🌐 DEBUG res.locals.user - Impostazione variabile globale:', {
-      id: req.session.user.id,
-      username: req.session.user.username,
-      role: req.session.user.role,
-      name: req.session.user.name,
-      url: req.originalUrl,
-      method: req.method,
-      timestamp: new Date().toISOString()
-    });
-  }
-  
   res.locals.user = req.session.user || null;
   res.locals.csrfToken = req.session.csrfToken || null;
   next();
@@ -167,9 +154,38 @@ app.use('/supply-points', supplyPointsRoutes);
 const billImportRoutes = require('./routes/billImportSimple');
 app.use('/', billImportRoutes);
 
-// Rotta homepage
+// **NUOVE ROTTE - Dashboard Analytics e Notifiche**
+// Rotte Dashboard Analytics
+try {
+  const dashboardRoutes = require('./routes/dashboard');
+  app.use('/dashboard', dashboardRoutes);
+  console.log('✅ Dashboard Analytics caricata');
+} catch (error) {
+  console.error('⚠️ Dashboard Analytics non disponibile:', error.message);
+  // Route di fallback per dashboard
+  app.get('/dashboard', (req, res) => {
+    res.render('dashboard');
+  });
+}
+
+// Rotte per gestione notifiche (solo admin)
+try {
+  const notificationRoutes = require('./routes/notifications');
+  app.use('/notifications', adminMiddleware, notificationRoutes);
+  console.log('✅ Sistema Notifiche caricato');
+} catch (error) {
+  console.error('⚠️ Sistema Notifiche non disponibile:', error.message);
+  // Route di fallback per notifiche
+  app.get('/notifications', adminMiddleware, (req, res) => {
+    res.render('error', { 
+      message: 'Sistema notifiche non disponibile. Esegui: npm install nodemailer node-cron' 
+    });
+  });
+}
+
+// Rotta homepage - ora reindirizza alla dashboard analytics
 app.get('/', (req, res) => {
-  res.render('dashboard');
+  res.redirect('/dashboard');
 });
 
 // Endpoint per monitoraggio salute dell'applicazione
@@ -182,6 +198,33 @@ app.get('/health', (req, res) => {
     version: require('./package.json').version
   });
 });
+
+// **INIZIALIZZAZIONE SERVIZI OPZIONALI**
+// Test connessione email all'avvio (solo se dipendenze disponibili)
+try {
+  const emailService = require('./services/emailService');
+  emailService.verifyConnection().then(connected => {
+    if (connected) {
+      loggers.info('✅ Servizio email configurato correttamente');
+    } else {
+      loggers.warn('⚠️ Servizio email non configurato - controlla variabili ambiente SMTP');
+    }
+  });
+} catch (error) {
+  console.log('⚠️ Servizio email non disponibile:', error.message);
+  console.log('💡 Per abilitare le notifiche email, esegui: npm install nodemailer node-cron');
+}
+
+// Avvia scheduler notifiche solo se disponibile e abilitato
+if (process.env.ENABLE_SCHEDULER === 'true') {
+  try {
+    const scheduler = require('./services/scheduler');
+    scheduler.start();
+    loggers.info('✅ Scheduler notifiche avviato');
+  } catch (error) {
+    console.log('⚠️ Scheduler non disponibile:', error.message);
+  }
+}
 
 // Middleware per gestione errori (deve essere uno degli ultimi)
 app.use(errorLogger);
@@ -228,6 +271,16 @@ app.use((err, req, res, next) => {
 const gracefulShutdown = (signal) => {
   loggers.info(`Ricevuto ${signal}, avvio spegnimento graceful...`);
   
+  // Ferma scheduler se attivo
+  if (process.env.ENABLE_SCHEDULER === 'true') {
+    try {
+      const scheduler = require('./services/scheduler');
+      scheduler.stop();
+    } catch (error) {
+      // Ignora errori se scheduler non disponibile
+    }
+  }
+  
   const server = app.listen(port);
   server.close(() => {
     loggers.info('Server HTTP chiuso');
@@ -273,7 +326,16 @@ process.on('unhandledRejection', (reason, promise) => {
 // Avvio del server
 const server = app.listen(port, () => {
   const message = `NEXUS CRM avviato su http://localhost:${port}`;
-  console.log(message);
+  console.log('🚀 ' + message);
+  console.log('📊 Dashboard Analytics: http://localhost:3000/dashboard');
+  console.log('🔔 Gestione Notifiche: http://localhost:3000/notifications');
+  console.log('');
+  console.log('💡 Per abilitare le notifiche email:');
+  console.log('   1. npm install nodemailer node-cron');
+  console.log('   2. Configura SMTP nel file .env');
+  console.log('   3. Riavvia l\'applicazione');
+  console.log('');
+  
   loggers.info('Server avviato con successo', { 
     port, 
     timestamp: new Date().toISOString(),

@@ -1,0 +1,66 @@
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+  <!-- Stato Email -->
+  <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+    <div class="flex items-center justify-between mb-4">
+      <h3 class="text-lg font-semibold text-gray-900">Servizio Email</h3>
+      <div id="email-status-icon" class="text-gray-400">
+        <i class="fas fa-spinner fa-spin"></i>
+      </div>
+    </div>
+    <div id="email-status-content">
+      <p class="text-gray-500">Controllo in corso...</p>
+    </div>
+    <button onclick="testEmail()" class="btn-outline-red mt-4 w-full" id="test-email-btn">
+      <i class="fas fa-paper-plane mr-2"></i>
+      Invia Email di Test
+    </button>
+  </div>
+
+  <!-- Stato Scheduler -->
+  <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+    <div class="flex items-center justify-between mb-4">
+      <h3 class="text-lg font-semibold text-gray-900">Scheduler</h3>
+      <div class="text-green-500">
+        <i class="fas fa-clock"></i>
+      </div>
+    </div>
+    <div class="space-y-2 text-sm">
+      <% Object.entries(schedulerStatus).forEach(([name, status]) => { %>
+        <div class="flex justify-between">
+          <span class="text-gray-600"><%= name %>:</span>
+          <span class="<%= status.running ? 'text-green-600' : 'text-red-600' %>">
+            <%= status.running ? '✅ Attivo' : '❌ Fermo' %>
+          </span>
+        </div>
+      <% }) %>
+    </div>
+    <button onclick="refreshSchedulerStatus()" class="btn-outline-blue mt-4 w-full">
+      <i class="fas fa-sync mr-2"></i>
+      Aggiorna Stato
+    </button>
+  </div>
+
+  <!-- Controlli Manuali -->
+  <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+    <div class="flex items-center justify-between mb-4">
+      <h3 class="text-lg font-semibold text-gray-900">Controlli Manuali</h3>
+      <div class="text-blue-500">
+        <i class="fas fa-play-circle"></i>
+      </div>
+    </div>
+    <div class="space-y-3">
+      <button onclick="runChecks('notifications')" class="btn-outline-yellow w-full text-sm">
+        <i class="fas fa-exclamation-triangle mr-2"></i>
+        Controlla Scadenze
+      </button>
+      <button onclick="runChecks('digest')" class="btn-outline-purple w-full text-sm">
+        <i class="fas fa-chart-line mr-2"></i>
+        Invia Digest
+      </button>
+      <button onclick="runChecks('all')" class="btn-nexus w-full text-sm">
+        <i class="fas fa-rocket mr-2"></i>
+        Esegui Tutto
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,150 @@
+2025-06-27 09:36:47 [ERROR]: Errore connessione SMTP:
+Error: Invalid login: 535 5.7.1 Authentication failed
+    at SMTPConnection._formatError (C:\progetti\nexus-crm\node_modules\nodemailer\lib\smtp-connection\index.js:790:19)
+    at SMTPConnection._actionAUTHComplete (C:\progetti\nexus-crm\node_modules\nodemailer\lib\smtp-connection\index.js:1564:34)
+    at SMTPConnection.<anonymous> (C:\progetti\nexus-crm\node_modules\nodemailer\lib\smtp-connection\index.js:546:26)
+    at SMTPConnection._processResponse (C:\progetti\nexus-crm\node_modules\nodemailer\lib\smtp-connection\index.js:969:20)
+    at SMTPConnection._onData (C:\progetti\nexus-crm\node_modules\nodemailer\lib\smtp-connection\index.js:755:14)
+    at SMTPConnection._onSocketData (C:\progetti\nexus-crm\node_modules\nodemailer\lib\smtp-connection\index.js:193:44)
+    at TLSSocket.emit (node:events:524:28)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+    at Readable.push (node:internal/streams/readable:392:5)
+{
+  "service": "nexus-crm",
+  "error": "Invalid login: 535 5.7.1 Authentication failed"
+}
+2025-06-27 09:37:14 [ERROR]: Errore connessione SMTP:
+Error: Invalid login: 535 5.7.1 Authentication failed
+    at SMTPConnection._formatError (C:\progetti\nexus-crm\node_modules\nodemailer\lib\smtp-connection\index.js:790:19)
+    at SMTPConnection._actionAUTHComplete (C:\progetti\nexus-crm\node_modules\nodemailer\lib\smtp-connection\index.js:1564:34)
+    at SMTPConnection.<anonymous> (C:\progetti\nexus-crm\node_modules\nodemailer\lib\smtp-connection\index.js:546:26)
+    at SMTPConnection._processResponse (C:\progetti\nexus-crm\node_modules\nodemailer\lib\smtp-connection\index.js:969:20)
+    at SMTPConnection._onData (C:\progetti\nexus-crm\node_modules\nodemailer\lib\smtp-connection\index.js:755:14)
+    at SMTPConnection._onSocketData (C:\progetti\nexus-crm\node_modules\nodemailer\lib\smtp-connection\index.js:193:44)
+    at TLSSocket.emit (node:events:524:28)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+    at Readable.push (node:internal/streams/readable:392:5)
+{
+  "service": "nexus-crm",
+  "error": "Invalid login: 535 5.7.1 Authentication failed"
+}
+2025-06-27 09:37:18 [ERROR]: Errore invio email:
+Error: Invalid login: 535 5.7.1 Authentication failed
+    at SMTPConnection._formatError (C:\progetti\nexus-crm\node_modules\nodemailer\lib\smtp-connection\index.js:790:19)
+    at SMTPConnection._actionAUTHComplete (C:\progetti\nexus-crm\node_modules\nodemailer\lib\smtp-connection\index.js:1564:34)
+    at SMTPConnection.<anonymous> (C:\progetti\nexus-crm\node_modules\nodemailer\lib\smtp-connection\index.js:546:26)
+    at SMTPConnection._processResponse (C:\progetti\nexus-crm\node_modules\nodemailer\lib\smtp-connection\index.js:969:20)
+    at SMTPConnection._onData (C:\progetti\nexus-crm\node_modules\nodemailer\lib\smtp-connection\index.js:755:14)
+    at SMTPConnection._onSocketData (C:\progetti\nexus-crm\node_modules\nodemailer\lib\smtp-connection\index.js:193:44)
+    at TLSSocket.emit (node:events:524:28)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+    at Readable.push (node:internal/streams/readable:392:5)
+{
+  "service": "nexus-crm",
+  "error": "Invalid login: 535 5.7.1 Authentication failed",
+  "to": "admin@nexus.it",
+  "subject": "🧪 Test Email - NEXUS CRM System"
+}
+2025-06-27 09:39:02 [ERROR]: Errore invio email:
+Error: Invalid login: 535 5.7.1 Authentication failed
+    at SMTPConnection._formatError (C:\progetti\nexus-crm\node_modules\nodemailer\lib\smtp-connection\index.js:790:19)
+    at SMTPConnection._actionAUTHComplete (C:\progetti\nexus-crm\node_modules\nodemailer\lib\smtp-connection\index.js:1564:34)
+    at SMTPConnection.<anonymous> (C:\progetti\nexus-crm\node_modules\nodemailer\lib\smtp-connection\index.js:546:26)
+    at SMTPConnection._processResponse (C:\progetti\nexus-crm\node_modules\nodemailer\lib\smtp-connection\index.js:969:20)
+    at SMTPConnection._onData (C:\progetti\nexus-crm\node_modules\nodemailer\lib\smtp-connection\index.js:755:14)
+    at SMTPConnection._onSocketData (C:\progetti\nexus-crm\node_modules\nodemailer\lib\smtp-connection\index.js:193:44)
+    at TLSSocket.emit (node:events:524:28)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+    at Readable.push (node:internal/streams/readable:392:5)
+{
+  "service": "nexus-crm",
+  "error": "Invalid login: 535 5.7.1 Authentication failed",
+  "to": "admin@nexus.it",
+  "subject": "🧪 Test Email - NEXUS CRM System"
+}
+2025-06-27 09:39:09 [ERROR]: Errore invio email:
+Error: Invalid login: 535 5.7.1 Authentication failed
+    at SMTPConnection._formatError (C:\progetti\nexus-crm\node_modules\nodemailer\lib\smtp-connection\index.js:790:19)
+    at SMTPConnection._actionAUTHComplete (C:\progetti\nexus-crm\node_modules\nodemailer\lib\smtp-connection\index.js:1564:34)
+    at SMTPConnection.<anonymous> (C:\progetti\nexus-crm\node_modules\nodemailer\lib\smtp-connection\index.js:546:26)
+    at SMTPConnection._processResponse (C:\progetti\nexus-crm\node_modules\nodemailer\lib\smtp-connection\index.js:969:20)
+    at SMTPConnection._onData (C:\progetti\nexus-crm\node_modules\nodemailer\lib\smtp-connection\index.js:755:14)
+    at SMTPConnection._onSocketData (C:\progetti\nexus-crm\node_modules\nodemailer\lib\smtp-connection\index.js:193:44)
+    at TLSSocket.emit (node:events:524:28)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+    at Readable.push (node:internal/streams/readable:392:5)
+{
+  "service": "nexus-crm",
+  "error": "Invalid login: 535 5.7.1 Authentication failed",
+  "to": "admin@nexus.it",
+  "subject": "🧪 Test Email - NEXUS CRM System"
+}
+2025-06-27 09:42:54 [ERROR]: Uncaught Exception - Spegnimento applicazione
+Error: listen EADDRINUSE: address already in use :::3000
+    at Server.setupListenHandle [as _listen2] (node:net:1937:16)
+    at listenInCluster (node:net:1994:12)
+    at Server.listen (node:net:2099:7)
+    at Function.listen (C:\progetti\nexus-crm\node_modules\express\lib\application.js:635:24)
+    at gracefulShutdown (C:\progetti\nexus-crm\app.js:284:22)
+    at process.<anonymous> (C:\progetti\nexus-crm\app.js:308:28)
+    at process.emit (node:events:536:35)
+{
+  "service": "nexus-crm",
+  "error": "listen EADDRINUSE: address already in use :::3000"
+}
+2025-06-27 09:43:25 [ERROR]: Errore connessione SMTP:
+Error: Timeout connessione SMTP
+    at Timeout._onTimeout (C:\progetti\nexus-crm\services\emailService.js:58:33)
+    at listOnTimeout (node:internal/timers:594:17)
+    at process.processTimers (node:internal/timers:529:7)
+{
+  "service": "nexus-crm",
+  "error": "Timeout connessione SMTP"
+}
+2025-06-27 09:43:39 [ERROR]: Errore connessione SMTP:
+Error: Timeout connessione SMTP
+    at Timeout._onTimeout (C:\progetti\nexus-crm\services\emailService.js:58:33)
+    at listOnTimeout (node:internal/timers:594:17)
+    at process.processTimers (node:internal/timers:529:7)
+{
+  "service": "nexus-crm",
+  "error": "Timeout connessione SMTP"
+}
+2025-06-27 09:43:45 [ERROR]: Errore connessione SMTP:
+Error: Timeout connessione SMTP
+    at Timeout._onTimeout (C:\progetti\nexus-crm\services\emailService.js:58:33)
+    at listOnTimeout (node:internal/timers:594:17)
+    at process.processTimers (node:internal/timers:529:7)
+{
+  "service": "nexus-crm",
+  "error": "Timeout connessione SMTP"
+}
+2025-06-27 09:43:49 [ERROR]: Errore invio email:
+Error: Impossibile stabilire connessione SMTP con nessuna configurazione
+    at EmailService.sendEmail (C:\progetti\nexus-crm\services\emailService.js:157:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async C:\progetti\nexus-crm\routes\notifications.js:24:5
+{
+  "service": "nexus-crm",
+  "error": "Impossibile stabilire connessione SMTP con nessuna configurazione",
+  "to": "admin@nexus.it",
+  "subject": "🧪 Test Email - NEXUS CRM System (OVH Configuration)"
+}
+2025-06-27 09:44:47 [ERROR]: Uncaught Exception - Spegnimento applicazione
+Error: listen EADDRINUSE: address already in use :::3000
+    at Server.setupListenHandle [as _listen2] (node:net:1937:16)
+    at listenInCluster (node:net:1994:12)
+    at Server.listen (node:net:2099:7)
+    at Function.listen (C:\progetti\nexus-crm\node_modules\express\lib\application.js:635:24)
+    at gracefulShutdown (C:\progetti\nexus-crm\app.js:284:22)
+    at process.<anonymous> (C:\progetti\nexus-crm\app.js:308:28)
+    at process.emit (node:events:536:35)
+{
+  "service": "nexus-crm",
+  "error": "listen EADDRINUSE: address already in use :::3000"
+}

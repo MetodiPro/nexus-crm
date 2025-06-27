@@ -21,15 +21,16 @@
         <div class="flex flex-col h-full">
           <!-- Logo -->
           <div class="py-4 px-6 border-b border-gray-700">
-            <a href="/" class="text-nexus-red font-bold text-xl">NEXUS</a>
+            <a href="/dashboard" class="text-nexus-red font-bold text-xl">NEXUS</a>
             <p class="text-sm text-gray-400">Sistema CRM</p>
           </div>
 
           <!-- Menu -->
           <nav class="flex-1 py-4 px-4">
             <ul class="space-y-1">
+              <!-- Dashboard Analytics -->
               <li>
-                <a href="/" class="sidebar-link">
+                <a href="/dashboard" class="sidebar-link">
                   <i class="fas fa-tachometer-alt w-5 text-center mr-2"></i> Dashboard
                 </a>
               </li>
@@ -38,6 +39,13 @@
               <li>
                 <a href="/clients" class="sidebar-link">
                   <i class="fas fa-users w-5 text-center mr-2"></i> Clienti
+                </a>
+              </li>
+              
+              <!-- Import Bollette -->
+              <li>
+                <a href="/clients/import-bill" class="sidebar-link">
+                  <i class="fas fa-file-upload w-5 text-center mr-2"></i> Importa da Bolletta ENEL
                 </a>
               </li>
               
@@ -95,7 +103,21 @@
                 </a>
               </li>
               
+              <!-- Notifiche (per tutti gli utenti) -->
+              <li>
+                <a href="/notifications/settings" class="sidebar-link">
+                  <i class="fas fa-bell w-5 text-center mr-2"></i> Notifiche
+                </a>
+              </li>
+              
               <% if (user.role === 'administrator') { %>
+                <!-- Gestione Notifiche (solo admin) -->
+                <li>
+                  <a href="/notifications" class="sidebar-link">
+                    <i class="fas fa-cogs w-5 text-center mr-2"></i> Gestione Notifiche
+                  </a>
+                </li>
+                
                 <!-- Utenti -->
                 <li>
                   <a href="/users" class="sidebar-link">
@@ -128,15 +150,6 @@
 
             <!-- User actions -->
             <div class="flex-1 flex justify-end items-center">
-              <!-- DEBUG: Log tutte le variabili disponibili -->
-              <script>
-                console.log('DEBUG LAYOUT - Tutte le variabili:', {
-                  'locals.user': JSON.parse('<%= JSON.stringify(locals.user || {}) %>'),
-                  'user': JSON.parse('<%= JSON.stringify(user || {}) %>'),
-                  'req.session.user esisterebbe': '<%= typeof req !== "undefined" && req.session && req.session.user ? "SI" : "NO" %>'
-                });
-              </script>
-              
               <div class="flex-shrink-0 text-white mr-4" id="user-info">
                 <% if (locals.user && locals.user.id) { %>
                   <i class="fas fa-user mr-1"></i> <%= locals.user.name %> 
@@ -144,24 +157,9 @@
                     <%= locals.user.role === 'administrator' ? 'Admin' : 'Consulente' %>
                   </span>
                 <% } else { %>
-                  <!-- FALLBACK: se locals.user non funziona, proviamo la sessione diretta -->
                   <i class="fas fa-user mr-1"></i> UTENTE SCONOSCIUTO
                   <span class="badge-gray ml-2">ERROR</span>
                 <% } %>
-                
-                <!-- DEBUG: Dati per test -->
-                <span style="display:none;" id="debug-user-data">
-                  <% if (locals.user && locals.user.id) { %>
-                    {
-                      "id": "<%= locals.user.id %>",
-                      "username": "<%= locals.user.username %>", 
-                      "role": "<%= locals.user.role %>",
-                      "name": "<%= locals.user.name %>"
-                    }
-                  <% } else { %>
-                    {"error": "locals.user non disponibile"}
-                  <% } %>
-                </span>
               </div>
               <a href="/logout" class="btn-outline-red btn-sm">
                 <i class="fas fa-sign-out-alt"></i> Logout

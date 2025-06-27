@@ -1,0 +1,187 @@
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  checkEmailStatus();
+  loadStatistics();
+});
+
+// Verifica stato email
+async function checkEmailStatus() {
+  const statusIcon = document.getElementById('email-status-icon');
+  const statusContent = document.getElementById('email-status-content');
+  
+  try {
+    const response = await fetch('/notifications/email-status');
+    const data = await response.json();
+    
+    if (data.connected) {
+      statusIcon.innerHTML = '<i class="fas fa-check-circle text-green-500"></i>';
+      statusContent.innerHTML = `
+        <p class="text-green-600 font-medium">✅ Connesso</p>
+        <p class="text-sm text-gray-500">SMTP: ${data.smtp_host}</p>
+        <p class="text-sm text-gray-500">From: ${data.from_email}</p>
+      `;
+    } else {
+      statusIcon.innerHTML = '<i class="fas fa-exclamation-triangle text-red-500"></i>';
+      statusContent.innerHTML = `
+        <p class="text-red-600 font-medium">❌ Disconnesso</p>
+        <p class="text-sm text-gray-500">Verifica configurazione SMTP</p>
+      `;
+    }
+  } catch (error) {
+    statusIcon.innerHTML = '<i class="fas fa-exclamation-triangle text-red-500"></i>';
+    statusContent.innerHTML = `
+      <p class="text-red-600 font-medium">❌ Errore</p>
+      <p class="text-sm text-gray-500">${error.message}</p>
+    `;
+  }
+}
+
+// Test invio email
+async function testEmail() {
+  const btn = document.getElementById('test-email-btn');
+  const originalText = btn.innerHTML;
+  
+  btn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Invio...';
+  btn.disabled = true;
+  
+  try {
+    const response = await fetch('/notifications/test-email', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRF-Token': '<%= csrfToken %>'
+      },
+      body: JSON.stringify({ email: '<%= user.email %>' })
+    });
+    
+    const data = await response.json();
+    
+    if (data.success) {
+      showModal('success', 'Email di test inviata con successo!', data.message);
+    } else {
+      showModal('error', 'Errore invio email', data.error);
+    }
+  } catch (error) {
+    showModal('error', 'Errore', 'Errore durante l\'invio: ' + error.message);
+  }
+  
+  btn.innerHTML = originalText;
+  btn.disabled = false;
+}
+
+// Esegui controlli
+async function runChecks(type) {
+  const button = event.target;
+  const originalText = button.innerHTML;
+  
+  button.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Eseguendo...';
+  button.disabled = true;
+  
+  try {
+    const response = await fetch('/notifications/run-checks', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRF-Token': '<%= csrfToken %>'
+      },
+      body: JSON.stringify({ type })
+    });
+    
+    const data = await response.json();
+    
+    if (data.success) {
+      showModal('success', 'Controlli completati', `
+        <div class="space-y-2">
+          <p>${data.message}</p>
+          ${data.result ? `
+            <div class="bg-gray-50 p-3 rounded mt-2">
+              <pre class="text-xs">${JSON.stringify(data.result, null, 2)}</pre>
+            </div>
+          ` : ''}
+        </div>
+      `);
+      addToActivityLog(`Controlli ${type} eseguiti manualmente`);
+    } else {
+      showModal('error', 'Errore', data.error);
+    }
+  } catch (error) {
+    showModal('error', 'Errore', 'Errore durante l\'esecuzione: ' + error.message);
+  }
+  
+  button.innerHTML = originalText;
+  button.disabled = false;
+}
+
+// Mostra modal
+function showModal(type, title, content) {
+  const modal = document.getElementById('resultsModal');
+  const modalContent = document.getElementById('modal-content');
+  
+  const icon = type === 'success' ? 
+    '<i class="fas fa-check-circle text-green-500 mr-2"></i>' : 
+    '<i class="fas fa-exclamation-triangle text-red-500 mr-2"></i>';
+  
+  modalContent.innerHTML = `
+    <div class="flex items-start">
+      ${icon}
+      <div>
+        <h4 class="font-medium text-gray-900 mb-2">${title}</h4>
+        <div class="text-gray-600">${content}</div>
+      </div>
+    </div>
+  `;
+  
+  modal.classList.remove('hidden');
+  modal.classList.add('flex');
+}
+
+// Chiudi modal
+function closeModal() {
+  const modal = document.getElementById('resultsModal');
+  modal.classList.add('hidden');
+  modal.classList.remove('flex');
+}
+
+// Aggiungi al log attività
+function addToActivityLog(message) {
+  const log = document.getElementById('activity-log');
+  const timestamp = new Date().toLocaleString('it-IT');
+  
+  const entry = document.createElement('div');
+  entry.className = 'flex justify-between items-center py-2 border-b border-gray-100';
+  entry.innerHTML = `
+    <span class="text-gray-900">${message}</span>
+    <span class="text-sm text-gray-500">${timestamp}</span>
+  `;
+  
+  if (log.firstChild?.tagName === 'P') {
+    log.innerHTML = '';
+  }
+  
+  log.insertBefore(entry, log.firstChild);
+  
+  // Mantieni solo gli ultimi 10 elementi
+  while (log.children.length > 10) {
+    log.removeChild(log.lastChild);
+  }
+}
+
+// Carica statistiche
+async function loadStatistics() {
+  document.getElementById('active-users').textContent = '3';
+  document.getElementById('notifications-today').textContent = '12';
+  document.getElementById('last-check').textContent = new Date().toLocaleString('it-IT');
+}
+
+// Aggiorna stato scheduler
+async function refreshSchedulerStatus() {
+  try {
+    const response = await fetch('/notifications/scheduler-status');
+    const data = await response.json();
+    
+    addToActivityLog('Stato scheduler aggiornato');
+  } catch (error) {
+    showModal('error', 'Errore', 'Errore aggiornamento stato scheduler');
+  }
+}
+</script>

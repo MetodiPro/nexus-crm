@@ -1,0 +1,119 @@
+<div class="max-w-4xl mx-auto">
+  <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+    <h1 class="text-2xl font-bold text-gray-900 mb-6">
+      <i class="fas fa-bell text-yellow-500 mr-2"></i>
+      Impostazioni Notifiche
+    </h1>
+
+    <% if (typeof query !== 'undefined' && query.success) { %>
+      <div class="bg-green-50 border border-green-200 rounded-md p-4 mb-6">
+        <div class="flex">
+          <div class="flex-shrink-0">
+            <i class="fas fa-check-circle text-green-400"></i>
+          </div>
+          <div class="ml-3">
+            <p class="text-sm font-medium text-green-800">
+              Impostazioni notifiche aggiornate con successo!
+            </p>
+          </div>
+        </div>
+      </div>
+    <% } %>
+
+    <form method="POST" action="/notifications/settings">
+      <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+      
+      <div class="space-y-6">
+        <!-- Scadenze Contratti -->
+        <div class="flex items-center justify-between p-4 border border-gray-200 rounded-lg">
+          <div class="flex-1">
+            <h3 class="text-lg font-medium text-gray-900">
+              <i class="fas fa-exclamation-triangle text-orange-500 mr-2"></i>
+              Scadenze Contratti
+            </h3>
+            <p class="text-sm text-gray-600 mt-1">
+              Ricevi notifiche email quando i contratti stanno per scadere (30 giorni prima)
+            </p>
+          </div>
+          <div class="ml-4">
+            <label class="relative inline-flex items-center cursor-pointer">
+              <input type="checkbox" name="contract_expiry" class="sr-only peer" 
+                     <%= settings.find(s => s.notification_type === 'contract_expiry')?.is_enabled ? 'checked' : '' %>>
+              <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+            </label>
+          </div>
+        </div>
+
+        <!-- Reminder Attività -->
+        <div class="flex items-center justify-between p-4 border border-gray-200 rounded-lg">
+          <div class="flex-1">
+            <h3 class="text-lg font-medium text-gray-900">
+              <i class="fas fa-calendar-check text-blue-500 mr-2"></i>
+              Reminder Attività
+            </h3>
+            <p class="text-sm text-gray-600 mt-1">
+              Ricevi promemoria email per le attività e appuntamenti imminenti
+            </p>
+          </div>
+          <div class="ml-4">
+            <label class="relative inline-flex items-center cursor-pointer">
+              <input type="checkbox" name="activity_reminder" class="sr-only peer"
+                     <%= settings.find(s => s.notification_type === 'activity_reminder')?.is_enabled ? 'checked' : '' %>>
+              <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+            </label>
+          </div>
+        </div>
+
+        <!-- Digest Settimanale -->
+        <div class="flex items-center justify-between p-4 border border-gray-200 rounded-lg">
+          <div class="flex-1">
+            <h3 class="text-lg font-medium text-gray-900">
+              <i class="fas fa-chart-line text-purple-500 mr-2"></i>
+              Digest Settimanale
+            </h3>
+            <p class="text-sm text-gray-600 mt-1">
+              Ricevi un riepilogo settimanale delle tue performance e attività (ogni lunedì)
+            </p>
+          </div>
+          <div class="ml-4">
+            <label class="relative inline-flex items-center cursor-pointer">
+              <input type="checkbox" name="weekly_digest" class="sr-only peer"
+                     <%= settings.find(s => s.notification_type === 'weekly_digest')?.is_enabled ? 'checked' : '' %>>
+              <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Informazioni aggiuntive -->
+      <div class="mt-8 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+        <div class="flex">
+          <div class="flex-shrink-0">
+            <i class="fas fa-info-circle text-blue-400"></i>
+          </div>
+          <div class="ml-3">
+            <h3 class="text-sm font-medium text-blue-800">Informazioni importanti</h3>
+            <div class="mt-2 text-sm text-blue-700">
+              <ul class="list-disc list-inside space-y-1">
+                <li>Le notifiche vengono inviate all'email del tuo profilo utente</li>
+                <li>Puoi modificare queste impostazioni in qualsiasi momento</li>
+                <li>I controlli automatici vengono eseguiti ogni ora durante l'orario lavorativo</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pulsanti -->
+      <div class="mt-8 flex justify-end space-x-3">
+        <a href="/dashboard" class="btn-outline-gray">
+          Annulla
+        </a>
+        <button type="submit" class="btn-nexus">
+          <i class="fas fa-save mr-2"></i>
+          Salva Impostazioni
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
